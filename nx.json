@@ -7,5 +7,12 @@
     "tslint.json": "*",
     "nx.json": "*"
   },
-  "projects": {}
+  "projects": {
+    "mi-sandbox-e2e": {
+      "tags": []
+    },
+    "mi-sandbox": {
+      "tags": []
+    }
+  }
 }
