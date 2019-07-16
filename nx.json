@@ -8,10 +8,10 @@
     "nx.json": "*"
   },
   "projects": {
-    "mi-sandbox-e2e": {
+    "mi-sandbox": {
       "tags": []
     },
-    "mi-sandbox": {
+    "mi-sandbox-e2e": {
       "tags": []
     }
   }
