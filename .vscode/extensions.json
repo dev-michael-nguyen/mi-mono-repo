@@ -1,8 +1,16 @@
 {
   "recommendations": [
-    "nrwl.angular-console",
+    "alexiv.vscode-angular2-files",
     "angular.ng-template",
+    "christian-kohler.path-intellisense",
+    "coenraads.bracket-pair-colorizer",
+    "hookyqr.beautify",
+    "mikael.angular-beastcode",
     "ms-vscode.vscode-typescript-tslint-plugin",
-    "esbenp.prettier-vscode"
+    "nrwl.angular-console",
+    "quicktype.quicktype",
+    "streetsidesoftware.code-spell-checker",
+    "stringham.move-ts",
+    "tyriar.sort-lines"
   ]
 }
