@@ -1,4 +1,6 @@
-# SETUP
+# mi-mono-repo
+
+This is how this project was created.
 
 ## Getting started with [nx](https://nx.dev/angular/getting-started/getting-started)
 
@@ -20,18 +22,18 @@ npm install -g @angular/cli
 - Create nx-workspace
 
 ```npm
-npm init nx-workspace myworkspace # Create empty nx-workspace
-cd myworkspace # Go into your workspace
+npm init nx-workspace mi-mono-repo # Create empty nx-workspace
+cd mi-mono-repo # Go into our workspace
 npm install --dev @nrwl/angular # Adds Angular capabilities
 ```
 
 - Create application
 
 ```ng
-ng g @nrwl/angular:application myapp
+ng g @nrwl/angular:application mi-sandbox
 ```
 
-## Getting started with firebase
+## Getting started with [firebase](https://firebase.google.com/)
 
 - Install firebase-tools
 
