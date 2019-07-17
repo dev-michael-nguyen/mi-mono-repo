@@ -9,10 +9,13 @@
   },
   "projects": {
     "mi-sandbox": {
-      "tags": []
+      "tags": ["type:app", "scope:mi-sandbox"]
     },
     "mi-sandbox-e2e": {
-      "tags": []
+      "tags": ["type:e2e", "scope:mi-sandbox"]
+    },
+    "mi-ui-lib": {
+      "tags": ["type:ui", "scope:shared"]
     }
   }
 }

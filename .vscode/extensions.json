@@ -4,11 +4,13 @@
     "angular.ng-template",
     "christian-kohler.path-intellisense",
     "coenraads.bracket-pair-colorizer",
+    "davidanson.vscode-markdownlint",
     "hookyqr.beautify",
     "mikael.angular-beastcode",
     "ms-vscode.vscode-typescript-tslint-plugin",
     "nrwl.angular-console",
     "quicktype.quicktype",
+    "steoates.autoimport",
     "streetsidesoftware.code-spell-checker",
     "stringham.move-ts",
     "tyriar.sort-lines"
