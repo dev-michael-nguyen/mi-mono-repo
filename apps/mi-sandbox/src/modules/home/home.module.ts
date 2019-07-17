@@ -1,15 +1,17 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { TextBoxModule } from '@mi-mono-repo/mi-ui-lib';
-import { HomeComponent } from './home.component';
+import { HomeRouterRegistryService } from './home-router-registry.service';
+import { HomeModule as HomeViewModel } from './views/home/home.module';
 
 @NgModule({
   imports: [
     CommonModule,
-    TextBoxModule
+    HomeViewModel,
+    TextBoxModule,
   ],
-  declarations: [HomeComponent],
-  entryComponents: [HomeComponent],
-  exports: [HomeComponent]
+  providers: [
+    HomeRouterRegistryService
+  ]
 })
 export class HomeModule { }
