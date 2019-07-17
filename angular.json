@@ -162,6 +162,13 @@
     },
     "@nrwl/angular:library": {
       "unitTestRunner": "jest"
+    },
+    "@schematics/angular:component": {
+      "styleext": "scss",
+      "spec": false
+    },
+    "@schematics/angular:module": {
+      "spec": false
     }
   },
   "defaultProject": "mi-sandbox"
