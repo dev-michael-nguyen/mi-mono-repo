@@ -1,13 +1,14 @@
 import { Injectable } from '@angular/core';
 import { RouterRegistryService } from '@mi-mono-repo/mi-ui-lib';
 import { HomeComponent } from './views/home/home.component';
+import { HomeService } from './views/home/home.service';
 
-export enum HomeRoutePath {
-  Root = 'home'
+export enum AppRoutePath {
+  Root = 'app'
 }
 
 @Injectable()
-export class HomeRouterRegistryService {
+export class AppRouterRegistryService {
 
   constructor(
     private _routerRegistryService: RouterRegistryService
@@ -17,11 +18,15 @@ export class HomeRouterRegistryService {
     this._routerRegistryService.registerRoutes([
       {
         path: '',
-        redirectTo: HomeRoutePath.Root
+        redirectTo: AppRoutePath.Root
       },
       {
-        path: HomeRoutePath.Root,
-        component: HomeComponent
+        path: AppRoutePath.Root,
+        component: HomeComponent,
+        canActivate: [HomeService],
+        resolve: {
+          store: HomeService
+        }
       }
     ]);
   }

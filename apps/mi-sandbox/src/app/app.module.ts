@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
-import { HomeRouterRegistryService } from '../modules/home/home-router-registry.service';
-import { HomeModule } from '../modules/home/home.module';
+import { AppRouterRegistryService } from './app-router-registry.service';
 import { AppComponent, APP_NAME } from './app.component';
+import { HomeModule } from './views/home/home.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -13,14 +13,15 @@ import { AppComponent, APP_NAME } from './app.component';
     RouterModule.forRoot([], { initialNavigation: 'enabled' }),
   ],
   providers: [
+    AppRouterRegistryService,
     { provide: APP_NAME, useValue: 'mi-sandbox' }
   ],
   bootstrap: [AppComponent]
 })
 export class AppModule {
   constructor(
-    _homeRouterRegistryService: HomeRouterRegistryService
+    _appRouterRegistryService: AppRouterRegistryService
   ) {
-    _homeRouterRegistryService.registerRoutes();
+    _appRouterRegistryService.registerRoutes();
   }
 }
