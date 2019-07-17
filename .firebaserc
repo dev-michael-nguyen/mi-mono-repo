@@ -1,0 +1,14 @@
+{
+  "projects": {
+    "default": "dev-mi-mono-repo"
+  },
+  "targets": {
+    "dev-mi-mono-repo": {
+      "hosting": {
+        "dev-mi-sandbox": [
+          "dev-mi-sandbox"
+        ]
+      }
+    }
+  }
+}
