@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Person } from '@mi-mono-repo/mi-api-lib';
+import { PersonModel } from '@mi-mono-repo/mi-api-lib';
 
 @Component({
   selector: 'mi-home',
@@ -11,8 +11,8 @@ export class HomeComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    const person = new Person();
-    console.log(person.metadata);
+    const personModel = new PersonModel();
+    console.log(personModel.metadata);
   }
 
 }

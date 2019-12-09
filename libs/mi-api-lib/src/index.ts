@@ -1,2 +1,1 @@
-export * from './lib/person/person';
-
+export * from './lib/person/person.model';
