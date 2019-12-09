@@ -116,28 +116,28 @@
         }
       }
     },
-    "mi-ui-lib": {
+    "mi-angular-ui-lib": {
       "projectType": "library",
-      "root": "libs/mi-ui-lib",
-      "sourceRoot": "libs/mi-ui-lib/src",
-      "prefix": "mi",
+      "root": "libs/mi-angular-ui-lib",
+      "sourceRoot": "libs/mi-angular-ui-lib/src",
+      "prefix": "mi-mono-repo",
       "architect": {
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": [
-              "libs/mi-ui-lib/tsconfig.lib.json",
-              "libs/mi-ui-lib/tsconfig.spec.json"
+              "libs/mi-angular-ui-lib/tsconfig.lib.json",
+              "libs/mi-angular-ui-lib/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**", "!libs/mi-ui-lib/**"]
+            "exclude": ["**/node_modules/**", "!libs/mi-angular-ui-lib/**"]
           }
         },
         "test": {
           "builder": "@nrwl/jest:jest",
           "options": {
-            "jestConfig": "libs/mi-ui-lib/jest.config.js",
-            "tsConfig": "libs/mi-ui-lib/tsconfig.spec.json",
-            "setupFile": "libs/mi-ui-lib/src/test-setup.ts"
+            "jestConfig": "libs/mi-angular-ui-lib/jest.config.js",
+            "tsConfig": "libs/mi-angular-ui-lib/tsconfig.spec.json",
+            "setupFile": "libs/mi-angular-ui-lib/src/test-setup.ts"
           }
         }
       },

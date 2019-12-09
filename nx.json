@@ -14,7 +14,7 @@
     "mi-sandbox-e2e": {
       "tags": ["type:e2e", "scope:mi-sandbox"]
     },
-    "mi-ui-lib": {
+    "mi-angular-ui-lib": {
       "tags": ["type:ui", "scope:shared"]
     }
   }

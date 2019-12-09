@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { TextBoxModule } from '@mi-mono-repo/mi-ui-lib';
+import { TextBoxModule } from '@mi-mono-repo/mi-angular-ui-lib';
 import { HomeComponent } from './home.component';
 
 @NgModule({

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { RouterRegistryService } from '@mi-mono-repo/mi-ui-lib';
+import { RouterRegistryService } from '@mi-mono-repo/mi-angular-ui-lib';
 import { HomeComponent } from './views/home/home.component';
 import { HomeService } from './views/home/home.service';
 
