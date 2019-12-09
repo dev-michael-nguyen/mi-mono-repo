@@ -1,6 +1,6 @@
 import { Input } from '@angular/core';
 
-export class FieldBaseComponent {
+export class InputComponent {
   @Input() responseId: string;
   @Input() property: string;
 
