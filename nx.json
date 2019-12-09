@@ -16,6 +16,9 @@
     },
     "mi-angular-ui-lib": {
       "tags": ["type:ui", "scope:shared"]
+    },
+    "mi-api-lib": {
+      "tags": []
     }
   }
 }

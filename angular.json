@@ -31,10 +31,12 @@
           },
           "configurations": {
             "production": {
-              "fileReplacements": [{
-                "replace": "apps/mi-sandbox/src/environments/environment.ts",
-                "with": "apps/mi-sandbox/src/environments/environment.prod.ts"
-              }],
+              "fileReplacements": [
+                {
+                  "replace": "apps/mi-sandbox/src/environments/environment.ts",
+                  "with": "apps/mi-sandbox/src/environments/environment.prod.ts"
+                }
+              ],
               "optimization": true,
               "outputHashing": "all",
               "sourceMap": false,
@@ -44,11 +46,13 @@
               "extractLicenses": true,
               "vendorChunk": false,
               "buildOptimizer": true,
-              "budgets": [{
-                "type": "initial",
-                "maximumWarning": "2mb",
-                "maximumError": "5mb"
-              }]
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                }
+              ]
             }
           }
         },
@@ -138,6 +142,37 @@
             "jestConfig": "libs/mi-angular-ui-lib/jest.config.js",
             "tsConfig": "libs/mi-angular-ui-lib/tsconfig.spec.json",
             "setupFile": "libs/mi-angular-ui-lib/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "styleext": "scss"
+        }
+      }
+    },
+    "mi-api-lib": {
+      "projectType": "library",
+      "root": "libs/mi-api-lib",
+      "sourceRoot": "libs/mi-api-lib/src",
+      "prefix": "mi-mono-repo",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/mi-api-lib/tsconfig.lib.json",
+              "libs/mi-api-lib/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/mi-api-lib/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/mi-api-lib/jest.config.js",
+            "tsConfig": "libs/mi-api-lib/tsconfig.spec.json",
+            "setupFile": "libs/mi-api-lib/src/test-setup.ts"
           }
         }
       },
