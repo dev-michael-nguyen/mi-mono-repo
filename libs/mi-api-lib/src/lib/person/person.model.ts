@@ -1,12 +1,8 @@
-import { Entity } from '../common/entity';
-import { Label } from '../decorators/property-decorators/label';
+import { MetadataModel } from '../common/metadata-model';
+import { SimplePersonNameModel } from '../common/simple-person-name.model';
 
-export class PersonModel extends Entity {
-  $type = 'Person.Person';
+export class PersonModel extends MetadataModel {
+  $type = 'Person.PersonModel';
 
-  @Label('First Name')
-  firstName = '';
-
-  @Label('Last Name')
-  lastName = '';
+  nameModel = new SimplePersonNameModel();
 }
