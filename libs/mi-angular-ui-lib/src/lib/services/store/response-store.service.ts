@@ -10,6 +10,7 @@ export enum ResponseStoreServiceEvent {
 export interface IResponseModel {
   $type: string;
   hasError: boolean;
+  lookups: any;
   metadata: any;
   model: {
     $type: string;
@@ -40,26 +41,18 @@ export class ResponseStoreService {
     return id;
   }
 
-  /**
-   * Take a snapshot of a response in the store
-   * @param id response id to take a snapshot
-   */
-  private _snapshot(id): void {
-    this._snapshotStore[id] = this._copy(this._store[id]);
-  }
-
-  private _copy(target): any {
+  $copy(target): any {
     if (!target) { return undefined; }
     return JSON.parse(JSON.stringify(target));
   }
 
   add(response: IResponseModel): string {
     const id = this.$generateId(response);
+    const copiedResponse = this.$copy(response);
 
-    this._store[id] = response;
+    this._store[id] = copiedResponse;
+    this._snapshotStore[id] = copiedResponse;
     this.event$.next({ event: ResponseStoreServiceEvent.Added, id });
-
-    this._snapshot(id);
 
     return id;
   }

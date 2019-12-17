@@ -16,6 +16,7 @@ describe('Service: ResponseStoreService', () => {
     expect(service.add({
       $type: '$type',
       hasError: false,
+      lookups: {},
       metadata: {},
       model: {
         $type: '$type'
