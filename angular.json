@@ -93,7 +93,8 @@
           "options": {
             "jestConfig": "apps/mi-sandbox/jest.config.js",
             "tsConfig": "apps/mi-sandbox/tsconfig.spec.json",
-            "setupFile": "apps/mi-sandbox/src/test-setup.ts"
+            "setupFile": "apps/mi-sandbox/src/test-setup.ts",
+            "passWithNoTests": true
           }
         }
       }
@@ -146,7 +147,8 @@
           "options": {
             "jestConfig": "libs/mi-angular-ui-lib/jest.config.js",
             "tsConfig": "libs/mi-angular-ui-lib/tsconfig.spec.json",
-            "setupFile": "libs/mi-angular-ui-lib/src/test-setup.ts"
+            "setupFile": "libs/mi-angular-ui-lib/src/test-setup.ts",
+            "passWithNoTests": true
           }
         }
       },
@@ -177,7 +179,8 @@
           "options": {
             "jestConfig": "libs/mi-api-lib/jest.config.js",
             "tsConfig": "libs/mi-api-lib/tsconfig.spec.json",
-            "setupFile": "libs/mi-api-lib/src/test-setup.ts"
+            "setupFile": "libs/mi-api-lib/src/test-setup.ts",
+            "passWithNoTests": true
           }
         }
       },
