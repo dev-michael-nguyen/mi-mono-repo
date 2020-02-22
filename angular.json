@@ -17,6 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
+            "aot": true,
             "outputPath": "dist/apps/mi-sandbox",
             "index": "apps/mi-sandbox/src/index.html",
             "main": "apps/mi-sandbox/src/main.ts",
@@ -51,6 +52,10 @@
                   "type": "initial",
                   "maximumWarning": "2mb",
                   "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb"
                 }
               ]
             }
@@ -199,11 +204,11 @@
       "unitTestRunner": "jest"
     },
     "@schematics/angular:component": {
-      "styleext": "scss",
-      "spec": false
+      "style": "scss",
+      "skipTests": true
     },
     "@schematics/angular:module": {
-      "spec": false
+      "skipTests": true
     }
   },
   "defaultProject": "mi-sandbox"
