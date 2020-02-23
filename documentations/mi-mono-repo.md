@@ -30,7 +30,7 @@ npm install --dev @nrwl/angular # Adds Angular capabilities
 - Create application
 
 ```ng
-ng g @nrwl/angular:application mi-sandbox
+ng g @nrwl/angular:application <application-name>
 ```
 
 ## Getting started with [firebase](https://firebase.google.com/)

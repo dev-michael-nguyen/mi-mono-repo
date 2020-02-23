@@ -5,11 +5,6 @@
   "scripts": {
     "ng": "ng",
     "start": "npm run serve:standard-sandbox:dev",
-    "serve:mi-sandbox:dev": "ng serve mi-sandbox",
-    "build:mi-sandbox:dev": "ng build mi-sandbox",
-    "build:mi-sandbox:prod": "ng build mi-sandbox --prod",
-    "fb:serve:mi-sandbox": "firebase serve --only hosting:dev-mi-sandbox",
-    "fb:deploy:mi-sandbox": "firebase deploy --only hosting:dev-mi-sandbox",
     "serve:standard-sandbox:dev": "ng serve standard-sandbox",
     "build:standard-sandbox:dev": "ng build standard-sandbox",
     "build:standard-sandbox:prod": "ng build standard-sandbox --prod",

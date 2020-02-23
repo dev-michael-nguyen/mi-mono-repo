@@ -34,5 +34,5 @@ npm start
 ## DEPLOYMENT
 
 ```npm
-npm run fb:deploy:mi-sandbox
+npm run fb:deploy:standard-sandbox
 ```
