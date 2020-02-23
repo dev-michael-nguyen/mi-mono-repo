@@ -21,6 +21,9 @@
       ],
       "@mi-mono-repo/mi-api-lib": [
         "libs/mi-api-lib/src/index.ts"
+      ],
+      "@mi-mono-repo/standard/metadata-lib": [
+        "libs/standard/metadata-lib/src/index.ts"
       ]
     }
   },

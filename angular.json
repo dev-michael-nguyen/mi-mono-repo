@@ -317,6 +317,38 @@
           }
         }
       }
+    },
+    "standard-metadata-lib": {
+      "projectType": "library",
+      "root": "libs/standard/metadata-lib",
+      "sourceRoot": "libs/standard/metadata-lib/src",
+      "prefix": "metadata",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/standard/metadata-lib/tsconfig.lib.json",
+              "libs/standard/metadata-lib/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/standard/metadata-lib/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/standard/metadata-lib/jest.config.js",
+            "tsConfig": "libs/standard/metadata-lib/tsconfig.spec.json",
+            "passWithNoTests": true,
+            "setupFile": "libs/standard/metadata-lib/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "styleext": "scss"
+        }
+      }
     }
   },
   "cli": {
