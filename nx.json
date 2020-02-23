@@ -20,6 +20,9 @@
     },
     "standard-metadata-lib": {
       "tags": ["type:lib", "scope:shared"]
+    },
+    "standard-angular-ui-lib": {
+      "tags": ["type:lib", "scope:shared"]
     }
   }
 }
