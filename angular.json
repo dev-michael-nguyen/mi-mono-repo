@@ -3,38 +3,6 @@
   "version": 1,
   "newProjectRoot": "",
   "projects": {
-    "mi-angular-ui-lib": {
-      "projectType": "library",
-      "root": "libs/mi-angular-ui-lib",
-      "sourceRoot": "libs/mi-angular-ui-lib/src",
-      "prefix": "mi-mono-repo",
-      "architect": {
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": [
-              "libs/mi-angular-ui-lib/tsconfig.lib.json",
-              "libs/mi-angular-ui-lib/tsconfig.spec.json"
-            ],
-            "exclude": ["**/node_modules/**", "!libs/mi-angular-ui-lib/**"]
-          }
-        },
-        "test": {
-          "builder": "@nrwl/jest:jest",
-          "options": {
-            "jestConfig": "libs/mi-angular-ui-lib/jest.config.js",
-            "tsConfig": "libs/mi-angular-ui-lib/tsconfig.spec.json",
-            "setupFile": "libs/mi-angular-ui-lib/src/test-setup.ts",
-            "passWithNoTests": true
-          }
-        }
-      },
-      "schematics": {
-        "@nrwl/angular:component": {
-          "styleext": "scss"
-        }
-      }
-    },
     "standard-sandbox": {
       "projectType": "application",
       "schematics": {
