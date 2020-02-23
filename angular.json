@@ -150,38 +150,6 @@
         }
       }
     },
-    "mi-api-lib": {
-      "projectType": "library",
-      "root": "libs/mi-api-lib",
-      "sourceRoot": "libs/mi-api-lib/src",
-      "prefix": "mi-mono-repo",
-      "architect": {
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": [
-              "libs/mi-api-lib/tsconfig.lib.json",
-              "libs/mi-api-lib/tsconfig.spec.json"
-            ],
-            "exclude": ["**/node_modules/**", "!libs/mi-api-lib/**"]
-          }
-        },
-        "test": {
-          "builder": "@nrwl/jest:jest",
-          "options": {
-            "jestConfig": "libs/mi-api-lib/jest.config.js",
-            "tsConfig": "libs/mi-api-lib/tsconfig.spec.json",
-            "setupFile": "libs/mi-api-lib/src/test-setup.ts",
-            "passWithNoTests": true
-          }
-        }
-      },
-      "schematics": {
-        "@nrwl/angular:component": {
-          "styleext": "scss"
-        }
-      }
-    },
     "standard-sandbox": {
       "projectType": "application",
       "schematics": {

@@ -18,9 +18,6 @@
     "mi-angular-ui-lib": {
       "tags": ["type:ui", "scope:shared"]
     },
-    "mi-api-lib": {
-      "tags": []
-    },
     "standard-sandbox": {
       "tags": ["type:app", "scope:standard-sandbox"]
     },
