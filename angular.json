@@ -336,10 +336,10 @@
     },
     "@schematics/angular:component": {
       "style": "scss",
-      "skipTests": true
+      "spec": false
     },
     "@schematics/angular:module": {
-      "skipTests": true
+      "spec": false
     }
   },
   "defaultProject": "mi-sandbox"
