@@ -181,6 +181,142 @@
           "styleext": "scss"
         }
       }
+    },
+    "standard-sandbox": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:interceptor": {
+          "skipTests": true
+        },
+        "@nrwl/angular:class": {
+          "skipTests": true
+        },
+        "@nrwl/angular:component": {
+          "style": "scss",
+          "skipTests": true
+        },
+        "@nrwl/angular:directive": {
+          "skipTests": true
+        },
+        "@nrwl/angular:guard": {
+          "skipTests": true
+        },
+        "@nrwl/angular:module": {
+          "skipTests": true
+        },
+        "@nrwl/angular:pipe": {
+          "skipTests": true
+        },
+        "@nrwl/angular:service": {
+          "skipTests": true
+        }
+      },
+      "root": "apps/standard/sandbox",
+      "sourceRoot": "apps/standard/sandbox/src",
+      "prefix": "mi-mono-repo",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/apps/standard/sandbox",
+            "index": "apps/standard/sandbox/src/index.html",
+            "main": "apps/standard/sandbox/src/main.ts",
+            "polyfills": "apps/standard/sandbox/src/polyfills.ts",
+            "tsConfig": "apps/standard/sandbox/tsconfig.app.json",
+            "aot": true,
+            "assets": [
+              "apps/standard/sandbox/src/favicon.ico",
+              "apps/standard/sandbox/src/assets"
+            ],
+            "styles": ["apps/standard/sandbox/src/styles.scss"],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [{
+                "replace": "apps/standard/sandbox/src/environments/environment.ts",
+                "with": "apps/standard/sandbox/src/environments/environment.prod.ts"
+              }],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [{
+                "type": "initial",
+                "maximumWarning": "2mb",
+                "maximumError": "5mb"
+              }]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "standard-sandbox:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "standard-sandbox:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "standard-sandbox:build"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "apps/standard/sandbox/tsconfig.app.json",
+              "apps/standard/sandbox/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!apps/standard/sandbox/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "apps/standard/sandbox/jest.config.js",
+            "tsConfig": "apps/standard/sandbox/tsconfig.spec.json",
+            "passWithNoTests": true,
+            "setupFile": "apps/standard/sandbox/src/test-setup.ts"
+          }
+        }
+      }
+    },
+    "standard-sandbox-e2e": {
+      "root": "apps/standard/sandbox-e2e",
+      "sourceRoot": "apps/standard/sandbox-e2e/src",
+      "projectType": "application",
+      "architect": {
+        "e2e": {
+          "builder": "@nrwl/cypress:cypress",
+          "options": {
+            "cypressConfig": "apps/standard/sandbox-e2e/cypress.json",
+            "tsConfig": "apps/standard/sandbox-e2e/tsconfig.e2e.json",
+            "devServerTarget": "standard-sandbox:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "standard-sandbox:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": ["apps/standard/sandbox-e2e/tsconfig.e2e.json"],
+            "exclude": ["**/node_modules/**", "!apps/standard/sandbox-e2e/**"]
+          }
+        }
+      }
     }
   },
   "cli": {

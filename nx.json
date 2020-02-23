@@ -20,6 +20,13 @@
     },
     "mi-api-lib": {
       "tags": []
+    },
+    "standard-sandbox": {
+      "tags": ["type:app", "scope:standard-sandbox"]
+    },
+    "standard-sandbox-e2e": {
+      "tags": [],
+      "implicitDependencies": ["standard-sandbox"]
     }
   }
 }

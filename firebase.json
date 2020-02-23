@@ -1,9 +1,9 @@
 {
   "hosting": [{
-    "target": "dev-mi-sandbox",
-    "public": "./dist/apps/mi-sandbox",
+    "target": "dev-standard-sandbox",
+    "public": "./dist/apps/standard-sandbox",
     "predeploy": [
-      "npm run build:mi-sandbox:prod"
+      "npm run build:standard-sandbox:prod"
     ],
     "rewrites": [{
       "source": "**",
