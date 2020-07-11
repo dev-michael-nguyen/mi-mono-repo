@@ -8,18 +8,12 @@
     "nx.json": "*"
   },
   "projects": {
-    "standard-sandbox": {
-      "tags": ["type:app", "scope:standard-sandbox"]
+    "sim": {
+      "tags": ["type:app", "scope:sim"]
     },
-    "standard-sandbox-e2e": {
-      "tags": ["type:e2e", "scope:standard-sandbox"],
-      "implicitDependencies": ["standard-sandbox"]
-    },
-    "standard-metadata-lib": {
-      "tags": ["type:lib", "scope:shared"]
-    },
-    "standard-angular-ui-lib": {
-      "tags": ["type:lib", "scope:shared"]
+    "sim-e2e": {
+      "tags": ["type:e2e", "scope:sim"],
+      "implicitDependencies": ["sim"]
     }
   }
 }

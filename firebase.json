@@ -1,9 +1,9 @@
 {
   "hosting": [{
-    "target": "dev-standard-sandbox",
-    "public": "./dist/apps/standard-sandbox",
+    "target": "sim-dev",
+    "public": "./dist/apps/sim",
     "predeploy": [
-      "npm run build:standard-sandbox:prod"
+      "npm run build:sim:prod"
     ],
     "rewrites": [{
       "source": "**",

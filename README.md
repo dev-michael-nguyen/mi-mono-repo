@@ -7,8 +7,8 @@
 - Install latest NodeJs version
 
 ```npm
-nvm install 10.16.0
-nvm use 10.16.0
+nvm install 12.18.2
+nvm use 12.18.2
 ```
 
 - Install CLI
@@ -34,5 +34,5 @@ npm start
 ## DEPLOYMENT
 
 ```npm
-npm run fb:deploy:standard-sandbox
+npm run fb:deploy:sim
 ```

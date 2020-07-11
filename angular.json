@@ -3,60 +3,35 @@
   "version": 1,
   "newProjectRoot": "",
   "projects": {
-    "standard-sandbox": {
+    "sim": {
       "projectType": "application",
       "schematics": {
-        "@schematics/angular:interceptor": {
-          "skipTests": true
-        },
-        "@nrwl/angular:class": {
-          "skipTests": true
-        },
         "@nrwl/angular:component": {
-          "style": "scss",
-          "skipTests": true
-        },
-        "@nrwl/angular:directive": {
-          "skipTests": true
-        },
-        "@nrwl/angular:guard": {
-          "skipTests": true
-        },
-        "@nrwl/angular:module": {
-          "skipTests": true
-        },
-        "@nrwl/angular:pipe": {
-          "skipTests": true
-        },
-        "@nrwl/angular:service": {
-          "skipTests": true
+          "style": "scss"
         }
       },
-      "root": "apps/standard/sandbox",
-      "sourceRoot": "apps/standard/sandbox/src",
+      "root": "apps/sim",
+      "sourceRoot": "apps/sim/src",
       "prefix": "mi-mono-repo",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/apps/standard/sandbox",
-            "index": "apps/standard/sandbox/src/index.html",
-            "main": "apps/standard/sandbox/src/main.ts",
-            "polyfills": "apps/standard/sandbox/src/polyfills.ts",
-            "tsConfig": "apps/standard/sandbox/tsconfig.app.json",
+            "outputPath": "dist/apps/sim",
+            "index": "apps/sim/src/index.html",
+            "main": "apps/sim/src/main.ts",
+            "polyfills": "apps/sim/src/polyfills.ts",
+            "tsConfig": "apps/sim/tsconfig.app.json",
             "aot": true,
-            "assets": [
-              "apps/standard/sandbox/src/favicon.ico",
-              "apps/standard/sandbox/src/assets"
-            ],
-            "styles": ["apps/standard/sandbox/src/styles.scss"],
+            "assets": ["apps/sim/src/favicon.ico", "apps/sim/src/assets"],
+            "styles": ["apps/sim/src/styles.scss"],
             "scripts": []
           },
           "configurations": {
             "production": {
               "fileReplacements": [{
-                "replace": "apps/standard/sandbox/src/environments/environment.ts",
-                "with": "apps/standard/sandbox/src/environments/environment.prod.ts"
+                "replace": "apps/sim/src/environments/environment.ts",
+                "with": "apps/sim/src/environments/environment.prod.ts"
               }],
               "optimization": true,
               "outputHashing": "all",
@@ -67,142 +42,81 @@
               "vendorChunk": false,
               "buildOptimizer": true,
               "budgets": [{
-                "type": "initial",
-                "maximumWarning": "2mb",
-                "maximumError": "5mb"
-              }]
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
             }
           }
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "standard-sandbox:build"
+            "browserTarget": "sim:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "standard-sandbox:build:production"
+              "browserTarget": "sim:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "standard-sandbox:build"
+            "browserTarget": "sim:build"
           }
         },
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": [
-              "apps/standard/sandbox/tsconfig.app.json",
-              "apps/standard/sandbox/tsconfig.spec.json"
+              "apps/sim/tsconfig.app.json",
+              "apps/sim/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**", "!apps/standard/sandbox/**"]
+            "exclude": ["**/node_modules/**", "!apps/sim/**/*"]
           }
         },
         "test": {
           "builder": "@nrwl/jest:jest",
           "options": {
-            "jestConfig": "apps/standard/sandbox/jest.config.js",
-            "tsConfig": "apps/standard/sandbox/tsconfig.spec.json",
+            "jestConfig": "apps/sim/jest.config.js",
+            "tsConfig": "apps/sim/tsconfig.spec.json",
             "passWithNoTests": true,
-            "setupFile": "apps/standard/sandbox/src/test-setup.ts"
+            "setupFile": "apps/sim/src/test-setup.ts"
           }
         }
       }
     },
-    "standard-sandbox-e2e": {
-      "root": "apps/standard/sandbox-e2e",
-      "sourceRoot": "apps/standard/sandbox-e2e/src",
+    "sim-e2e": {
+      "root": "apps/sim-e2e",
+      "sourceRoot": "apps/sim-e2e/src",
       "projectType": "application",
       "architect": {
         "e2e": {
           "builder": "@nrwl/cypress:cypress",
           "options": {
-            "cypressConfig": "apps/standard/sandbox-e2e/cypress.json",
-            "tsConfig": "apps/standard/sandbox-e2e/tsconfig.e2e.json",
-            "devServerTarget": "standard-sandbox:serve"
+            "cypressConfig": "apps/sim-e2e/cypress.json",
+            "tsConfig": "apps/sim-e2e/tsconfig.e2e.json",
+            "devServerTarget": "sim:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "standard-sandbox:serve:production"
+              "devServerTarget": "sim:serve:production"
             }
           }
         },
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
-            "tsConfig": ["apps/standard/sandbox-e2e/tsconfig.e2e.json"],
-            "exclude": ["**/node_modules/**", "!apps/standard/sandbox-e2e/**"]
+            "tsConfig": ["apps/sim-e2e/tsconfig.e2e.json"],
+            "exclude": ["**/node_modules/**", "!apps/sim-e2e/**/*"]
           }
-        }
-      }
-    },
-    "standard-metadata-lib": {
-      "projectType": "library",
-      "root": "libs/standard/metadata-lib",
-      "sourceRoot": "libs/standard/metadata-lib/src",
-      "prefix": "metadata",
-      "architect": {
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": [
-              "libs/standard/metadata-lib/tsconfig.lib.json",
-              "libs/standard/metadata-lib/tsconfig.spec.json"
-            ],
-            "exclude": ["**/node_modules/**", "!libs/standard/metadata-lib/**"]
-          }
-        },
-        "test": {
-          "builder": "@nrwl/jest:jest",
-          "options": {
-            "jestConfig": "libs/standard/metadata-lib/jest.config.js",
-            "tsConfig": "libs/standard/metadata-lib/tsconfig.spec.json",
-            "passWithNoTests": true,
-            "setupFile": "libs/standard/metadata-lib/src/test-setup.ts"
-          }
-        }
-      },
-      "schematics": {
-        "@nrwl/angular:component": {
-          "styleext": "scss"
-        }
-      }
-    },
-    "standard-angular-ui-lib": {
-      "projectType": "library",
-      "root": "libs/standard/angular-ui-lib",
-      "sourceRoot": "libs/standard/angular-ui-lib/src",
-      "prefix": "angular-ui",
-      "architect": {
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": [
-              "libs/standard/angular-ui-lib/tsconfig.lib.json",
-              "libs/standard/angular-ui-lib/tsconfig.spec.json"
-            ],
-            "exclude": [
-              "**/node_modules/**",
-              "!libs/standard/angular-ui-lib/**"
-            ]
-          }
-        },
-        "test": {
-          "builder": "@nrwl/jest:jest",
-          "options": {
-            "jestConfig": "libs/standard/angular-ui-lib/jest.config.js",
-            "tsConfig": "libs/standard/angular-ui-lib/tsconfig.spec.json",
-            "passWithNoTests": true,
-            "setupFile": "libs/standard/angular-ui-lib/src/test-setup.ts"
-          }
-        }
-      },
-      "schematics": {
-        "@nrwl/angular:component": {
-          "styleext": "scss"
         }
       }
     }
@@ -230,5 +144,5 @@
       "spec": false
     }
   },
-  "defaultProject": "standard-sandbox"
+  "defaultProject": "sim"
 }

@@ -5,8 +5,8 @@
   "targets": {
     "dev-mi-mono-repo": {
       "hosting": {
-        "dev-standard-sandbox": [
-          "dev-standard-sandbox"
+        "sim-dev": [
+          "sim-dev"
         ]
       }
     }
