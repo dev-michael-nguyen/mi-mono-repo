@@ -16,13 +16,14 @@ nvm use 10.16.0
 - Install [@angular/cli](https://cli.angular.io/)
 
 ```npm
+npm install -g @nrwl/cli
 npm install -g @angular/cli
 ```
 
 - Create nx-workspace
 
 ```npm
-npm init nx-workspace mi-mono-repo # Create empty nx-workspace
+npx create-nx-workspace@latest # Create empty nx-workspace
 cd mi-mono-repo # Go into our workspace
 npm install --dev @nrwl/angular # Adds Angular capabilities
 ```
