@@ -1,0 +1,72 @@
+<div class="resume-layout flex-column">
+  <header class="resume-layout__header flex-item">
+    <div class="flex-row">
+      <article class="flex-item">
+        <div>
+          <i class="fa fa-home"></i>
+          <span>City, MD, 21228</span>
+        </div>
+        <div>
+          <i class="fa fa-phone"></i>
+          <span>444-333-5555</span>
+        </div>
+        <div>
+          <i class="fa fa-envelope"></i>
+          <span>example@mail.com</span>
+        </div>
+        <div>
+          <i class="fa fa-link"></i>
+          <span>LinkedIn Profile</span>
+        </div>
+      </article>
+      <article class="flex-item--auto">
+        <h1>First Last</h1>
+        <h2>Title</h2>
+        <p>10 years of experience in Healthcare and related industry</p>
+        <p>Master of Science in Electrical and Computer Engineering</p>
+      </article>
+    </div>
+  </header>
+  <main class="resume-layout__body flex-item--auto">
+    <div class="flex-row">
+      <aside>
+        <div class="tab-column flex-column">
+          <button class="active"
+                  href="#">
+            <i class="fa fa-briefcase"></i>
+            <div>Experiences</div>
+          </button>
+          <button class="active"
+                  href="#">
+            <i class="fa fa-tools"></i>
+            <div>Skills</div>
+          </button>
+        </div>
+      </aside>
+      <section>
+        <div class="section-layout flex-column">
+          <div class="section-layout__header flex-item">
+          </div>
+          <div class="section-layout__body flex-item--auto">
+            <ng-container *ngFor="let item of [1, 2, 3, 4, 5]">
+              <article class="experience-article">
+                <div class="flex-row">
+                  <h3>Title @ Company, City, State</h3>
+                  <p class="flex-item--auto">Month, Year - Month, Year</p>
+                </div>
+                <ul>
+                  <li>Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec velit neque, auctor sit amet aliquam vel, ullamcorper sit amet ligula. Proin eget
+                    tortor
+                    risus. Nulla porttitor accumsan tincidunt. Nulla porttitor accumsan tincidunt. Proin eget tortor risus.</li>
+                  <li>Pellentesque in ipsum id orci porta dapibus. Nulla quis lorem ut libero malesuada feugiat. Sed porttitor lectus nibh. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                    Lorem
+                    ipsum dolor sit amet, consectetur adipiscing elit.</li>
+                </ul>
+              </article>
+            </ng-container>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+</div>

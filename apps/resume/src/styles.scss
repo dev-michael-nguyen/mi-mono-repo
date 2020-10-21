@@ -1,0 +1,16 @@
+/* You can add global styles to this file, and also import other style files */
+@import 'flexLayout';
+@import 'colors';
+
+html {
+  font-family: sans-serif;
+  height: 100%;
+  width: 100%;
+  position: fixed;
+
+  body {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+  }
+}

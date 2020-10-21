@@ -1,0 +1,88 @@
+.resume-layout {
+  box-shadow: 0 2px 1px -1px rgba(0, 0, 0, 0.2), 0 1px 1px 0 rgba(0, 0, 0, 0.14),
+    0 1px 3px 0 rgba(0, 0, 0, 0.12);
+  height: 100%;
+  max-width: 100ch;
+  margin: auto;
+  border-radius: 8px;
+
+  &__header {
+    padding: 16px 16px 8px 16px;
+    border-radius: 8px 8px 0 0;
+
+    div:first-child {
+      align-items: flex-end;
+    }
+
+    article:nth-child(1) {
+      div {
+        margin: 8px 0;
+      }
+    }
+
+    article:nth-child(2) {
+      text-align: end;
+
+      h1,
+      h2,
+      p {
+        margin: 8px 0;
+      }
+    }
+  }
+
+  &__body {
+    overflow-y: auto;
+    padding: 8px 16px 16px 16px;
+    border-radius: 0 0 8px 8px;
+  }
+}
+
+.section-layout {
+  height: 100%;
+  overflow-y: auto;
+
+  &__header {
+    i {
+      margin: auto;
+      font-size: 24px;
+    }
+
+    h2 {
+      margin: 8px 0;
+    }
+  }
+
+  &__body {
+    overflow-y: auto;
+  }
+}
+
+.experience-article {
+  align-items: flex-end;
+
+  h3 {
+    margin: 8px 0;
+  }
+
+  p {
+    margin: 8px 0;
+    text-align: end;
+  }
+}
+
+.tab-column {
+  button {
+    display: block;
+    text-align: center;
+    padding: 4px;
+
+    i {
+      font-size: 32px;
+    }
+
+    div {
+      font-size: 16px;
+    }
+  }
+}

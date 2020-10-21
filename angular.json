@@ -119,6 +119,101 @@
           }
         }
       }
+    },
+    "resume": {
+      "projectType": "application",
+      "schematics": {
+        "@nrwl/angular:component": {
+          "style": "scss"
+        }
+      },
+      "root": "apps/resume",
+      "sourceRoot": "apps/resume/src",
+      "prefix": "mi-mono-repo",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/apps/resume",
+            "index": "apps/resume/src/index.html",
+            "main": "apps/resume/src/main.ts",
+            "polyfills": "apps/resume/src/polyfills.ts",
+            "tsConfig": "apps/resume/tsconfig.app.json",
+            "aot": true,
+            "assets": ["apps/resume/src/favicon.ico", "apps/resume/src/assets"],
+            "styles": ["apps/resume/src/styles.scss"],
+            "stylePreprocessorOptions": {
+              "includePaths": [
+                "./apps-common/styles"
+              ]
+            },
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [{
+                "replace": "apps/resume/src/environments/environment.ts",
+                "with": "apps/resume/src/environments/environment.prod.ts"
+              }],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [{
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "resume:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "resume:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "resume:build"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "apps/resume/tsconfig.app.json",
+              "apps/resume/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!apps/resume/**/*"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "apps/resume/jest.config.js",
+            "tsConfig": "apps/resume/tsconfig.spec.json",
+            "passWithNoTests": true,
+            "setupFile": "apps/resume/src/test-setup.ts"
+          }
+        }
+      }
     }
   },
   "cli": {
