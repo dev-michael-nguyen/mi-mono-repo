@@ -44,7 +44,7 @@
     "@angular/router": "10.0.3",
     "@nrwl/angular": "9.5.1",
     "core-js": "2.5.4",
-    "lodash": "4.17.14",
+    "lodash": "4.17.19",
     "rxjs": "6.5.5",
     "tslib": "1.10.0",
     "zone.js": "0.10.3"
