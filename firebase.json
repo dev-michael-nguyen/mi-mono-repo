@@ -1,9 +1,9 @@
 {
   "hosting": [{
-    "target": "sim-dev",
-    "public": "./dist/apps/sim",
+    "target": "resume-prod",
+    "public": "./dist/apps/resume",
     "predeploy": [
-      "npm run build:sim:prod"
+      "npm run build:resume:prod"
     ],
     "rewrites": [{
       "source": "**",

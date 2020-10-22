@@ -5,8 +5,8 @@
   "targets": {
     "dev-mi-mono-repo": {
       "hosting": {
-        "sim-dev": [
-          "sim-dev"
+        "resume-prod": [
+          "resume-prod"
         ]
       }
     }

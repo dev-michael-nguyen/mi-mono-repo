@@ -8,13 +8,6 @@
     "nx.json": "*"
   },
   "projects": {
-    "sim": {
-      "tags": ["type:app", "scope:sim"]
-    },
-    "sim-e2e": {
-      "tags": ["type:e2e", "scope:sim"],
-      "implicitDependencies": ["sim"]
-    },
     "resume": {
       "tags": ["type:app", "scope:resume"]
     }
