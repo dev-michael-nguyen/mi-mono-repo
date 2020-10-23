@@ -1,0 +1,14 @@
+<mat-nav-list class="navigation-bar">
+  <ng-container *ngFor="let link of links">
+    <a mat-list-item
+       [routerLink]="link.path"
+       routerLinkActive
+       #rla="routerLinkActive"
+       [class.active]="rla.isActive">
+      <div class="navigation-bar__button">
+        <mat-icon>{{ link.matIcon }}</mat-icon>
+        <span>{{ link.displayName }} </span>
+      </div>
+    </a>
+  </ng-container>
+</mat-nav-list>

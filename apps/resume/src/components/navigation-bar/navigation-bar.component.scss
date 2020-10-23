@@ -1,0 +1,24 @@
+.navigation-bar {
+  width: 12ch;
+  box-sizing: border-box;
+
+  a {
+    text-align: center;
+    font-size: 12px !important;
+    height: auto !important;
+
+    .mat-list-item-content {
+      flex-direction: column !important;
+    }
+  }
+
+  .navigation-bar__button {
+    padding: 8px 0;
+
+    mat-icon {
+      font-size: 36px;
+      height: 36px;
+      width: 36px;
+    }
+  }
+}
