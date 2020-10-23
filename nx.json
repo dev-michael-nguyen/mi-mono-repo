@@ -10,6 +10,12 @@
   "projects": {
     "resume": {
       "tags": ["type:app", "scope:resume"]
+    },
+    "mi-angular-ui": {
+      "tags": ["type:lib"]
+    },
+    "mi-metadata": {
+      "tags": ["type:lib"]
     }
   }
 }

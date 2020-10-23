@@ -26,18 +26,18 @@
             "assets": ["apps/resume/src/favicon.ico", "apps/resume/src/assets"],
             "styles": ["apps/resume/src/styles.scss"],
             "stylePreprocessorOptions": {
-              "includePaths": [
-                "./apps-common/styles"
-              ]
+              "includePaths": ["./apps-common/styles"]
             },
             "scripts": []
           },
           "configurations": {
             "production": {
-              "fileReplacements": [{
-                "replace": "apps/resume/src/environments/environment.ts",
-                "with": "apps/resume/src/environments/environment.prod.ts"
-              }],
+              "fileReplacements": [
+                {
+                  "replace": "apps/resume/src/environments/environment.ts",
+                  "with": "apps/resume/src/environments/environment.prod.ts"
+                }
+              ],
               "optimization": true,
               "outputHashing": "all",
               "sourceMap": false,
@@ -46,7 +46,8 @@
               "extractLicenses": true,
               "vendorChunk": false,
               "buildOptimizer": true,
-              "budgets": [{
+              "budgets": [
+                {
                   "type": "initial",
                   "maximumWarning": "2mb",
                   "maximumError": "5mb"
@@ -95,6 +96,70 @@
             "passWithNoTests": true,
             "setupFile": "apps/resume/src/test-setup.ts"
           }
+        }
+      }
+    },
+    "mi-angular-ui": {
+      "projectType": "library",
+      "root": "libs/mi-angular-ui",
+      "sourceRoot": "libs/mi-angular-ui/src",
+      "prefix": "mi",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/mi-angular-ui/tsconfig.lib.json",
+              "libs/mi-angular-ui/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/mi-angular-ui/**/*"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/mi-angular-ui/jest.config.js",
+            "tsConfig": "libs/mi-angular-ui/tsconfig.spec.json",
+            "passWithNoTests": true,
+            "setupFile": "libs/mi-angular-ui/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "style": "scss"
+        }
+      }
+    },
+    "mi-metadata": {
+      "projectType": "library",
+      "root": "libs/mi-metadata",
+      "sourceRoot": "libs/mi-metadata/src",
+      "prefix": "mi",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/mi-metadata/tsconfig.lib.json",
+              "libs/mi-metadata/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/mi-metadata/**/*"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/mi-metadata/jest.config.js",
+            "tsConfig": "libs/mi-metadata/tsconfig.spec.json",
+            "passWithNoTests": true,
+            "setupFile": "libs/mi-metadata/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "style": "scss"
         }
       }
     }
