@@ -8,6 +8,8 @@
     "serve:resume": "ng serve resume",
     "build:resume": "ng build resume",
     "build:resume:prod": "ng build resume --prod",
+    "postbuild:sw:resume": "webpack --config ./apps/resume/webpack-sw.dev.config.js --progress --colors && node ./apps/resume/workbox-build-inject.js",
+    "postbuild:sw:resume:prod": "webpack --config ./apps/resume/webpack-sw.prod.config.js --progress --colors && node ./apps/resume/workbox-build-inject.js",
     "fb:serve:resume": "firebase serve --only hosting:resume-prod",
     "fb:deploy:resume": "firebase deploy --only hosting:resume-prod",
     "test": "ng test",
@@ -48,8 +50,10 @@
     "@nrwl/angular": "9.5.1",
     "core-js": "2.5.4",
     "lodash": "4.17.19",
+    "ngx-store": "2.1.0",
     "rxjs": "6.5.5",
     "tslib": "1.10.0",
+    "workbox-window": "5.1.2",
     "zone.js": "0.10.3"
   },
   "devDependencies": {
@@ -72,6 +76,10 @@
     "ts-jest": "25.2.1",
     "ts-node": "7.0.0",
     "tslint": "~6.1.0",
-    "typescript": "3.9.6"
+    "typescript": "3.9.6",
+    "webpack-bundle-analyzer": "3.3.2",
+    "webpack-cli": "3.3.10",
+    "webpack": "4.41.5",
+    "workbox-build": "5.1.2"
   }
 }

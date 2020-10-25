@@ -1,0 +1,6 @@
+<div class="container">
+  <p>{{ message$ | async }}</p>
+  <mat-progress-bar mode="determinate"
+                    [value]="percent$ | async">
+  </mat-progress-bar>
+</div>
