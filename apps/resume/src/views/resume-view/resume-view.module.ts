@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatIconModule } from '@angular/material/icon';
 import { RouterModule, Routes } from '@angular/router';
-import { NavigationBarModule } from '../../components/navigation-bar/navigation-bar.module';
+import { NavigationSideBarModule } from '../../components/navigation-side-bar/navigation-side-bar.module';
 import { ResumeViewComponent } from './resume-view.component';
 
 const routes: Routes = [
@@ -38,7 +38,7 @@ const routes: Routes = [
     CommonModule,
     FlexLayoutModule,
     MatIconModule,
-    NavigationBarModule,
+    NavigationSideBarModule,
     RouterModule.forChild(routes),
   ],
   declarations: [

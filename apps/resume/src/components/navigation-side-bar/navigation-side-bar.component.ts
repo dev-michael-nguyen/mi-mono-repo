@@ -7,12 +7,12 @@ export interface INavigationLink {
 }
 
 @Component({
-  selector: 'mi-resume-navigation-bar',
-  templateUrl: './navigation-bar.component.html',
-  styleUrls: ['./navigation-bar.component.scss'],
+  selector: 'mi-resume-navigation-side-bar',
+  templateUrl: './navigation-side-bar.component.html',
+  styleUrls: ['./navigation-side-bar.component.scss'],
   encapsulation: ViewEncapsulation.None
 })
-export class NavigationBarComponent {
+export class NavigationSideBarComponent {
 
   @Input() links: Array<INavigationLink> = [];
 

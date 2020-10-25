@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { INavigationLink } from '../../components/navigation-bar/navigation-bar.component';
+import { INavigationLink } from '../../components/navigation-side-bar/navigation-side-bar.component';
 
 @Component({
   selector: 'mi-resume-view',

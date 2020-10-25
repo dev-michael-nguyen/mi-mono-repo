@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import { RouterModule } from '@angular/router';
-import { NavigationBarComponent } from './navigation-bar.component';
+import { NavigationSideBarComponent } from './navigation-side-bar.component';
 
 @NgModule({
   imports: [
@@ -12,7 +12,11 @@ import { NavigationBarComponent } from './navigation-bar.component';
     MatListModule,
     RouterModule,
   ],
-  declarations: [NavigationBarComponent],
-  exports: [NavigationBarComponent]
+  declarations: [
+    NavigationSideBarComponent
+  ],
+  exports: [
+    NavigationSideBarComponent
+  ]
 })
-export class NavigationBarModule { }
+export class NavigationSideBarModule { }
