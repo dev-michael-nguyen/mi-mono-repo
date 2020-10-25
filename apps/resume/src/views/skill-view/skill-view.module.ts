@@ -1,11 +1,25 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
+import { RouterModule, Routes } from '@angular/router';
 import { SkillViewComponent } from './skill-view.component';
+
+const routes: Routes = [
+  {
+    path: '',
+    component: SkillViewComponent
+  }
+];
 
 @NgModule({
   imports: [
-    CommonModule
+    CommonModule,
+    RouterModule.forChild(routes),
   ],
-  declarations: [SkillViewComponent]
+  declarations: [
+    SkillViewComponent
+  ],
+  exports: [
+    RouterModule
+  ]
 })
 export class SkillViewModule { }
