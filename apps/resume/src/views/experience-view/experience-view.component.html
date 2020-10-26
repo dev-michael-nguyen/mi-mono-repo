@@ -1,19 +1,5 @@
 <div class="experience-view-layout">
-  <ng-container *ngFor="let item of [1, 2, 3, 4, 5]">
-    <article class="article">
-      <div class="article__title"
-           fxLayout="row">
-        <h3>Title @ Company, City, State</h3>
-        <p fxFlex="auto">Month, Year - Month, Year</p>
-      </div>
-      <ul class="article__list">
-        <li>Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec velit neque, auctor sit amet aliquam vel, ullamcorper sit amet ligula. Proin eget
-          tortor
-          risus. Nulla porttitor accumsan tincidunt. Nulla porttitor accumsan tincidunt. Proin eget tortor risus.</li>
-        <li>Pellentesque in ipsum id orci porta dapibus. Nulla quis lorem ut libero malesuada feugiat. Sed porttitor lectus nibh. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-          Lorem
-          ipsum dolor sit amet, consectetur adipiscing elit.</li>
-      </ul>
-    </article>
-  </ng-container>
+  <mi-resume-vertical-timeline [articles]="timelineArticles"
+                               [dense]="true">
+  </mi-resume-vertical-timeline>
 </div>
