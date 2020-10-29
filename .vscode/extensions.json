@@ -13,6 +13,7 @@
     "steoates.autoimport",
     "streetsidesoftware.code-spell-checker",
     "stringham.move-ts",
-    "tyriar.sort-lines"
+    "tyriar.sort-lines",
+    "firsttris.vscode-jest-runner"
   ]
 }
