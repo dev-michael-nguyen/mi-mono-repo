@@ -21,6 +21,7 @@ const routes: Routes = [
     RouterModule.forRoot(
       routes,
       {
+        useHash: true,
         initialNavigation: 'enabled'
       }
     )
