@@ -23,15 +23,22 @@
             "polyfills": "apps/resume/src/polyfills.ts",
             "tsConfig": "apps/resume/tsconfig.app.json",
             "aot": true,
-            "assets": ["apps/resume/src/favicon.ico", "apps/resume/src/assets"],
+            "assets": [
+              "apps/resume/src/favicon.ico",
+              "apps/resume/src/assets"
+            ],
             "styles": [
               "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
               "apps/resume/src/styles.scss"
             ],
             "stylePreprocessorOptions": {
-              "includePaths": ["./apps-common/styles"]
+              "includePaths": [
+                "./apps-common/styles"
+              ]
             },
-            "allowedCommonJsDependencies": ["ngx-store"],
+            "allowedCommonJsDependencies": [
+              "ngx-store"
+            ],
             "scripts": []
           },
           "configurations": {
@@ -86,7 +93,10 @@
               "apps/resume/tsconfig.app.json",
               "apps/resume/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**", "!apps/resume/**/*"]
+            "exclude": [
+              "**/node_modules/**",
+              "!apps/resume/**/*"
+            ]
           }
         },
         "test": {
@@ -109,9 +119,13 @@
           "options": {
             "tsConfig": [
               "libs/mi-angular-ui/tsconfig.lib.json",
-              "libs/mi-angular-ui/tsconfig.spec.json"
+              "libs/mi-angular-ui/tsconfig.spec.json",
+              "libs/mi-angular-ui/.storybook/tsconfig.json"
             ],
-            "exclude": ["**/node_modules/**", "!libs/mi-angular-ui/**/*"]
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/mi-angular-ui/**/*"
+            ]
           }
         },
         "test": {
@@ -119,6 +133,36 @@
           "options": {
             "jestConfig": "libs/mi-angular-ui/jest.config.js",
             "passWithNoTests": true
+          }
+        },
+        "storybook": {
+          "builder": "@nrwl/storybook:storybook",
+          "options": {
+            "uiFramework": "@storybook/angular",
+            "port": 4400,
+            "config": {
+              "configFolder": "libs/mi-angular-ui/.storybook"
+            }
+          },
+          "configurations": {
+            "ci": {
+              "quiet": true
+            }
+          }
+        },
+        "build-storybook": {
+          "builder": "@nrwl/storybook:build",
+          "options": {
+            "uiFramework": "@storybook/angular",
+            "outputPath": "dist/storybook/mi-angular-ui",
+            "config": {
+              "configFolder": "libs/mi-angular-ui/.storybook"
+            }
+          },
+          "configurations": {
+            "ci": {
+              "quiet": true
+            }
           }
         }
       },
@@ -141,7 +185,10 @@
               "libs/mi-metadata/tsconfig.lib.json",
               "libs/mi-metadata/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**", "!libs/mi-metadata/**/*"]
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/mi-metadata/**/*"
+            ]
           }
         },
         "test": {

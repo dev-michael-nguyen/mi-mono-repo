@@ -1,0 +1,21 @@
+<mat-form-field [appearance]="appearance"
+                [floatLabel]="floatLabel">
+  <mat-label>{{ label }}</mat-label>
+  <input matInput
+         type="text"
+         spellcheck="true"
+         [attr.aria-label]="label"
+         [placeholder]="placeholder"
+         [formControl]="textFormControl"
+         [value]="textFormControl.value">
+  <button *ngIf="textFormControl.value"
+          mat-button
+          matSuffix
+          mat-icon-button
+          aria-label="Clear"
+          (click)="clearForm()">
+    <mat-icon>close</mat-icon>
+  </button>
+  <mat-hint *ngIf="hint">{{ hint }}</mat-hint>
+  <mat-error *ngIf="textFormControl.invalid">{{ getErrorMessage() }}</mat-error>
+</mat-form-field>
