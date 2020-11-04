@@ -16,8 +16,9 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@mi-mono-repo/mi-angular-ui": ["libs/mi-angular-ui/src/index.ts"],
-      "@mi-mono-repo/mi-metadata": ["libs/mi-metadata/src/index.ts"]
+      "@mi-angular-ui/offline": ["libs/mi-angular-ui/src/lib/offline/public-api.ts"],
+      "@mi-angular-ui/text-box": ["libs/mi-angular-ui/src/lib/text-box/public-api.ts"],
+      "@mi-metadata": ["libs/mi-metadata/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
