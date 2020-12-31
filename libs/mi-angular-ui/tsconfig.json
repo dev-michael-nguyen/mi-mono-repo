@@ -8,10 +8,5 @@
   },
   "include": [
     "**/*.ts"
-  ],
-  "references": [
-    {
-      "path": "./.storybook/tsconfig.json"
-    }
   ]
 }

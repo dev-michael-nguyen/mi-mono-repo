@@ -119,8 +119,7 @@
           "options": {
             "tsConfig": [
               "libs/mi-angular-ui/tsconfig.lib.json",
-              "libs/mi-angular-ui/tsconfig.spec.json",
-              "libs/mi-angular-ui/.storybook/tsconfig.json"
+              "libs/mi-angular-ui/tsconfig.spec.json"
             ],
             "exclude": [
               "**/node_modules/**",
@@ -133,36 +132,6 @@
           "options": {
             "jestConfig": "libs/mi-angular-ui/jest.config.js",
             "passWithNoTests": true
-          }
-        },
-        "storybook": {
-          "builder": "@nrwl/storybook:storybook",
-          "options": {
-            "uiFramework": "@storybook/angular",
-            "port": 4400,
-            "config": {
-              "configFolder": "libs/mi-angular-ui/.storybook"
-            }
-          },
-          "configurations": {
-            "ci": {
-              "quiet": true
-            }
-          }
-        },
-        "build-storybook": {
-          "builder": "@nrwl/storybook:build",
-          "options": {
-            "uiFramework": "@storybook/angular",
-            "outputPath": "dist/storybook/mi-angular-ui",
-            "config": {
-              "configFolder": "libs/mi-angular-ui/.storybook"
-            }
-          },
-          "configurations": {
-            "ci": {
-              "quiet": true
-            }
           }
         }
       },
