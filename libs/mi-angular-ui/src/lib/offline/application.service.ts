@@ -10,7 +10,7 @@ import { ENABLE_SW } from './providers/enable-sw.provider';
 import { IS_PRODUCTION } from './providers/is-production.provider';
 import { IServiceWorkerConfig, SERVICE_WORKER_CONFIG } from './providers/service-worker-config.provider';
 import { Logger } from './utils/logger';
-import { ServiceWorkerMessageType } from './utils/serviceWorkerMessageType';
+import { ServiceWorkerMessageType } from './utils/service-worker-message-type';
 
 export interface IApplicationServiceResponse {
   hasError: boolean;

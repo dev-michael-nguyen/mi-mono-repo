@@ -1,6 +1,6 @@
-import { createCacheKey } from './utils/createCacheKey';
+import { createCacheKey } from './utils/create-cache-key';
 import { Logger } from './utils/logger';
-import { ServiceWorkerMessageType } from './utils/serviceWorkerMessageType';
+import { ServiceWorkerMessageType } from './utils/service-worker-message-type';
 
 // #region PROPERTIES ----------------------------------------------------------------
 
