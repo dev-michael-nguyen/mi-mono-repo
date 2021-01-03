@@ -1,5 +1,6 @@
-export * from '../src/lib/model/metadata.model';
-export * from '../src/lib/property-decorator/label';
-export * from '../src/lib/property-decorator/required-to-save';
-export * from '../src/lib/property-decorator/required-to-submit';
-export * from '../src/lib/property-decorator/template';
+export * from './lib/models/metadata.model';
+export * from './lib/property-decorators/label';
+export * from './lib/property-decorators/required-to-save';
+export * from './lib/property-decorators/required-to-submit';
+export * from './lib/property-decorators/template-id';
+
