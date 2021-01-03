@@ -43,7 +43,7 @@ export class ApplicationService {
   readonly isNewVersionAvailable$ = new BehaviorSubject(false);
   readonly isUpdating$ = new BehaviorSubject(false);
   readonly isUpdateRequested$ = new BehaviorSubject(false);
-  readonly isManifestDownloaded$ = new BehaviorSubject(this.isManifestDownloaded);
+  readonly isManifestDownloaded$ = new BehaviorSubject(false);
   readonly isOfflineRoute$ = new BehaviorSubject(false);
 
   constructor(
@@ -56,6 +56,7 @@ export class ApplicationService {
       this.isOnline$.next(isOnline);
     });
 
+    this.isManifestDownloaded$ = new BehaviorSubject(this.isManifestDownloaded);
     this.isManifestDownloaded$.subscribe(value => this.isManifestDownloaded = value);
 
     this.isSwSupported = 'serviceWorker' in navigator;
