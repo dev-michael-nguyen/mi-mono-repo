@@ -5,6 +5,9 @@
   "scripts": {
     "ng": "ng",
     "start": "npm run serve:resume",
+    "serve:mi-angular-ui-storybook": "ng serve mi-angular-ui-storybook",
+    "build:mi-angular-ui-storybook": "ng build mi-angular-ui-storybook",
+    "build:mi-angular-ui-storybook:prod": "ng build mi-angular-ui-storybook --prod",
     "serve:resume": "ng serve resume",
     "build:resume": "ng build resume",
     "build:resume:prod": "ng build resume --prod",

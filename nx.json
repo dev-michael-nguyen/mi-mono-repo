@@ -9,20 +9,16 @@
   },
   "projects": {
     "resume": {
-      "tags": [
-        "type:app",
-        "scope:resume"
-      ]
+      "tags": ["type:app", "scope:resume"]
     },
     "mi-angular-ui": {
-      "tags": [
-        "type:lib"
-      ]
+      "tags": ["type:lib"]
     },
     "mi-metadata": {
-      "tags": [
-        "type:lib"
-      ]
+      "tags": ["type:lib"]
+    },
+    "mi-angular-ui-storybook": {
+      "tags": []
     }
   }
 }

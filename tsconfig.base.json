@@ -17,7 +17,6 @@
     "baseUrl": ".",
     "paths": {
       "@mi-angular-ui/offline": ["libs/mi-angular-ui/src/lib/offline/public-api.ts"],
-      "@mi-angular-ui/text-box": ["libs/mi-angular-ui/src/lib/text-box/public-api.ts"],
       "@mi-metadata": ["libs/mi-metadata/src/index.ts"]
     }
   },

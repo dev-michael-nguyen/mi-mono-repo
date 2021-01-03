@@ -3,6 +3,101 @@
   "version": 1,
   "newProjectRoot": "",
   "projects": {
+    "mi-angular-ui-storybook": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      },
+      "root": "apps/mi-angular-ui-storybook",
+      "sourceRoot": "apps/mi-angular-ui-storybook/src",
+      "prefix": "mi-mono-repo",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/apps/mi-angular-ui-storybook",
+            "index": "apps/mi-angular-ui-storybook/src/index.html",
+            "main": "apps/mi-angular-ui-storybook/src/main.ts",
+            "polyfills": "apps/mi-angular-ui-storybook/src/polyfills.ts",
+            "tsConfig": "apps/mi-angular-ui-storybook/tsconfig.app.json",
+            "aot": true,
+            "assets": [
+              "apps/mi-angular-ui-storybook/src/favicon.ico",
+              "apps/mi-angular-ui-storybook/src/assets"
+            ],
+            "styles": ["apps/mi-angular-ui-storybook/src/styles.scss"],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [{
+                "replace": "apps/mi-angular-ui-storybook/src/environments/environment.ts",
+                "with": "apps/mi-angular-ui-storybook/src/environments/environment.prod.ts"
+              }],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [{
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "mi-angular-ui-storybook:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "mi-angular-ui-storybook:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "mi-angular-ui-storybook:build"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "apps/mi-angular-ui-storybook/tsconfig.app.json",
+              "apps/mi-angular-ui-storybook/tsconfig.spec.json",
+              "apps/mi-angular-ui-storybook/tsconfig.editor.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!apps/mi-angular-ui-storybook/**/*"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "apps/mi-angular-ui-storybook/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
     "resume": {
       "projectType": "application",
       "schematics": {
@@ -32,13 +127,9 @@
               "apps/resume/src/styles.scss"
             ],
             "stylePreprocessorOptions": {
-              "includePaths": [
-                "./apps-common/styles"
-              ]
+              "includePaths": ["./apps-common/styles"]
             },
-            "allowedCommonJsDependencies": [
-              "ngx-store"
-            ],
+            "allowedCommonJsDependencies": ["ngx-store"],
             "scripts": []
           },
           "configurations": {
@@ -93,10 +184,7 @@
               "apps/resume/tsconfig.app.json",
               "apps/resume/tsconfig.spec.json"
             ],
-            "exclude": [
-              "**/node_modules/**",
-              "!apps/resume/**/*"
-            ]
+            "exclude": ["**/node_modules/**", "!apps/resume/**/*"]
           }
         },
         "test": {
@@ -121,10 +209,7 @@
               "libs/mi-angular-ui/tsconfig.lib.json",
               "libs/mi-angular-ui/tsconfig.spec.json"
             ],
-            "exclude": [
-              "**/node_modules/**",
-              "!libs/mi-angular-ui/**/*"
-            ]
+            "exclude": ["**/node_modules/**", "!libs/mi-angular-ui/**/*"]
           }
         },
         "test": {
@@ -154,10 +239,7 @@
               "libs/mi-metadata/tsconfig.lib.json",
               "libs/mi-metadata/tsconfig.spec.json"
             ],
-            "exclude": [
-              "**/node_modules/**",
-              "!libs/mi-metadata/**/*"
-            ]
+            "exclude": ["**/node_modules/**", "!libs/mi-metadata/**/*"]
           }
         },
         "test": {
