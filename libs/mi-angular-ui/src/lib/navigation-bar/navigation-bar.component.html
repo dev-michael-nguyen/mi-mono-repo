@@ -1,0 +1,13 @@
+<div class="mi-navigation-bar"
+     fxLayout="row"
+     fxLayoutAlign="start center">
+  <ng-container *ngFor="let linkButton of linkButtons">
+    <mi-navigation-bar-link-button [icon]="linkButton.icon"
+                                   [iconSet]="linkButton.iconSet"
+                                   [label]="linkButton.label"
+                                   [showLabel]="showLinkLabel"
+                                   [ariaLabel]="linkButton.ariaLabel"
+                                   [routerLink]="linkButton.routerLink">
+    </mi-navigation-bar-link-button>
+  </ng-container>
+</div>

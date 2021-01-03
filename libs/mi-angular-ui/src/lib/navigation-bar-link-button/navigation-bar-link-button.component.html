@@ -1,0 +1,15 @@
+<a class="mi-navigation-bar-link-button"
+   role="button"
+   [title]="ariaLabel"
+   [attr.aria-label]="ariaLabel"
+   [routerLink]="routerLink"
+   routerLinkActive
+   #rla="routerLinkActive"
+   [class.active]="rla.isActive">
+  <ng-container *ngIf="icon">
+    <mat-icon [fontSet]="iconSet ? iconSet : null">{{ icon }}</mat-icon>
+  </ng-container>
+  <ng-container *ngIf="label && showLabel">
+    <span class="mi-navigation-bar-link-button__label">{{ label }}</span>
+  </ng-container>
+</a>

@@ -1,0 +1,12 @@
+<div class="mi-navigation-list">
+  <ng-container *ngFor="let linkButton of linkButtons">
+    <mi-navigation-list-link-button [icon]="linkButton.icon"
+                                    [iconSet]="linkButton.iconSet"
+                                    [badge]="linkButton.badge"
+                                    [label]="linkButton.label"
+                                    [ariaLabel]="linkButton.ariaLabel"
+                                    [routerLink]="linkButton.routerLink"
+                                    [showTopBorder]="true">
+    </mi-navigation-list-link-button>
+  </ng-container>
+</div>

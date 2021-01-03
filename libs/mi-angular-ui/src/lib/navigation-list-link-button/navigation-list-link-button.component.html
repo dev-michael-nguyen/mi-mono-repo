@@ -1,0 +1,13 @@
+<a class="mi-navigation-list-link-button"
+   [class.with-top-border]="showTopBorder"
+   role="button"
+   [title]="ariaLabel"
+   [attr.aria-label]="ariaLabel"
+   [routerLink]="routerLink">
+  <ng-container *ngIf="icon">
+    <span [matBadge]="badge" matBadgeColor="warn">
+      <mat-icon [fontSet]="iconSet ? iconSet : null">{{ icon }}</mat-icon>
+    </span>
+  </ng-container>
+  <span class="mi-navigation-list-link-button__label">{{ label }}</span>
+</a>
