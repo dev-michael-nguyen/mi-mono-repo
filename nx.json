@@ -19,6 +19,9 @@
     },
     "mi-angular-ui-storybook": {
       "tags": []
+    },
+    "silo-ngx-lib": {
+      "tags": []
     }
   }
 }

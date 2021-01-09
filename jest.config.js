@@ -4,5 +4,6 @@ module.exports = {
     "<rootDir>/apps/resume",
     "<rootDir>/libs/mi-angular-ui",
     "<rootDir>/libs/mi-metadata",
+    "<rootDir>/libs/silo/ngx-lib",
   ],
 };
