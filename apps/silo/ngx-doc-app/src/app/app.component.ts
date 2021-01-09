@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'mi-app-root',
+  selector: 'silo-app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })

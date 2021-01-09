@@ -3,101 +3,6 @@
   "version": 1,
   "newProjectRoot": "",
   "projects": {
-    "mi-angular-ui-storybook": {
-      "projectType": "application",
-      "schematics": {
-        "@schematics/angular:component": {
-          "style": "scss"
-        }
-      },
-      "root": "apps/mi-angular-ui-storybook",
-      "sourceRoot": "apps/mi-angular-ui-storybook/src",
-      "prefix": "mi-mono-repo",
-      "architect": {
-        "build": {
-          "builder": "@angular-devkit/build-angular:browser",
-          "options": {
-            "outputPath": "dist/apps/mi-angular-ui-storybook",
-            "index": "apps/mi-angular-ui-storybook/src/index.html",
-            "main": "apps/mi-angular-ui-storybook/src/main.ts",
-            "polyfills": "apps/mi-angular-ui-storybook/src/polyfills.ts",
-            "tsConfig": "apps/mi-angular-ui-storybook/tsconfig.app.json",
-            "aot": true,
-            "assets": [
-              "apps/mi-angular-ui-storybook/src/favicon.ico",
-              "apps/mi-angular-ui-storybook/src/assets"
-            ],
-            "styles": ["apps/mi-angular-ui-storybook/src/styles.scss"],
-            "scripts": []
-          },
-          "configurations": {
-            "production": {
-              "fileReplacements": [{
-                "replace": "apps/mi-angular-ui-storybook/src/environments/environment.ts",
-                "with": "apps/mi-angular-ui-storybook/src/environments/environment.prod.ts"
-              }],
-              "optimization": true,
-              "outputHashing": "all",
-              "sourceMap": false,
-              "extractCss": true,
-              "namedChunks": false,
-              "extractLicenses": true,
-              "vendorChunk": false,
-              "buildOptimizer": true,
-              "budgets": [{
-                  "type": "initial",
-                  "maximumWarning": "2mb",
-                  "maximumError": "5mb"
-                },
-                {
-                  "type": "anyComponentStyle",
-                  "maximumWarning": "6kb",
-                  "maximumError": "10kb"
-                }
-              ]
-            }
-          }
-        },
-        "serve": {
-          "builder": "@angular-devkit/build-angular:dev-server",
-          "options": {
-            "browserTarget": "mi-angular-ui-storybook:build"
-          },
-          "configurations": {
-            "production": {
-              "browserTarget": "mi-angular-ui-storybook:build:production"
-            }
-          }
-        },
-        "extract-i18n": {
-          "builder": "@angular-devkit/build-angular:extract-i18n",
-          "options": {
-            "browserTarget": "mi-angular-ui-storybook:build"
-          }
-        },
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": [
-              "apps/mi-angular-ui-storybook/tsconfig.app.json",
-              "apps/mi-angular-ui-storybook/tsconfig.spec.json",
-              "apps/mi-angular-ui-storybook/tsconfig.editor.json"
-            ],
-            "exclude": [
-              "**/node_modules/**",
-              "!apps/mi-angular-ui-storybook/**/*"
-            ]
-          }
-        },
-        "test": {
-          "builder": "@nrwl/jest:jest",
-          "options": {
-            "jestConfig": "apps/mi-angular-ui-storybook/jest.config.js",
-            "passWithNoTests": true
-          }
-        }
-      }
-    },
     "resume": {
       "projectType": "application",
       "schematics": {
@@ -188,6 +93,98 @@
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "apps/resume/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "silo-ngx-doc-app": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      },
+      "root": "apps/silo/ngx-doc-app",
+      "sourceRoot": "apps/silo/ngx-doc-app/src",
+      "prefix": "silo",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/apps/silo/ngx-doc-app",
+            "index": "apps/silo/ngx-doc-app/src/index.html",
+            "main": "apps/silo/ngx-doc-app/src/main.ts",
+            "polyfills": "apps/silo/ngx-doc-app/src/polyfills.ts",
+            "tsConfig": "apps/silo/ngx-doc-app/tsconfig.app.json",
+            "aot": true,
+            "assets": [
+              "apps/silo/ngx-doc-app/src/favicon.ico",
+              "apps/silo/ngx-doc-app/src/assets"
+            ],
+            "styles": ["apps/silo/ngx-doc-app/src/styles.scss"],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [{
+                "replace": "apps/silo/ngx-doc-app/src/environments/environment.ts",
+                "with": "apps/silo/ngx-doc-app/src/environments/environment.prod.ts"
+              }],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [{
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "silo-ngx-doc-app:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "silo-ngx-doc-app:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "silo-ngx-doc-app:build"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "apps/silo/ngx-doc-app/tsconfig.app.json",
+              "apps/silo/ngx-doc-app/tsconfig.spec.json",
+              "apps/silo/ngx-doc-app/tsconfig.editor.json"
+            ],
+            "exclude": ["**/node_modules/**", "!apps/silo/ngx-doc-app/**/*"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "apps/silo/ngx-doc-app/jest.config.js",
             "passWithNoTests": true
           }
         }
@@ -306,7 +303,8 @@
   "schematics": {
     "@nrwl/angular:application": {
       "unitTestRunner": "jest",
-      "e2eTestRunner": "cypress"
+      "e2eTestRunner": "cypress",
+      "strict": true
     },
     "@nrwl/angular:library": {
       "unitTestRunner": "jest"

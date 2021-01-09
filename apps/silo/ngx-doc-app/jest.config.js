@@ -1,6 +1,6 @@
 module.exports = {
-  displayName: "mi-angular-ui-storybook",
-  preset: "../../jest.preset.js",
+  displayName: "silo-ngx-doc-app",
+  preset: "../../../jest.preset.js",
   setupFilesAfterEnv: ["<rootDir>/src/test-setup.ts"],
   globals: {
     "ts-jest": {
@@ -14,7 +14,7 @@ module.exports = {
       },
     },
   },
-  coverageDirectory: "../../coverage/apps/mi-angular-ui-storybook",
+  coverageDirectory: "../../../coverage/apps/silo/ngx-doc-app",
   snapshotSerializers: [
     "jest-preset-angular/build/AngularNoNgAttributesSnapshotSerializer.js",
     "jest-preset-angular/build/AngularSnapshotSerializer.js",

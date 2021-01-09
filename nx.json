@@ -11,17 +11,17 @@
     "resume": {
       "tags": ["type:app", "scope:resume"]
     },
+    "silo-ngx-doc-app": {
+      "tags": ["type:app"]
+    },
     "mi-angular-ui": {
       "tags": ["type:lib"]
     },
     "mi-metadata": {
       "tags": ["type:lib"]
     },
-    "mi-angular-ui-storybook": {
-      "tags": []
-    },
     "silo-ngx-lib": {
-      "tags": []
+      "tags": ["type:lib"]
     }
   }
 }
