@@ -4,7 +4,7 @@
   "license": "MIT",
   "scripts": {
     "ng": "ng",
-    "start": "npm run serve:resume",
+    "start": "npm run serve:mi-angular-ui-storybook",
     "serve:mi-angular-ui-storybook": "ng serve mi-angular-ui-storybook",
     "build:mi-angular-ui-storybook": "ng build mi-angular-ui-storybook",
     "build:mi-angular-ui-storybook:prod": "ng build mi-angular-ui-storybook --prod",

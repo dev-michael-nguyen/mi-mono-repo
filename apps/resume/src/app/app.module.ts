@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { ENABLE_SW, InitApplicationServiceProvider, IS_PRODUCTION, OfflineModule, SERVICE_WORKER_CONFIG } from '@mi-angular-ui/offline';
+import { ENABLE_SW, InitApplicationServiceProvider, IS_PRODUCTION, OfflineModule, SERVICE_WORKER_CONFIG } from '@mi-angular-ui';
 import { environment } from '../environments/environment';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
