@@ -1,16 +1,9 @@
-<silo-app-layout [class.mi-app-dark-theme]="isDark">
+<silo-app-layout [ngClass]="selectedTheme ? selectedTheme.id : ''">
   <ng-container headerContent>
     <mat-toolbar color="primary">
-      <span>My Application</span>
+      <span>Silo NGX</span>
       <span style="flex: 1 1 auto"></span>
-      <button mat-button
-              [matMenuTriggerFor]="themePickerMenu">Theme</button>
-      <mat-menu #themePickerMenu="matMenu">
-        <button mat-menu-item
-                (click)="isDark = false">Light</button>
-        <button mat-menu-item
-                (click)="isDark = true">Dark</button>
-      </mat-menu>
+      <silo-theme-picker></silo-theme-picker>
     </mat-toolbar>
   </ng-container>
   <ng-container bodyContent>

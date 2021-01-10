@@ -1,10 +1,8 @@
 import { NgModule } from '@angular/core';
-import { MatButtonModule } from '@angular/material/button';
-import { MatMenuModule } from '@angular/material/menu';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { AppLayoutModule } from '@silo/ngx';
+import { AppLayoutModule, ThemePickerModule } from '@silo/ngx';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
@@ -14,9 +12,8 @@ import { AppComponent } from './app.component';
     AppRoutingModule,
     BrowserAnimationsModule,
     BrowserModule,
-    MatButtonModule,
-    MatMenuModule,
     MatToolbarModule,
+    ThemePickerModule.forRoot(),
   ],
   declarations: [AppComponent],
   bootstrap: [AppComponent],

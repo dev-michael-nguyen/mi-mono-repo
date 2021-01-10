@@ -1,0 +1,20 @@
+<div class="silo-theme-picker">
+  <button mat-icon-button
+          [matMenuTriggerFor]="themePickerMenu"
+          aria-label="Select a theme"
+          matTooltip="Select a theme for the application">
+    <mat-icon>format_color_fill</mat-icon>
+  </button>
+  <mat-menu #themePickerMenu="matMenu">
+    <ng-container *ngIf="!lookupList.length">
+      <div mat-menu-item>No theme list is provided.</div>
+    </ng-container>
+    <ng-container *ngFor="let theme of lookupList">
+      <button mat-menu-item
+              (click)="setTheme(theme)">
+        <mat-icon color="primary">{{ value && value.id === theme.id ? 'radio_button_checked' : 'radio_button_unchecked' }}</mat-icon>
+        <span>{{ theme.displayName }}</span>
+      </button>
+    </ng-container>
+  </mat-menu>
+</div>
