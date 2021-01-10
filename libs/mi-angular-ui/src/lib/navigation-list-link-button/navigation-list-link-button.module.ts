@@ -15,9 +15,6 @@ import { NavigationListLinkButtonComponent } from './navigation-list-link-button
   declarations: [
     NavigationListLinkButtonComponent
   ],
-  entryComponents: [
-    NavigationListLinkButtonComponent
-  ],
   exports: [
     NavigationListLinkButtonComponent
   ],

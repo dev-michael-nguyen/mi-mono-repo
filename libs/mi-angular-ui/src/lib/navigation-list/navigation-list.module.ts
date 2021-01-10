@@ -11,9 +11,6 @@ import { NavigationListComponent } from './navigation-list.component';
   declarations: [
     NavigationListComponent
   ],
-  entryComponents: [
-    NavigationListComponent
-  ],
   exports: [
     NavigationListComponent
   ],

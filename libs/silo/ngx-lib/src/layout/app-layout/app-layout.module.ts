@@ -11,9 +11,6 @@ import { AppLayoutComponent } from './app-layout.component';
   declarations: [
     AppLayoutComponent
   ],
-  entryComponents: [
-    AppLayoutComponent
-  ],
   exports: [
     AppLayoutComponent
   ],

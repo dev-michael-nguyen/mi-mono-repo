@@ -13,9 +13,6 @@ import { NavigationBarLinkButtonComponent } from './navigation-bar-link-button.c
   declarations: [
     NavigationBarLinkButtonComponent
   ],
-  entryComponents: [
-    NavigationBarLinkButtonComponent
-  ],
   exports: [
     NavigationBarLinkButtonComponent
   ],

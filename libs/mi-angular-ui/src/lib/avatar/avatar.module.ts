@@ -11,9 +11,6 @@ import { AvatarComponent } from './avatar.component';
   declarations: [
     AvatarComponent,
   ],
-  entryComponents: [
-    AvatarComponent
-  ],
   exports: [
     AvatarComponent
   ],

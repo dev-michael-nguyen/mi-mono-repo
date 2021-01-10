@@ -19,9 +19,6 @@ import { NavigationBarComponent } from './navigation-bar.component';
   declarations: [
     NavigationBarComponent
   ],
-  entryComponents: [
-    NavigationBarComponent
-  ],
   exports: [
     NavigationBarComponent
   ]

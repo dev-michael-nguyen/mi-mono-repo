@@ -9,6 +9,6 @@ import { DownloadProgressDialogComponent } from './download-progress-dialog.comp
     MatProgressBarModule
   ],
   declarations: [DownloadProgressDialogComponent],
-  entryComponents: [DownloadProgressDialogComponent]
+  exports: [DownloadProgressDialogComponent]
 })
 export class DownloadProgressDialogModule { }

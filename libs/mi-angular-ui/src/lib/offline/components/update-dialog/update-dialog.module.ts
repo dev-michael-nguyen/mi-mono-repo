@@ -11,6 +11,6 @@ import { UpdateDialogComponent } from './update-dialog.component';
     MatProgressBarModule
   ],
   declarations: [UpdateDialogComponent],
-  entryComponents: [UpdateDialogComponent]
+  exports: [UpdateDialogComponent]
 })
 export class UpdateDialogModule { }
