@@ -122,7 +122,10 @@
               "apps/silo/ngx-doc-app/src/favicon.ico",
               "apps/silo/ngx-doc-app/src/assets"
             ],
-            "styles": ["apps/silo/ngx-doc-app/src/styles.scss"],
+            "styles": [
+              "apps/silo/ngx-doc-app/src/styles.scss",
+              "node_modules/material-design-icons/iconfont/material-icons.css"
+            ],
             "scripts": []
           },
           "configurations": {
