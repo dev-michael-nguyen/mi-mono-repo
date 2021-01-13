@@ -33,10 +33,10 @@ export class AppComponent implements OnInit {
   mockGetThemePickerModel() {
     const themePickerModel: IThemePickerModel = {
       lookupList: [
-        { id: 'mi-app-light-theme', displayName: 'Light' },
-        { id: 'mi-app-dark-theme', displayName: 'Dark' }
+        { id: 'silo-light-theme', displayName: 'Light' },
+        { id: 'silo-dark-theme', displayName: 'Dark' }
       ],
-      currentThemeId: 'mi-app-light-theme'
+      currentThemeId: 'silo-light-theme'
     };
 
     return new Observable<IThemePickerModel>(observer => {

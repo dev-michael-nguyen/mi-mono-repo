@@ -8,12 +8,16 @@ import { AppComponent } from './app.component';
 
 @NgModule({
   imports: [
-    AppLayoutModule,
+    // #region App features
     AppRoutingModule,
     BrowserAnimationsModule,
     BrowserModule,
-    MatToolbarModule,
     ThemePickerModule.forRoot(),
+    // #endregion
+    // #region AppComponent imports
+    AppLayoutModule,
+    MatToolbarModule,
+    // #endregion
   ],
   declarations: [AppComponent],
   bootstrap: [AppComponent],

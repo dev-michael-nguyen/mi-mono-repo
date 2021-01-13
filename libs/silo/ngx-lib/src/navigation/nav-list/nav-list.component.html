@@ -1,0 +1,17 @@
+<div class="silo-nav-list">
+  <mat-nav-list>
+    <ng-container *ngFor="let item of lookupList">
+      <a class="silo-nav-list-link"
+      role="button"
+      [title]="item.tooltip ? item.tooltip : ''"
+      [attr.aria-label]="item.ariaLabel ? item.ariaLabel : item.label"
+      mat-list-item
+      [routerLink]="item.routerLink"
+      routerLinkActive
+      #rla="routerLinkActive"
+      [class.active]="rla.isActive">
+        {{ item.label }}
+      </a>
+    </ng-container>
+  </mat-nav-list>
+</div>

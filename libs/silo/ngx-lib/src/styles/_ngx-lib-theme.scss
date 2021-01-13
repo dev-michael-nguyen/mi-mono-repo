@@ -1,0 +1,5 @@
+@import '../navigation/nav-list/nav-list.component.theme.scss';
+
+@mixin ngx-lib-theme($theme) {
+  @include silo-nav-list-theme($theme);
+}
