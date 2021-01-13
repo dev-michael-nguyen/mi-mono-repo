@@ -1,4 +1,3 @@
-import { OverlayContainer } from '@angular/cdk/overlay';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { IThemeLookupModel } from './theme-picker.model';
 import { ThemePickerService } from './theme-picker.service';
@@ -28,14 +27,10 @@ export class ThemePickerComponent implements OnInit {
   selectedTheme = new EventEmitter<IThemeLookupModel>();
 
   constructor(
-    private _overlayContainer: OverlayContainer,
     private _themePickerService: ThemePickerService
   ) { }
 
   ngOnInit() {
-    // theme change handler
-    this._themePickerService.setThemeChangeHandler(this._overlayContainer);
-
     // set data when service is initialized
     this._themePickerService.isInitialized$.subscribe((value) => {
       if (value) {

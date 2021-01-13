@@ -2,11 +2,16 @@
   // Extract the color configuration in case a theme has been passed.
   $config: mat-get-color-config($config-or-theme);
   $primary: map-get($config, primary);
+  $warn: map-get($config, warn);
+  $is-dark-theme: map-get($config, is-dark);
 
   // Define any styles affected by the theme.
   .silo-nav-list-link {
-    &.active {
-      color: mat-color($primary);
+    color: if($is-dark-theme, white, mat-color($primary));
+
+    &.active,
+    :hover {
+      color: if($is-dark-theme, mat-color($warn), mat-color($primary));
     }
   }
 }

@@ -1,3 +1,4 @@
+import { OverlayContainer } from '@angular/cdk/overlay';
 import { Component, OnInit } from '@angular/core';
 import { IThemeLookupModel, IThemePickerModel, ThemePickerService } from '@silo/ngx';
 import { Observable } from 'rxjs';
@@ -13,6 +14,7 @@ export class AppComponent implements OnInit {
   themeLookupList: Array<IThemeLookupModel> = [];
 
   constructor(
+    private _overlayContainer: OverlayContainer,
     private _themePickerService: ThemePickerService
   ) { }
 
@@ -28,6 +30,7 @@ export class AppComponent implements OnInit {
     this._themePickerService.themeChangedEvent$.subscribe((event) => {
       this.selectedTheme = event.currentTheme;
     });
+    this._themePickerService.setOverlayThemeChangeHandler(this._overlayContainer);
   }
 
   mockGetThemePickerModel() {

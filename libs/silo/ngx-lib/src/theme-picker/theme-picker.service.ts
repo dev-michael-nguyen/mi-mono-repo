@@ -51,22 +51,22 @@ export class ThemePickerService {
     }
   }
 
-  setThemeChangeHandler(overlayContainer: OverlayContainer) {
+  setOverlayThemeChangeHandler(overlayContainer: OverlayContainer) {
+    // init overlay container with current theme
+    overlayContainer.getContainerElement().classList.toggle(this.currentTheme.id);
+
+    // toggle theme on theme changed
     return this.themeChangedEvent$.subscribe(() => {
-      this.toggleTheme(overlayContainer);
+      // toggle off previous theme
+      if (this.previousTheme) {
+        overlayContainer.getContainerElement().classList.toggle(this.previousTheme.id);
+      }
+
+      // toggle on current theme
+      if (this.currentTheme) {
+        overlayContainer.getContainerElement().classList.toggle(this.currentTheme.id);
+      }
     });
-  }
-
-  toggleTheme(overlayContainer: OverlayContainer) {
-    // toggle off previous theme
-    if (this.previousTheme) {
-      overlayContainer.getContainerElement().classList.toggle(this.previousTheme.id);
-    }
-
-    // toggle on current theme
-    if (this.currentTheme) {
-      overlayContainer.getContainerElement().classList.toggle(this.currentTheme.id);
-    }
   }
 
 }
