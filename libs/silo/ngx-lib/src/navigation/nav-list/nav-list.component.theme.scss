@@ -7,11 +7,11 @@
 
   // Define any styles affected by the theme.
   .silo-nav-list-link {
-    color: if($is-dark-theme, white, mat-color($primary));
+    color: if($is-dark-theme, black !important, mat-color($primary));
 
     &.active,
     :hover {
-      color: if($is-dark-theme, mat-color($warn), mat-color($primary));
+      color: if($is-dark-theme, mat-color($warn) !important, mat-color($primary));
     }
   }
 }
