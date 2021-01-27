@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { RouterModule } from '@angular/router';
 import { SiloNavListModule, StickyLayoutModule } from '@silo/ngx';
-import { DocViewComponent } from './doc-view.component';
+import { ListViewComponent } from './list-view.component';
 
 @NgModule({
   imports: [
@@ -13,6 +13,6 @@ import { DocViewComponent } from './doc-view.component';
     SiloNavListModule,
     StickyLayoutModule
   ],
-  declarations: [DocViewComponent]
+  declarations: [ListViewComponent]
 })
-export class DocViewModule { }
+export class ListViewModule { }

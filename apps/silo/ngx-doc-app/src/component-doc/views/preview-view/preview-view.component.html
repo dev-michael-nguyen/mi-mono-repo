@@ -1,0 +1,13 @@
+<div class="preview-view">
+  <div class="component-preview-list">
+    <ng-container *ngFor="let item of componentPreviewList">
+      <a class="component-preview-list-item" [routerLink]="item.routerLink">
+        <div class="component-preview-list-item__card">
+          <div class="component-preview-list-item__card__image"></div>
+          <div class="component-preview-list-item__card__title">{{ item.title }}</div>
+          <div class="component-preview-list-item__card__summary">{{ item.sumamry }}</div>
+        </div>
+      </a>
+    </ng-container>
+  </div>
+</div>

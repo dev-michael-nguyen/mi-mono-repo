@@ -1,0 +1,40 @@
+.component-preview-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.component-preview-list-item {
+  text-decoration: none;
+  display: inline-block;
+  margin: 20px;
+  width: 280px;
+
+  :hover,
+  :active {
+    text-decoration: none;
+  }
+}
+
+.component-preview-list-item__card {
+  border: 1px solid rgba(0, 0, 0, .12);
+  border-radius: 4px;
+
+  .component-preview-list-item__card__image {
+    height: 156px;
+    border-bottom: 1px solid rgba(0, 0, 0, .12);
+  }
+
+  .component-preview-list-item__card__title {
+    padding: 16px;
+    font-size: 20px;
+    font-weight: 500;
+    color: black;
+  }
+
+  .component-preview-list-item__card__summary {
+    padding: 0 16px 16px;
+    font-size: 16px;
+    color: rgba(0, 0, 0, .54);
+  }
+}

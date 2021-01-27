@@ -1,17 +1,23 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { DocViewComponent } from './views/doc-view/doc-view.component';
-import { DocViewModule } from './views/doc-view/doc-view.module';
+import { ListViewComponent } from './views/list-view/list-view.component';
+import { ListViewModule } from './views/list-view/list-view.module';
+import { PreviewViewComponent } from './views/preview-view/preview-view.component';
+import { PreviewViewModule } from './views/preview-view/preview-view.module';
 
 const routes: Routes = [
   {
     path: '',
-    component: DocViewComponent,
+    component: ListViewComponent,
     children: [
       {
         path: '',
         pathMatch: 'full',
-        redirectTo: 'text-box',
+        redirectTo: 'preview',
+      },
+      {
+        path: 'preview',
+        component: PreviewViewComponent
       },
       {
         path: 'text-box',
@@ -31,7 +37,8 @@ const routes: Routes = [
 
 @NgModule({
   imports: [
-    DocViewModule,
+    ListViewModule,
+    PreviewViewModule,
     RouterModule.forChild(routes),
   ],
   exports: [

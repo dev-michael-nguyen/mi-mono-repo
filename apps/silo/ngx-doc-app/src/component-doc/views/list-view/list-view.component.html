@@ -1,0 +1,14 @@
+<div class="list-view">
+  <div siloStickyLayout>
+    <div siloStickyLayoutBody>
+      <div fxLayout="row">
+        <div fxFlex="nogrow">
+          <silo-nav-list [lookupList]="componentNavList"></silo-nav-list>
+        </div>
+        <div fxFlex="auto">
+          <router-outlet></router-outlet>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
