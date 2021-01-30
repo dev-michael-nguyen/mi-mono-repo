@@ -1,0 +1,67 @@
+/**
+* Generated theme by Material Theme Generator
+* https://materialtheme.arcsine.dev
+*/
+
+// #region Light theme configs
+
+body {
+  --primary-color: #4c7997;
+  --primary-lighter-color: #c9d7e0;
+  --primary-darker-color: #335c7a;
+  --text-primary-color: #{$light-primary-text};
+  --text-primary-lighter-color: #{$dark-primary-text};
+  --text-primary-darker-color: #{$light-primary-text};
+}
+
+$mat-primary: (main: #4c7997,
+  lighter: #c9d7e0,
+  darker: #335c7a,
+  200: #4c7997, // For slide toggle,
+  contrast : (main: $light-primary-text,
+    lighter: $dark-primary-text,
+    darker: $light-primary-text,
+  ));
+$theme-primary: mat-palette($mat-primary, main, lighter, darker);
+
+body {
+  --accent-color: #325877;
+  --accent-lighter-color: #c2cdd6;
+  --accent-darker-color: #1f3d5a;
+  --text-accent-color: #{$light-primary-text};
+  --text-accent-lighter-color: #{$dark-primary-text};
+  --text-accent-darker-color: #{$light-primary-text};
+}
+
+$mat-accent: (main: #325877,
+  lighter: #c2cdd6,
+  darker: #1f3d5a,
+  200: #325877, // For slide toggle,
+  contrast : (main: $light-primary-text,
+    lighter: $dark-primary-text,
+    darker: $light-primary-text,
+  ));
+$theme-accent: mat-palette($mat-accent, main, lighter, darker);
+
+body {
+  --warn-color: #ec664f;
+  --warn-lighter-color: #f9d1ca;
+  --warn-darker-color: #e44936;
+  --text-warn-color: #{$dark-primary-text};
+  --text-warn-lighter-color: #{$dark-primary-text};
+  --text-warn-darker-color: #{$light-primary-text};
+}
+
+$mat-warn: (main: #ec664f,
+  lighter: #f9d1ca,
+  darker: #e44936,
+  200: #ec664f, // For slide toggle,
+  contrast : (main: $dark-primary-text,
+    lighter: $dark-primary-text,
+    darker: $light-primary-text,
+  ));
+$theme-warn: mat-palette($mat-warn, main, lighter, darker);
+
+$light-theme: mat-light-theme($theme-primary, $theme-accent, $theme-warn);
+
+// #endregion

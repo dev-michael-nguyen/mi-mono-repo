@@ -1,36 +1,25 @@
-@import '~@angular/material/theming';
-@import '../../../../libs/silo/ngx-lib/src/styles/ngx-lib-theme';
-
 // Include the common styles for Angular Material. We include this here so that you only
 // have to load a single css file for Angular Material in your app.
+@import '~@angular/material/theming';
+@import '../../../../apps-common/styles/mat-font-configs';
+@import '../../../../apps-common/styles/mat-foreground-configs';
+@import '../../../../apps-common/styles/mat-background-configs';
+@import '../../../../apps-common/styles/mat-overrides';
+@import '../../../../apps-common/styles/site-layout';
+
 // **Be sure that you only ever include this mixin once!**
-@include mat-core();
+@include mat-core($fontConfig);
 
-// #region DEFAULT LIGHT THEME.
-
-$light-primary: mat-palette($mat-indigo);
-$light-accent: mat-palette($mat-pink, A200, A100, A400);
-$light-theme: mat-light-theme((color: (primary: $light-primary,
-      accent: $light-accent,
-    )));
+// Theme Init
+@import './styles__light-theme.scss';
+@import '../../../../libs/silo/ngx-lib/src/styles/ngx-lib-theme';
 
 @include angular-material-theme($light-theme);
 @include ngx-lib-theme($light-theme);
 
-// #endregion
-
-// #region ALTENATE DARK THEME.
-$dark-primary: mat-palette($mat-blue-grey);
-$dark-accent: mat-palette($mat-amber, A200, A100, A400);
-$dark-warn: mat-palette($mat-deep-orange);
-$dark-theme: mat-dark-theme((color: (primary: $dark-primary,
-      accent: $dark-accent,
-      warn: $dark-warn,
-    )));
-
 .silo-dark-theme {
-  @include angular-material-color($dark-theme);
+  @import './styles__dark-theme.scss';
+
+  @include angular-material-theme($dark-theme);
   @include ngx-lib-theme($dark-theme);
 }
-
-// #endregion
