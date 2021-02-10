@@ -1,13 +1,17 @@
-<div class="list-view">
-  <div siloStickyLayout>
-    <div siloStickyLayoutBody>
-      <div fxLayout="row">
-        <div fxFlex="nogrow">
-          <silo-nav-list [lookupList]="componentNavList"></silo-nav-list>
-        </div>
-        <div fxFlex="auto">
-          <router-outlet></router-outlet>
-        </div>
+<div class="list-view"
+     siloStickyLayout>
+  <div fxLayout="row"
+       siloStickyLayoutBody>
+    <div fxFlex="none"
+         siloStickyLayout>
+      <div siloStickyLayoutBody>
+        <silo-nav-list [lookupList]="componentNavList"></silo-nav-list>
+      </div>
+    </div>
+    <div fxFlex
+         siloStickyLayout>
+      <div siloStickyLayoutBody>
+        <router-outlet></router-outlet>
       </div>
     </div>
   </div>

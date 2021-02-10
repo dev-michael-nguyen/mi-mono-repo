@@ -1,18 +1,35 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { DocViewComponent } from './views/doc-view/doc-view.component';
-import { DocViewModule } from './views/doc-view/doc-view.module';
+import { INavListItemModel, RouterTabLayoutComponent } from '@silo/ngx';
+import { ExampleViewComponent } from './views/example-view/example-view.component';
+import { ExampleViewModule } from './views/example-view/example-view.module';
 
 const routes: Routes = [
   {
     path: '',
-    component: DocViewComponent,
+    component: RouterTabLayoutComponent,
+    data: {
+      navList: [
+        { label: 'Example', routerLink: 'example' }
+      ] as Array<INavListItemModel>
+    },
+    children: [
+      {
+        path: '',
+        pathMatch: 'full',
+        redirectTo: 'example',
+      },
+      {
+        path: 'example',
+        component: ExampleViewComponent
+      },
+    ]
   }
 ];
 
 @NgModule({
   imports: [
-    DocViewModule,
+    ExampleViewModule,
     RouterModule.forChild(routes),
   ],
   exports: [
