@@ -1,10 +1,10 @@
 import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, ValidatorFn } from '@angular/forms';
-import { randomHtmlId } from '../../utils/random-html-id';
-import { ITextValidatorError, TextValidator } from '../../validators/text-validator';
+import { randomHtmlId } from '../../../utils/random-html-id';
+import { ITextValidatorError, TextValidator } from '../text-validator';
 
 @Component({
-  selector: 'mi-text-box',
+  selector: 'silo-text-box',
   templateUrl: './text-box.component.html',
   styleUrls: ['./text-box.component.scss']
 })
@@ -12,7 +12,6 @@ export class TextBoxComponent implements OnInit, OnChanges {
 
   formGroup: FormGroup;
   textFormControl: FormControl;
-
   labelId: string;
 
   @Input()
@@ -35,17 +34,21 @@ export class TextBoxComponent implements OnInit, OnChanges {
   ) { }
 
   ngOnInit() {
-    this.labelId = randomHtmlId();
-    this.createForm(this.value);
+    this.setDefinition();
+    this.setForm(this.value);
   }
 
   ngOnChanges(_: SimpleChanges) {
     if (this.textFormControl) {
-      this.createForm(this.textFormControl.value);
+      this.setForm(this.textFormControl.value);
     }
   }
 
-  createForm(value: string) {
+  setDefinition() {
+    this.labelId = randomHtmlId();
+  }
+
+  setForm(value: string) {
     const textValidator = new TextValidator();
     const validators: Array<ValidatorFn> = [];
     if (this.required) {
