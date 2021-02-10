@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { DocViewComponent } from './doc-view.component';
+import { ExampleViewComponent } from './example-view.component';
 
 @NgModule({
   imports: [
     CommonModule
   ],
-  declarations: [DocViewComponent]
+  declarations: [ExampleViewComponent]
 })
-export class DocViewModule { }
+export class ExampleViewModule { }
