@@ -5,6 +5,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
+import { ResponsiveContainerModule } from '../../../responsive/responsive-container/responsive-container.module';
 import { TextBoxComponent } from './text-box.component';
 
 @NgModule({
@@ -14,7 +15,8 @@ import { TextBoxComponent } from './text-box.component';
     MatFormFieldModule,
     MatIconModule,
     MatInputModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    ResponsiveContainerModule
   ],
   declarations: [
     TextBoxComponent

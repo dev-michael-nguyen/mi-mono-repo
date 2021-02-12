@@ -1,5 +1,6 @@
 import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, ValidatorFn } from '@angular/forms';
+import { ColSize } from '../../../responsive/responsive-container/responsive-container.model';
 import { randomHtmlId } from '../../../utils/random-html-id';
 import { ITextValidatorError, TextValidator } from '../text-validator';
 
@@ -24,10 +25,16 @@ export class TextBoxComponent implements OnInit, OnChanges {
   hint: string;
 
   @Input()
-  required = false;
+  isRequired = false;
 
   @Input()
   value: string;
+
+  @Input()
+  fieldSize: ColSize;
+
+  @Input()
+  outlineSize: ColSize;
 
   constructor(
     public formBuilder: FormBuilder,
@@ -46,12 +53,13 @@ export class TextBoxComponent implements OnInit, OnChanges {
 
   setDefinition() {
     this.labelId = randomHtmlId();
+    this.outlineSize = this.outlineSize || this.fieldSize;
   }
 
   setForm(value: string) {
     const textValidator = new TextValidator();
     const validators: Array<ValidatorFn> = [];
-    if (this.required) {
+    if (this.isRequired) {
       validators.push(textValidator.createRequiredValidator());
     }
 

@@ -1,24 +1,28 @@
-<div class="silo-text-box">
-  <label [id]="labelId" class="silo-text-box__label">
-    {{ label }}
-  </label>
-  <mat-form-field appearance="outline">
-    <input matInput
-           type="text"
-           spellcheck="true"
-           [attr.aria-labelledby]="labelId"
-           [placeholder]="placeholder"
-           [formControl]="textFormControl"
-           [value]="textFormControl.value">
-    <button *ngIf="textFormControl.value"
-            mat-button
-            matSuffix
-            mat-icon-button
-            aria-label="Clear"
-            (click)="clearForm()">
-      <mat-icon>close</mat-icon>
-    </button>
-    <mat-hint *ngIf="hint">{{ hint }}</mat-hint>
-    <mat-error *ngIf="textFormControl.invalid">{{ getErrorMessage() }}</mat-error>
-  </mat-form-field>
-</div>
+<silo-responsive-container class="silo-text-box"
+                           [class.silo-text-box--is-required]="isRequired"
+                           [class.silo-text-box--is-filled]="formGroup.dirty && formGroup.valid"
+                           [class.silo-text-box--has-error]="formGroup.dirty && formGroup.invalid"
+                           [colSize]="fieldSize">
+  <div class="form-field-label-container">
+    <label [id]="labelId" class="silo-text-box__label">
+      {{ label }}
+    </label>
+  </div>
+  <div class="form-field-outline-container">
+    <div class="form-field-input-container">
+      <input type="text"
+             matInput
+             type="text"
+             spellcheck="true"
+             [attr.aria-labelledby]="labelId"
+             [placeholder]="placeholder"
+             [formControl]="textFormControl"
+             [value]="textFormControl.value"
+             [required]="isRequired" />
+    </div>
+  </div>
+  <div class="form-field-message-container">
+    <mat-hint *ngIf="hint && !(textFormControl.dirty && textFormControl.invalid)">{{ hint }}</mat-hint>
+    <mat-error *ngIf="textFormControl.dirty && textFormControl.invalid">{{ getErrorMessage() }}</mat-error>
+  </div>
+</silo-responsive-container>
