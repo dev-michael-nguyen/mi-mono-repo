@@ -1,5 +1,30 @@
-<silo-text-box label="Label"
-               [isRequired]="true"
-               hint="Hint"
-               fieldSize="col-2">
-</silo-text-box>
+<silo-example-article>
+  <ng-container headerContent>
+    <p>Text box is not required</p>
+  </ng-container>
+  <ng-container bodyContent>
+    <silo-text-box label="Label">
+    </silo-text-box>
+  </ng-container>
+</silo-example-article>
+<silo-example-article>
+  <ng-container headerContent>
+    <p>Text box is required</p>
+  </ng-container>
+  <ng-container bodyContent>
+    <silo-text-box label="Label"
+                   [isRequired]="true">
+    </silo-text-box>
+  </ng-container>
+</silo-example-article>
+<silo-example-article>
+  <ng-container headerContent>
+    <p>Text box with hint</p>
+  </ng-container>
+  <ng-container bodyContent>
+    <silo-text-box label="Label"
+                   [isRequired]="true"
+                   hint="Please fill out this field">
+    </silo-text-box>
+  </ng-container>
+</silo-example-article>
