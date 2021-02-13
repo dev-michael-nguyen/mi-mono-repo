@@ -1,6 +1,8 @@
-import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, ValidatorFn } from '@angular/forms';
-import { ColSize } from '../../../responsive/responsive-container/responsive-container.model';
+import { MatError, MatHint } from '@angular/material/form-field';
+import { BehaviorSubject } from 'rxjs';
+import { ClassExpression } from '../../../responsive/responsive-container/responsive-container.model';
 import { randomHtmlId } from '../../../utils/random-html-id';
 import { ITextValidatorError, TextValidator } from '../text-validator';
 
@@ -9,11 +11,12 @@ import { ITextValidatorError, TextValidator } from '../text-validator';
   templateUrl: './text-box.component.html',
   styleUrls: ['./text-box.component.scss']
 })
-export class TextBoxComponent implements OnInit, OnChanges {
+export class TextBoxComponent implements OnInit {
 
   formGroup: FormGroup;
   textFormControl: FormControl;
   labelId: string;
+  describebyId: string;
 
   @Input()
   label: string;
@@ -31,10 +34,10 @@ export class TextBoxComponent implements OnInit, OnChanges {
   value: string;
 
   @Input()
-  fieldSize: ColSize;
+  fieldSize: ClassExpression = 'col-2';
 
   @Input()
-  outlineSize: ColSize;
+  outlineSize: ClassExpression;
 
   constructor(
     public formBuilder: FormBuilder,
@@ -45,14 +48,9 @@ export class TextBoxComponent implements OnInit, OnChanges {
     this.setForm(this.value);
   }
 
-  ngOnChanges(_: SimpleChanges) {
-    if (this.textFormControl) {
-      this.setForm(this.textFormControl.value);
-    }
-  }
-
   setDefinition() {
     this.labelId = randomHtmlId();
+    this.describebyId = randomHtmlId();
     this.outlineSize = this.outlineSize || this.fieldSize;
   }
 
@@ -64,7 +62,6 @@ export class TextBoxComponent implements OnInit, OnChanges {
     }
 
     this.textFormControl = this.formBuilder.control(value, validators);
-
     this.formGroup = this.formBuilder.group({
       text: this.textFormControl
     });

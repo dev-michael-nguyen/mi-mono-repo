@@ -20,7 +20,7 @@ export class TextValidator {
 
       return !isWhitespace
         ? null
-        : { required: { message } };
+        : { isRequired: { message } };
     };
   }
 
