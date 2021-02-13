@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { ColSize } from './responsive-container.model';
+import { ClassExpression } from './responsive-container.model';
 
 @Component({
   selector: 'silo-responsive-container',
@@ -9,7 +9,7 @@ import { ColSize } from './responsive-container.model';
 export class ResponsiveContainerComponent implements OnInit {
 
   @Input()
-  colSize: ColSize;
+  colExpression: ClassExpression;
 
   constructor() { }
 
