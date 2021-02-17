@@ -1,7 +1,5 @@
-@mixin mat-override-styles() {
+@mixin mat-override-theme($theme) {
   .mat-form-field-infix {
     border-top: initial;
   }
 }
-
-@mixin mat-override-theme($theme) {}

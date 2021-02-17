@@ -1,8 +1,9 @@
 @import './mat-overrides';
+@import './silo-form-field';
 @import '../navigation/nav-list/nav-list.component.theme.scss';
 
-@mixin ngx-lib-theme($theme) {
-  @include mat-override-styles();
+@mixin silo-ngx-lib-theme($theme) {
   @include mat-override-theme($theme);
+  @include silo-form-field-theme($theme);
   @include silo-nav-list-theme($theme);
 }

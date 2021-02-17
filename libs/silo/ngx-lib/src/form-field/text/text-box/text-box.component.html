@@ -3,13 +3,13 @@
                            [class.silo-text-box--is-filled]="isRequired && formGroup.dirty && formGroup.valid"
                            [class.silo-text-box--has-error]="isRequired && formGroup.dirty && formGroup.invalid"
                            [colExpression]="fieldSize">
-  <div class="form-field-label-container">
+  <div class="silo-form-field-label-container">
     <label [id]="labelId" class="silo-text-box__label">
       {{ label }}
     </label>
   </div>
-  <div class="form-field-outline-container">
-    <div class="form-field-input-container">
+  <div class="silo-form-field-outline-container">
+    <div class="silo-form-field-input-container">
       <input type="text"
              matInput
              type="text"
@@ -23,8 +23,8 @@
     </div>
   </div>
   <div [id]="describebyId"
-       class="form-field-message-container">
-    <mat-hint *ngIf="hint && !(textFormControl.dirty && textFormControl.invalid)">{{ hint }}</mat-hint>
-    <span role="alert" *ngIf="textFormControl.dirty && textFormControl.invalid">{{ getErrorMessage() }}</span>
+       class="silo-form-field-message-container">
+    <span class="mat-hint" *ngIf="hint && !(textFormControl.dirty && textFormControl.invalid)">{{ hint }}</span>
+    <span class="mat-error" role="alert" *ngIf="textFormControl.dirty && textFormControl.invalid">{{ getErrorMessage() }}</span>
   </div>
 </silo-responsive-container>

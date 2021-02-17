@@ -1,22 +1,4 @@
 .silo-text-box {
-  .form-field-outline-container {
-    box-sizing: border-box;
-    box-shadow: 0 0 0 1px gray;
-    border-radius: 2px;
-    margin: 0 2px;
-
-    &:focus-within {
-      box-shadow: 0 0 0 2px black;
-    }
-  }
-
-  .form-field-input-container {
-    box-sizing: border-box;
-    border-left-width: 4px;
-    border-left-style: solid;
-    border-left-color: white;
-  }
-
   input {
     box-sizing: border-box;
     border: none;
@@ -26,59 +8,5 @@
     margin: 0;
     padding: 0 4px;
     line-height: 2rem;
-  }
-
-  &.small {
-    width: 25%;
-  }
-
-  &.medium {
-    width: 50%;
-  }
-
-  &.large {
-    width: 75%;
-  }
-
-  &.full {
-    width: 100%;
-  }
-
-  &--is-required {
-    .form-field-outline-container {
-      &:focus-within {
-        box-shadow: 0 0 0 2px orange;
-      }
-    }
-
-    .form-field-input-container {
-      border-left-color: orange;
-    }
-  }
-
-  &--has-error {
-    .form-field-outline-container {
-      box-shadow: 0 0 0 2px red;
-
-      &:focus-within {
-        box-shadow: 0 0 0 2px red;
-      }
-    }
-
-    .form-field-input-container {
-      border-left-color: red;
-    }
-  }
-
-  &--is-filled {
-    .form-field-outline-container {
-      &:focus-within {
-        box-shadow: 0 0 0 2px green;
-      }
-    }
-
-    .form-field-input-container {
-      border-left-color: green;
-    }
   }
 }

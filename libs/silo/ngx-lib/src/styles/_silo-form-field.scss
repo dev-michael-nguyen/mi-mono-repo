@@ -1,0 +1,76 @@
+@mixin silo-form-field-color($config-or-theme) {
+  // Extract the color configuration in case a theme has been passed.
+  $config: mat-get-color-config($config-or-theme);
+  $primary: map-get($config, primary);
+  $warn: map-get($config, warn);
+  $is-dark-theme: map-get($config, is-dark);
+
+  [class*="--is-required"] {
+    .silo-form-field-outline-container {
+      &:focus-within {
+        box-shadow: 0 0 0 2px var(--highlight-color);
+      }
+    }
+
+    .silo-form-field-input-container {
+      border-left-color: var(--highlight-color);
+    }
+  }
+
+  [class*="--has-error"] {
+    .silo-form-field-outline-container {
+      box-shadow: 0 0 0 2px mat-color($warn);
+
+      &:focus-within {
+        box-shadow: 0 0 0 2px mat-color($warn);
+      }
+    }
+
+    .silo-form-field-input-container {
+      border-left-color: mat-color($warn);
+    }
+  }
+
+  [class*="--is-filled"] {
+    .silo-form-field-outline-container {
+      &:focus-within {
+        box-shadow: 0 0 0 2px var(--success-color);
+      }
+    }
+
+    .silo-form-field-input-container {
+      border-left-color: var(--success-color);
+    }
+  }
+}
+
+@mixin silo-form-field-theme($theme) {
+
+  .silo-form-field-outline-container {
+    box-sizing: border-box;
+    box-shadow: 0 0 0 1px gray;
+    border-radius: 2px;
+    margin: 4px 2px;
+
+    &:focus-within {
+      box-shadow: 0 0 0 2px black;
+    }
+  }
+
+  .silo-form-field-input-container {
+    box-sizing: border-box;
+    border-left-width: 4px;
+    border-left-style: solid;
+    border-left-color: white;
+  }
+
+  // Extracts the color and typography configurations from the theme.
+  $color: mat-get-color-config($theme);
+
+  // Do not generate styles if configurations for individual theming
+  // systems have been explicitly set to `null`.
+  @if $color !=null {
+    @include silo-form-field-color($color);
+  }
+
+}

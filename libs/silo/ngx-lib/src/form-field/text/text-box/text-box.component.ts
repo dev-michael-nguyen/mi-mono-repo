@@ -1,7 +1,5 @@
-import { Component, Input, OnInit, ViewChild } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, ValidatorFn } from '@angular/forms';
-import { MatError, MatHint } from '@angular/material/form-field';
-import { BehaviorSubject } from 'rxjs';
 import { ClassExpression } from '../../../responsive/responsive-container/responsive-container.model';
 import { randomHtmlId } from '../../../utils/random-html-id';
 import { ITextValidatorError, TextValidator } from '../text-validator';
