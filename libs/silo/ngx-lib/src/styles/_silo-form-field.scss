@@ -3,17 +3,35 @@
   $config: mat-get-color-config($config-or-theme);
   $primary: map-get($config, primary);
   $warn: map-get($config, warn);
-  $is-dark-theme: map-get($config, is-dark);
+  $is-dark: map-get($config, is-dark);
+
+  .silo-form-field-outline-container {
+    box-sizing: border-box;
+    box-shadow: 0 0 0 1px gray;
+    border-radius: 2px;
+    margin: 4px 2px;
+
+    &:focus-within {
+      box-shadow: 0 0 0 2px mat-color($primary);
+    }
+  }
+
+  .silo-form-field-input-container {
+    box-sizing: border-box;
+    border-left-width: 4px;
+    border-left-style: solid;
+    border-left-color: white;
+  }
 
   [class*="--is-required"] {
     .silo-form-field-outline-container {
       &:focus-within {
-        box-shadow: 0 0 0 2px var(--highlight-color);
+        box-shadow: 0 0 0 2px if($is-dark, mat-color($dark-theme-highlight), mat-color($light-theme-highlight));
       }
     }
 
     .silo-form-field-input-container {
-      border-left-color: var(--highlight-color);
+      border-left-color: if($is-dark, mat-color($dark-theme-highlight), mat-color($light-theme-highlight));
     }
   }
 
@@ -34,36 +52,17 @@
   [class*="--is-filled"] {
     .silo-form-field-outline-container {
       &:focus-within {
-        box-shadow: 0 0 0 2px var(--success-color);
+        box-shadow: 0 0 0 2px if($is-dark, mat-color($dark-theme-success), mat-color($light-theme-success));
       }
     }
 
     .silo-form-field-input-container {
-      border-left-color: var(--success-color);
+      border-left-color: if($is-dark, mat-color($dark-theme-success), mat-color($light-theme-success));
     }
   }
 }
 
 @mixin silo-form-field-theme($theme) {
-
-  .silo-form-field-outline-container {
-    box-sizing: border-box;
-    box-shadow: 0 0 0 1px gray;
-    border-radius: 2px;
-    margin: 4px 2px;
-
-    &:focus-within {
-      box-shadow: 0 0 0 2px black;
-    }
-  }
-
-  .silo-form-field-input-container {
-    box-sizing: border-box;
-    border-left-width: 4px;
-    border-left-style: solid;
-    border-left-color: white;
-  }
-
   // Extracts the color and typography configurations from the theme.
   $color: mat-get-color-config($theme);
 

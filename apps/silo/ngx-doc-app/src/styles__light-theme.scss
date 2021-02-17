@@ -48,11 +48,11 @@ $custom-success: (main: #9aa990,
     darker: $dark-primary-text,
   ));
 
-$theme-primary: mat-palette($mat-primary, main, lighter, darker);
-$theme-accent: mat-palette($mat-accent, main, lighter, darker);
-$theme-warn: mat-palette($mat-warn, main, lighter, darker);
-$theme-highlight: mat-palette($custom-highlight, main, lighter, darker);
-$theme-success: mat-palette($custom-success, main, lighter, darker);
-$light-theme: mat-light-theme($theme-primary, $theme-accent, $theme-warn);
+$light-theme-primary: mat-palette($mat-primary, main, lighter, darker);
+$light-theme-accent: mat-palette($mat-accent, main, lighter, darker);
+$light-theme-warn: mat-palette($mat-warn, main, lighter, darker);
+$light-theme-highlight: mat-palette($custom-highlight, main, lighter, darker);
+$light-theme-success: mat-palette($custom-success, main, lighter, darker);
+$light-theme: mat-light-theme($light-theme-primary, $light-theme-accent, $light-theme-warn);
 
 // #endregion

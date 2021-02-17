@@ -10,14 +10,13 @@
 
 // Theme Init
 @import './styles__light-theme.scss';
+@import './styles__dark-theme.scss';
 @import '../../../../libs/silo/ngx-lib/src/styles/silo-ngx-lib-theme';
 
 @include angular-material-theme($light-theme);
 @include silo-ngx-lib-theme($light-theme);
 
 .silo-dark-theme {
-  @import './styles__dark-theme.scss';
-
   @include angular-material-theme($dark-theme);
   @include silo-ngx-lib-theme($dark-theme);
 }

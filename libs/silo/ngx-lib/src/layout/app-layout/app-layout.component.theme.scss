@@ -1,25 +1,22 @@
-@mixin silo-nav-list-color($config-or-theme) {
+@mixin silo-app-layout-color($config-or-theme) {
   // Extract the color configuration in case a theme has been passed.
   $config: mat-get-color-config($config-or-theme);
-  $primary: map-get($config, primary);
+  $is-dark-theme: map-get($config, is-dark);
 
   // Define any styles affected by the theme.
-  .silo-nav-list-link {
-
-    &.active,
-    :hover {
-      color: mat-color($primary);
-    }
+  .silo-app-layout {
+    color: if($is-dark-theme, $light-text, $dark-text);
+    background-color: if($is-dark-theme, $dark-background, $light-background);
   }
 }
 
-@mixin silo-nav-list-theme($theme) {
+@mixin silo-app-layout-theme($theme) {
   // Extracts the color and typography configurations from the theme.
   $color: mat-get-color-config($theme);
 
   // Do not generate styles if configurations for individual theming
   // systems have been explicitly set to `null`.
   @if $color !=null {
-    @include silo-nav-list-color($color);
+    @include silo-app-layout-color($color);
   }
 }
