@@ -65,3 +65,25 @@ $theme-warn: mat-palette($mat-warn, main, lighter, darker);
 $light-theme: mat-light-theme($theme-primary, $theme-accent, $theme-warn);
 
 // #endregion
+
+// #region Additional global light color variables
+
+body {
+  --highlight-color: #e8a54a;
+  --highlight-lighter-color: #f8e4c9;
+  --highlight-darker-color: #de8a32;
+  --text-highlight-color: #{$dark-primary-text};
+  --text-highlight-lighter-color: #{$dark-primary-text};
+  --text-highlight-darker-color: #{$dark-primary-text};
+}
+
+body {
+  --success-color: #9aa990;
+  --success-lighter-color: #e1e5de;
+  --success-darker-color: #7e8f73;
+  --text-success-color: #{$dark-primary-text};
+  --text-success-lighter-color: #{$dark-primary-text};
+  --text-success-darker-color: #{$dark-primary-text};
+}
+
+// #endregion
