@@ -17,32 +17,30 @@ const routes: Routes = [
       },
       {
         path: 'preview',
-        component: PreviewViewComponent
+        component: PreviewViewComponent,
       },
       {
         path: 'text-box',
-        loadChildren: () => import(
-          /* webpackChunkName: 'text-box-module' */
-          '../component-doc/text-box/routing.module').then(m => m.RoutingModule)
+        loadChildren: () =>
+          import(
+            /* webpackChunkName: 'text-box-doc-module' */
+            '../component-doc/text-box/routing.module'
+          ).then((m) => m.RoutingModule),
       },
       {
         path: 'text-area',
-        loadChildren: () => import(
-          /* webpackChunkName: 'text-area-module' */
-          '../component-doc/text-area/routing.module').then(m => m.RoutingModule)
+        loadChildren: () =>
+          import(
+            /* webpackChunkName: 'text-area-doc-module' */
+            '../component-doc/text-area/routing.module'
+          ).then((m) => m.RoutingModule),
       },
-    ]
-  }
+    ],
+  },
 ];
 
 @NgModule({
-  imports: [
-    ListViewModule,
-    PreviewViewModule,
-    RouterModule.forChild(routes),
-  ],
-  exports: [
-    RouterModule
-  ]
+  imports: [ListViewModule, PreviewViewModule, RouterModule.forChild(routes)],
+  exports: [RouterModule],
 })
-export class RoutingModule { }
+export class RoutingModule {}

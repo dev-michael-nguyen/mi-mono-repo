@@ -9,24 +9,22 @@ const routes: Routes = [
   },
   {
     path: 'components',
-    loadChildren: () => import(
-      /* webpackChunkName: 'component-doc' */
-      '../component-doc/routing.module').then(m => m.RoutingModule),
-  }
+    loadChildren: () =>
+      import(
+        /* webpackChunkName: 'component-doc' */
+        '../component-doc/routing.module'
+      ).then((m) => m.RoutingModule),
+  },
 ];
 
 @NgModule({
   imports: [
-    RouterModule.forRoot(
-      routes,
-      {
-        useHash: true,
-        initialNavigation: 'enabled'
-      }
-    )
+    RouterModule.forRoot(routes, {
+      useHash: true,
+      initialNavigation: 'enabled',
+      relativeLinkResolution: 'legacy',
+    }),
   ],
-  exports: [
-    RouterModule
-  ]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

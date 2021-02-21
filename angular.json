@@ -36,19 +36,21 @@
           },
           "configurations": {
             "production": {
-              "fileReplacements": [{
-                "replace": "apps/resume/src/environments/environment.ts",
-                "with": "apps/resume/src/environments/environment.prod.ts"
-              }],
+              "fileReplacements": [
+                {
+                  "replace": "apps/resume/src/environments/environment.ts",
+                  "with": "apps/resume/src/environments/environment.prod.ts"
+                }
+              ],
               "optimization": true,
               "outputHashing": "all",
               "sourceMap": false,
-              "extractCss": true,
               "namedChunks": true,
               "extractLicenses": true,
               "vendorChunk": false,
               "buildOptimizer": true,
-              "budgets": [{
+              "budgets": [
+                {
                   "type": "initial",
                   "maximumWarning": "2mb",
                   "maximumError": "5mb"
@@ -60,7 +62,8 @@
                 }
               ]
             }
-          }
+          },
+          "outputs": ["{options.outputPath}"]
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
@@ -94,7 +97,8 @@
           "options": {
             "jestConfig": "apps/resume/jest.config.js",
             "passWithNoTests": true
-          }
+          },
+          "outputs": ["coverage/apps/resume"]
         }
       }
     },
@@ -130,19 +134,21 @@
           },
           "configurations": {
             "production": {
-              "fileReplacements": [{
-                "replace": "apps/silo/ngx-doc-app/src/environments/environment.ts",
-                "with": "apps/silo/ngx-doc-app/src/environments/environment.prod.ts"
-              }],
+              "fileReplacements": [
+                {
+                  "replace": "apps/silo/ngx-doc-app/src/environments/environment.ts",
+                  "with": "apps/silo/ngx-doc-app/src/environments/environment.prod.ts"
+                }
+              ],
               "optimization": true,
               "outputHashing": "all",
               "sourceMap": false,
-              "extractCss": true,
               "namedChunks": false,
               "extractLicenses": true,
               "vendorChunk": false,
               "buildOptimizer": true,
-              "budgets": [{
+              "budgets": [
+                {
                   "type": "initial",
                   "maximumWarning": "2mb",
                   "maximumError": "5mb"
@@ -154,7 +160,8 @@
                 }
               ]
             }
-          }
+          },
+          "outputs": ["{options.outputPath}"]
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
@@ -189,7 +196,8 @@
           "options": {
             "jestConfig": "apps/silo/ngx-doc-app/jest.config.js",
             "passWithNoTests": true
-          }
+          },
+          "outputs": ["coverage/apps/silo/ngx-doc-app"]
         }
       }
     },
@@ -214,7 +222,8 @@
           "options": {
             "jestConfig": "libs/mi-angular-ui/jest.config.js",
             "passWithNoTests": true
-          }
+          },
+          "outputs": ["coverage/libs/mi-angular-ui"]
         }
       },
       "schematics": {
@@ -244,7 +253,8 @@
           "options": {
             "jestConfig": "libs/mi-metadata/jest.config.js",
             "passWithNoTests": true
-          }
+          },
+          "outputs": ["coverage/libs/mi-metadata"]
         }
       },
       "schematics": {
@@ -286,7 +296,8 @@
           "options": {
             "jestConfig": "libs/silo/ngx-lib/jest.config.js",
             "passWithNoTests": true
-          }
+          },
+          "outputs": ["coverage/libs/silo/ngx-lib"]
         }
       },
       "schematics": {

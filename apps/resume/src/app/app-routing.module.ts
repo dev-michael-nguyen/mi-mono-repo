@@ -9,25 +9,22 @@ const routes: Routes = [
   },
   {
     path: 'resume',
-    loadChildren: () => import(
-      /* webpackChunkName: 'resume-view' */
-      '../views/resume-view/resume-view.module')
-      .then(m => m.ResumeViewModule)
-  }
+    loadChildren: () =>
+      import(
+        /* webpackChunkName: 'resume-view' */
+        '../views/resume-view/resume-view.module'
+      ).then((m) => m.ResumeViewModule),
+  },
 ];
 
 @NgModule({
   imports: [
-    RouterModule.forRoot(
-      routes,
-      {
-        useHash: true,
-        initialNavigation: 'enabled'
-      }
-    )
+    RouterModule.forRoot(routes, {
+      useHash: true,
+      initialNavigation: 'enabled',
+      relativeLinkResolution: 'legacy',
+    }),
   ],
-  exports: [
-    RouterModule
-  ]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}
