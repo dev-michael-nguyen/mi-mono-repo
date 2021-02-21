@@ -28,6 +28,15 @@
           [value]="textFormControl.value"
           [required]="isRequired"
         />
+        <button
+          *ngIf="textFormControl.value"
+          mat-icon-button
+          mat-icon-button
+          aria-label="Clear"
+          (click)="clearForm()"
+        >
+          <mat-icon>close</mat-icon>
+        </button>
       </div>
     </div>
   </silo-responsive-container>
