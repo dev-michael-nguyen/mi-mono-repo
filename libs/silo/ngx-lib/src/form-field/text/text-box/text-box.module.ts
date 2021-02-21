@@ -16,13 +16,9 @@ import { TextBoxComponent } from './text-box.component';
     MatIconModule,
     MatInputModule,
     ReactiveFormsModule,
-    ResponsiveContainerModule
+    ResponsiveContainerModule,
   ],
-  declarations: [
-    TextBoxComponent
-  ],
-  exports: [
-    TextBoxComponent
-  ],
+  declarations: [TextBoxComponent],
+  exports: [TextBoxComponent],
 })
-export class TextBoxModule { } 
+export class TextBoxModule {}

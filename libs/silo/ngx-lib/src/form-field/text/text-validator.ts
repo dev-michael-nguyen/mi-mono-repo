@@ -7,21 +7,20 @@ export interface ITextValidatorError {
 }
 
 export class TextValidator {
-
   createRequiredValidator(message = 'This field is required.'): ValidatorFn {
     return (control: AbstractControl): ITextValidatorError | null => {
-      const value = control.value === null || control.value === undefined
-        ? ''
-        : control.value;
+      const value =
+        control.value === null || control.value === undefined
+          ? ''
+          : control.value;
 
-      if (typeof value !== 'string') { return null; }
+      if (typeof value !== 'string') {
+        return null;
+      }
 
       const isWhitespace = value.trim().length === 0;
 
-      return !isWhitespace
-        ? null
-        : { isRequired: { message } };
+      return !isWhitespace ? null : { isRequired: { message } };
     };
   }
-
 }

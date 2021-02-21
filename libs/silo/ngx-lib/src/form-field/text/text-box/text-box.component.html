@@ -1,30 +1,50 @@
-<silo-responsive-container class="silo-text-box"
-                           [class.silo-text-box--is-required]="isRequired"
-                           [class.silo-text-box--is-filled]="isRequired && formGroup.dirty && formGroup.valid"
-                           [class.silo-text-box--has-error]="isRequired && formGroup.dirty && formGroup.invalid"
-                           [colExpression]="fieldSize">
+<silo-responsive-container
+  class="silo-text-box"
+  [class.silo-text-box--is-required]="isRequired"
+  [class.silo-text-box--is-filled]="
+    isRequired && formGroup.dirty && formGroup.valid
+  "
+  [class.silo-text-box--has-error]="
+    isRequired && formGroup.dirty && formGroup.invalid
+  "
+  [colExpression]="fieldSize"
+>
   <div class="silo-form-field-label-container">
     <label [id]="labelId" class="silo-text-box__label">
       {{ label }}
     </label>
   </div>
-  <div class="silo-form-field-outline-container">
-    <div class="silo-form-field-input-container">
-      <input type="text"
-             matInput
-             type="text"
-             spellcheck="true"
-             [attr.aria-labelledby]="labelId"
-             [attr.aria-describedby]="describebyId"
-             [placeholder]="placeholder"
-             [formControl]="textFormControl"
-             [value]="textFormControl.value"
-             [required]="isRequired" />
+  <silo-responsive-container [colExpression]="outlineSize">
+    <div class="silo-form-field-outline-container">
+      <div class="silo-form-field-input-container">
+        <input
+          type="text"
+          matInput
+          type="text"
+          spellcheck="true"
+          [attr.aria-labelledby]="labelId"
+          [attr.aria-describedby]="describebyId"
+          [placeholder]="placeholder"
+          [formControl]="textFormControl"
+          [value]="textFormControl.value"
+          [required]="isRequired"
+        />
+      </div>
     </div>
-  </div>
-  <div [id]="describebyId"
-       class="silo-form-field-message-container">
-    <span class="mat-hint" *ngIf="hint && !(textFormControl.dirty && textFormControl.invalid)">{{ hint }}</span>
-    <span class="mat-error" role="alert" *ngIf="textFormControl.dirty && textFormControl.invalid">{{ getErrorMessage() }}</span>
+  </silo-responsive-container>
+  <div [id]="describebyId" class="silo-form-field-message-container">
+    <span
+      class="mat-hint"
+      *ngIf="hint && !(textFormControl.dirty && textFormControl.invalid)"
+    >
+      {{ hint }}
+    </span>
+    <span
+      class="mat-error"
+      role="alert"
+      *ngIf="textFormControl.dirty && textFormControl.invalid"
+    >
+      {{ getErrorMessage() }}
+    </span>
   </div>
 </silo-responsive-container>

@@ -9,6 +9,7 @@
     box-sizing: border-box;
     box-shadow: 0 0 0 1px gray;
     border-radius: 2px;
+    width: 100%;
     margin: 4px 2px;
 
     &:focus-within {
@@ -23,19 +24,28 @@
     border-left-color: white;
   }
 
-  [class*="--is-required"] {
+  [class*='--is-required'] {
     .silo-form-field-outline-container {
       &:focus-within {
-        box-shadow: 0 0 0 2px if($is-dark, mat-color($dark-theme-highlight), mat-color($light-theme-highlight));
+        box-shadow: 0 0 0 2px
+          if(
+            $is-dark,
+            mat-color($dark-theme-highlight),
+            mat-color($light-theme-highlight)
+          );
       }
     }
 
     .silo-form-field-input-container {
-      border-left-color: if($is-dark, mat-color($dark-theme-highlight), mat-color($light-theme-highlight));
+      border-left-color: if(
+        $is-dark,
+        mat-color($dark-theme-highlight),
+        mat-color($light-theme-highlight)
+      );
     }
   }
 
-  [class*="--has-error"] {
+  [class*='--has-error'] {
     .silo-form-field-outline-container {
       box-shadow: 0 0 0 2px mat-color($warn);
 
@@ -49,15 +59,24 @@
     }
   }
 
-  [class*="--is-filled"] {
+  [class*='--is-filled'] {
     .silo-form-field-outline-container {
       &:focus-within {
-        box-shadow: 0 0 0 2px if($is-dark, mat-color($dark-theme-success), mat-color($light-theme-success));
+        box-shadow: 0 0 0 2px
+          if(
+            $is-dark,
+            mat-color($dark-theme-success),
+            mat-color($light-theme-success)
+          );
       }
     }
 
     .silo-form-field-input-container {
-      border-left-color: if($is-dark, mat-color($dark-theme-success), mat-color($light-theme-success));
+      border-left-color: if(
+        $is-dark,
+        mat-color($dark-theme-success),
+        mat-color($light-theme-success)
+      );
     }
   }
 }
@@ -71,5 +90,4 @@
   @if $color !=null {
     @include silo-form-field-color($color);
   }
-
 }
