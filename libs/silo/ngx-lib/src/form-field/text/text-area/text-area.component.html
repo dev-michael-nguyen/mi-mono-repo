@@ -1,10 +1,10 @@
 <silo-responsive-container
-  class="silo-text-box"
-  [class.silo-text-box--is-required]="isRequired"
-  [class.silo-text-box--is-filled]="
+  class="silo-text-area"
+  [class.silo-text-area--is-required]="isRequired"
+  [class.silo-text-area--is-filled]="
     isRequired && formGroup.dirty && formGroup.valid
   "
-  [class.silo-text-box--has-error]="
+  [class.silo-text-area--has-error]="
     isRequired && formGroup.dirty && formGroup.invalid
   "
   [colExpression]="fieldSize"
@@ -17,8 +17,9 @@
   <silo-responsive-container [colExpression]="outlineSize">
     <div class="silo-form-field-outline-container">
       <div class="silo-form-field-input-container">
-        <input
+        <textarea
           matInput
+          cdkTextareaAutosize
           type="text"
           spellcheck="true"
           [attr.aria-labelledby]="labelId"
@@ -27,7 +28,8 @@
           [formControl]="textFormControl"
           [value]="textFormControl.value"
           [required]="isRequired"
-        />
+        >
+        </textarea>
       </div>
     </div>
   </silo-responsive-container>

@@ -10,8 +10,8 @@ const routes: Routes = [
     component: RouterTabLayoutComponent,
     data: {
       navList: [
-        { label: 'Example', routerLink: 'example' }
-      ] as Array<INavListItemModel>
+        { label: 'Example', routerLink: 'example' },
+      ] as Array<INavListItemModel>,
     },
     children: [
       {
@@ -21,19 +21,14 @@ const routes: Routes = [
       },
       {
         path: 'example',
-        component: ExampleViewComponent
+        component: ExampleViewComponent,
       },
-    ]
-  }
+    ],
+  },
 ];
 
 @NgModule({
-  imports: [
-    ExampleViewModule,
-    RouterModule.forChild(routes),
-  ],
-  exports: [
-    RouterModule
-  ]
+  imports: [ExampleViewModule, RouterModule.forChild(routes)],
+  exports: [RouterModule],
 })
-export class RoutingModule { }
+export class RoutingModule {}
