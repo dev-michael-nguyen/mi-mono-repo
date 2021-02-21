@@ -1,3 +1,43 @@
-<p>
-  example-view works!
-</p>
+<silo-example-article>
+  <ng-container headerContent>
+    <p>Text area is not required</p>
+  </ng-container>
+  <ng-container bodyContent>
+    <silo-text-area label="Label"></silo-text-area>
+  </ng-container>
+</silo-example-article>
+
+<silo-example-article>
+  <ng-container headerContent>
+    <p>Text area is required</p>
+  </ng-container>
+  <ng-container bodyContent>
+    <silo-text-area label="Label" [isRequired]="true"></silo-text-area>
+  </ng-container>
+</silo-example-article>
+
+<silo-example-article>
+  <ng-container headerContent>
+    <p>Text area with hint</p>
+  </ng-container>
+  <ng-container bodyContent>
+    <silo-text-area
+      label="Label"
+      [isRequired]="true"
+      hint="Please fill out this field"
+    >
+    </silo-text-area>
+  </ng-container>
+</silo-example-article>
+
+<silo-example-article>
+  <ng-container headerContent>
+    <p>Text area with long label</p>
+  </ng-container>
+  <ng-container bodyContent>
+    <silo-text-area
+      label="Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec velit neque, auctor sit amet aliquam vel, ullamcorper sit amet ligula."
+    >
+    </silo-text-area>
+  </ng-container>
+</silo-example-article>

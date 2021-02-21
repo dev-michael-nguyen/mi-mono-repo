@@ -5,11 +5,7 @@ import { ExampleArticleModule } from '../../../../components/example-article/exa
 import { ExampleViewComponent } from './example-view.component';
 
 @NgModule({
-  imports: [
-    CommonModule,
-    ExampleArticleModule,
-    TextBoxModule
-  ],
-  declarations: [ExampleViewComponent]
+  imports: [CommonModule, ExampleArticleModule, TextBoxModule],
+  declarations: [ExampleViewComponent],
 })
-export class ExampleViewModule { }
+export class ExampleViewModule {}

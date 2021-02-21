@@ -4,8 +4,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
-import { ResponsiveContainerModule } from '../../../responsive/responsive-container/responsive-container.module';
-import { TextBoxComponent } from './text-box.component';
+import { ResponsiveContainerModule } from './../../../responsive/responsive-container/responsive-container.module';
+import { TextAreaComponent } from './text-area.component';
 
 @NgModule({
   imports: [
@@ -16,7 +16,7 @@ import { TextBoxComponent } from './text-box.component';
     ReactiveFormsModule,
     ResponsiveContainerModule,
   ],
-  declarations: [TextBoxComponent],
-  exports: [TextBoxComponent],
+  declarations: [TextAreaComponent],
+  exports: [TextAreaComponent],
 })
-export class TextBoxModule {}
+export class TextAreaModule {}
