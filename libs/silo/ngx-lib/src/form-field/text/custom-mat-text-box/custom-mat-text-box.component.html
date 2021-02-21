@@ -1,0 +1,29 @@
+<div class="custom-mat-text-box">
+  <div class="silo-form-field-label-container">
+    <label [id]="labelId" class="silo-form-field__label">
+      {{ label }}
+    </label>
+  </div>
+  <mat-form-field appearance="legacy">
+    <input
+      matInput
+      type="text"
+      spellcheck="true"
+      [attr.aria-labelledby]="labelId"
+      [placeholder]="placeholder"
+      [formControl]="textFormControl"
+      [value]="textFormControl.value"
+      [required]="isRequired"
+    />
+    <button
+      *ngIf="textFormControl.value"
+      mat-icon-button
+      matSuffix
+      aria-label="Clear"
+      (click)="clearForm()"
+    >
+      <mat-icon>close</mat-icon>
+    </button>
+    <mat-hint *ngIf="hint">{{ hint }}</mat-hint>
+  </mat-form-field>
+</div>
