@@ -10,16 +10,30 @@
     "importHelpers": true,
     "target": "es2015",
     "module": "esnext",
-    "typeRoots": ["node_modules/@types"],
-    "lib": ["es2017", "dom"],
+    "typeRoots": [
+      "node_modules/@types"
+    ],
+    "lib": [
+      "es2017",
+      "dom"
+    ],
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@mi-angular-ui": ["libs/mi-angular-ui/src/index.ts"],
-      "@mi-metadata": ["libs/mi-metadata/src/index.ts"],
-      "@silo/ngx": ["libs/silo/ngx-lib/src/index.ts"]
+      "@mi-angular-ui": [
+        "libs/mi-angular-ui/src/index.ts"
+      ],
+      "@mi-metadata": [
+        "libs/mi-metadata/src/index.ts"
+      ],
+      "@silo/ngx": [
+        "libs/silo/ngx-lib/src/index.ts"
+      ]
     }
   },
-  "exclude": ["node_modules", "tmp"]
+  "exclude": [
+    "node_modules",
+    "tmp"
+  ]
 }

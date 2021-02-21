@@ -5,15 +5,15 @@
     "christian-kohler.path-intellisense",
     "coenraads.bracket-pair-colorizer",
     "davidanson.vscode-markdownlint",
-    "hookyqr.beautify",
+    "dbaeumer.vscode-eslint",
+    "esbenp.prettier-vscode",
+    "firsttris.vscode-jest-runner",
     "mikael.angular-beastcode",
     "ms-vscode.vscode-typescript-tslint-plugin",
     "nrwl.angular-console",
     "quicktype.quicktype",
     "steoates.autoimport",
-    "streetsidesoftware.code-spell-checker",
     "stringham.move-ts",
     "tyriar.sort-lines",
-    "firsttris.vscode-jest-runner"
   ]
 }
