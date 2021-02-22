@@ -5,6 +5,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
+import { ResponsiveContainerModule } from '../../../responsive/responsive-container/responsive-container.module';
 import { CustomMatTextBoxComponent } from './custom-mat-text-box.component';
 
 @NgModule({
@@ -15,6 +16,7 @@ import { CustomMatTextBoxComponent } from './custom-mat-text-box.component';
     MatIconModule,
     MatInputModule,
     ReactiveFormsModule,
+    ResponsiveContainerModule,
   ],
   declarations: [CustomMatTextBoxComponent],
   exports: [CustomMatTextBoxComponent],

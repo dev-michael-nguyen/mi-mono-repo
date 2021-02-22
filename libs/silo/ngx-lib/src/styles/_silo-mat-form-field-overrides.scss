@@ -1,0 +1,100 @@
+@mixin silo-mat-form-field-override-color($config-or-theme) {
+  // Extract the color configuration in case a theme has been passed.
+  $config: mat-get-color-config($config-or-theme);
+  $primary: map-get($config, primary);
+  $warn: map-get($config, warn);
+  $is-dark: map-get($config, is-dark);
+
+  .mat-form-field-appearance-legacy {
+    width: 100%;
+
+    .mat-form-field-flex {
+      box-sizing: border-box;
+      box-shadow: 0 0 0 1px gray;
+      border-radius: 2px;
+
+      &:focus-within {
+        box-shadow: 0 0 0 2px mat-color($primary);
+      }
+    }
+
+    .mat-form-field-infix {
+      border-top: initial;
+      padding: 0.5em 0.25em;
+      border-left-width: 4px;
+      border-left-style: solid;
+      border-left-color: white;
+    }
+
+    .mat-form-field-underline {
+      display: none;
+    }
+  }
+
+  [class*='--is-required'] {
+    .mat-form-field-flex {
+      &:focus-within {
+        box-shadow: 0 0 0 2px
+          if(
+            $is-dark,
+            mat-color($dark-theme-highlight),
+            mat-color($light-theme-highlight)
+          );
+      }
+    }
+
+    .mat-form-field-infix {
+      border-left-color: if(
+        $is-dark,
+        mat-color($dark-theme-highlight),
+        mat-color($light-theme-highlight)
+      );
+    }
+  }
+
+  [class*='--has-error'] {
+    .mat-form-field-flex {
+      box-shadow: 0 0 0 2px mat-color($warn);
+
+      &:focus-within {
+        box-shadow: 0 0 0 2px mat-color($warn);
+      }
+    }
+
+    .mat-form-field-infix {
+      border-left-color: mat-color($warn);
+    }
+  }
+
+  [class*='--is-filled'] {
+    .mat-form-field-flex {
+      &:focus-within {
+        box-shadow: 0 0 0 2px
+          if(
+            $is-dark,
+            mat-color($dark-theme-success),
+            mat-color($light-theme-success)
+          );
+      }
+    }
+
+    .mat-form-field-infix {
+      border-left-color: if(
+        $is-dark,
+        mat-color($dark-theme-success),
+        mat-color($light-theme-success)
+      );
+    }
+  }
+}
+
+@mixin silo-mat-form-field-override-theme($theme) {
+  // Extracts the color and typography configurations from the theme.
+  $color: mat-get-color-config($theme);
+
+  // Do not generate styles if configurations for individual theming
+  // systems have been explicitly set to `null`.
+  @if $color !=null {
+    @include silo-mat-form-field-override-color($color);
+  }
+}

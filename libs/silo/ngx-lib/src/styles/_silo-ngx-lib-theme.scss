@@ -1,11 +1,13 @@
-@import './mat-overrides';
 @import './silo-form-field';
+@import './silo-mat-form-field-overrides';
 @import '../layout/app-layout/app-layout.component.theme.scss';
 @import '../navigation/nav-list/nav-list.component.theme.scss';
+@import '../responsive/responsive-container/responsive-container.component.theme.scss';
 
 @mixin silo-ngx-lib-theme($theme) {
-  @include mat-override-theme($theme);
   @include silo-form-field-theme($theme);
+  @include silo-mat-form-field-override-theme($theme);
   @include silo-app-layout-theme($theme);
   @include silo-nav-list-theme($theme);
+  @include silo-responsive-container-theme($theme);
 }

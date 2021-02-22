@@ -1,10 +1,20 @@
-<div class="custom-mat-text-box">
+<div
+  class="custom-mat-text-box"
+  [class.custom-mat-text-box--is-required]="isRequired"
+  [class.custom-mat-text-box--is-filled]="
+    isRequired && formGroup.dirty && formGroup.valid
+  "
+  [class.custom-mat-text-box--has-error]="
+    isRequired && formGroup.dirty && formGroup.invalid
+  "
+  [siloResponsiveContainer]="fieldSize"
+>
   <div class="silo-form-field-label-container">
     <label [id]="labelId" class="silo-form-field__label">
       {{ label }}
     </label>
   </div>
-  <mat-form-field appearance="legacy">
+  <mat-form-field appearance="legacy" [siloResponsiveContainer]="outlineSize">
     <input
       matInput
       type="text"
@@ -25,5 +35,8 @@
       <mat-icon>close</mat-icon>
     </button>
     <mat-hint *ngIf="hint">{{ hint }}</mat-hint>
+    <mat-error *ngIf="textFormControl.invalid">
+      {{ getErrorMessage() }}
+    </mat-error>
   </mat-form-field>
 </div>

@@ -1,21 +1,9 @@
 <silo-example-article>
   <ng-container headerContent>
-    <p>Custom material text box</p>
-  </ng-container>
-  <ng-container bodyContent>
-    <silo-custom-mat-text-box
-      label="Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui."
-    >
-    </silo-custom-mat-text-box>
-  </ng-container>
-</silo-example-article>
-
-<silo-example-article>
-  <ng-container headerContent>
     <p>Text box is not required</p>
   </ng-container>
   <ng-container bodyContent>
-    <silo-text-box label="Label"></silo-text-box>
+    <silo-custom-mat-text-box label="Label"></silo-custom-mat-text-box>
   </ng-container>
 </silo-example-article>
 
@@ -24,7 +12,10 @@
     <p>Text box is required</p>
   </ng-container>
   <ng-container bodyContent>
-    <silo-text-box label="Label" [isRequired]="true"></silo-text-box>
+    <silo-custom-mat-text-box
+      label="Label"
+      [isRequired]="true"
+    ></silo-custom-mat-text-box>
   </ng-container>
 </silo-example-article>
 
@@ -33,12 +24,12 @@
     <p>Text box with hint</p>
   </ng-container>
   <ng-container bodyContent>
-    <silo-text-box
+    <silo-custom-mat-text-box
       label="Label"
       [isRequired]="true"
       hint="Please fill out this field"
     >
-    </silo-text-box>
+    </silo-custom-mat-text-box>
   </ng-container>
 </silo-example-article>
 
@@ -47,11 +38,11 @@
     <p>Text box with long label</p>
   </ng-container>
   <ng-container bodyContent>
-    <silo-text-box
+    <silo-custom-mat-text-box
       label="Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec velit neque, auctor sit amet aliquam vel, ullamcorper sit amet ligula."
       fieldSize="col-6"
       outlineSize="col-4"
     >
-    </silo-text-box>
+    </silo-custom-mat-text-box>
   </ng-container>
 </silo-example-article>
