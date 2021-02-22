@@ -5,7 +5,7 @@
     isRequired && formGroup.dirty && formGroup.valid
   "
   [class.custom-mat-text-box--has-error]="
-    isRequired && formGroup.dirty && formGroup.invalid
+    isRequired && formGroup.touched && formGroup.invalid
   "
   [siloResponsiveContainer]="fieldSize"
 >
