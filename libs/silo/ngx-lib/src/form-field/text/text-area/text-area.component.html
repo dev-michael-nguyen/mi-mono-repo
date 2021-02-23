@@ -1,10 +1,10 @@
 <div
-  class="custom-mat-text-area"
-  [class.custom-mat-text-area--is-required]="isRequired"
-  [class.custom-mat-text-area--is-filled]="
+  class="silo-text-area"
+  [class.silo-text-area--is-required]="isRequired"
+  [class.silo-text-area--is-filled]="
     isRequired && formGroup.dirty && formGroup.valid
   "
-  [class.custom-mat-text-area--has-error]="
+  [class.silo-text-area--has-error]="
     isRequired && formGroup.touched && formGroup.invalid
   "
   [siloResponsiveContainer]="fieldSize"
