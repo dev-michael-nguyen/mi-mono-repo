@@ -2,11 +2,36 @@
   // Extract the color configuration in case a theme has been passed.
   $config: mat-get-color-config($config-or-theme);
   $is-dark-theme: map-get($config, is-dark);
+  $primary: map-get($config, primary);
 
-  // Define any styles affected by the theme.
+  // Toggle light/dark color
   .silo-app-layout {
     color: if($is-dark-theme, $light-text, $dark-text);
     background-color: if($is-dark-theme, $dark-background, $light-background);
+  }
+
+  // Custom scrollbar
+  html {
+    /* Works on Firefox */
+    * {
+      scrollbar-width: thin;
+      scrollbar-color: mat-color($primary, darker) transparent;
+    }
+
+    /* Works on Chrome, Edge, and Safari */
+    *::-webkit-scrollbar {
+      width: 12px;
+    }
+
+    *::-webkit-scrollbar-track {
+      background: transparent;
+    }
+
+    *::-webkit-scrollbar-thumb {
+      background-color: mat-color($primary, darker);
+      border-radius: 20px;
+      border: 4px solid transparent;
+    }
   }
 }
 

@@ -1,12 +1,18 @@
 html {
+  box-sizing: border-box;
   height: 100%;
   width: 100%;
 
   body {
+    box-sizing: border-box;
     height: 100%;
     width: 100%;
     margin: 0;
     font-family: Roboto, 'Helvetica Neue', sans-serif;
     font-size: 16px;
+
+    div {
+      box-sizing: border-box;
+    }
   }
 }
