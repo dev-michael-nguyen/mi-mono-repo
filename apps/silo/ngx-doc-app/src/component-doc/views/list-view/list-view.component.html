@@ -1,16 +1,12 @@
-<div class="list-view"
-     siloStickyLayout>
-  <div fxLayout="row"
-       siloStickyLayoutBody>
-    <div fxFlex="none"
-         siloStickyLayout>
-      <div siloStickyLayoutBody>
+<div class="list-view" siloStickyLayout>
+  <div class="list-view__body" fxLayout="row" siloStickyLayoutBody>
+    <div class="list-view__side-nav" fxFlex="none" siloStickyLayout>
+      <div class="list-view__side-nav__body" siloStickyLayoutBody>
         <silo-nav-list [lookupList]="componentNavList"></silo-nav-list>
       </div>
     </div>
-    <div fxFlex
-         siloStickyLayout>
-      <div siloStickyLayoutBody>
+    <div class="list-view__content" fxFlex siloStickyLayout>
+      <div class="list-view__content__body" siloStickyLayoutBody>
         <router-outlet></router-outlet>
       </div>
     </div>
