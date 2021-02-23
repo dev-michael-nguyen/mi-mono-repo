@@ -3,12 +3,20 @@
   $config: mat-get-color-config($config-or-theme);
   $primary: map-get($config, primary);
 
+  .silo-nav-list {
+    background-color: mat-color($primary);
+  }
+
   // Define any styles affected by the theme.
   .silo-nav-list-link {
+    color: $light-text !important;
 
     &.active,
-    :hover {
-      color: mat-color($primary);
+    :active,
+    :hover,
+    :focus {
+      background-color: $light-text !important;
+      color: mat-color($primary) !important;
     }
   }
 }

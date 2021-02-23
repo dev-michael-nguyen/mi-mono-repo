@@ -1,15 +1,17 @@
-<div class="silo-nav-list">
-  <mat-nav-list>
+<div class="silo-nav-list" siloStickyLayout>
+  <mat-nav-list siloStickyLayoutBody>
     <ng-container *ngFor="let item of lookupList">
-      <a class="silo-nav-list-link"
-      role="button"
-      [title]="item.tooltip ? item.tooltip : ''"
-      [attr.aria-label]="item.ariaLabel ? item.ariaLabel : item.label"
-      mat-list-item
-      [routerLink]="item.routerLink"
-      routerLinkActive
-      #rla="routerLinkActive"
-      [class.active]="rla.isActive">
+      <a
+        class="silo-nav-list-link"
+        role="button"
+        [title]="item.tooltip ? item.tooltip : ''"
+        [attr.aria-label]="item.ariaLabel ? item.ariaLabel : item.label"
+        mat-list-item
+        [routerLink]="item.routerLink"
+        routerLinkActive
+        #rla="routerLinkActive"
+        [class.active]="rla.isActive"
+      >
         {{ item.label }}
       </a>
     </ng-container>

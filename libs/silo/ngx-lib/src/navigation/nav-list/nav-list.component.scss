@@ -1,1 +1,6 @@
-
+.silo-nav-list {
+  border-radius: 0 8px 8px 0;
+  mat-nav-list {
+    padding: 8px 0;
+  }
+}
