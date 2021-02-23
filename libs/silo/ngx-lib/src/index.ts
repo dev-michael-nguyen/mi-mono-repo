@@ -1,5 +1,3 @@
-export * from './form-field/text/custom-mat-text-box/custom-mat-text-box.public-api';
-export * from './form-field/text/custom-mat-text-area/custom-mat-text-area.public-api';
 export * from './form-field/text/text-area/text-area.public-api';
 export * from './form-field/text/text-box/text-box.public-api';
 export * from './layout/app-layout/app-layout.public-api';

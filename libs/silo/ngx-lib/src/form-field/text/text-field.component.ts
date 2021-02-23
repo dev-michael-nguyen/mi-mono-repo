@@ -10,7 +10,7 @@ import { randomHtmlId } from '../../utils/random-html-id';
 import { TextValidator, ITextValidatorError } from './text-validator';
 
 @Directive()
-export class TextFieldComponent implements OnInit {
+export class SiloTextFieldComponent implements OnInit {
   formGroup: FormGroup;
   textFormControl: FormControl;
   labelId: string;

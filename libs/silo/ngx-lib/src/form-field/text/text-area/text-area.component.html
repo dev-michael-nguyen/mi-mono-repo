@@ -1,51 +1,35 @@
-<silo-responsive-container
-  class="silo-text-area"
-  [class.silo-text-area--is-required]="isRequired"
-  [class.silo-text-area--is-filled]="
+<div
+  class="custom-mat-text-area"
+  [class.custom-mat-text-area--is-required]="isRequired"
+  [class.custom-mat-text-area--is-filled]="
     isRequired && formGroup.dirty && formGroup.valid
   "
-  [class.silo-text-area--has-error]="
-    isRequired && formGroup.dirty && formGroup.invalid
+  [class.custom-mat-text-area--has-error]="
+    isRequired && formGroup.touched && formGroup.invalid
   "
-  [colExpression]="fieldSize"
+  [siloResponsiveContainer]="fieldSize"
 >
   <div class="silo-form-field-label-container">
     <label [id]="labelId" class="silo-form-field__label">
       {{ label }}
     </label>
   </div>
-  <silo-responsive-container [colExpression]="outlineSize">
-    <div class="silo-form-field-outline-container">
-      <div class="silo-form-field-input-container">
-        <textarea
-          matInput
-          cdkTextareaAutosize
-          type="text"
-          spellcheck="true"
-          [attr.aria-labelledby]="labelId"
-          [attr.aria-describedby]="describebyId"
-          [placeholder]="placeholder"
-          [formControl]="textFormControl"
-          [value]="textFormControl.value"
-          [required]="isRequired"
-        >
-        </textarea>
-      </div>
-    </div>
-  </silo-responsive-container>
-  <div [id]="describebyId" class="silo-form-field-message-container">
-    <span
-      class="mat-hint"
-      *ngIf="hint && !(textFormControl.dirty && textFormControl.invalid)"
-    >
-      {{ hint }}
-    </span>
-    <span
-      class="mat-error"
-      role="alert"
-      *ngIf="textFormControl.dirty && textFormControl.invalid"
-    >
+  <mat-form-field appearance="legacy" [siloResponsiveContainer]="outlineSize">
+    <textarea
+      [cdkTextareaAutosize]="true"
+      [cdkAutosizeMinRows]="3"
+      matInput
+      type="text"
+      spellcheck="true"
+      [attr.aria-labelledby]="labelId"
+      [placeholder]="placeholder"
+      [formControl]="textFormControl"
+      [value]="textFormControl.value"
+      [required]="isRequired"
+    ></textarea>
+    <mat-hint *ngIf="hint">{{ hint }}</mat-hint>
+    <mat-error *ngIf="textFormControl.invalid">
       {{ getErrorMessage() }}
-    </span>
-  </div>
-</silo-responsive-container>
+    </mat-error>
+  </mat-form-field>
+</div>

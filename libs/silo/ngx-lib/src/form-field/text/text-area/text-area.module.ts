@@ -1,22 +1,20 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
-import { MatButtonModule } from '@angular/material/button';
-import { MatIconModule } from '@angular/material/icon';
+import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
-import { ResponsiveContainerModule } from './../../../responsive/responsive-container/responsive-container.module';
-import { TextAreaComponent } from './text-area.component';
+import { ResponsiveContainerModule } from '../../../responsive/responsive-container/responsive-container.module';
+import { SiloTextAreaComponent } from './text-area.component';
 
 @NgModule({
   imports: [
     CommonModule,
-    MatButtonModule,
-    MatIconModule,
+    MatFormFieldModule,
     MatInputModule,
     ReactiveFormsModule,
     ResponsiveContainerModule,
   ],
-  declarations: [TextAreaComponent],
-  exports: [TextAreaComponent],
+  declarations: [SiloTextAreaComponent],
+  exports: [SiloTextAreaComponent],
 })
-export class TextAreaModule {}
+export class SiloTextAreaModule {}

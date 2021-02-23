@@ -3,11 +3,11 @@ import { ClassExpression } from '../../../responsive/responsive-container/respon
 import { SiloTextFieldComponent } from './../text-field.component';
 
 @Component({
-  selector: 'silo-text-area',
-  templateUrl: './text-area.component.html',
-  styleUrls: ['./text-area.component.scss'],
+  selector: 'silo-legacy-text-area',
+  templateUrl: './legacy-text-area.component.html',
+  styleUrls: ['./legacy-text-area.component.scss'],
 })
-export class SiloTextAreaComponent extends SiloTextFieldComponent {
+export class SiloLegacyTextAreaComponent extends SiloTextFieldComponent {
   @Input()
   fieldSize: ClassExpression = 'col-6';
 }
