@@ -1,18 +1,11 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { StickyLayoutModule } from '../sticky-layout/sticky-layout.public-api';
-import { AppLayoutComponent } from './app-layout.component';
+import { SiloAppLayoutComponent } from './app-layout.component';
 
 @NgModule({
-  imports: [
-    CommonModule,
-    StickyLayoutModule
-  ],
-  declarations: [
-    AppLayoutComponent
-  ],
-  exports: [
-    AppLayoutComponent
-  ],
+  imports: [CommonModule, StickyLayoutModule],
+  declarations: [SiloAppLayoutComponent],
+  exports: [SiloAppLayoutComponent],
 })
-export class AppLayoutModule { }
+export class SiloAppLayoutModule {}

@@ -5,10 +5,9 @@ import { ThemePickerService } from './theme-picker.service';
 @Component({
   selector: 'silo-theme-picker',
   templateUrl: './theme-picker.component.html',
-  styleUrls: ['./theme-picker.component.scss']
+  styleUrls: ['./theme-picker.component.scss'],
 })
-export class ThemePickerComponent implements OnInit {
-
+export class SiloThemePickerComponent implements OnInit {
   /**
    * The selected theme.
    */
@@ -26,9 +25,7 @@ export class ThemePickerComponent implements OnInit {
   @Output()
   selectedTheme = new EventEmitter<IThemeLookupModel>();
 
-  constructor(
-    private _themePickerService: ThemePickerService
-  ) { }
+  constructor(private _themePickerService: ThemePickerService) {}
 
   ngOnInit() {
     // set data when service is initialized
@@ -45,5 +42,4 @@ export class ThemePickerComponent implements OnInit {
     this.selectedTheme.emit(theme);
     this._themePickerService.setTheme(theme);
   }
-
 }

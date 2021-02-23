@@ -4,7 +4,7 @@ import { ClassExpression } from './responsive-container.model';
 @Directive({
   selector: '[siloResponsiveContainer]',
 })
-export class ResponsiveContainerDirective {
+export class SiloResponsiveContainerDirective {
   static readonly REPONSIVE_CONTAINER_CLASS = 'silo-responsive-container';
 
   @Input('siloResponsiveContainer')
@@ -22,7 +22,7 @@ export class ResponsiveContainerDirective {
     }
 
     this._el.nativeElement.classList.add(
-      ResponsiveContainerDirective.REPONSIVE_CONTAINER_CLASS,
+      SiloResponsiveContainerDirective.REPONSIVE_CONTAINER_CLASS,
     );
 
     if (Array.isArray(colExpression)) {

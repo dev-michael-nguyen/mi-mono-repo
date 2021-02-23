@@ -2,15 +2,11 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { MatListModule } from '@angular/material/list';
 import { RouterModule } from '@angular/router';
-import { NavListComponent } from './nav-list.component';
+import { SiloNavListComponent } from './nav-list.component';
 
 @NgModule({
-  imports: [
-    CommonModule,
-    MatListModule,
-    RouterModule,
-  ],
-  declarations: [NavListComponent],
-  exports: [NavListComponent],
+  imports: [CommonModule, MatListModule, RouterModule],
+  declarations: [SiloNavListComponent],
+  exports: [SiloNavListComponent],
 })
-export class NavListModule { }
+export class SiloNavListModule {}

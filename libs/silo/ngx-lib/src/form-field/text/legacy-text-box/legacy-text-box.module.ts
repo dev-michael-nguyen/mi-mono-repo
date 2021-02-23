@@ -4,7 +4,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
-import { ResponsiveContainerModule } from '../../../responsive/responsive-container/responsive-container.module';
+import { SiloResponsiveContainerModule } from '../../../responsive/responsive-container/responsive-container.module';
 import { SiloLegacyTextBoxComponent } from './legacy-text-box.component';
 
 @NgModule({
@@ -14,7 +14,7 @@ import { SiloLegacyTextBoxComponent } from './legacy-text-box.component';
     MatIconModule,
     MatInputModule,
     ReactiveFormsModule,
-    ResponsiveContainerModule,
+    SiloResponsiveContainerModule,
   ],
   declarations: [SiloLegacyTextBoxComponent],
   exports: [SiloLegacyTextBoxComponent],

@@ -4,7 +4,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatTooltipModule } from '@angular/material/tooltip';
-import { ThemePickerComponent } from './theme-picker.component';
+import { SiloThemePickerComponent } from './theme-picker.component';
 import { ThemePickerService } from './theme-picker.service';
 
 @NgModule({
@@ -15,18 +15,14 @@ import { ThemePickerService } from './theme-picker.service';
     MatMenuModule,
     MatTooltipModule,
   ],
-  declarations: [ThemePickerComponent],
-  exports: [ThemePickerComponent],
+  declarations: [SiloThemePickerComponent],
+  exports: [SiloThemePickerComponent],
 })
-export class ThemePickerModule {
-
-  static forRoot(): ModuleWithProviders<ThemePickerModule> {
+export class SiloThemePickerModule {
+  static forRoot(): ModuleWithProviders<SiloThemePickerModule> {
     return {
-      ngModule: ThemePickerModule,
-      providers: [
-        ThemePickerService
-      ]
+      ngModule: SiloThemePickerModule,
+      providers: [ThemePickerService],
     };
   }
-
 }

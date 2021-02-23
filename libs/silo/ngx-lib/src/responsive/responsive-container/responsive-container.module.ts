@@ -1,11 +1,14 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ResponsiveContainerComponent } from './responsive-container.component';
-import { ResponsiveContainerDirective } from './responsive-container.directive';
+import { SiloResponsiveContainerComponent } from './responsive-container.component';
+import { SiloResponsiveContainerDirective } from './responsive-container.directive';
 
 @NgModule({
   imports: [CommonModule],
-  declarations: [ResponsiveContainerComponent, ResponsiveContainerDirective],
-  exports: [ResponsiveContainerComponent, ResponsiveContainerDirective],
+  declarations: [
+    SiloResponsiveContainerComponent,
+    SiloResponsiveContainerDirective,
+  ],
+  exports: [SiloResponsiveContainerComponent, SiloResponsiveContainerDirective],
 })
-export class ResponsiveContainerModule {}
+export class SiloResponsiveContainerModule {}

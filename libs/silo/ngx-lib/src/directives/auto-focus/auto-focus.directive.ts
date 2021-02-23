@@ -2,29 +2,29 @@ import { AfterViewInit, Directive, ElementRef, Input } from '@angular/core';
 
 /**
  * @description
- * This directive will auto focus HTMLElement that it is on when element is first rendered. 
- * 
+ * This directive will auto focus HTMLElement that it is on when element is first rendered.
+ *
  * @usageNotes
  * ```html
  * <!-- auto focus first focusable child in this div -->
- * <div plrAutoFocus>...<div> 
- * 
+ * <div siloAutoFocus>...<div>
+ *
  * <!-- auto focus this div since its focusable -->
- * <div plrAutoFocus tabindex=0>...</div>
- * 
+ * <div siloAutoFocus tabindex=0>...</div>
+ *
  * <!-- conditionally enable/disable this directive -->
- * <div [prlAutoFocus]="isEnable">...</div>
- * 
+ * <div [siloAutoFocus]="isEnable">...</div>
+ *
  * <!-- auto focus first element with id or class "header" -->
- * <div plrAutoFocus focusChildSelectors=".header, #header">...</div>
+ * <div siloAutoFocus focusChildSelectors=".header, #header">...</div>
  * ```
  */
 @Directive({
-  selector: '[siloAutoFocus]'
+  selector: '[siloAutoFocus]',
 })
-export class AutoFocusDirective implements AfterViewInit {
-
-  private readonly DEFAULT_SELECTORS = '[tabindex]:not([tabindex="-1"]), button';
+export class SiloAutoFocusDirective implements AfterViewInit {
+  private readonly DEFAULT_SELECTORS =
+    '[tabindex]:not([tabindex="-1"]), button';
 
   /**
    * Reference to last focus element.
@@ -40,18 +40,18 @@ export class AutoFocusDirective implements AfterViewInit {
 
   /**
    * First child that match the specified group of selectors will be focus.
-   * 
+   *
    * {@link https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelectorAll}
    */
   @Input()
   focusChildSelectors: string;
 
-  constructor(
-    private _el: ElementRef<HTMLElement>
-  ) { }
+  constructor(private _el: ElementRef<HTMLElement>) {}
 
   ngAfterViewInit() {
-    this.focusFirstFocusable(this.focusChildSelectors || this.DEFAULT_SELECTORS);
+    this.focusFirstFocusable(
+      this.focusChildSelectors || this.DEFAULT_SELECTORS,
+    );
   }
 
   /**
@@ -77,5 +77,4 @@ export class AutoFocusDirective implements AfterViewInit {
       return;
     }
   }
-
 }

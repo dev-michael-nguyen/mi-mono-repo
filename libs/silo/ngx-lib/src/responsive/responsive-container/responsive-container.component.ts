@@ -5,7 +5,7 @@ import { ClassExpression } from './responsive-container.model';
   selector: 'silo-responsive-container',
   templateUrl: './responsive-container.component.html',
 })
-export class ResponsiveContainerComponent implements OnInit {
+export class SiloResponsiveContainerComponent implements OnInit {
   @Input()
   colExpression: ClassExpression;
 
