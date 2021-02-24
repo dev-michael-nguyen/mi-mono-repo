@@ -1,0 +1,52 @@
+<silo-example-article>
+  <ng-container headerContent>
+    <p>Single Select is not required</p>
+  </ng-container>
+  <ng-container bodyContent>
+    <silo-single-select
+      label="Label"
+      [lookupConfig]="lookupConfig"
+    ></silo-single-select>
+  </ng-container>
+</silo-example-article>
+
+<silo-example-article>
+  <ng-container headerContent>
+    <p>Single Select is required</p>
+  </ng-container>
+  <ng-container bodyContent>
+    <silo-single-select
+      label="Label"
+      [lookupConfig]="lookupConfig"
+      [isRequired]="true"
+    ></silo-single-select>
+  </ng-container>
+</silo-example-article>
+
+<silo-example-article>
+  <ng-container headerContent>
+    <p>Single Select with hint</p>
+  </ng-container>
+  <ng-container bodyContent>
+    <silo-single-select
+      label="Label"
+      [lookupConfig]="lookupConfig"
+      [isRequired]="true"
+      hint="Please select an option"
+    ></silo-single-select>
+  </ng-container>
+</silo-example-article>
+
+<silo-example-article>
+  <ng-container headerContent>
+    <p>Single Select with long label</p>
+  </ng-container>
+  <ng-container bodyContent>
+    <silo-single-select
+      label="Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec velit neque, auctor sit amet aliquam vel, ullamcorper sit amet ligula."
+      [lookupConfig]="lookupConfig"
+      fieldSize="col-6"
+      outlineSize="col-4"
+    ></silo-single-select>
+  </ng-container>
+</silo-example-article>
