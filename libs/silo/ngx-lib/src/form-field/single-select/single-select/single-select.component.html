@@ -1,0 +1,38 @@
+<div
+  class="silo-single-select"
+  [class.silo-single-select--is-required]="isRequired"
+  [class.silo-single-select--is-filled]="
+    isRequired && formGroup.dirty && formGroup.valid
+  "
+  [class.silo-single-select--has-error]="
+    isRequired && formGroup.touched && formGroup.invalid
+  "
+  [siloResponsiveContainer]="fieldSize"
+>
+  <div class="silo-form-field-label-container">
+    <label [id]="labelId" class="silo-form-field__label">
+      {{ label }}
+    </label>
+  </div>
+  <mat-form-field appearance="legacy" [siloResponsiveContainer]="outlineSize">
+    <mat-select [formControl]="valueFormControl" [compareWith]="compareWith">
+      <mat-option [value]="null">None</mat-option>
+      <mat-option *ngFor="let option of options" [value]="option">
+        {{ option.displayName }}
+      </mat-option>
+    </mat-select>
+    <button
+      *ngIf="valueFormControl.value"
+      mat-icon-button
+      matSuffix
+      aria-label="Clear"
+      (click)="clearForm($event)"
+    >
+      <mat-icon>close</mat-icon>
+    </button>
+    <mat-hint *ngIf="hint">{{ hint }}</mat-hint>
+    <mat-error *ngIf="valueFormControl.invalid">
+      {{ getErrorMessage() }}
+    </mat-error>
+  </mat-form-field>
+</div>

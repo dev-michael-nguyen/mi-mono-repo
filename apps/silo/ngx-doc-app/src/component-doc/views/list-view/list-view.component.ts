@@ -10,6 +10,7 @@ export class ListViewComponent implements OnInit {
   componentNavList: Array<INavListItemModel> = [
     { label: 'Text Box', routerLink: 'text-box' },
     { label: 'Text Area', routerLink: 'text-area' },
+    { label: 'Single Select', routerLink: 'single-select' },
   ];
 
   constructor() {}
