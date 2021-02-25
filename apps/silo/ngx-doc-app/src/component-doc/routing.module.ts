@@ -35,6 +35,14 @@ const routes: Routes = [
             '../component-doc/text-area/routing.module'
           ).then((m) => m.RoutingModule),
       },
+      {
+        path: 'single-select',
+        loadChildren: () =>
+          import(
+            /* webpackChunkName: 'single-select-doc-module' */
+            '../component-doc/single-select/routing.module'
+          ).then((m) => m.RoutingModule),
+      },
     ],
   },
 ];
