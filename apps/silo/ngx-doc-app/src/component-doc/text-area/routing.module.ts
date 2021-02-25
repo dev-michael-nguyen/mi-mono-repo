@@ -10,7 +10,7 @@ const routes: Routes = [
     component: RouterTabLayoutComponent,
     data: {
       navList: [
-        { label: 'Example', routerLink: 'example' },
+        { label: 'Examples', routerLink: 'example' },
       ] as Array<INavListItemModel>,
     },
     children: [
