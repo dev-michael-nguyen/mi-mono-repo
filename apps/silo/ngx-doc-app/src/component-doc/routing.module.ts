@@ -43,6 +43,14 @@ const routes: Routes = [
             '../component-doc/single-select/routing.module'
           ).then((m) => m.RoutingModule),
       },
+      {
+        path: 'radio-list',
+        loadChildren: () =>
+          import(
+            /* webpackChunkName: 'radio-list-doc-module' */
+            '../component-doc/radio-list/routing.module'
+          ).then((m) => m.RoutingModule),
+      },
     ],
   },
 ];

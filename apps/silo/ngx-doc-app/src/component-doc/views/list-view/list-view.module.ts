@@ -11,8 +11,8 @@ import { ListViewComponent } from './list-view.component';
     FlexLayoutModule,
     RouterModule,
     SiloNavListModule,
-    StickyLayoutModule
+    StickyLayoutModule,
   ],
-  declarations: [ListViewComponent]
+  declarations: [ListViewComponent],
 })
-export class ListViewModule { }
+export class ListViewModule {}

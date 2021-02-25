@@ -11,6 +11,7 @@ export class ListViewComponent implements OnInit {
     { label: 'Text Box', routerLink: 'text-box' },
     { label: 'Text Area', routerLink: 'text-area' },
     { label: 'Single Select', routerLink: 'single-select' },
+    { label: 'Radio List', routerLink: 'radio-list' },
   ];
 
   constructor() {}

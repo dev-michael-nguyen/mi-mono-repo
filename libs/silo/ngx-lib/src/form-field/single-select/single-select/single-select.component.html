@@ -12,7 +12,6 @@
   <silo-label [labelId]="labelId" [label]="label"></silo-label>
   <mat-form-field appearance="legacy" [siloResponsiveContainer]="outlineSize">
     <mat-select [formControl]="valueFormControl" [compareWith]="compareWith">
-      <mat-option [value]="null">None</mat-option>
       <mat-option *ngFor="let option of options" [value]="option">
         {{ option.displayName }}
       </mat-option>

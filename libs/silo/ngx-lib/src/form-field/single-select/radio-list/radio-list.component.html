@@ -1,0 +1,56 @@
+<div
+  class="silo-radio-list"
+  [class.silo-radio-list--is-required]="isRequired"
+  [class.silo-radio-list--is-filled]="
+    isRequired && formGroup.dirty && formGroup.valid
+  "
+  [class.silo-radio-list--has-error]="
+    isRequired && formGroup.touched && formGroup.invalid
+  "
+  [siloResponsiveContainer]="fieldSize"
+>
+  <silo-label [labelId]="labelId" [label]="label"></silo-label>
+  <div
+    class="silo-form-field-outline-container"
+    [siloResponsiveContainer]="outlineSize"
+  >
+    <div class="silo-form-field-input-container">
+      <mat-radio-group
+        [attr.aria-labelledby]="labelId"
+        [formControl]="valueFormControl"
+      >
+        <mat-radio-button
+          *ngFor="let option of options"
+          [class.is-stacked]="isStacked"
+          [value]="option"
+        >
+          {{ option.displayName }}
+        </mat-radio-button>
+      </mat-radio-group>
+      <button
+        *ngIf="valueFormControl.value"
+        mat-icon-button
+        matSuffix
+        aria-label="Clear"
+        (click)="clearForm($event)"
+      >
+        <mat-icon>close</mat-icon>
+      </button>
+    </div>
+  </div>
+  <div [id]="describebyId" class="silo-form-field-message-container">
+    <span
+      class="mat-hint"
+      *ngIf="hint && !(valueFormControl.touched && valueFormControl.invalid)"
+    >
+      {{ hint }}
+    </span>
+    <span
+      class="mat-error"
+      role="alert"
+      *ngIf="valueFormControl.touched && valueFormControl.invalid"
+    >
+      {{ getErrorMessage() }}
+    </span>
+  </div>
+</div>
