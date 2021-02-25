@@ -4,6 +4,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { SiloResponsiveContainerModule } from '../../../responsive/responsive-container/responsive-container.module';
+import { SiloLabelModule } from './../../label/label.module';
 import { SiloTextAreaComponent } from './text-area.component';
 
 @NgModule({
@@ -12,6 +13,7 @@ import { SiloTextAreaComponent } from './text-area.component';
     MatFormFieldModule,
     MatInputModule,
     ReactiveFormsModule,
+    SiloLabelModule,
     SiloResponsiveContainerModule,
   ],
   declarations: [SiloTextAreaComponent],

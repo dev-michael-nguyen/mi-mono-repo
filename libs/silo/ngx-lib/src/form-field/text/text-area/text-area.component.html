@@ -9,11 +9,7 @@
   "
   [siloResponsiveContainer]="fieldSize"
 >
-  <div class="silo-form-field-label-container">
-    <label [id]="labelId" class="silo-form-field__label">
-      {{ label }}
-    </label>
-  </div>
+  <silo-label [labelId]="labelId" [label]="label"></silo-label>
   <mat-form-field appearance="legacy" [siloResponsiveContainer]="outlineSize">
     <textarea
       [cdkTextareaAutosize]="true"

@@ -6,6 +6,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { SiloResponsiveContainerModule } from '../../../responsive/responsive-container/responsive-container.module';
+import { SiloLabelModule } from './../../label/label.module';
 import { SiloTextBoxComponent } from './text-box.component';
 
 @NgModule({
@@ -16,6 +17,7 @@ import { SiloTextBoxComponent } from './text-box.component';
     MatIconModule,
     MatInputModule,
     ReactiveFormsModule,
+    SiloLabelModule,
     SiloResponsiveContainerModule,
   ],
   declarations: [SiloTextBoxComponent],

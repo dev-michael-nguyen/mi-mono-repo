@@ -9,11 +9,7 @@
   "
   [colExpression]="fieldSize"
 >
-  <div class="silo-form-field-label-container">
-    <label [id]="labelId" class="silo-form-field__label">
-      {{ label }}
-    </label>
-  </div>
+  <silo-label [labelId]="labelId" [label]="label"></silo-label>
   <silo-responsive-container [colExpression]="outlineSize">
     <div class="silo-form-field-outline-container">
       <div class="silo-form-field-input-container">
