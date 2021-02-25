@@ -1,16 +1,23 @@
-import { Directive, Input, OnInit } from '@angular/core';
 import {
-  FormGroup,
-  FormControl,
+  AfterViewInit,
+  Directive,
+  ElementRef,
+  Input,
+  OnInit,
+  ViewChild,
+} from '@angular/core';
+import {
   FormBuilder,
+  FormControl,
+  FormGroup,
   ValidatorFn,
 } from '@angular/forms';
 import { ClassExpression } from '../../responsive/responsive-container/responsive-container.model';
 import { randomHtmlId } from '../../utils/random-html-id';
-import { TextValidator, ITextValidatorError } from './text-validator';
+import { ITextValidatorError, TextValidator } from './text-validator';
 
 @Directive()
-export class SiloTextFieldComponent implements OnInit {
+export class SiloTextFieldComponent implements OnInit, AfterViewInit {
   formGroup: FormGroup;
   textFormControl: FormControl;
   labelId: string;
@@ -26,6 +33,9 @@ export class SiloTextFieldComponent implements OnInit {
   hint: string;
 
   @Input()
+  isReadOnly = false;
+
+  @Input()
   isRequired = false;
 
   @Input()
@@ -37,11 +47,18 @@ export class SiloTextFieldComponent implements OnInit {
   @Input()
   outlineSize: ClassExpression;
 
+  @ViewChild('textarea', { static: true })
+  textarea: ElementRef<HTMLTextAreaElement>;
+
   constructor(public formBuilder: FormBuilder) {}
 
   ngOnInit() {
     this.setDefinition();
     this.setForm(this.value);
+  }
+
+  ngAfterViewInit() {
+    this.setTextAreaHeightInReadOnly();
   }
 
   setDefinition() {
@@ -72,5 +89,15 @@ export class SiloTextFieldComponent implements OnInit {
       firstErrorKey
     ] as ITextValidatorError;
     return firstError.message;
+  }
+
+  setTextAreaHeightInReadOnly() {
+    if (!this.isReadOnly || !this.textarea) {
+      return;
+    }
+    // NOTE: On refresh, scrollheight may not be accurated so do this next cycle
+    setTimeout(() => {
+      this.textarea.nativeElement.style.height = `${this.textarea.nativeElement.scrollHeight}px`;
+    });
   }
 }

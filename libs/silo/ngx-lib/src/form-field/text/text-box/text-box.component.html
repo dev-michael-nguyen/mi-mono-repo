@@ -1,5 +1,6 @@
 <div
   class="silo-text-box"
+  [class.silo-text-box--is-readonly]="isReadOnly"
   [class.silo-text-box--is-required]="isRequired"
   [class.silo-text-box--is-filled]="
     isRequired && formGroup.dirty && formGroup.valid
@@ -11,25 +12,18 @@
 >
   <silo-label [labelId]="labelId" [label]="label"></silo-label>
   <mat-form-field appearance="legacy" [siloResponsiveContainer]="outlineSize">
-    <input
+    <textarea
+      #textarea
+      [cdkTextareaAutosize]="!isReadOnly"
       matInput
       type="text"
       spellcheck="true"
       [attr.aria-labelledby]="labelId"
       [placeholder]="placeholder"
       [formControl]="textFormControl"
-      [value]="textFormControl.value"
       [required]="isRequired"
-    />
-    <button
-      *ngIf="textFormControl.value"
-      mat-icon-button
-      matSuffix
-      aria-label="Clear"
-      (click)="clearForm()"
-    >
-      <mat-icon>close</mat-icon>
-    </button>
+      [readonly]="isReadOnly"
+    ></textarea>
     <mat-hint *ngIf="hint">{{ hint }}</mat-hint>
     <mat-error *ngIf="textFormControl.invalid">
       {{ getErrorMessage() }}

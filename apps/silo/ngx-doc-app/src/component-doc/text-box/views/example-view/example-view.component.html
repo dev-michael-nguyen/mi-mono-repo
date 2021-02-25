@@ -43,3 +43,17 @@
     </silo-text-box>
   </ng-container>
 </silo-example-article>
+
+<silo-example-article>
+  <ng-container headerContent>
+    <p>Text box is read-only</p>
+  </ng-container>
+  <ng-container bodyContent>
+    <silo-text-box
+      label="Label"
+      value="Curabitur aliquet quam id dui posuere blandit."
+      [isReadOnly]="true"
+      [isRequired]="true"
+    ></silo-text-box>
+  </ng-container>
+</silo-example-article>

@@ -23,7 +23,13 @@
     box-sizing: border-box;
     border-left-width: 4px;
     border-left-style: solid;
-    border-left-color: white;
+    border-left-color: transparent;
+  }
+
+  [class*='--is-readonly'] {
+    .silo-form-field-outline-container {
+      background-color: $light-bg-darker-5;
+    }
   }
 
   [class*='--is-required'] {

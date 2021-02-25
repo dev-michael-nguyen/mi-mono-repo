@@ -23,11 +23,21 @@
       padding: 0.5em 0.25em;
       border-left-width: 4px;
       border-left-style: solid;
-      border-left-color: white;
+      border-left-color: transparent;
     }
 
     .mat-form-field-underline {
       display: none;
+    }
+
+    .mat-form-field-suffix {
+      align-self: center;
+    }
+  }
+
+  [class*='--is-readonly'] {
+    .mat-form-field-flex {
+      background-color: $light-bg-darker-5;
     }
   }
 
