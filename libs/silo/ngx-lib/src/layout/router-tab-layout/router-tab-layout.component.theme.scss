@@ -1,0 +1,52 @@
+@mixin silo-router-tab-layout-color($config-or-theme) {
+  // Extract the color configuration in case a theme has been passed.
+  $config: mat-get-color-config($config-or-theme);
+  $is-dark-theme: map-get($config, is-dark);
+  $primary: map-get($config, primary);
+
+  .silo-router-tab-layout {
+    .mat-tab-link {
+      border-radius: 8px 8px 0 0;
+
+      &:hover {
+        color: $dark-text !important;
+      }
+
+      &.active,
+      :active {
+        color: $light-text;
+        background-color: mat-color($primary);
+      }
+
+      &.cdk-keyboard-focused {
+        color: $dark-text;
+      }
+    }
+
+    .mat-ink-bar {
+      transition: unset;
+    }
+
+    .mat-tab-header {
+      border-bottom: 2px solid mat-color($primary);
+    }
+
+    .silo-router-tab-layout__body {
+      border-left: 2px solid mat-color($primary);
+      border-right: 2px solid mat-color($primary);
+      border-bottom: 2px solid mat-color($primary);
+      border-radius: 0 0 8px 8px;
+    }
+  }
+}
+
+@mixin silo-router-tab-layout-theme($theme) {
+  // Extracts the color and typography configurations from the theme.
+  $color: mat-get-color-config($theme);
+
+  // Do not generate styles if configurations for individual theming
+  // systems have been explicitly set to `null`.
+  @if $color !=null {
+    @include silo-router-tab-layout-color($color);
+  }
+}

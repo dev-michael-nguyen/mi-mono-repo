@@ -6,12 +6,7 @@ import { StickyLayoutModule } from '../sticky-layout/sticky-layout.module';
 import { RouterTabLayoutComponent } from './router-tab-layout.component';
 
 @NgModule({
-  imports: [
-    CommonModule,
-    MatTabsModule,
-    RouterModule,
-    StickyLayoutModule
-  ],
-  declarations: [RouterTabLayoutComponent]
+  imports: [CommonModule, MatTabsModule, RouterModule, StickyLayoutModule],
+  declarations: [RouterTabLayoutComponent],
 })
-export class RouterTabLayoutModule { }
+export class RouterTabLayoutModule {}

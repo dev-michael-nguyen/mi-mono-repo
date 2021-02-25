@@ -13,10 +13,13 @@
 
     &.active,
     :active,
-    :hover,
-    :focus {
+    :hover {
       background-color: $light-text !important;
       color: mat-color($primary) !important;
+    }
+
+    &:focus {
+      color: $dark-text !important;
     }
   }
 }

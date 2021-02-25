@@ -1,18 +1,25 @@
-<div class="router-tab-layout"
-     siloStickyLayout>
-  <div class="router-tab-layout__header">
-    <nav mat-tab-nav-bar>
-      <a mat-tab-link *ngFor="let item of navList"
-         [routerLink]="item.routerLink"
-         routerLinkActive
-         #rla="routerLinkActive"
-         [active]="rla.isActive">
-        {{ item.label }} 
+<div class="silo-router-tab-layout" siloStickyLayout>
+  <div class="silo-router-tab-layout__header">
+    <nav
+      mat-tab-nav-bar
+      [color]="color"
+      [backgroundColor]="backgroundColor"
+      [disableRipple]="true"
+    >
+      <a
+        *ngFor="let item of navList"
+        mat-tab-link
+        [routerLink]="item.routerLink"
+        routerLinkActive
+        #rla="routerLinkActive"
+        [active]="rla.isActive"
+        [class.active]="rla.isActive"
+      >
+        {{ item.label }}
       </a>
     </nav>
   </div>
-  <div class="router-tab-layout__body"
-       siloStickyLayoutBody>
+  <div class="silo-router-tab-layout__body" siloStickyLayoutBody>
     <router-outlet></router-outlet>
   </div>
 </div>
