@@ -5,54 +5,82 @@
 
 // #region Light theme configs that will be used to override Angular Material Theme
 
-$mat-primary: (main: #4c7997,
+$mat-primary: (
+  main: #4c7997,
   lighter: #c9d7e0,
   darker: #335c7a,
-  200: #4c7997, // For slide toggle,
-  contrast : (main: $light-primary-text,
-    lighter: $dark-primary-text,
-    darker: $light-primary-text,
-  ));
+  200: #4c7997,
+  // For slide toggle,
+  contrast:
+    (
+      main: $light-primary-text,
+      lighter: $dark-primary-text,
+      darker: $light-primary-text,
+    ),
+);
 
-$mat-accent: (main: #325877,
+$mat-accent: (
+  main: #325877,
   lighter: #c2cdd6,
   darker: #1f3d5a,
-  200: #325877, // For slide toggle,
-  contrast : (main: $light-primary-text,
-    lighter: $dark-primary-text,
-    darker: $light-primary-text,
-  ));
+  200: #325877,
+  // For slide toggle,
+  contrast:
+    (
+      main: $light-primary-text,
+      lighter: $dark-primary-text,
+      darker: $light-primary-text,
+    ),
+);
 
-$mat-warn: (main: #ec664f,
+$mat-warn: (
+  main: #ec664f,
   lighter: #f9d1ca,
   darker: #e44936,
-  200: #ec664f, // For slide toggle,
-  contrast : (main: $dark-primary-text,
-    lighter: $dark-primary-text,
-    darker: $light-primary-text,
-  ));
+  200: #ec664f,
+  // For slide toggle,
+  contrast:
+    (
+      main: $dark-primary-text,
+      lighter: $dark-primary-text,
+      darker: $light-primary-text,
+    ),
+);
 
-$custom-highlight: (main: #e8a54a,
+$custom-highlight: (
+  main: #e8a54a,
   lighter: #f8e4c9,
   darker: #de8a32,
-  contrast : (main: $dark-primary-text,
+  contrast: (
+    main: $dark-primary-text,
     lighter: $dark-primary-text,
     darker: $dark-primary-text,
-  ));
+  ),
+);
 
-$custom-success: (main: #9aa990,
-  lighter: #e1e5de,
-  darker: #7e8f73,
-  contrast : (main: $dark-primary-text,
-    lighter: $dark-primary-text,
-    darker: $dark-primary-text,
-  ));
+$custom-success: (
+  main: #12ac2f,
+  lighter: #b8e6c1,
+  darker: #0a921d,
+  200: #12ac2f,
+  // For slide toggle,
+  contrast:
+    (
+      main: $light-primary-text,
+      lighter: $dark-primary-text,
+      darker: $light-primary-text,
+    ),
+);
 
 $light-theme-primary: mat-palette($mat-primary, main, lighter, darker);
 $light-theme-accent: mat-palette($mat-accent, main, lighter, darker);
 $light-theme-warn: mat-palette($mat-warn, main, lighter, darker);
 $light-theme-highlight: mat-palette($custom-highlight, main, lighter, darker);
 $light-theme-success: mat-palette($custom-success, main, lighter, darker);
-$light-theme: mat-light-theme($light-theme-primary, $light-theme-accent, $light-theme-warn);
+$light-theme: mat-light-theme(
+  $light-theme-primary,
+  $light-theme-accent,
+  $light-theme-warn
+);
 
 // #endregion

@@ -5,56 +5,85 @@
 
 // #region Dark theme configs
 
-$mat-primary: (main: #e8a54a,
+$mat-primary: (
+  main: #e8a54a,
   lighter: #f8e4c9,
   darker: #de8a32,
-  200: #e8a54a, // For slide toggle,
-  contrast : (main: $dark-primary-text,
-    lighter: $dark-primary-text,
-    darker: $dark-primary-text,
-  ));
+  200: #e8a54a,
+  // For slide toggle,
+  contrast:
+    (
+      main: $dark-primary-text,
+      lighter: $dark-primary-text,
+      darker: $dark-primary-text,
+    ),
+);
 
-$mat-accent: (main: #ffd05d,
+$mat-accent: (
+  main: #ffd05d,
   lighter: #fff1ce,
   darker: #ffbe41,
-  200: #ffd05d, // For slide toggle,
-  contrast : (main: $dark-primary-text,
-    lighter: $dark-primary-text,
-    darker: $dark-primary-text,
-  ));
+  200: #ffd05d,
+  // For slide toggle,
+  contrast:
+    (
+      main: $dark-primary-text,
+      lighter: $dark-primary-text,
+      darker: $dark-primary-text,
+    ),
+);
 
-$mat-warn: (main: #ec664f,
+$mat-warn: (
+  main: #ec664f,
   lighter: #f9d1ca,
   darker: #e44936,
-  200: #ec664f, // For slide toggle,
-  contrast : (main: $dark-primary-text,
-    lighter: $dark-primary-text,
-    darker: $light-primary-text,
-  ));
+  200: #ec664f,
+  // For slide toggle,
+  contrast:
+    (
+      main: $dark-primary-text,
+      lighter: $dark-primary-text,
+      darker: $light-primary-text,
+    ),
+);
 
-$custom-highlight: (main: #fd8e32,
+$custom-highlight: (
+  main: #fd8e32,
   lighter: #feddc2,
   darker: #fc711f,
-  200: #fd8e32, // For slide toggle,
-  contrast : (main: $dark-primary-text,
-    lighter: $dark-primary-text,
-    darker: $dark-primary-text,
-  ));
+  200: #fd8e32,
+  // For slide toggle,
+  contrast:
+    (
+      main: $dark-primary-text,
+      lighter: $dark-primary-text,
+      darker: $dark-primary-text,
+    ),
+);
 
-$custom-success: (main: #00b589,
+$custom-success: (
+  main: #00b589,
   lighter: #b3e9dc,
   darker: #009d6c,
-  200: #00b589, // For slide toggle,
-  contrast : (main: $light-primary-text,
-    lighter: $dark-primary-text,
-    darker: $light-primary-text,
-  ));
+  200: #00b589,
+  // For slide toggle,
+  contrast:
+    (
+      main: $light-primary-text,
+      lighter: $dark-primary-text,
+      darker: $light-primary-text,
+    ),
+);
 
 $dark-theme-primary: mat-palette($mat-primary, main, lighter, darker);
 $dark-theme-accent: mat-palette($mat-accent, main, lighter, darker);
 $dark-theme-warn: mat-palette($mat-warn, main, lighter, darker);
 $dark-theme-highlight: mat-palette($custom-highlight, main, lighter, darker);
 $dark-theme-success: mat-palette($custom-success, main, lighter, darker);
-$dark-theme: mat-dark-theme($dark-theme-primary, $dark-theme-accent, $dark-theme-warn);
+$dark-theme: mat-dark-theme(
+  $dark-theme-primary,
+  $dark-theme-accent,
+  $dark-theme-warn
+);
 
 // #endregion
