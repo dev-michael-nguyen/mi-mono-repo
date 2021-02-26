@@ -5,9 +5,15 @@
   $warn: map-get($config, warn);
   $is-dark: map-get($config, is-dark);
 
-  .mat-form-field-appearance-legacy {
+  .mat-form-field {
     width: 100%;
 
+    // hide label since we want to use custom label and placeholder
+    .mat-form-field-label {
+      display: none !important;
+    }
+
+    // custom outline
     .mat-form-field-flex {
       box-sizing: border-box;
       box-shadow: 0 0 0 1px gray;
@@ -18,6 +24,7 @@
       }
     }
 
+    // custom required indicator
     .mat-form-field-infix {
       border-top: initial;
       padding: 0.5em 0.25em;
@@ -26,10 +33,12 @@
       border-left-color: transparent;
     }
 
+    // hide this since we want to use custom highlight with outline
     .mat-form-field-underline {
       display: none;
     }
 
+    // center suffix on multi line such as textarea
     .mat-form-field-suffix {
       align-self: center;
     }

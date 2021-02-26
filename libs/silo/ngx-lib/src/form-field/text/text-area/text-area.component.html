@@ -11,7 +11,13 @@
   [siloResponsiveContainer]="fieldSize"
 >
   <silo-label [labelId]="labelId" [label]="label"></silo-label>
-  <mat-form-field appearance="legacy" [siloResponsiveContainer]="outlineSize">
+  <mat-form-field
+    appearance="legacy"
+    floatLabel="always"
+    [hideRequiredMarker]="true"
+    [siloResponsiveContainer]="outlineSize"
+  >
+    <mat-label>{{ label }}</mat-label>
     <textarea
       #textarea
       [cdkTextareaAutosize]="!isReadOnly"
