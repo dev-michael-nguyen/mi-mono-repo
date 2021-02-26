@@ -31,10 +31,13 @@ export class SiloSingleSelectFieldComponent implements OnInit {
   hint: string;
 
   @Input()
+  isReadOnly = false;
+
+  @Input()
   isRequired = false;
 
   @Input()
-  value: string;
+  value: LookupModel;
 
   @Input()
   fieldSize: ClassExpression = 'col-2';
@@ -60,7 +63,7 @@ export class SiloSingleSelectFieldComponent implements OnInit {
     }
   }
 
-  setForm(value: string) {
+  setForm(value: LookupModel) {
     const singleSelectValidator = new SingleSelectValidator();
     const validators: Array<ValidatorFn> = [];
     if (this.isRequired) {

@@ -46,6 +46,7 @@
 
   [class*='--is-readonly'] {
     .mat-form-field-flex {
+      cursor: initial !important;
       background-color: $light-bg-darker-5;
     }
   }

@@ -51,3 +51,18 @@
     ></silo-single-select>
   </ng-container>
 </silo-example-article>
+
+<silo-example-article>
+  <ng-container headerContent>
+    <p>Single Select is read-only</p>
+  </ng-container>
+  <ng-container bodyContent>
+    <silo-single-select
+      label="Label"
+      [lookupConfig]="lookupConfig"
+      [value]="lookupConfig.lookups[2]"
+      [isRequired]="true"
+      [isReadOnly]="true"
+    ></silo-single-select>
+  </ng-container>
+</silo-example-article>

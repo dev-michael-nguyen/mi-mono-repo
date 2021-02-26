@@ -1,5 +1,6 @@
 <div
   class="silo-single-select"
+  [class.silo-single-select--is-readonly]="isReadOnly"
   [class.silo-single-select--is-required]="isRequired"
   [class.silo-single-select--is-filled]="
     isRequired && formGroup.dirty && formGroup.valid
@@ -29,7 +30,7 @@
       </mat-option>
     </mat-select>
     <button
-      *ngIf="valueFormControl.value"
+      *ngIf="!isReadOnly && valueFormControl.value"
       mat-icon-button
       matSuffix
       aria-label="Clear"

@@ -1,5 +1,6 @@
 @import './silo-form-field';
 @import './silo-mat-form-field-overrides';
+@import './silo-mat-select-overrides';
 @import '../layout/app-layout/app-layout.component.theme.scss';
 @import '../layout/router-tab-layout/router-tab-layout.component.theme.scss';
 @import '../navigation/nav-list/nav-list.component.theme.scss';
@@ -8,6 +9,7 @@
 @mixin silo-ngx-lib-theme($theme) {
   @include silo-form-field-theme($theme);
   @include silo-mat-form-field-override-theme($theme);
+  @include silo-mat-select-override-theme($theme);
   @include silo-app-layout-theme($theme);
   @include silo-router-tab-layout-theme($theme);
   @include silo-nav-list-theme($theme);
