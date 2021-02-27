@@ -26,6 +26,14 @@
     border-left-color: transparent;
   }
 
+  .silo-form-field-message-container {
+    .mat-hint {
+      font-size: 75%;
+      line-height: 1.125;
+      letter-spacing: 1.5px;
+    }
+  }
+
   [class*='--is-readonly'] {
     .silo-form-field-outline-container {
       background-color: $light-bg-darker-5;
