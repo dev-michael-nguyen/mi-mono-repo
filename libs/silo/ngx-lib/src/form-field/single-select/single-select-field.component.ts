@@ -88,6 +88,6 @@ export class SiloSingleSelectFieldComponent implements OnInit {
   }
 
   compareWith(o1: LookupModel, o2: LookupModel) {
-    return o1.key === o2.key;
+    return o1 && o2 && o1.key === o2.key;
   }
 }

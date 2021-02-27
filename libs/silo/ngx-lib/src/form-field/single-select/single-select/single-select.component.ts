@@ -1,4 +1,4 @@
-import { Component, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ViewChild } from '@angular/core';
 import { MatSelect } from '@angular/material/select';
 import { SiloSingleSelectFieldComponent } from './../single-select-field.component';
 
@@ -7,16 +7,22 @@ import { SiloSingleSelectFieldComponent } from './../single-select-field.compone
   templateUrl: './single-select.component.html',
   styleUrls: ['./single-select.component.scss'],
 })
-export class SiloSingleSelectComponent extends SiloSingleSelectFieldComponent {
+export class SiloSingleSelectComponent
+  extends SiloSingleSelectFieldComponent
+  implements AfterViewInit {
   @ViewChild(MatSelect, { static: true })
   matSelect: MatSelect;
 
-  ngOnInit() {
-    super.ngOnInit();
+  ngAfterViewInit() {
+    this.setSelectAsReadOnly();
+  }
+
+  setSelectAsReadOnly() {
+    if (!this.isReadOnly) {
+      return;
+    }
 
     // TODO: This will work for now until we need to dynamically change from read-only to editable
-    if (this.isReadOnly) {
-      this.matSelect.open = () => {};
-    }
+    this.matSelect.open = () => {};
   }
 }
