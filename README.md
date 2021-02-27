@@ -35,5 +35,5 @@ npm start
 ## DEPLOYMENT
 
 ```npm
-npm run fb:deploy:sim
+npm run fb:deploy:silo-ngx-doc-app
 ```
