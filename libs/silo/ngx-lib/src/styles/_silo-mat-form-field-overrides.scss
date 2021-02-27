@@ -47,7 +47,7 @@
   [class*='--is-readonly'] {
     .mat-form-field-flex {
       cursor: initial !important;
-      background-color: $light-bg-darker-5;
+      background-color: if($is-dark, $dark-bg-lighter-5, $light-bg-darker-5);
     }
   }
 
