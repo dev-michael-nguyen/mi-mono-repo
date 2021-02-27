@@ -7,16 +7,15 @@ import { LookupConfig } from '@silo/ngx';
   styleUrls: ['./example-view.component.scss'],
 })
 export class ExampleViewComponent implements OnInit {
-  lookupConfig: LookupConfig;
-
-  constructor() {}
-
-  ngOnInit() {
-    this.lookupConfig = new LookupConfig();
-    this.lookupConfig.lookups = [
+  lookupConfig: LookupConfig = {
+    lookups: [
       { key: 'O1', displayName: 'Option 1' },
       { key: 'O2', displayName: 'Option 2' },
       { key: 'O3', displayName: 'Donec rutrum congue leo eget malesuada' },
-    ];
-  }
+    ],
+  };
+
+  constructor() {}
+
+  ngOnInit() {}
 }

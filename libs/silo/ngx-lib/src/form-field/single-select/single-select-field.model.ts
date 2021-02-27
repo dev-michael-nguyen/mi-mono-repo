@@ -4,7 +4,7 @@ export class LookupModel {
 }
 
 export class LookupConfig {
-  url: string;
-  hasPaging: boolean;
-  lookups: Array<LookupModel>;
+  url?: string;
+  hasPaging?: boolean;
+  lookups?: Array<LookupModel>;
 }

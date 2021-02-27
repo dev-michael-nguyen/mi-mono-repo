@@ -1,13 +1,90 @@
 <div class="preview-view">
   <div class="component-preview-list">
-    <ng-container *ngFor="let item of componentPreviewList">
-      <a class="component-preview-list-item" [routerLink]="item.routerLink">
-        <div class="component-preview-list-item__card">
-          <div class="component-preview-list-item__card__image"></div>
-          <div class="component-preview-list-item__card__title">{{ item.title }}</div>
-          <div class="component-preview-list-item__card__summary">{{ item.sumamry }}</div>
+    <a class="component-preview-list-item" routerLink="../text-box">
+      <div class="component-preview-list-item__card">
+        <div
+          class="component-preview-list-item__card__image"
+          fxLayout="column"
+          fxLayoutAlign="center center"
+        >
+          <silo-text-box
+            label="Label"
+            [isRequired]="true"
+            hint="Please fill out this field"
+            fieldSize="col-12"
+          >
+          </silo-text-box>
         </div>
-      </a>
-    </ng-container>
+        <div class="component-preview-list-item__card__title">Text Box</div>
+        <div class="component-preview-list-item__card__summary">
+          Text field input as text box.
+        </div>
+      </div>
+    </a>
+    <a class="component-preview-list-item" routerLink="../text-area">
+      <div class="component-preview-list-item__card">
+        <div
+          class="component-preview-list-item__card__image"
+          fxLayout="column"
+          fxLayoutAlign="center center"
+        >
+          <silo-text-area
+            label="Label"
+            [isRequired]="true"
+            hint="Please fill out this field"
+            fieldSize="col-12"
+          >
+          </silo-text-area>
+        </div>
+        <div class="component-preview-list-item__card__title">Text Area</div>
+        <div class="component-preview-list-item__card__summary">
+          Text field input as text area.
+        </div>
+      </div>
+    </a>
+    <a class="component-preview-list-item" routerLink="../single-select">
+      <div class="component-preview-list-item__card">
+        <div
+          class="component-preview-list-item__card__image"
+          fxLayout="column"
+          fxLayoutAlign="center center"
+        >
+          <silo-single-select
+            label="Label"
+            [lookupConfig]="lookupConfig"
+            [isRequired]="true"
+            hint="Please select an option"
+            fieldSize="col-12"
+          ></silo-single-select>
+        </div>
+        <div class="component-preview-list-item__card__title">
+          Single Select
+        </div>
+        <div class="component-preview-list-item__card__summary">
+          Lookup select as single select.
+        </div>
+      </div>
+    </a>
+    <a class="component-preview-list-item" routerLink="../radio-list">
+      <div class="component-preview-list-item__card">
+        <div
+          class="component-preview-list-item__card__image"
+          fxLayout="column"
+          fxLayoutAlign="center center"
+        >
+          <silo-radio-list
+            label="Label"
+            [lookupConfig]="lookupConfig"
+            [isRequired]="true"
+            hint="Please select an option"
+            fieldSize="col-12"
+          ></silo-radio-list>
+        </div>
+        <div class="component-preview-list-item__card__title">Radio List</div>
+        <div class="component-preview-list-item__card__summary">
+          Lookup select as radio list.
+        </div>
+      </div>
+    </a>
   </div>
 </div>
