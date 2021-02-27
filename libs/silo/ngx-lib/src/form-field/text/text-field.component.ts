@@ -14,7 +14,8 @@ import {
 } from '@angular/forms';
 import { ClassExpression } from '../../responsive/responsive-container/responsive-container.model';
 import { randomHtmlId } from '../../utils/random-html-id';
-import { ITextValidatorError, TextValidator } from './text-validator';
+import { IValidatorError } from '../common/validator-error.model';
+import { TextValidator } from './text-validator';
 
 @Directive()
 export class SiloTextFieldComponent implements OnInit, AfterViewInit {
@@ -87,7 +88,7 @@ export class SiloTextFieldComponent implements OnInit, AfterViewInit {
     const firstErrorKey = Object.keys(this.textFormControl.errors)[0];
     const firstError = this.textFormControl.errors[
       firstErrorKey
-    ] as ITextValidatorError;
+    ] as IValidatorError;
     return firstError.message;
   }
 

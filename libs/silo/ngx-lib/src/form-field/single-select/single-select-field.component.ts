@@ -1,8 +1,3 @@
-import { LookupConfig, LookupModel } from './single-select-field.model';
-import {
-  ISingleSelectValidatorError,
-  SingleSelectValidator,
-} from './single-select-validator';
 import { Directive, Input, OnInit } from '@angular/core';
 import {
   FormBuilder,
@@ -12,6 +7,10 @@ import {
 } from '@angular/forms';
 import { ClassExpression } from '../../responsive/responsive-container/responsive-container.model';
 import { randomHtmlId } from '../../utils/random-html-id';
+import { LookupConfig } from '../common/lookup-config.model';
+import { LookupModel } from '../common/lookup.model';
+import { IValidatorError } from '../common/validator-error.model';
+import { SingleSelectValidator } from './single-select-validator';
 
 @Directive()
 export class SiloSingleSelectFieldComponent implements OnInit {
@@ -84,7 +83,7 @@ export class SiloSingleSelectFieldComponent implements OnInit {
     const firstErrorKey = Object.keys(this.valueFormControl.errors)[0];
     const firstError = this.valueFormControl.errors[
       firstErrorKey
-    ] as ISingleSelectValidatorError;
+    ] as IValidatorError;
     return firstError.message;
   }
 

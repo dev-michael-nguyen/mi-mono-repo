@@ -1,14 +1,9 @@
 import { AbstractControl, ValidatorFn } from '@angular/forms';
-
-export interface ITextValidatorError {
-  [key: string]: {
-    message: string;
-  };
-}
+import { IValidatorError } from '../common/validator-error.model';
 
 export class TextValidator {
   createRequiredValidator(message = 'This field is required.'): ValidatorFn {
-    return (control: AbstractControl): ITextValidatorError | null => {
+    return (control: AbstractControl): IValidatorError | null => {
       const value =
         control.value === null || control.value === undefined
           ? ''

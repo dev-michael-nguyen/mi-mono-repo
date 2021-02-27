@@ -1,5 +1,5 @@
+export * from './form-field/common/common.public-api';
 export * from './form-field/single-select/radio-list/radio-list.public-api';
-export * from './form-field/single-select/single-select-field.public-api';
 export * from './form-field/single-select/single-select/single-select.public-api';
 export * from './form-field/text/text-area/text-area.public-api';
 export * from './form-field/text/text-box/text-box.public-api';

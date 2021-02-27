@@ -1,7 +1,4 @@
-export class LookupModel {
-  key: string;
-  displayName: string;
-}
+import { LookupModel } from './lookup.model';
 
 export class LookupConfig {
   url?: string;

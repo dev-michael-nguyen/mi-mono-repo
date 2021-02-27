@@ -1,5 +1,5 @@
-import { LookupConfig } from './../../../../../../../libs/silo/ngx-lib/src/form-field/single-select/single-select-field.model';
 import { Component, OnInit } from '@angular/core';
+import { LookupConfig } from '@silo/ngx';
 
 @Component({
   selector: 'silo-preview-view',
