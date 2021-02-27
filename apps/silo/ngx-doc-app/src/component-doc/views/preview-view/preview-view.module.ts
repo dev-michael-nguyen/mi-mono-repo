@@ -3,11 +3,12 @@ import { NgModule } from '@angular/core';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { RouterModule } from '@angular/router';
 import {
+  SiloCheckboxListModule,
+  SiloRadioListModule,
   SiloSingleSelectModule,
   SiloTextAreaModule,
   SiloTextBoxModule,
 } from '@silo/ngx';
-import { SiloRadioListModule } from './../../../../../../../libs/silo/ngx-lib/src/form-field/single-select/radio-list/radio-list.module';
 import { PreviewViewComponent } from './preview-view.component';
 
 @NgModule({
@@ -15,6 +16,7 @@ import { PreviewViewComponent } from './preview-view.component';
     CommonModule,
     FlexLayoutModule,
     RouterModule,
+    SiloCheckboxListModule,
     SiloRadioListModule,
     SiloSingleSelectModule,
     SiloTextAreaModule,

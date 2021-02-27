@@ -1,0 +1,67 @@
+<silo-example-article>
+  <ng-container headerContent>
+    <p>Checkbox list is not required</p>
+  </ng-container>
+  <ng-container bodyContent>
+    <silo-checkbox-list
+      label="Label"
+      [lookupConfig]="lookupConfig"
+    ></silo-checkbox-list>
+  </ng-container>
+</silo-example-article>
+
+<silo-example-article>
+  <ng-container headerContent>
+    <p>Checkbox list is required</p>
+  </ng-container>
+  <ng-container bodyContent>
+    <silo-checkbox-list
+      label="Label"
+      [lookupConfig]="lookupConfig"
+      [isRequired]="true"
+    ></silo-checkbox-list>
+  </ng-container>
+</silo-example-article>
+
+<silo-example-article>
+  <ng-container headerContent>
+    <p>Checkbox list with hint</p>
+  </ng-container>
+  <ng-container bodyContent>
+    <silo-checkbox-list
+      label="Label"
+      [lookupConfig]="lookupConfig"
+      [isRequired]="true"
+      hint="Please select an option"
+    ></silo-checkbox-list>
+  </ng-container>
+</silo-example-article>
+
+<silo-example-article>
+  <ng-container headerContent>
+    <p>Checkbox with long label</p>
+  </ng-container>
+  <ng-container bodyContent>
+    <silo-checkbox-list
+      label="Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec velit neque, auctor sit amet aliquam vel, ullamcorper sit amet ligula."
+      [lookupConfig]="lookupConfig"
+      fieldSize="col-6"
+      outlineSize="col-12"
+    ></silo-checkbox-list>
+  </ng-container>
+</silo-example-article>
+
+<silo-example-article>
+  <ng-container headerContent>
+    <p>Checkbox list is read-only</p>
+  </ng-container>
+  <ng-container bodyContent>
+    <silo-checkbox-list
+      label="Label"
+      [lookupConfig]="lookupConfig"
+      [value]="[lookupConfig.lookups[1]]"
+      [isRequired]="true"
+      [isReadOnly]="true"
+    ></silo-checkbox-list>
+  </ng-container>
+</silo-example-article>

@@ -51,6 +51,14 @@ const routes: Routes = [
             '../component-doc/radio-list/routing.module'
           ).then((m) => m.RoutingModule),
       },
+      {
+        path: 'checkbox-list',
+        loadChildren: () =>
+          import(
+            /* webpackChunkName: 'checkbox-list-doc-module' */
+            '../component-doc/checkbox-list/routing.module'
+          ).then((m) => m.RoutingModule),
+      },
     ],
   },
 ];

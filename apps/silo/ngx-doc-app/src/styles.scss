@@ -20,3 +20,13 @@
   @include angular-material-theme($dark-theme);
   @include silo-ngx-lib-theme($dark-theme);
 }
+
+// custom theme for component-preview-list-item
+.component-preview-list-item__card {
+  color: $dark-text;
+}
+.silo-dark-theme {
+  .component-preview-list-item__card {
+    color: $light-text;
+  }
+}

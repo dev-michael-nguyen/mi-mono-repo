@@ -86,5 +86,28 @@
         </div>
       </div>
     </a>
+    <a class="component-preview-list-item" routerLink="../checkbox-list">
+      <div class="component-preview-list-item__card">
+        <div
+          class="component-preview-list-item__card__image"
+          fxLayout="column"
+          fxLayoutAlign="center center"
+        >
+          <silo-checkbox-list
+            label="Label"
+            [lookupConfig]="lookupConfig"
+            [isRequired]="true"
+            hint="Please select an option"
+            fieldSize="col-12"
+          ></silo-checkbox-list>
+        </div>
+        <div class="component-preview-list-item__card__title">
+          Checkbox List
+        </div>
+        <div class="component-preview-list-item__card__summary">
+          Multiple lookup select as checkbox list.
+        </div>
+      </div>
+    </a>
   </div>
 </div>
