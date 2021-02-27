@@ -1,5 +1,6 @@
 <div
   class="silo-radio-list"
+  [class.silo-radio-list--is-readonly]="isReadOnly"
   [class.silo-radio-list--is-required]="isRequired"
   [class.silo-radio-list--is-filled]="
     isRequired && formGroup.dirty && formGroup.valid
@@ -23,12 +24,17 @@
           *ngFor="let option of options"
           [class.is-stacked]="isStacked"
           [value]="option"
+          [disabled]="
+            isReadOnly &&
+            valueFormControl.value &&
+            valueFormControl.value.key !== option.key
+          "
         >
           {{ option.displayName }}
         </mat-radio-button>
       </mat-radio-group>
       <button
-        *ngIf="valueFormControl.value"
+        *ngIf="!isReadOnly && valueFormControl.value"
         mat-icon-button
         matSuffix
         aria-label="Clear"

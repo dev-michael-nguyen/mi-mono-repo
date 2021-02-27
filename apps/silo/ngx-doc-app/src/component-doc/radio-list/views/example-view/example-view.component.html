@@ -65,3 +65,18 @@
     ></silo-radio-list>
   </ng-container>
 </silo-example-article>
+
+<silo-example-article>
+  <ng-container headerContent>
+    <p>Radio list is read-only</p>
+  </ng-container>
+  <ng-container bodyContent>
+    <silo-radio-list
+      label="Label"
+      [lookupConfig]="lookupConfig"
+      [value]="lookupConfig.lookups[1]"
+      [isRequired]="true"
+      [isReadOnly]="true"
+    ></silo-radio-list>
+  </ng-container>
+</silo-example-article>

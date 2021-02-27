@@ -1,4 +1,11 @@
-import { Component, Input, OnInit } from '@angular/core';
+import {
+  Component,
+  Input,
+  OnInit,
+  QueryList,
+  ViewChildren,
+} from '@angular/core';
+import { MatRadioButton } from '@angular/material/radio';
 import { SiloSingleSelectFieldComponent } from './../single-select-field.component';
 
 @Component({
@@ -11,6 +18,9 @@ export class SiloRadioListComponent
   implements OnInit {
   @Input()
   isStacked = true;
+
+  @ViewChildren(MatRadioButton)
+  matRadioButtons: QueryList<MatRadioButton>;
 
   ngOnInit() {
     super.ngOnInit();
