@@ -15,6 +15,8 @@
     "serve:silo-ngx-doc-app": "ng serve silo-ngx-doc-app",
     "build:silo-ngx-doc-app": "ng build silo-ngx-doc-app",
     "build:silo-ngx-doc-app:prod": "ng build silo-ngx-doc-app --prod",
+    "fb:serve:silo-ngx-doc-app": "firebase serve --only hosting:silo-ngx-doc-app-prod",
+    "fb:deploy:silo-ngx-doc-app": "firebase deploy --only hosting:silo-ngx-doc-app-prod",
     "test": "ng test",
     "lint": "nx workspace-lint && ng lint",
     "e2e": "ng e2e",

@@ -7,14 +7,15 @@
 - Install latest NodeJs version
 
 ```npm
-nvm install 12.18.2
-nvm use 12.18.2
+nvm install latest
+nvm use latest
 ```
 
 - Install CLI
 
 ```npm
-npm install -g @angular/cli
+npm install -g @nrwl/cli@11.2.1
+npm install -g @angular/cli@11.3.0
 npm install -g firebase-tools
 ```
 
