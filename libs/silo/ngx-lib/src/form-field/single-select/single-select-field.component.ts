@@ -15,7 +15,7 @@ import { SingleSelectValidator } from './single-select-validator';
 @Directive()
 export class SiloSingleSelectFieldComponent implements OnInit {
   formGroup: FormGroup;
-  valueFormControl: FormControl;
+  lookupFormControl: FormControl;
   labelId: string;
   describebyId: string;
   options: Array<LookupModel>;
@@ -68,20 +68,20 @@ export class SiloSingleSelectFieldComponent implements OnInit {
     if (this.isRequired) {
       validators.push(singleSelectValidator.createRequiredValidator());
     }
-    this.valueFormControl = this.formBuilder.control(value, validators);
+    this.lookupFormControl = this.formBuilder.control(value, validators);
     this.formGroup = this.formBuilder.group({
-      value: this.valueFormControl,
+      lookup: this.lookupFormControl,
     });
   }
 
   clearForm($event: Event) {
     $event.stopPropagation();
-    this.valueFormControl.setValue(null);
+    this.lookupFormControl.setValue(null);
   }
 
   getErrorMessage() {
-    const firstErrorKey = Object.keys(this.valueFormControl.errors)[0];
-    const firstError = this.valueFormControl.errors[
+    const firstErrorKey = Object.keys(this.lookupFormControl.errors)[0];
+    const firstError = this.lookupFormControl.errors[
       firstErrorKey
     ] as IValidatorError;
     return firstError.message;

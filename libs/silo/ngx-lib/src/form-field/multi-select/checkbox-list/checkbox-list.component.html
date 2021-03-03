@@ -19,7 +19,7 @@
       <mat-selection-list
         [attr.aria-labelledby]="labelId"
         [attr.aria-describedby]="describebyId"
-        [formControl]="valueFormControl"
+        [formControl]="lookupListFormControl"
         [compareWith]="compareWith"
         [required]="isRequired"
       >
@@ -37,14 +37,17 @@
   <div [id]="describebyId" class="silo-form-field-message-container">
     <span
       class="mat-hint"
-      *ngIf="hint && !(valueFormControl.touched && valueFormControl.invalid)"
+      *ngIf="
+        hint &&
+        !(lookupListFormControl.touched && lookupListFormControl.invalid)
+      "
     >
       {{ hint }}
     </span>
     <span
       class="mat-error"
       role="alert"
-      *ngIf="valueFormControl.touched && valueFormControl.invalid"
+      *ngIf="lookupListFormControl.touched && lookupListFormControl.invalid"
     >
       {{ getErrorMessage() }}
     </span>

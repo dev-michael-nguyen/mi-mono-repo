@@ -21,7 +21,7 @@
     <mat-select
       [attr.aria-labelledby]="labelId"
       [placeholder]="placeholder"
-      [formControl]="valueFormControl"
+      [formControl]="lookupFormControl"
       [compareWith]="compareWith"
       [required]="isRequired"
     >
@@ -30,7 +30,7 @@
       </mat-option>
     </mat-select>
     <button
-      *ngIf="!isReadOnly && valueFormControl.value"
+      *ngIf="!isReadOnly && lookupFormControl.value"
       mat-icon-button
       matSuffix
       aria-label="Clear"
@@ -39,7 +39,7 @@
       <mat-icon>close</mat-icon>
     </button>
     <mat-hint *ngIf="hint">{{ hint }}</mat-hint>
-    <mat-error *ngIf="valueFormControl.invalid">
+    <mat-error *ngIf="lookupFormControl.invalid">
       {{ getErrorMessage() }}
     </mat-error>
   </mat-form-field>

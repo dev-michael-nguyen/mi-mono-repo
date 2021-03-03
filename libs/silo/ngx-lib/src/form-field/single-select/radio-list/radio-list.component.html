@@ -18,7 +18,7 @@
     <div class="silo-form-field-input-container">
       <mat-radio-group
         [attr.aria-labelledby]="labelId"
-        [formControl]="valueFormControl"
+        [formControl]="lookupFormControl"
       >
         <mat-radio-button
           *ngFor="let option of options"
@@ -26,15 +26,15 @@
           [value]="option"
           [disabled]="
             isReadOnly &&
-            valueFormControl.value &&
-            valueFormControl.value.key !== option.key
+            lookupFormControl.value &&
+            lookupFormControl.value.key !== option.key
           "
         >
           {{ option.displayName }}
         </mat-radio-button>
       </mat-radio-group>
       <button
-        *ngIf="!isReadOnly && valueFormControl.value"
+        *ngIf="!isReadOnly && lookupFormControl.value"
         mat-icon-button
         matSuffix
         aria-label="Clear"
@@ -47,14 +47,14 @@
   <div [id]="describebyId" class="silo-form-field-message-container">
     <span
       class="mat-hint"
-      *ngIf="hint && !(valueFormControl.touched && valueFormControl.invalid)"
+      *ngIf="hint && !(lookupFormControl.touched && lookupFormControl.invalid)"
     >
       {{ hint }}
     </span>
     <span
       class="mat-error"
       role="alert"
-      *ngIf="valueFormControl.touched && valueFormControl.invalid"
+      *ngIf="lookupFormControl.touched && lookupFormControl.invalid"
     >
       {{ getErrorMessage() }}
     </span>

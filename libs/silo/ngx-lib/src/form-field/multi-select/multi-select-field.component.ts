@@ -15,7 +15,7 @@ import { SiloMultiSelectValidatorFactory } from './multi-select-validator';
 @Directive()
 export class SiloMultiSelectFieldComponent implements OnInit {
   formGroup: FormGroup;
-  valueFormControl: FormControl;
+  lookupListFormControl: FormControl;
   labelId: string;
   describebyId: string;
   options: Array<LookupModel>;
@@ -68,20 +68,20 @@ export class SiloMultiSelectFieldComponent implements OnInit {
     if (this.isRequired) {
       validators.push(validatorFactory.createRequiredValidator());
     }
-    this.valueFormControl = this.formBuilder.control(value, validators);
+    this.lookupListFormControl = this.formBuilder.control(value, validators);
     this.formGroup = this.formBuilder.group({
-      value: this.valueFormControl,
+      lookupList: this.lookupListFormControl,
     });
   }
 
   clearForm($event: Event) {
     $event.stopPropagation();
-    this.valueFormControl.setValue(null);
+    this.lookupListFormControl.setValue(null);
   }
 
   getErrorMessage() {
-    const firstErrorKey = Object.keys(this.valueFormControl.errors)[0];
-    const firstError = this.valueFormControl.errors[
+    const firstErrorKey = Object.keys(this.lookupListFormControl.errors)[0];
+    const firstError = this.lookupListFormControl.errors[
       firstErrorKey
     ] as IValidatorError;
     return firstError.message;
@@ -92,7 +92,7 @@ export class SiloMultiSelectFieldComponent implements OnInit {
   }
 
   isSelected(option: LookupModel) {
-    const valueList = this.valueFormControl.value as Array<LookupModel>;
+    const valueList = this.lookupListFormControl.value as Array<LookupModel>;
     return valueList && !!valueList.find((x) => x.key === option.key);
   }
 }
