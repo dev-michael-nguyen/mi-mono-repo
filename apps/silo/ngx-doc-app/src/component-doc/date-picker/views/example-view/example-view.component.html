@@ -1,0 +1,58 @@
+<silo-example-article>
+  <ng-container headerContent>
+    <p>Date picker is not required</p>
+  </ng-container>
+  <ng-container bodyContent>
+    <silo-date-picker label="Label"></silo-date-picker>
+  </ng-container>
+</silo-example-article>
+
+<silo-example-article>
+  <ng-container headerContent>
+    <p>Date picker is required</p>
+  </ng-container>
+  <ng-container bodyContent>
+    <silo-date-picker label="Label" [isRequired]="true"></silo-date-picker>
+  </ng-container>
+</silo-example-article>
+
+<silo-example-article>
+  <ng-container headerContent>
+    <p>Date picker with hint</p>
+  </ng-container>
+  <ng-container bodyContent>
+    <silo-date-picker
+      label="Label"
+      [isRequired]="true"
+      hint="Please enter a date"
+    ></silo-date-picker>
+  </ng-container>
+</silo-example-article>
+
+<silo-example-article>
+  <ng-container headerContent>
+    <p>Date picker with long label and placeholder</p>
+  </ng-container>
+  <ng-container bodyContent>
+    <silo-date-picker
+      label="Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec velit neque, auctor sit amet aliquam vel, ullamcorper sit amet ligula."
+      placeholder="Proin eget tortor risus."
+      fieldSize="col-6"
+      outlineSize="col-4"
+    ></silo-date-picker>
+  </ng-container>
+</silo-example-article>
+
+<silo-example-article>
+  <ng-container headerContent>
+    <p>Date picker is required</p>
+  </ng-container>
+  <ng-container bodyContent>
+    <silo-date-picker
+      label="Label"
+      value="3/2/2021"
+      [isRequired]="true"
+      [isReadOnly]="true"
+    ></silo-date-picker>
+  </ng-container>
+</silo-example-article>

@@ -59,6 +59,14 @@ const routes: Routes = [
             '../component-doc/checkbox-list/routing.module'
           ).then((m) => m.RoutingModule),
       },
+      {
+        path: 'date-picker',
+        loadChildren: () =>
+          import(
+            /* webpackChunkName: 'date-picker-doc-module' */
+            '../component-doc/date-picker/routing.module'
+          ).then((m) => m.RoutingModule),
+      },
     ],
   },
 ];

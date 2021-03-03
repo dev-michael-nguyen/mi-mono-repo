@@ -13,6 +13,7 @@ export class ListViewComponent implements OnInit {
     { label: 'Single Select', routerLink: 'single-select' },
     { label: 'Radio List', routerLink: 'radio-list' },
     { label: 'Checkbox List', routerLink: 'checkbox-list' },
+    { label: 'Date Picker', routerLink: 'date-picker' },
   ];
 
   constructor() {}

@@ -4,6 +4,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { RouterModule } from '@angular/router';
 import {
   SiloCheckboxListModule,
+  SiloDatePickerModule,
   SiloRadioListModule,
   SiloSingleSelectModule,
   SiloTextAreaModule,
@@ -17,6 +18,7 @@ import { PreviewViewComponent } from './preview-view.component';
     FlexLayoutModule,
     RouterModule,
     SiloCheckboxListModule,
+    SiloDatePickerModule,
     SiloRadioListModule,
     SiloSingleSelectModule,
     SiloTextAreaModule,
