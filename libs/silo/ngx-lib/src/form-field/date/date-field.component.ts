@@ -62,7 +62,7 @@ export class SiloDateFieldComponent implements OnInit {
       validators.push(dateValidator.createRequiredValidator());
     }
     this.dateFormControl = this.formBuilder.control(
-      new Date(value),
+      value ? new Date(value) : null,
       validators,
     );
     this.formGroup = this.formBuilder.group({

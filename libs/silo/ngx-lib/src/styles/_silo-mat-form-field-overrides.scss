@@ -5,7 +5,8 @@
   $warn: map-get($config, warn);
   $is-dark: map-get($config, is-dark);
 
-  .mat-form-field {
+  // custom style for mat-form-field appearance="legacy"
+  .mat-form-field-appearance-legacy {
     width: 100%;
 
     // hide label since we want to use custom label and placeholder
@@ -41,6 +42,21 @@
     // center suffix on multi line such as textarea
     .mat-form-field-suffix {
       align-self: center;
+    }
+
+    // fix legacy suffix icon size
+    .mat-form-field-suffix {
+      .mat-icon-button {
+        width: 2em;
+        height: 2em;
+        .mat-datepicker-toggle-default-icon {
+          width: 1.5em;
+          height: 1.5em;
+        }
+        .mat-icon {
+          font-size: 1.5em !important;
+        }
+      }
     }
   }
 

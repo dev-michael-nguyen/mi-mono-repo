@@ -32,6 +32,15 @@
       [for]="picker"
       [disabled]="isReadOnly"
     ></mat-datepicker-toggle>
+    <button
+      *ngIf="!isReadOnly && dateFormControl.value"
+      mat-icon-button
+      matSuffix
+      aria-label="Clear"
+      (click)="clearForm($event)"
+    >
+      <mat-icon>close</mat-icon>
+    </button>
     <mat-datepicker #picker></mat-datepicker>
     <mat-hint *ngIf="hint">{{ hint }}</mat-hint>
     <mat-error *ngIf="dateFormControl.invalid">
