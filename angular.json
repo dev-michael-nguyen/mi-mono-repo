@@ -232,37 +232,6 @@
         }
       }
     },
-    "mi-metadata": {
-      "projectType": "library",
-      "root": "libs/mi-metadata",
-      "sourceRoot": "libs/mi-metadata/src",
-      "prefix": "mi",
-      "architect": {
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": [
-              "libs/mi-metadata/tsconfig.lib.json",
-              "libs/mi-metadata/tsconfig.spec.json"
-            ],
-            "exclude": ["**/node_modules/**", "!libs/mi-metadata/**/*"]
-          }
-        },
-        "test": {
-          "builder": "@nrwl/jest:jest",
-          "options": {
-            "jestConfig": "libs/mi-metadata/jest.config.js",
-            "passWithNoTests": true
-          },
-          "outputs": ["coverage/libs/mi-metadata"]
-        }
-      },
-      "schematics": {
-        "@nrwl/angular:component": {
-          "style": "scss"
-        }
-      }
-    },
     "silo-ngx-lib": {
       "projectType": "library",
       "root": "libs/silo/ngx-lib",
@@ -303,6 +272,27 @@
       "schematics": {
         "@schematics/angular:component": {
           "style": "scss"
+        }
+      }
+    },
+    "silo-metadata-lib": {
+      "root": "libs/silo/metadata-lib",
+      "sourceRoot": "libs/silo/metadata-lib/src",
+      "projectType": "library",
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["libs/silo/metadata-lib/**/*.ts"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/silo/metadata-lib"],
+          "options": {
+            "jestConfig": "libs/silo/metadata-lib/jest.config.js",
+            "passWithNoTests": true
+          }
         }
       }
     }
