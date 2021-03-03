@@ -18,7 +18,7 @@
     "fb:serve:silo-ngx-doc-app": "firebase serve --only hosting:silo-ngx-doc-app-prod",
     "fb:deploy:silo-ngx-doc-app": "firebase deploy --only hosting:silo-ngx-doc-app-prod",
     "test": "ng test",
-    "lint": "nx workspace-lint && ng lint",
+    "lint": "nx lint silo-metadata-lib && nx lint silo-ngx-lib",
     "e2e": "ng e2e",
     "affected:apps": "nx affected:apps",
     "affected:libs": "nx affected:libs",

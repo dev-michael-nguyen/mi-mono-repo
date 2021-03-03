@@ -38,8 +38,11 @@ export class SiloCheckboxListComponent
 
     // TODO: This will work for now until we need to dynamically change from read-only to editable
     this.matListOptions.forEach((x) => {
-      x.toggle = () => {};
+      x.toggle = () => {
+        // do nothing
+      };
     });
+
     this._el.nativeElement
       .querySelectorAll('.mat-selection-list')
       .forEach((item) => {

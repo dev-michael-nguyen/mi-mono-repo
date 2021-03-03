@@ -55,7 +55,7 @@ export class SiloDateFieldComponent implements OnInit {
     this.describebyId = randomHtmlId();
   }
 
-  setForm(value: any) {
+  setForm(value: string) {
     const dateValidator = new SiloDateValidator();
     const validators: Array<ValidatorFn> = [];
     if (this.isRequired) {

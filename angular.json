@@ -83,13 +83,9 @@
           }
         },
         "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
+          "builder": "@nrwl/linter:eslint",
           "options": {
-            "tsConfig": [
-              "apps/resume/tsconfig.app.json",
-              "apps/resume/tsconfig.spec.json"
-            ],
-            "exclude": ["**/node_modules/**", "!apps/resume/**/*"]
+            "lintFilePatterns": ["apps/resume/**/*.ts"]
           }
         },
         "test": {
@@ -181,14 +177,9 @@
           }
         },
         "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
+          "builder": "@nrwl/linter:eslint",
           "options": {
-            "tsConfig": [
-              "apps/silo/ngx-doc-app/tsconfig.app.json",
-              "apps/silo/ngx-doc-app/tsconfig.spec.json",
-              "apps/silo/ngx-doc-app/tsconfig.editor.json"
-            ],
-            "exclude": ["**/node_modules/**", "!apps/silo/ngx-doc-app/**/*"]
+            "lintFilePatterns": ["apps/silo/ngx-doc-app/**/*.ts"]
           }
         },
         "test": {
@@ -251,13 +242,9 @@
           }
         },
         "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
+          "builder": "@nrwl/linter:eslint",
           "options": {
-            "tsConfig": [
-              "libs/silo/ngx-lib/tsconfig.lib.json",
-              "libs/silo/ngx-lib/tsconfig.spec.json"
-            ],
-            "exclude": ["**/node_modules/**", "!libs/silo/ngx-lib/**/*"]
+            "lintFilePatterns": ["libs/silo/ngx-lib/**/*.ts"]
           }
         },
         "test": {

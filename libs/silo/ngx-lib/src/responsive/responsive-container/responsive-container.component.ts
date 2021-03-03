@@ -1,15 +1,11 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { ClassExpression } from './responsive-container.model';
 
 @Component({
   selector: 'silo-responsive-container',
   templateUrl: './responsive-container.component.html',
 })
-export class SiloResponsiveContainerComponent implements OnInit {
+export class SiloResponsiveContainerComponent {
   @Input()
   colExpression: ClassExpression;
-
-  constructor() {}
-
-  ngOnInit() {}
 }

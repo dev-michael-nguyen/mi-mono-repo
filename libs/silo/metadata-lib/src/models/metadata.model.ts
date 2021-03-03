@@ -4,13 +4,13 @@ export class MetadataModel {
   /**
    * Get the metadata of this entity
    */
-  get metadata(): any {
+  get metadata(): unknown {
     return MetadataModel.recursiveBuildMetadata(this);
   }
 
   static recursiveBuildMetadata(
     metadataModel: MetadataModel,
-    metadata: any = {},
+    metadata: unknown = {},
   ) {
     metadata[metadataModel.$type] = {
       classMetadata: MetadataModel.buildClassMetadata(metadataModel),
@@ -34,7 +34,7 @@ export class MetadataModel {
 
   static recursiveBuildChildrenMetadata(
     metadataModel: MetadataModel,
-    metadata: any = {},
+    metadata: unknown = {},
   ) {
     const childrenMetadata = {};
     Object.keys(metadataModel)

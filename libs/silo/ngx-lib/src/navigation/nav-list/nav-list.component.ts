@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { INavListItemModel } from './nav-list.model';
 
 @Component({
@@ -6,11 +6,7 @@ import { INavListItemModel } from './nav-list.model';
   templateUrl: './nav-list.component.html',
   styleUrls: ['./nav-list.component.scss'],
 })
-export class SiloNavListComponent implements OnInit {
+export class SiloNavListComponent {
   @Input()
   lookupList: Array<INavListItemModel> = [];
-
-  constructor() {}
-
-  ngOnInit() {}
 }

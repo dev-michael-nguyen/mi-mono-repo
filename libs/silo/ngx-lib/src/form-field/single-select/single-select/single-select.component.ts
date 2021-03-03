@@ -23,6 +23,8 @@ export class SiloSingleSelectComponent
     }
 
     // TODO: This will work for now until we need to dynamically change from read-only to editable
-    this.matSelect.open = () => {};
+    this.matSelect.open = () => {
+      // do nothing
+    };
   }
 }

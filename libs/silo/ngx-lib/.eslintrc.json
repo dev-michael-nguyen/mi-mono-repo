@@ -17,7 +17,8 @@
         "@angular-eslint/component-selector": [
           "error",
           { "type": "element", "prefix": "silo", "style": "kebab-case" }
-        ]
+        ],
+        "@angular-eslint/directive-class-suffix": "off"
       }
     },
     {

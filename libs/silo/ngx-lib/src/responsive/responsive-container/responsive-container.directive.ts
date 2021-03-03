@@ -1,10 +1,10 @@
-import { Directive, ElementRef, Input } from '@angular/core';
+import { Directive, ElementRef, Input, OnInit } from '@angular/core';
 import { ClassExpression } from './responsive-container.model';
 
 @Directive({
   selector: '[siloResponsiveContainer]',
 })
-export class SiloResponsiveContainerDirective {
+export class SiloResponsiveContainerDirective implements OnInit {
   static readonly REPONSIVE_CONTAINER_CLASS = 'silo-responsive-container';
 
   @Input('siloResponsiveContainer')
