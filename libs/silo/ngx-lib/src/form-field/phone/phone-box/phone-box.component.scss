@@ -1,0 +1,22 @@
+.silo-phone-box {
+  .silo-phone-input {
+    display: flex;
+    align-items: center;
+    flex: auto;
+    input {
+      box-sizing: border-box;
+      border: none;
+      outline: none;
+      width: 4ch;
+      margin: 0;
+      padding: 0 4px;
+      line-height: 2rem;
+      font-family: inherit;
+      font-size: 16px;
+      background-color: inherit;
+    }
+    input:last-child {
+      width: 5ch;
+    }
+  }
+}

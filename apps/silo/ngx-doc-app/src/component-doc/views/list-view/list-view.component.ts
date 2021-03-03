@@ -14,6 +14,7 @@ export class ListViewComponent implements OnInit {
     { label: 'Radio List', routerLink: 'radio-list' },
     { label: 'Checkbox List', routerLink: 'checkbox-list' },
     { label: 'Date Picker', routerLink: 'date-picker' },
+    { label: 'Phone Box', routerLink: 'phone-box' },
   ];
 
   constructor() {}

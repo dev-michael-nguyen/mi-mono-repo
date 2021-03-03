@@ -67,6 +67,14 @@ const routes: Routes = [
             '../component-doc/date-picker/routing.module'
           ).then((m) => m.RoutingModule),
       },
+      {
+        path: 'phone-box',
+        loadChildren: () =>
+          import(
+            /* webpackChunkName: 'phone-box-doc-module' */
+            '../component-doc/phone-box/routing.module'
+          ).then((m) => m.RoutingModule),
+      },
     ],
   },
 ];

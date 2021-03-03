@@ -129,5 +129,25 @@
         </div>
       </div>
     </a>
+    <a class="component-preview-list-item" routerLink="../phone-box">
+      <div class="component-preview-list-item__card">
+        <div
+          class="component-preview-list-item__card__image"
+          fxLayout="column"
+          fxLayoutAlign="center center"
+        >
+          <silo-phone-box
+            label="Label"
+            [isRequired]="true"
+            hint="Please include area code "
+            fieldSize="col-12"
+          ></silo-phone-box>
+        </div>
+        <div class="component-preview-list-item__card__title">Phone Box</div>
+        <div class="component-preview-list-item__card__summary">
+          Phone input as masked text box.
+        </div>
+      </div>
+    </a>
   </div>
 </div>
