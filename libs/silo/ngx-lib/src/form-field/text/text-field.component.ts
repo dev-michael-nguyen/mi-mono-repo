@@ -55,7 +55,7 @@ export class SiloTextFieldComponent implements OnInit, AfterViewInit {
   @ViewChild('textarea', { static: true })
   textarea: ElementRef<HTMLTextAreaElement>;
 
-  constructor(public formBuilder: FormBuilder) {}
+  constructor(public elementRef: ElementRef, public formBuilder: FormBuilder) {}
 
   ngOnInit() {
     this.setDefinition();

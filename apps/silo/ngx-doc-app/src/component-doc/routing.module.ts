@@ -75,6 +75,14 @@ const routes: Routes = [
             '../component-doc/phone-box/routing.module'
           ).then((m) => m.RoutingModule),
       },
+      {
+        path: 'rich-text-area',
+        loadChildren: () =>
+          import(
+            /* webpackChunkName: 'rich-text-area-doc-module' */
+            '../component-doc/rich-text-area/routing.module'
+          ).then((m) => m.RoutingModule),
+      },
     ],
   },
 ];

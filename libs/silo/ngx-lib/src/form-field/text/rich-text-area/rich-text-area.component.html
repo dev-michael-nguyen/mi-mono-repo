@@ -1,0 +1,42 @@
+<div
+  class="silo-rich-text-area"
+  [class.silo-rich-text-area--is-readonly]="isReadOnly"
+  [class.silo-rich-text-area--is-required]="isRequired"
+  [class.silo-rich-text-area--is-filled]="
+    isRequired && formGroup.dirty && formGroup.valid
+  "
+  [class.silo-rich-text-area--has-error]="
+    isRequired && formGroup.touched && formGroup.invalid
+  "
+  [siloResponsiveContainer]="fieldSize"
+>
+  <silo-label [labelId]="labelId" [label]="label"></silo-label>
+  <div
+    class="silo-form-field-outline-container"
+    [siloResponsiveContainer]="outlineSize"
+  >
+    <div class="silo-form-field-input-container">
+      <quill-editor
+        [formControl]="textFormControl"
+        [required]="isRequired"
+        [maxLength]="maxLength + 1"
+        [readOnly]="isReadOnly"
+      ></quill-editor>
+    </div>
+  </div>
+  <div [id]="describebyId" class="silo-form-field-message-container">
+    <span
+      class="mat-hint"
+      *ngIf="hint && !(formGroup.touched && formGroup.invalid)"
+    >
+      {{ hint }}
+    </span>
+    <span
+      class="mat-error"
+      role="alert"
+      *ngIf="formGroup.touched && formGroup.invalid"
+    >
+      {{ getErrorMessage() }}
+    </span>
+  </div>
+</div>
