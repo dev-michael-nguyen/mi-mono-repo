@@ -18,6 +18,20 @@
 
 <silo-example-article>
   <ng-container headerContent>
+    <p>Text box is required, min length of 3, and max length of 10</p>
+  </ng-container>
+  <ng-container bodyContent>
+    <silo-text-box
+      label="Label"
+      [isRequired]="true"
+      [minLength]="3"
+      [maxLength]="10"
+    ></silo-text-box>
+  </ng-container>
+</silo-example-article>
+
+<silo-example-article>
+  <ng-container headerContent>
     <p>Text box with hint</p>
   </ng-container>
   <ng-container bodyContent>

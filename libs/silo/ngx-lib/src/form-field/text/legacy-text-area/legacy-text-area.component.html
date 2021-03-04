@@ -24,6 +24,9 @@
           [formControl]="textFormControl"
           [value]="textFormControl.value"
           [required]="isRequired"
+          [attr.minLength]="minLength ? minLength : null"
+          [attr.maxLength]="maxLength ? maxLength + 1 : null"
+          [readonly]="isReadOnly"
         >
         </textarea>
       </div>

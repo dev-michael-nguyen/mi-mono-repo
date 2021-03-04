@@ -1,9 +1,9 @@
 import { AbstractControl, ValidatorFn } from '@angular/forms';
-import { IValidatorError } from '../common/validator-error.model';
+import { IValidatorErrorMap } from '../common/validator-error.model';
 
 export class PhoneValidator {
   createRequiredValidator(message = 'This field is required.'): ValidatorFn {
-    return (control: AbstractControl): IValidatorError | null => {
+    return (control: AbstractControl): IValidatorErrorMap | null => {
       const value =
         control.value === null || control.value === undefined
           ? ''

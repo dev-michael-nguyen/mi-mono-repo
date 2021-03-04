@@ -7,7 +7,7 @@ import {
 } from '@angular/forms';
 import { ClassExpression } from '../../responsive/responsive-container/responsive-container.model';
 import { randomHtmlId } from '../../utils/random-html-id';
-import { IValidatorError } from '../common/validator-error.model';
+import { SiloValidatorErrorReporter } from '../common/validator-error-reporter';
 import { PhoneValidator } from './phone-validator';
 
 @Directive()
@@ -72,10 +72,6 @@ export class SiloPhoneFieldComponent implements OnInit {
   }
 
   getErrorMessage() {
-    const firstErrorKey = Object.keys(this.phoneFormControl.errors)[0];
-    const firstError = this.phoneFormControl.errors[
-      firstErrorKey
-    ] as IValidatorError;
-    return firstError.message;
+    return SiloValidatorErrorReporter.getErrorMessage(this.formGroup);
   }
 }

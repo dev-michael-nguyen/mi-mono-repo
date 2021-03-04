@@ -29,10 +29,12 @@
       [placeholder]="placeholder"
       [formControl]="textFormControl"
       [required]="isRequired"
+      [attr.minLength]="minLength ? minLength : null"
+      [attr.maxLength]="maxLength ? maxLength + 1 : null"
       [readonly]="isReadOnly"
     ></textarea>
     <mat-hint *ngIf="hint">{{ hint }}</mat-hint>
-    <mat-error *ngIf="textFormControl.invalid">
+    <mat-error *ngIf="formGroup.invalid">
       {{ getErrorMessage() }}
     </mat-error>
   </mat-form-field>

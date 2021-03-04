@@ -8,7 +8,7 @@ import {
 import { ClassExpression } from '../../responsive/responsive-container/responsive-container.model';
 import { randomHtmlId } from '../../utils/random-html-id';
 import { LookupModel } from '../common/lookup.model';
-import { IValidatorError } from '../common/validator-error.model';
+import { SiloValidatorErrorReporter } from './../common/validator-error-reporter';
 import { SiloDateValidator } from './date-validator';
 
 @Directive()
@@ -76,11 +76,7 @@ export class SiloDateFieldComponent implements OnInit {
   }
 
   getErrorMessage() {
-    const firstErrorKey = Object.keys(this.dateFormControl.errors)[0];
-    const firstError = this.dateFormControl.errors[
-      firstErrorKey
-    ] as IValidatorError;
-    return firstError.message;
+    return SiloValidatorErrorReporter.getErrorMessage(this.formGroup);
   }
 
   compareWith(o1: LookupModel, o2: LookupModel) {

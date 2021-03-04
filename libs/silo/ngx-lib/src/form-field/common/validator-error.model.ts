@@ -1,5 +1,7 @@
-export interface IValidatorError {
-  [key: string]: {
-    message: string;
-  };
+export interface IValidatorErrorMap {
+  [key: string]: IValidatorErrorValue;
+}
+
+export interface IValidatorErrorValue {
+  message: string;
 }

@@ -6,22 +6,20 @@ import {
   OnInit,
   ViewChild,
 } from '@angular/core';
-import {
-  FormBuilder,
-  FormControl,
-  FormGroup,
-  ValidatorFn,
-} from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { ClassExpression } from '../../responsive/responsive-container/responsive-container.model';
 import { randomHtmlId } from '../../utils/random-html-id';
-import { IValidatorError } from '../common/validator-error.model';
-import { TextValidator } from './text-validator';
+import { SiloValidatorErrorReporter } from '../common/validator-error-reporter';
+import { SiloTextValidatorFactory } from './text-validator';
 
 @Directive()
 export class SiloTextFieldComponent implements OnInit, AfterViewInit {
   formGroup: FormGroup;
+
   textFormControl: FormControl;
+
   labelId: string;
+
   describebyId: string;
 
   @Input()
@@ -38,6 +36,12 @@ export class SiloTextFieldComponent implements OnInit, AfterViewInit {
 
   @Input()
   isRequired = false;
+
+  @Input()
+  minLength: number;
+
+  @Input()
+  maxLength: number;
 
   @Input()
   value: string;
@@ -68,13 +72,10 @@ export class SiloTextFieldComponent implements OnInit, AfterViewInit {
   }
 
   setForm(value: string) {
-    const textValidator = new TextValidator();
-    const validators: Array<ValidatorFn> = [];
-    if (this.isRequired) {
-      validators.push(textValidator.createRequiredValidator());
-    }
-
-    this.textFormControl = this.formBuilder.control(value, validators);
+    this.textFormControl = this.formBuilder.control(
+      value,
+      SiloTextValidatorFactory.createValidators(this),
+    );
     this.formGroup = this.formBuilder.group({
       text: this.textFormControl,
     });
@@ -85,11 +86,7 @@ export class SiloTextFieldComponent implements OnInit, AfterViewInit {
   }
 
   getErrorMessage() {
-    const firstErrorKey = Object.keys(this.textFormControl.errors)[0];
-    const firstError = this.textFormControl.errors[
-      firstErrorKey
-    ] as IValidatorError;
-    return firstError.message;
+    return SiloValidatorErrorReporter.getErrorMessage(this.formGroup);
   }
 
   setTextAreaHeightInReadOnly() {

@@ -9,7 +9,7 @@ import { ClassExpression } from '../../responsive/responsive-container/responsiv
 import { randomHtmlId } from '../../utils/random-html-id';
 import { LookupConfig } from '../common/lookup-config.model';
 import { LookupModel } from '../common/lookup.model';
-import { IValidatorError } from '../common/validator-error.model';
+import { SiloValidatorErrorReporter } from '../common/validator-error-reporter';
 import { SingleSelectValidator } from './single-select-validator';
 
 @Directive()
@@ -80,11 +80,7 @@ export class SiloSingleSelectFieldComponent implements OnInit {
   }
 
   getErrorMessage() {
-    const firstErrorKey = Object.keys(this.lookupFormControl.errors)[0];
-    const firstError = this.lookupFormControl.errors[
-      firstErrorKey
-    ] as IValidatorError;
-    return firstError.message;
+    return SiloValidatorErrorReporter.getErrorMessage(this.formGroup);
   }
 
   compareWith(o1: LookupModel, o2: LookupModel) {
