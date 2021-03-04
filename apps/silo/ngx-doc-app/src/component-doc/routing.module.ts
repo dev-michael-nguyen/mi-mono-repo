@@ -83,6 +83,14 @@ const routes: Routes = [
             '../component-doc/rich-text-area/routing.module'
           ).then((m) => m.RoutingModule),
       },
+      {
+        path: 'time-picker',
+        loadChildren: () =>
+          import(
+            /* webpackChunkName: 'time-picker-doc-module' */
+            '../component-doc/time-picker/routing.module'
+          ).then((m) => m.RoutingModule),
+      },
     ],
   },
 ];

@@ -8,7 +8,7 @@
   text-decoration: none;
   display: inline-block;
   margin: 20px;
-  width: 280px;
+  width: 320px;
 
   :hover,
   :active {
@@ -23,6 +23,9 @@
   .component-preview-list-item__card__image {
     height: 156px;
     border-bottom: 1px solid lightgray;
+    > * {
+      width: 240px;
+    }
   }
 
   .component-preview-list-item__card__title {

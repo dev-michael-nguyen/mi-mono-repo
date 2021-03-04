@@ -1,0 +1,8 @@
+.silo-time-picker {
+  input[type='time']::-webkit-calendar-picker-indicator {
+    cursor: pointer;
+    font-size: 1.4em;
+    position: absolute;
+    right: 0;
+  }
+}

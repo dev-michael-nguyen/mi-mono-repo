@@ -12,6 +12,7 @@ import {
   SiloTextAreaModule,
   SiloTextBoxModule,
 } from '@silo/ngx';
+import { SiloTimePickerModule } from './../../../../../../../libs/silo/ngx-lib/src/form-field/time/time-picker/time-picker.module';
 import { PreviewViewComponent } from './preview-view.component';
 
 @NgModule({
@@ -27,6 +28,7 @@ import { PreviewViewComponent } from './preview-view.component';
     SiloSingleSelectModule,
     SiloTextAreaModule,
     SiloTextBoxModule,
+    SiloTimePickerModule,
   ],
   declarations: [PreviewViewComponent],
 })

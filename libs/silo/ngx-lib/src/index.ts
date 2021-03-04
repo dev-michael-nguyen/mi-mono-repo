@@ -4,6 +4,7 @@ export * from './form-field/multi-select/multi-select.public-api';
 export * from './form-field/phone/phone.public-api';
 export * from './form-field/single-select/single-select.public-api';
 export * from './form-field/text/text.public-api';
+export * from './form-field/time/time.public-api';
 export * from './layout/app-layout/app-layout.public-api';
 export * from './layout/router-tab-layout/router-tab-layout.public-api';
 export * from './layout/sticky-layout/sticky-layout.public-api';

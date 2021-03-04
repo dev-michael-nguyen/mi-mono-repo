@@ -1,0 +1,45 @@
+<div
+  class="silo-time-picker"
+  [class.silo-time-picker--is-readonly]="isReadOnly"
+  [class.silo-time-picker--is-required]="isRequired"
+  [class.silo-time-picker--is-filled]="
+    isRequired && formGroup.dirty && formGroup.valid
+  "
+  [class.silo-time-picker--has-error]="
+    isRequired && formGroup.touched && formGroup.invalid
+  "
+  [siloResponsiveContainer]="fieldSize"
+>
+  <silo-label [labelId]="labelId" [label]="label"></silo-label>
+  <mat-form-field
+    appearance="legacy"
+    floatLabel="always"
+    [hideRequiredMarker]="true"
+    [siloResponsiveContainer]="outlineSize"
+  >
+    <mat-label>{{ label }}</mat-label>
+    <input
+      #timeInput
+      matInput
+      type="time"
+      [attr.aria-labelledby]="labelId"
+      [formControl]="timeFormControl"
+      [required]="isRequired"
+      [readonly]="isReadOnly"
+    />
+    <mat-icon *ngIf="isReadOnly" matSuffix>schedule</mat-icon>
+    <button
+      *ngIf="!isReadOnly && timeFormControl.value"
+      mat-icon-button
+      matSuffix
+      aria-label="Clear"
+      (click)="clearForm($event)"
+    >
+      <mat-icon>close</mat-icon>
+    </button>
+    <mat-hint *ngIf="hint">{{ hint }}</mat-hint>
+    <mat-error *ngIf="formGroup.invalid">
+      {{ getErrorMessage() }}
+    </mat-error>
+  </mat-form-field>
+</div>
