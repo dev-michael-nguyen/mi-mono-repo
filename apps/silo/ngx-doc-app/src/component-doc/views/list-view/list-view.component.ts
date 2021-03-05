@@ -10,7 +10,7 @@ export class ListViewComponent implements OnInit {
   componentNavList: Array<INavListItemModel> = [
     { label: 'Text Box', routerLink: 'text-box' },
     { label: 'Text Area', routerLink: 'text-area' },
-    { label: 'Rich Text Area', routerLink: 'rich-text-area' },
+    { label: 'Quill Rich Text', routerLink: 'quill-rich-text' },
     { label: 'Single Select', routerLink: 'single-select' },
     { label: 'Radio List', routerLink: 'radio-list' },
     { label: 'Checkbox List', routerLink: 'checkbox-list' },

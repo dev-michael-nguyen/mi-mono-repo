@@ -4,7 +4,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { QuillModule } from 'ngx-quill';
 import { SiloResponsiveContainerModule } from '../../../responsive/responsive-container/responsive-container.module';
 import { SiloLabelModule } from '../../label/label.module';
-import { SiloRichTextAreaComponent } from './rich-text-area.component';
+import { SiloQuillRichTextComponent } from './quill-rich-text.component';
 
 @NgModule({
   imports: [
@@ -14,7 +14,7 @@ import { SiloRichTextAreaComponent } from './rich-text-area.component';
     SiloLabelModule,
     SiloResponsiveContainerModule,
   ],
-  declarations: [SiloRichTextAreaComponent],
-  exports: [SiloRichTextAreaComponent],
+  declarations: [SiloQuillRichTextComponent],
+  exports: [SiloQuillRichTextComponent],
 })
-export class SiloRichTextAreaModule {}
+export class SiloQuillRichTextModule {}

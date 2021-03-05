@@ -1,0 +1,10 @@
+.silo-quill-rich-text {
+  .ql-container {
+    min-height: 70px;
+  }
+  &--is-readonly {
+    .ql-toolbar {
+      display: none;
+    }
+  }
+}

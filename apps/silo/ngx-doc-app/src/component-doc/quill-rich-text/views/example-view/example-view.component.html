@@ -1,74 +1,74 @@
 <silo-example-article>
   <ng-container headerContent>
-    <p>Rich text area is not required</p>
+    <p>Quill rich text is not required</p>
   </ng-container>
   <ng-container bodyContent>
-    <silo-rich-text-area label="Label"></silo-rich-text-area>
+    <silo-quill-rich-text label="Label"></silo-quill-rich-text>
   </ng-container>
 </silo-example-article>
 
 <silo-example-article>
   <ng-container headerContent>
-    <p>Rich text area is required</p>
+    <p>Quill rich text is required</p>
   </ng-container>
   <ng-container bodyContent>
-    <silo-rich-text-area
+    <silo-quill-rich-text
       label="Label"
       [isRequired]="true"
-    ></silo-rich-text-area>
+    ></silo-quill-rich-text>
   </ng-container>
 </silo-example-article>
 
 <silo-example-article>
   <ng-container headerContent>
-    <p>Rich text area is required, and max length of 10</p>
+    <p>Quill rich text is required, and max length of 10</p>
   </ng-container>
   <ng-container bodyContent>
-    <silo-rich-text-area
+    <silo-quill-rich-text
       label="Label"
       [isRequired]="true"
       [maxLength]="10"
-    ></silo-rich-text-area>
+    ></silo-quill-rich-text>
   </ng-container>
 </silo-example-article>
 
 <silo-example-article>
   <ng-container headerContent>
-    <p>Rich text area with hint</p>
+    <p>Quill rich text with hint</p>
   </ng-container>
   <ng-container bodyContent>
-    <silo-rich-text-area
+    <silo-quill-rich-text
       label="Label"
       [isRequired]="true"
       hint="Please fill out this fill"
-    ></silo-rich-text-area>
+    ></silo-quill-rich-text>
   </ng-container>
 </silo-example-article>
 
 <silo-example-article>
   <ng-container headerContent>
-    <p>Rich text area with long label and placeholder</p>
+    <p>Quill rich text with long label and placeholder</p>
   </ng-container>
   <ng-container bodyContent>
-    <silo-rich-text-area
+    <silo-quill-rich-text
       label="Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec velit neque, auctor sit amet aliquam vel, ullamcorper sit amet ligula."
       placeholder="Proin eget tortor risus."
       fieldSize="col-6"
       outlineSize="col-12"
-    ></silo-rich-text-area>
+    ></silo-quill-rich-text>
   </ng-container>
 </silo-example-article>
 
 <silo-example-article>
   <ng-container headerContent>
-    <p>Rich text area is read-only</p>
+    <p>Quill rich text is read-only</p>
   </ng-container>
   <ng-container bodyContent>
-    <silo-rich-text-area
+    <silo-quill-rich-text
       label="Label"
-      value="Vivamus magna justo, lacinia eget consectetur sed, convallis at tellus. Curabitur non nulla sit amet nisl tempus convallis quis ac lectus. Pellentesque in ipsum id orci porta dapibus."
+      value="<b>Vivamus magna justo, lacinia eget consectetur sed, convallis at tellus</b>. Curabitur non nulla sit amet nisl tempus convallis quis ac lectus. Pellentesque in ipsum id orci porta dapibus."
       [isRequired]="true"
       [isReadOnly]="true"
-    ></silo-rich-text-area>
+    ></silo-quill-rich-text>
   </ng-container>
 </silo-example-article>

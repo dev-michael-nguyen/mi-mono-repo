@@ -6,13 +6,13 @@ import {
   SiloCheckboxListModule,
   SiloDatePickerModule,
   SiloPhoneBoxModule,
+  SiloQuillRichTextModule,
   SiloRadioListModule,
-  SiloRichTextAreaModule,
   SiloSingleSelectModule,
   SiloTextAreaModule,
   SiloTextBoxModule,
+  SiloTimePickerModule,
 } from '@silo/ngx';
-import { SiloTimePickerModule } from './../../../../../../../libs/silo/ngx-lib/src/form-field/time/time-picker/time-picker.module';
 import { PreviewViewComponent } from './preview-view.component';
 
 @NgModule({
@@ -23,8 +23,8 @@ import { PreviewViewComponent } from './preview-view.component';
     SiloCheckboxListModule,
     SiloDatePickerModule,
     SiloPhoneBoxModule,
+    SiloQuillRichTextModule,
     SiloRadioListModule,
-    SiloRichTextAreaModule,
     SiloSingleSelectModule,
     SiloTextAreaModule,
     SiloTextBoxModule,

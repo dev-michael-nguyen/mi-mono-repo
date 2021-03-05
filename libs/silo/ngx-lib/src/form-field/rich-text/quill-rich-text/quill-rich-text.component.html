@@ -1,9 +1,9 @@
 <div
-  class="silo-rich-text-area"
-  [class.silo-rich-text-area--is-readonly]="isReadOnly"
-  [class.silo-rich-text-area--is-required]="isRequired"
-  [class.silo-rich-text-area--is-filled]="formGroup.dirty && formGroup.valid"
-  [class.silo-rich-text-area--has-error]="
+  class="silo-quill-rich-text"
+  [class.silo-quill-rich-text--is-readonly]="isReadOnly"
+  [class.silo-quill-rich-text--is-required]="isRequired"
+  [class.silo-quill-rich-text--is-filled]="formGroup.dirty && formGroup.valid"
+  [class.silo-quill-rich-text--has-error]="
     formGroup.touched && formGroup.invalid
   "
   [siloResponsiveContainer]="fieldSize"
@@ -15,11 +15,16 @@
   >
     <div class="silo-form-field-input-container">
       <quill-editor
+        *ngIf="!isReadOnly"
         [formControl]="textFormControl"
         [required]="isRequired"
         [maxLength]="maxLength + 1"
         [readOnly]="isReadOnly"
       ></quill-editor>
+      <quill-view-html
+        *ngIf="isReadOnly"
+        [content]="textFormControl.value"
+      ></quill-view-html>
     </div>
   </div>
   <div [id]="describebyId" class="silo-form-field-message-container">

@@ -76,11 +76,11 @@ const routes: Routes = [
           ).then((m) => m.RoutingModule),
       },
       {
-        path: 'rich-text-area',
+        path: 'quill-rich-text',
         loadChildren: () =>
           import(
-            /* webpackChunkName: 'rich-text-area-doc-module' */
-            '../component-doc/rich-text-area/routing.module'
+            /* webpackChunkName: 'quill-rich-text-doc-module' */
+            '../component-doc/quill-rich-text/routing.module'
           ).then((m) => m.RoutingModule),
       },
       {
