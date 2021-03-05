@@ -2,12 +2,8 @@
   class="silo-radio-list"
   [class.silo-radio-list--is-readonly]="isReadOnly"
   [class.silo-radio-list--is-required]="isRequired"
-  [class.silo-radio-list--is-filled]="
-    isRequired && formGroup.dirty && formGroup.valid
-  "
-  [class.silo-radio-list--has-error]="
-    isRequired && formGroup.touched && formGroup.invalid
-  "
+  [class.silo-radio-list--is-filled]="formGroup.dirty && formGroup.valid"
+  [class.silo-radio-list--has-error]="formGroup.touched && formGroup.invalid"
   [siloResponsiveContainer]="fieldSize"
 >
   <silo-label [labelId]="labelId" [label]="label"></silo-label>
@@ -47,14 +43,14 @@
   <div [id]="describebyId" class="silo-form-field-message-container">
     <span
       class="mat-hint"
-      *ngIf="hint && !(lookupFormControl.touched && lookupFormControl.invalid)"
+      *ngIf="hint && !(formGroup.touched && formGroup.invalid)"
     >
       {{ hint }}
     </span>
     <span
       class="mat-error"
       role="alert"
-      *ngIf="lookupFormControl.touched && lookupFormControl.invalid"
+      *ngIf="formGroup.touched && formGroup.invalid"
     >
       {{ getErrorMessage() }}
     </span>

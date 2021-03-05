@@ -2,12 +2,8 @@
   class="silo-checkbox-list"
   [class.silo-checkbox-list--is-readonly]="isReadOnly"
   [class.silo-checkbox-list--is-required]="isRequired"
-  [class.silo-checkbox-list--is-filled]="
-    isRequired && formGroup.dirty && formGroup.valid
-  "
-  [class.silo-checkbox-list--has-error]="
-    isRequired && formGroup.touched && formGroup.invalid
-  "
+  [class.silo-checkbox-list--is-filled]="formGroup.dirty && formGroup.valid"
+  [class.silo-checkbox-list--has-error]="formGroup.touched && formGroup.invalid"
   [siloResponsiveContainer]="fieldSize"
 >
   <silo-label [labelId]="labelId" [label]="label"></silo-label>
@@ -37,17 +33,14 @@
   <div [id]="describebyId" class="silo-form-field-message-container">
     <span
       class="mat-hint"
-      *ngIf="
-        hint &&
-        !(lookupListFormControl.touched && lookupListFormControl.invalid)
-      "
+      *ngIf="hint && !(formGroup.touched && formGroup.invalid)"
     >
       {{ hint }}
     </span>
     <span
       class="mat-error"
       role="alert"
-      *ngIf="lookupListFormControl.touched && lookupListFormControl.invalid"
+      *ngIf="formGroup.touched && formGroup.invalid"
     >
       {{ getErrorMessage() }}
     </span>

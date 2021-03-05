@@ -2,11 +2,9 @@
   class="silo-rich-text-area"
   [class.silo-rich-text-area--is-readonly]="isReadOnly"
   [class.silo-rich-text-area--is-required]="isRequired"
-  [class.silo-rich-text-area--is-filled]="
-    isRequired && formGroup.dirty && formGroup.valid
-  "
+  [class.silo-rich-text-area--is-filled]="formGroup.dirty && formGroup.valid"
   [class.silo-rich-text-area--has-error]="
-    isRequired && formGroup.touched && formGroup.invalid
+    formGroup.touched && formGroup.invalid
   "
   [siloResponsiveContainer]="fieldSize"
 >

@@ -2,12 +2,8 @@
   class="silo-date-picker"
   [class.silo-date-picker--is-readonly]="isReadOnly"
   [class.silo-date-picker--is-required]="isRequired"
-  [class.silo-date-picker--is-filled]="
-    isRequired && formGroup.dirty && formGroup.valid
-  "
-  [class.silo-date-picker--has-error]="
-    isRequired && formGroup.touched && formGroup.invalid
-  "
+  [class.silo-date-picker--is-filled]="formGroup.dirty && formGroup.valid"
+  [class.silo-date-picker--has-error]="formGroup.touched && formGroup.invalid"
   [siloResponsiveContainer]="fieldSize"
 >
   <silo-label [labelId]="labelId" [label]="label"></silo-label>
@@ -43,7 +39,7 @@
     </button>
     <mat-datepicker #picker></mat-datepicker>
     <mat-hint *ngIf="hint">{{ hint }}</mat-hint>
-    <mat-error *ngIf="dateFormControl.invalid">
+    <mat-error *ngIf="formGroup.invalid">
       {{ getErrorMessage() }}
     </mat-error>
   </mat-form-field>
