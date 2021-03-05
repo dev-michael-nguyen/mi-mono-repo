@@ -48,7 +48,9 @@ export class SiloTextValidatorFactory {
         return null;
       }
 
-      return value.length < minLength ? { minLength: { message } } : null;
+      return value.trim().length < minLength
+        ? { minLength: { message } }
+        : null;
     };
   }
 
@@ -63,7 +65,9 @@ export class SiloTextValidatorFactory {
         return null;
       }
 
-      return value.length > maxLength ? { maxLength: { message } } : null;
+      return value.trim().length > maxLength
+        ? { maxLength: { message } }
+        : null;
     };
   }
 }
