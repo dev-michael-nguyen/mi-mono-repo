@@ -1,0 +1,191 @@
+import { HarnessLoader } from '@angular/cdk/testing';
+import { TestbedHarnessEnvironment } from '@angular/cdk/testing/testbed';
+import { CommonModule } from '@angular/common';
+import { Component, ViewChild } from '@angular/core';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ReactiveFormsModule } from '@angular/forms';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { SiloResponsiveContainerModule } from './../../../responsive/responsive-container/responsive-container.module';
+import { SiloLabelModule } from './../../label/label.module';
+import { SiloTextAreaComponent } from './text-area.component';
+import { SiloTextAreaComponentHarness } from './text-area.component.harness';
+
+@Component({
+  template: `
+    <silo-text-area
+      [label]="label"
+      [placeholder]="placeholder"
+      [hint]="hint"
+      [isReadOnly]="isReadOnly"
+      [isRequired]="isRequired"
+      [minLength]="minLength"
+      [maxLength]="maxLength"
+    ></silo-text-area>
+  `,
+})
+class TestComponent {
+  label: string;
+  placeholder: string;
+  hint: string;
+  isReadOnly: boolean;
+  isRequired: boolean;
+  minLength: number;
+  maxLength: number;
+  @ViewChild(SiloTextAreaComponent) textBox: SiloTextAreaComponent;
+}
+
+describe('silo-text-area', () => {
+  let fixture: ComponentFixture<TestComponent>;
+  let testComponent: TestComponent;
+  let harnessLoader: HarnessLoader;
+
+  beforeEach(() => {
+    TestBed.configureTestingModule({
+      imports: [
+        BrowserAnimationsModule,
+        CommonModule,
+        MatFormFieldModule,
+        MatInputModule,
+        ReactiveFormsModule,
+        SiloLabelModule,
+        SiloResponsiveContainerModule,
+      ],
+      declarations: [SiloTextAreaComponent, TestComponent],
+    }).compileComponents();
+  });
+
+  beforeEach(() => {
+    fixture = TestBed.createComponent(TestComponent);
+    testComponent = fixture.componentInstance;
+    harnessLoader = TestbedHarnessEnvironment.loader(fixture);
+  });
+
+  it('should support label', async () => {
+    // arrange
+    testComponent.label = 'Label';
+    const textBoxComponentHarness = await harnessLoader.getHarness(
+      SiloTextAreaComponentHarness,
+    );
+
+    // act
+    const actualLabel = await textBoxComponentHarness.getLabel();
+    const actualLabelId = await textBoxComponentHarness.getLabelId();
+
+    // assert
+    expect(actualLabel).toBe(testComponent.label);
+    expect(actualLabelId).toBe(testComponent.textBox.labelId);
+  });
+
+  it('should support placeholder', async () => {
+    // arrange
+    testComponent.placeholder = 'Placeholder';
+    const textBoxComponentHarness = await harnessLoader.getHarness(
+      SiloTextAreaComponentHarness,
+    );
+
+    // act
+    const actualPlaceholder = await textBoxComponentHarness.getPlaceholder();
+
+    // assert
+    expect(actualPlaceholder).toBe(testComponent.placeholder);
+  });
+
+  it('should support hint', async () => {
+    // arrange
+    testComponent.hint = 'Hint';
+    const textBoxComponentHarness = await harnessLoader.getHarness(
+      SiloTextAreaComponentHarness,
+    );
+
+    // act
+    const actualHint = await textBoxComponentHarness.getHint();
+
+    // assert
+    expect(actualHint).toBe(testComponent.hint);
+  });
+
+  it('should support readonly', async () => {
+    // arrange
+    testComponent.isReadOnly = true;
+    const textBoxComponentHarness = await harnessLoader.getHarness(
+      SiloTextAreaComponentHarness,
+    );
+
+    // act
+    const actualIsReadOnly = await textBoxComponentHarness.isReadOnly();
+
+    // assert
+    expect(actualIsReadOnly).toBe(testComponent.isReadOnly);
+  });
+
+  it('should support required validation', async () => {
+    // arrange
+    testComponent.isRequired = true;
+    const textBoxComponentHarness = await harnessLoader.getHarness(
+      SiloTextAreaComponentHarness,
+    );
+    const theories = [
+      { value: null, expected: true },
+      { value: '', expected: true },
+      { value: ' ', expected: true },
+      { value: 'valid', expected: false },
+    ];
+
+    // act, assert
+    for (const theory of theories) {
+      testComponent.textBox.textFormControl.setValue(theory.value);
+      testComponent.textBox.formGroup.markAsTouched();
+      const actual = await textBoxComponentHarness.hasError();
+      expect(actual).toBe(theory.expected);
+    }
+  });
+
+  it('should support minLength validation', async () => {
+    // arrange
+    testComponent.minLength = 3;
+    const textBoxComponentHarness = await harnessLoader.getHarness(
+      SiloTextAreaComponentHarness,
+    );
+    const theories = [
+      { value: null, expected: true },
+      { value: '', expected: true },
+      { value: ' ', expected: true },
+      { value: 'ab ', expected: true },
+      { value: 'valid', expected: false },
+    ];
+
+    // act, assert
+    for (const theory of theories) {
+      testComponent.textBox.textFormControl.setValue(theory.value);
+      testComponent.textBox.formGroup.markAsTouched();
+      const actual = await textBoxComponentHarness.hasError();
+      expect(actual).toBe(theory.expected);
+    }
+  });
+
+  it('should support maxLength validation', async () => {
+    // arrange
+    testComponent.maxLength = 3;
+    const textBoxComponentHarness = await harnessLoader.getHarness(
+      SiloTextAreaComponentHarness,
+    );
+    const theories = [
+      { value: null, expected: false },
+      { value: '', expected: false },
+      { value: ' ', expected: false },
+      { value: 'va ', expected: false },
+      { value: 'val ', expected: false },
+      { value: 'invalid', expected: true },
+    ];
+
+    // act, assert
+    for (const theory of theories) {
+      testComponent.textBox.textFormControl.setValue(theory.value);
+      testComponent.textBox.formGroup.markAsTouched();
+      const actual = await textBoxComponentHarness.hasError();
+      expect(actual).toBe(theory.expected);
+    }
+  });
+});
