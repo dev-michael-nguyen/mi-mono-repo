@@ -1,21 +1,21 @@
 module.exports = {
-  preset: "../../jest.preset.js",
-  coverageDirectory: "../../coverage/apps/resume",
+  preset: '../../jest.preset.js',
+  coverageDirectory: '../../coverage/apps/resume',
   snapshotSerializers: [
-    "jest-preset-angular/build/AngularNoNgAttributesSnapshotSerializer.js",
-    "jest-preset-angular/build/AngularSnapshotSerializer.js",
-    "jest-preset-angular/build/HTMLCommentSerializer.js",
+    'jest-preset-angular/build/AngularNoNgAttributesSnapshotSerializer.js',
+    'jest-preset-angular/build/AngularSnapshotSerializer.js',
+    'jest-preset-angular/build/HTMLCommentSerializer.js',
   ],
-  setupFilesAfterEnv: ["<rootDir>/src/test-setup.ts"],
+  setupFilesAfterEnv: ['<rootDir>/src/test-setup.ts'],
   globals: {
-    "ts-jest": {
-      tsConfig: "<rootDir>/tsconfig.spec.json",
-      stringifyContentPathRegex: "\\.(html|svg)$",
+    'ts-jest': {
+      tsconfig: '<rootDir>/tsconfig.spec.json',
+      stringifyContentPathRegex: '\\.(html|svg)$',
       astTransformers: [
-        "jest-preset-angular/build/InlineFilesTransformer",
-        "jest-preset-angular/build/StripStylesTransformer",
+        'jest-preset-angular/build/InlineFilesTransformer',
+        'jest-preset-angular/build/StripStylesTransformer',
       ],
     },
   },
-  displayName: "resume",
+  displayName: 'resume',
 };
