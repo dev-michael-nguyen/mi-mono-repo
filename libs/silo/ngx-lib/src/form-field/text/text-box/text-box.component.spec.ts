@@ -70,11 +70,11 @@ describe('silo-text-box', () => {
     );
 
     // act
-    const actualLabelText = await textBoxComponentHarness.getLabelText();
+    const actualLabel = await textBoxComponentHarness.getLabel();
     const actualLabelId = await textBoxComponentHarness.getLabelId();
 
     // assert
-    expect(actualLabelText).toBe(testComponent.label);
+    expect(actualLabel).toBe(testComponent.label);
     expect(actualLabelId).toBe(testComponent.textBox.labelId);
   });
 

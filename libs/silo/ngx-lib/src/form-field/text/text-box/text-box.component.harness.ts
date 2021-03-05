@@ -2,12 +2,15 @@ import { ComponentHarness } from '@angular/cdk/testing';
 
 export class SiloTextBoxComponentHarness extends ComponentHarness {
   static hostSelector = 'silo-text-box';
-  protected getTextBoxElement = this.locatorFor('.silo-text-box');
+
+  protected getRootElement = this.locatorFor(
+    `.${SiloTextBoxComponentHarness.hostSelector}`,
+  );
   protected getLabelElement = this.locatorFor('.silo-label');
   protected getInputElement = this.locatorFor('textarea');
-  protected getMatHintElement = this.locatorFor('mat-hint');
+  protected getHintElement = this.locatorFor('.mat-hint');
 
-  async getLabelText() {
+  async getLabel() {
     const labelElement = await this.getLabelElement();
     return labelElement.text();
   }
@@ -23,8 +26,8 @@ export class SiloTextBoxComponentHarness extends ComponentHarness {
   }
 
   async getHint() {
-    const matHintElement = await this.getMatHintElement();
-    return matHintElement.text();
+    const hintElement = await this.getHintElement();
+    return hintElement.text();
   }
 
   async isReadOnly() {
@@ -32,14 +35,11 @@ export class SiloTextBoxComponentHarness extends ComponentHarness {
     return (await textAreaElement.getAttribute('readonly')) == 'true';
   }
 
-  async setInputValue(value: string) {
-    const textAreaElement = await this.getInputElement();
-    textAreaElement.setInputValue(value);
-  }
-
   async hasError() {
-    const textBoxElement = await this.getTextBoxElement();
-    const hasError = await textBoxElement.hasClass('silo-text-box--has-error');
+    const rootElement = await this.getRootElement();
+    const hasError = await rootElement.hasClass(
+      `${SiloTextBoxComponentHarness.hostSelector}--has-error`,
+    );
     return hasError;
   }
 }
