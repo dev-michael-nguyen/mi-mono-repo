@@ -5,6 +5,7 @@ import { randomHtmlId } from '../../utils/random-html-id';
 import { LookupModel } from '../common/lookup.model';
 import { SiloValidatorErrorReporter } from './../common/validator-error-reporter';
 import { SiloDateValidator } from './date-validator';
+import { NativeDate, NativeDateAdapter } from './native-date-adapter';
 
 @Directive()
 export class SiloDateFieldComponent implements OnInit {
@@ -36,7 +37,7 @@ export class SiloDateFieldComponent implements OnInit {
   isRequired = false;
 
   @Input()
-  value: string;
+  value: NativeDate;
 
   @Input()
   fieldSize: ClassExpression = 'col-2';
@@ -56,11 +57,11 @@ export class SiloDateFieldComponent implements OnInit {
     this.describebyId = randomHtmlId();
   }
 
-  setForm(value: string) {
+  setForm(value: NativeDate) {
     const validators = SiloDateValidator.createValidators(this);
     this.hasValidators = !!validators.length;
     this.dateFormControl = this.formBuilder.control(
-      value ? new Date(value) : null,
+      NativeDateAdapter.toDate(value),
       validators,
     );
     this.formGroup = this.formBuilder.group({
