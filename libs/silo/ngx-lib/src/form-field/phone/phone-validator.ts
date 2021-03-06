@@ -1,8 +1,21 @@
 import { AbstractControl, ValidatorFn } from '@angular/forms';
 import { IValidatorErrorMap } from '../common/validator-error.model';
+import { SiloPhoneFieldComponent } from './phone.public-api';
 
-export class PhoneValidator {
-  createRequiredValidator(message = 'This field is required.'): ValidatorFn {
+export class SiloPhoneValidator {
+  static createValidators(phoneField: SiloPhoneFieldComponent) {
+    const validators: Array<ValidatorFn> = [];
+
+    if (phoneField.isRequired) {
+      validators.push(this.createRequiredValidator());
+    }
+
+    return validators;
+  }
+
+  static createRequiredValidator(
+    message = 'This field is required.',
+  ): ValidatorFn {
     return (control: AbstractControl): IValidatorErrorMap | null => {
       const value =
         control.value === null || control.value === undefined

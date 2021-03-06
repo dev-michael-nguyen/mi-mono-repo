@@ -1,10 +1,5 @@
 import { Directive, Input, OnInit } from '@angular/core';
-import {
-  FormBuilder,
-  FormControl,
-  FormGroup,
-  ValidatorFn,
-} from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { ClassExpression } from '../../responsive/responsive-container/responsive-container.model';
 import { randomHtmlId } from '../../utils/random-html-id';
 import { LookupConfig } from '../common/lookup-config.model';
@@ -15,9 +10,15 @@ import { SiloMultiSelectValidatorFactory } from './multi-select-validator';
 @Directive()
 export class SiloMultiSelectFieldComponent implements OnInit {
   formGroup: FormGroup;
+
   lookupListFormControl: FormControl;
+
+  hasValidators = false;
+
   labelId: string;
+
   describebyId: string;
+
   options: Array<LookupModel>;
 
   @Input()
@@ -63,11 +64,8 @@ export class SiloMultiSelectFieldComponent implements OnInit {
   }
 
   setForm(value: Array<LookupModel>) {
-    const validatorFactory = new SiloMultiSelectValidatorFactory();
-    const validators: Array<ValidatorFn> = [];
-    if (this.isRequired) {
-      validators.push(validatorFactory.createRequiredValidator());
-    }
+    const validators = SiloMultiSelectValidatorFactory.createValidators(this);
+    this.hasValidators = !!validators.length;
     this.lookupListFormControl = this.formBuilder.control(value, validators);
     this.formGroup = this.formBuilder.group({
       lookupList: this.lookupListFormControl,

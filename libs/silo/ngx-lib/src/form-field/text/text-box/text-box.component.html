@@ -2,8 +2,12 @@
   class="silo-text-box"
   [class.silo-text-box--is-readonly]="isReadOnly"
   [class.silo-text-box--is-required]="isRequired"
-  [class.silo-text-box--is-filled]="formGroup.dirty && formGroup.valid"
-  [class.silo-text-box--has-error]="formGroup.touched && formGroup.invalid"
+  [class.silo-text-box--is-filled]="
+    isRequired && formGroup.dirty && formGroup.valid
+  "
+  [class.silo-text-box--has-error]="
+    hasValidators && formGroup.touched && formGroup.invalid
+  "
   [siloResponsiveContainer]="fieldSize"
 >
   <silo-label [labelId]="labelId" [label]="label"></silo-label>

@@ -11,6 +11,8 @@ export class SiloTimeFieldComponent implements OnInit {
 
   timeFormControl: FormControl;
 
+  hasValidators = false;
+
   labelId: string;
 
   describebyId: string;
@@ -61,10 +63,9 @@ export class SiloTimeFieldComponent implements OnInit {
   }
 
   setForm(value: string) {
-    this.timeFormControl = this.formBuilder.control(
-      value,
-      SiloTimeValidatorFactory.createValidators(this),
-    );
+    const validators = SiloTimeValidatorFactory.createValidators(this);
+    this.hasValidators = !!validators.length;
+    this.timeFormControl = this.formBuilder.control(value, validators);
     this.formGroup = this.formBuilder.group({
       time: this.timeFormControl,
     });

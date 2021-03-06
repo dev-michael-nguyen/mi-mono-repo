@@ -18,6 +18,8 @@ export class SiloTextFieldComponent implements OnInit, AfterViewInit {
 
   textFormControl: FormControl;
 
+  hasValidators = false;
+
   labelId: string;
 
   describebyId: string;
@@ -75,10 +77,9 @@ export class SiloTextFieldComponent implements OnInit, AfterViewInit {
   }
 
   setForm(value: string) {
-    this.textFormControl = this.formBuilder.control(
-      value,
-      SiloTextValidatorFactory.createValidators(this),
-    );
+    const validators = SiloTextValidatorFactory.createValidators(this);
+    this.hasValidators = !!validators.length;
+    this.textFormControl = this.formBuilder.control(value, validators);
     this.formGroup = this.formBuilder.group({
       text: this.textFormControl,
     });

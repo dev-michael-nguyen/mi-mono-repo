@@ -1,21 +1,20 @@
 import { Directive, Input, OnInit } from '@angular/core';
-import {
-  FormBuilder,
-  FormControl,
-  FormGroup,
-  ValidatorFn,
-} from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { ClassExpression } from '../../responsive/responsive-container/responsive-container.model';
 import { randomHtmlId } from '../../utils/random-html-id';
 import { SiloValidatorErrorReporter } from '../common/validator-error-reporter';
-import { PhoneValidator } from './phone-validator';
+import { SiloPhoneValidator } from './phone-validator';
 
 @Directive()
 export class SiloPhoneFieldComponent implements OnInit {
   formGroup: FormGroup;
+
   phoneFormControl: FormControl;
 
+  hasValidators = false;
+
   labelId: string;
+
   describebyId: string;
 
   @Input()
@@ -55,12 +54,8 @@ export class SiloPhoneFieldComponent implements OnInit {
   }
 
   setForm(value: string) {
-    const validatorFactory = new PhoneValidator();
-    const validators: Array<ValidatorFn> = [];
-    if (this.isRequired) {
-      validators.push(validatorFactory.createRequiredValidator());
-    }
-
+    const validators = SiloPhoneValidator.createValidators(this);
+    this.hasValidators = !!validators.length;
     this.phoneFormControl = this.formBuilder.control(value, validators);
     this.formGroup = this.formBuilder.group({
       phone: this.phoneFormControl,

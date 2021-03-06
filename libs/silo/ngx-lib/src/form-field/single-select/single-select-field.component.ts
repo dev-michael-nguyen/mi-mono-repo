@@ -1,10 +1,5 @@
 import { Directive, Input, OnInit } from '@angular/core';
-import {
-  FormBuilder,
-  FormControl,
-  FormGroup,
-  ValidatorFn,
-} from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { ClassExpression } from '../../responsive/responsive-container/responsive-container.model';
 import { randomHtmlId } from '../../utils/random-html-id';
 import { LookupConfig } from '../common/lookup-config.model';
@@ -15,9 +10,15 @@ import { SingleSelectValidator } from './single-select-validator';
 @Directive()
 export class SiloSingleSelectFieldComponent implements OnInit {
   formGroup: FormGroup;
+
   lookupFormControl: FormControl;
+
+  hasValidators = false;
+
   labelId: string;
+
   describebyId: string;
+
   options: Array<LookupModel>;
 
   @Input()
@@ -63,11 +64,8 @@ export class SiloSingleSelectFieldComponent implements OnInit {
   }
 
   setForm(value: LookupModel) {
-    const singleSelectValidator = new SingleSelectValidator();
-    const validators: Array<ValidatorFn> = [];
-    if (this.isRequired) {
-      validators.push(singleSelectValidator.createRequiredValidator());
-    }
+    const validators = SingleSelectValidator.createValidators(this);
+    this.hasValidators = !!validators.length;
     this.lookupFormControl = this.formBuilder.control(value, validators);
     this.formGroup = this.formBuilder.group({
       lookup: this.lookupFormControl,

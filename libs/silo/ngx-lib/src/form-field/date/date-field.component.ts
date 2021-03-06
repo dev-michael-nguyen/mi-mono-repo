@@ -1,10 +1,5 @@
 import { Directive, Input, OnInit } from '@angular/core';
-import {
-  FormBuilder,
-  FormControl,
-  FormGroup,
-  ValidatorFn,
-} from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { ClassExpression } from '../../responsive/responsive-container/responsive-container.model';
 import { randomHtmlId } from '../../utils/random-html-id';
 import { LookupModel } from '../common/lookup.model';
@@ -14,9 +9,15 @@ import { SiloDateValidator } from './date-validator';
 @Directive()
 export class SiloDateFieldComponent implements OnInit {
   formGroup: FormGroup;
+
   dateFormControl: FormControl;
+
+  hasValidators = false;
+
   labelId: string;
+
   describebyId: string;
+
   options: Array<LookupModel>;
 
   @Input()
@@ -56,11 +57,8 @@ export class SiloDateFieldComponent implements OnInit {
   }
 
   setForm(value: string) {
-    const dateValidator = new SiloDateValidator();
-    const validators: Array<ValidatorFn> = [];
-    if (this.isRequired) {
-      validators.push(dateValidator.createRequiredValidator());
-    }
+    const validators = SiloDateValidator.createValidators(this);
+    this.hasValidators = !!validators.length;
     this.dateFormControl = this.formBuilder.control(
       value ? new Date(value) : null,
       validators,

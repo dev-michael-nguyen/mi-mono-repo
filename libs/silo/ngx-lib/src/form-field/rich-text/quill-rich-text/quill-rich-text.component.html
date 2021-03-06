@@ -2,9 +2,11 @@
   class="silo-quill-rich-text"
   [class.silo-quill-rich-text--is-readonly]="isReadOnly"
   [class.silo-quill-rich-text--is-required]="isRequired"
-  [class.silo-quill-rich-text--is-filled]="formGroup.dirty && formGroup.valid"
+  [class.silo-quill-rich-text--is-filled]="
+    isRequired && formGroup.dirty && formGroup.valid
+  "
   [class.silo-quill-rich-text--has-error]="
-    formGroup.touched && formGroup.invalid
+    hasValidators && formGroup.touched && formGroup.invalid
   "
   [siloResponsiveContainer]="fieldSize"
 >
@@ -16,14 +18,14 @@
     <div class="silo-form-field-input-container">
       <quill-editor
         *ngIf="!isReadOnly"
-        [formControl]="textFormControl"
+        [formControl]="richTextFormControl"
         [required]="isRequired"
         [maxLength]="maxLength + 1"
         [readOnly]="isReadOnly"
       ></quill-editor>
       <quill-view-html
         *ngIf="isReadOnly"
-        [content]="textFormControl.value"
+        [content]="richTextFormControl.value"
       ></quill-view-html>
     </div>
   </div>

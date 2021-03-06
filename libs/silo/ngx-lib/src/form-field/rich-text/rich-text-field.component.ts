@@ -9,7 +9,9 @@ import { SiloRichTextValidatorFactory } from './rich-text-validator';
 export class SiloRichTextFieldComponent implements OnInit {
   formGroup: FormGroup;
 
-  textFormControl: FormControl;
+  richTextFormControl: FormControl;
+
+  hasValidators = false;
 
   labelId: string;
 
@@ -61,17 +63,16 @@ export class SiloRichTextFieldComponent implements OnInit {
   }
 
   setForm(value: string) {
-    this.textFormControl = this.formBuilder.control(
-      value,
-      SiloRichTextValidatorFactory.createValidators(this),
-    );
+    const validators = SiloRichTextValidatorFactory.createValidators(this);
+    this.hasValidators = !!validators.length;
+    this.richTextFormControl = this.formBuilder.control(value, validators);
     this.formGroup = this.formBuilder.group({
-      text: this.textFormControl,
+      richText: this.richTextFormControl,
     });
   }
 
   clearForm() {
-    this.textFormControl.setValue(null);
+    this.richTextFormControl.setValue(null);
   }
 
   getErrorMessage() {

@@ -2,8 +2,12 @@
   class="silo-radio-list"
   [class.silo-radio-list--is-readonly]="isReadOnly"
   [class.silo-radio-list--is-required]="isRequired"
-  [class.silo-radio-list--is-filled]="formGroup.dirty && formGroup.valid"
-  [class.silo-radio-list--has-error]="formGroup.touched && formGroup.invalid"
+  [class.silo-radio-list--is-filled]="
+    isRequired && formGroup.dirty && formGroup.valid
+  "
+  [class.silo-radio-list--has-error]="
+    hasValidators && formGroup.touched && formGroup.invalid
+  "
   [siloResponsiveContainer]="fieldSize"
 >
   <silo-label [labelId]="labelId" [label]="label"></silo-label>

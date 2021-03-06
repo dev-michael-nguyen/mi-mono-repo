@@ -2,8 +2,12 @@
   class="silo-phone-box"
   [class.silo-phone-box--is-readonly]="isReadOnly"
   [class.silo-phone-box--is-required]="isRequired"
-  [class.silo-phone-box--is-filled]="formGroup.dirty && formGroup.valid"
-  [class.silo-phone-box--has-error]="formGroup.touched && formGroup.invalid"
+  [class.silo-phone-box--is-filled]="
+    isRequired && formGroup.dirty && formGroup.valid
+  "
+  [class.silo-phone-box--has-error]="
+    hasValidators && formGroup.touched && formGroup.invalid
+  "
   [siloResponsiveContainer]="fieldSize"
 >
   <silo-label [labelId]="labelId" [label]="label"></silo-label>

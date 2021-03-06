@@ -1,9 +1,11 @@
 <silo-responsive-container
   class="silo-legacy-text-area"
   [class.silo-legacy-text-area--is-required]="isRequired"
-  [class.silo-legacy-text-area--is-filled]="formGroup.dirty && formGroup.valid"
+  [class.silo-legacy-text-area--is-filled]="
+    isRequired && formGroup.dirty && formGroup.valid
+  "
   [class.silo-legacy-text-area--has-error]="
-    formGroup.dirty && formGroup.invalid
+    hasValidators && formGroup.dirty && formGroup.invalid
   "
   [colExpression]="fieldSize"
 >

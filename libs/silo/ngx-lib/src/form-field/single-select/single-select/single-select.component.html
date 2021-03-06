@@ -2,8 +2,12 @@
   class="silo-single-select"
   [class.silo-single-select--is-readonly]="isReadOnly"
   [class.silo-single-select--is-required]="isRequired"
-  [class.silo-single-select--is-filled]="formGroup.dirty && formGroup.valid"
-  [class.silo-single-select--has-error]="formGroup.touched && formGroup.invalid"
+  [class.silo-single-select--is-filled]="
+    isRequired && formGroup.dirty && formGroup.valid
+  "
+  [class.silo-single-select--has-error]="
+    hasValidators && formGroup.touched && formGroup.invalid
+  "
   [siloResponsiveContainer]="fieldSize"
 >
   <silo-label [labelId]="labelId" [label]="label"></silo-label>
