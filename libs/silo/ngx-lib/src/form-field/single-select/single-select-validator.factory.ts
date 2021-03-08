@@ -1,3 +1,4 @@
+import { LookupModel } from './../common/lookup.model';
 import { AbstractControl, ValidatorFn } from '@angular/forms';
 import { IValidatorErrorMap } from '../common/validator-error.model';
 import { SiloSingleSelectFieldComponent } from './single-select-field.component';
@@ -17,7 +18,8 @@ export class SingleSelectValidatorFactory {
     message = 'This field is required.',
   ): ValidatorFn {
     return (control: AbstractControl): IValidatorErrorMap | null => {
-      return control.value && control.value.key
+      const value = control.value as LookupModel;
+      return value && value.key && value.key.trim().length
         ? null
         : { isRequired: { message } };
     };
