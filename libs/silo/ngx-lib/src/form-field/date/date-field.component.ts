@@ -4,7 +4,7 @@ import { ClassExpression } from '../../responsive/responsive-container/responsiv
 import { randomHtmlId } from '../../utils/random-html-id';
 import { LookupModel } from '../common/lookup.model';
 import { SiloValidatorErrorReporter } from './../common/validator-error-reporter';
-import { SiloDateValidator } from './date-validator';
+import { SiloDateValidatorFactory } from './date-validator.factory';
 import { NativeDate, NativeDateAdapter } from './native-date-adapter';
 
 @Directive()
@@ -58,7 +58,7 @@ export class SiloDateFieldComponent implements OnInit {
   }
 
   setForm(value: NativeDate) {
-    const validators = SiloDateValidator.createValidators(this);
+    const validators = SiloDateValidatorFactory.createValidators(this);
     this.hasValidators = !!validators.length;
     this.dateFormControl = this.formBuilder.control(
       NativeDateAdapter.toDate(value),

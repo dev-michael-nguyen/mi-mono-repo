@@ -3,7 +3,7 @@ import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { ClassExpression } from '../../responsive/responsive-container/responsive-container.model';
 import { randomHtmlId } from '../../utils/random-html-id';
 import { SiloValidatorErrorReporter } from '../common/validator-error-reporter';
-import { SiloTimeValidatorFactory } from './time-validator';
+import { SiloTimeValidatorFactory } from './time-validator.factory';
 
 @Directive()
 export class SiloTimeFieldComponent implements OnInit {

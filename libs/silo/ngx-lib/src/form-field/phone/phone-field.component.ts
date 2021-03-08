@@ -3,7 +3,7 @@ import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { ClassExpression } from '../../responsive/responsive-container/responsive-container.model';
 import { randomHtmlId } from '../../utils/random-html-id';
 import { SiloValidatorErrorReporter } from '../common/validator-error-reporter';
-import { SiloPhoneValidator } from './phone-validator';
+import { SiloPhoneValidatorFactory } from './phone-validator.factory';
 
 @Directive()
 export class SiloPhoneFieldComponent implements OnInit {
@@ -54,7 +54,7 @@ export class SiloPhoneFieldComponent implements OnInit {
   }
 
   setForm(value: string) {
-    const validators = SiloPhoneValidator.createValidators(this);
+    const validators = SiloPhoneValidatorFactory.createValidators(this);
     this.hasValidators = !!validators.length;
     this.phoneFormControl = this.formBuilder.control(value, validators);
     this.formGroup = this.formBuilder.group({

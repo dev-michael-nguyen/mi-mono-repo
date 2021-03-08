@@ -3,7 +3,7 @@ import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { ClassExpression } from '../../responsive/responsive-container/responsive-container.model';
 import { randomHtmlId } from '../../utils/random-html-id';
 import { SiloValidatorErrorReporter } from '../common/validator-error-reporter';
-import { SiloRichTextValidatorFactory } from './rich-text-validator';
+import { SiloRichTextValidatorFactory } from './rich-text-validator.factory';
 
 @Directive()
 export class SiloRichTextFieldComponent implements OnInit {

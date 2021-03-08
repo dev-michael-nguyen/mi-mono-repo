@@ -5,7 +5,7 @@ import { randomHtmlId } from '../../utils/random-html-id';
 import { LookupConfig } from '../common/lookup-config.model';
 import { LookupModel } from '../common/lookup.model';
 import { SiloValidatorErrorReporter } from '../common/validator-error-reporter';
-import { SiloMultiSelectValidatorFactory } from './multi-select-validator';
+import { SiloMultiSelectValidatorFactory } from './multi-select-validator.factory';
 
 @Directive()
 export class SiloMultiSelectFieldComponent implements OnInit {

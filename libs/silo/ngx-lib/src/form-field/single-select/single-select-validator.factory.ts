@@ -1,12 +1,12 @@
 import { AbstractControl, ValidatorFn } from '@angular/forms';
 import { IValidatorErrorMap } from '../common/validator-error.model';
-import { SiloDateFieldComponent } from './date.public-api';
+import { SiloSingleSelectFieldComponent } from './single-select-field.component';
 
-export class SiloDateValidator {
-  static createValidators(dateField: SiloDateFieldComponent) {
+export class SingleSelectValidatorFactory {
+  static createValidators(singleSelectField: SiloSingleSelectFieldComponent) {
     const validators: Array<ValidatorFn> = [];
 
-    if (dateField.isRequired) {
+    if (singleSelectField.isRequired) {
       validators.push(this.createRequiredValidator());
     }
 
@@ -17,7 +17,9 @@ export class SiloDateValidator {
     message = 'This field is required.',
   ): ValidatorFn {
     return (control: AbstractControl): IValidatorErrorMap | null => {
-      return control.value ? null : { isRequired: { message } };
+      return control.value && control.value.key
+        ? null
+        : { isRequired: { message } };
     };
   }
 }

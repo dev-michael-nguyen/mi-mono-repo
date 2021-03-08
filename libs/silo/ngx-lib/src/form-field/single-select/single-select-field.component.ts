@@ -5,7 +5,7 @@ import { randomHtmlId } from '../../utils/random-html-id';
 import { LookupConfig } from '../common/lookup-config.model';
 import { LookupModel } from '../common/lookup.model';
 import { SiloValidatorErrorReporter } from '../common/validator-error-reporter';
-import { SingleSelectValidator } from './single-select-validator';
+import { SingleSelectValidatorFactory } from './single-select-validator.factory';
 
 @Directive()
 export class SiloSingleSelectFieldComponent implements OnInit {
@@ -64,7 +64,7 @@ export class SiloSingleSelectFieldComponent implements OnInit {
   }
 
   setForm(value: LookupModel) {
-    const validators = SingleSelectValidator.createValidators(this);
+    const validators = SingleSelectValidatorFactory.createValidators(this);
     this.hasValidators = !!validators.length;
     this.lookupFormControl = this.formBuilder.control(value, validators);
     this.formGroup = this.formBuilder.group({

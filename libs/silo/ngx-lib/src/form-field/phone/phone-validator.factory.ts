@@ -2,7 +2,7 @@ import { AbstractControl, ValidatorFn } from '@angular/forms';
 import { IValidatorErrorMap } from '../common/validator-error.model';
 import { SiloPhoneFieldComponent } from './phone.public-api';
 
-export class SiloPhoneValidator {
+export class SiloPhoneValidatorFactory {
   static createValidators(phoneField: SiloPhoneFieldComponent) {
     const validators: Array<ValidatorFn> = [];
 
