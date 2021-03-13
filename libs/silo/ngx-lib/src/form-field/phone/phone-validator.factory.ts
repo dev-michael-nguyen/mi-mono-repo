@@ -10,6 +10,8 @@ export class SiloPhoneValidatorFactory {
       validators.push(this.createRequiredValidator());
     }
 
+    validators.push(this.createPhoneFormatValidator());
+
     return validators;
   }
 
@@ -17,18 +19,23 @@ export class SiloPhoneValidatorFactory {
     message = 'This field is required.',
   ): ValidatorFn {
     return (control: AbstractControl): IValidatorErrorMap | null => {
-      const value =
-        control.value === null || control.value === undefined
-          ? ''
-          : control.value;
-
-      if (typeof value !== 'string') {
-        return null;
-      }
+      const value = control.value ?? '';
 
       const isWhitespace = value.trim().length === 0;
 
-      return !isWhitespace ? null : { isRequired: { message } };
+      return isWhitespace ? { isRequired: { message } } : null;
+    };
+  }
+
+  static createPhoneFormatValidator(
+    message = 'Format should be XXX-XXX-XXXX',
+  ): ValidatorFn {
+    return (control: AbstractControl): IValidatorErrorMap | null => {
+      const value = control.value ?? '';
+
+      const phoneRegex = new RegExp('\\d{3}-\\d{3}-\\d{4}$');
+
+      return phoneRegex.test(value) ? null : { format: { message } };
     };
   }
 }

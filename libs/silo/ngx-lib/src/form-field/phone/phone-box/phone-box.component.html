@@ -19,6 +19,7 @@
   >
     <mat-label>{{ label }}</mat-label>
     <input
+      #telInput
       matInput
       type="tel"
       [attr.aria-labelledby]="labelId"
@@ -27,6 +28,7 @@
       [required]="isRequired"
       [readonly]="isReadOnly"
       [maxLength]="12"
+      (keyup)="autoFormat($event)"
     />
     <mat-icon matSuffix>phone</mat-icon>
     <mat-hint *ngIf="hint">{{ hint }}</mat-hint>
