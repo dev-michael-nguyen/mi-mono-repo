@@ -1,12 +1,14 @@
 import {
+  AfterViewInit,
   Component,
+  ElementRef,
+  Input,
   QueryList,
   ViewChildren,
-  AfterViewInit,
-  ElementRef,
 } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { MatListOption } from '@angular/material/list';
+import { ClassExpression } from '../../../responsive/responsive-container/responsive-container.model';
 import { SiloMultiSelectFieldComponent } from '../multi-select-field.component';
 
 @Component({
@@ -19,6 +21,9 @@ export class SiloCheckboxListComponent
   implements AfterViewInit {
   @ViewChildren(MatListOption)
   matListOptions: QueryList<MatListOption>;
+
+  @Input()
+  fieldSize: ClassExpression = 'col-6';
 
   constructor(
     public formBuilder: FormBuilder,

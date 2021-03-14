@@ -1,11 +1,5 @@
-import {
-  Component,
-  Input,
-  OnInit,
-  QueryList,
-  ViewChildren,
-} from '@angular/core';
-import { MatRadioButton } from '@angular/material/radio';
+import { Component, Input } from '@angular/core';
+import { ClassExpression } from '../../../responsive/responsive-container/responsive-container.model';
 import { SiloSingleSelectFieldComponent } from './../single-select-field.component';
 
 @Component({
@@ -13,21 +7,10 @@ import { SiloSingleSelectFieldComponent } from './../single-select-field.compone
   templateUrl: './radio-list.component.html',
   styleUrls: ['./radio-list.component.scss'],
 })
-export class SiloRadioListComponent
-  extends SiloSingleSelectFieldComponent
-  implements OnInit {
+export class SiloRadioListComponent extends SiloSingleSelectFieldComponent {
+  @Input()
+  fieldSize: ClassExpression = 'col-6';
+
   @Input()
   isStacked = true;
-
-  @ViewChildren(MatRadioButton)
-  matRadioButtons: QueryList<MatRadioButton>;
-
-  ngOnInit() {
-    super.ngOnInit();
-
-    if (!this.isStacked) {
-      this.fieldSize = 'col-6';
-      this.outlineSize = 'col-12';
-    }
-  }
 }
