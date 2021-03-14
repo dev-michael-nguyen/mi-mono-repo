@@ -5,6 +5,7 @@ import { RouterModule } from '@angular/router';
 import {
   SiloCheckboxListModule,
   SiloDatePickerModule,
+  SiloNumberBoxModule,
   SiloPhoneBoxModule,
   SiloQuillRichTextModule,
   SiloRadioListModule,
@@ -22,6 +23,7 @@ import { PreviewViewComponent } from './preview-view.component';
     RouterModule,
     SiloCheckboxListModule,
     SiloDatePickerModule,
+    SiloNumberBoxModule,
     SiloPhoneBoxModule,
     SiloQuillRichTextModule,
     SiloRadioListModule,

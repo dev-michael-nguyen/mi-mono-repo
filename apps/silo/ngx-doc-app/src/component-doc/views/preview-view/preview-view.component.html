@@ -174,13 +174,33 @@
           <silo-phone-box
             label="Label"
             [isRequired]="true"
-            hint="Please include area code "
+            hint="Please include area code"
             fieldSize="col-12"
           ></silo-phone-box>
         </div>
         <div class="component-preview-list-item__card__title">Phone Box</div>
         <div class="component-preview-list-item__card__summary">
           Phone input as masked text box.
+        </div>
+      </div>
+    </a>
+    <a class="component-preview-list-item" routerLink="../number-box">
+      <div class="component-preview-list-item__card">
+        <div
+          class="component-preview-list-item__card__image"
+          fxLayout="column"
+          fxLayoutAlign="center center"
+        >
+          <silo-number-box
+            label="Label"
+            [isRequired]="true"
+            hint="Please enter a number"
+            fieldSize="col-12"
+          ></silo-number-box>
+        </div>
+        <div class="component-preview-list-item__card__title">Number Box</div>
+        <div class="component-preview-list-item__card__summary">
+          Number input as number box.
         </div>
       </div>
     </a>

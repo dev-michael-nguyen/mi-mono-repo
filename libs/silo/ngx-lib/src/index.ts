@@ -2,6 +2,7 @@ export * from './avatar/avatar.public-api';
 export * from './form-field/common/common.public-api';
 export * from './form-field/date/date.public-api';
 export * from './form-field/multi-select/multi-select.public-api';
+export * from './form-field/numeric/numeric.public-api';
 export * from './form-field/phone/phone.public-api';
 export * from './form-field/rich-text/rich-text.public-api';
 export * from './form-field/single-select/single-select.public-api';

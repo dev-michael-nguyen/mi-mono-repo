@@ -36,6 +36,14 @@ const routes: Routes = [
           ).then((m) => m.RoutingModule),
       },
       {
+        path: 'quill-rich-text',
+        loadChildren: () =>
+          import(
+            /* webpackChunkName: 'quill-rich-text-doc-module' */
+            '../component-doc/quill-rich-text/routing.module'
+          ).then((m) => m.RoutingModule),
+      },
+      {
         path: 'single-select',
         loadChildren: () =>
           import(
@@ -68,6 +76,14 @@ const routes: Routes = [
           ).then((m) => m.RoutingModule),
       },
       {
+        path: 'time-picker',
+        loadChildren: () =>
+          import(
+            /* webpackChunkName: 'time-picker-doc-module' */
+            '../component-doc/time-picker/routing.module'
+          ).then((m) => m.RoutingModule),
+      },
+      {
         path: 'phone-box',
         loadChildren: () =>
           import(
@@ -76,19 +92,11 @@ const routes: Routes = [
           ).then((m) => m.RoutingModule),
       },
       {
-        path: 'quill-rich-text',
+        path: 'number-box',
         loadChildren: () =>
           import(
-            /* webpackChunkName: 'quill-rich-text-doc-module' */
-            '../component-doc/quill-rich-text/routing.module'
-          ).then((m) => m.RoutingModule),
-      },
-      {
-        path: 'time-picker',
-        loadChildren: () =>
-          import(
-            /* webpackChunkName: 'time-picker-doc-module' */
-            '../component-doc/time-picker/routing.module'
+            /* webpackChunkName: 'number-box-doc-module' */
+            '../component-doc/number-box/routing.module'
           ).then((m) => m.RoutingModule),
       },
     ],

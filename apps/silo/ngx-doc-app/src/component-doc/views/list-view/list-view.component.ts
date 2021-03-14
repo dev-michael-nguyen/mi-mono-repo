@@ -17,6 +17,7 @@ export class ListViewComponent implements OnInit {
     { label: 'Date Picker', routerLink: 'date-picker' },
     { label: 'Time Picker', routerLink: 'time-picker' },
     { label: 'Phone Box', routerLink: 'phone-box' },
+    { label: 'Number Box', routerLink: 'number-box' },
   ];
 
   constructor() {}

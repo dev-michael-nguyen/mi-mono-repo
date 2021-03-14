@@ -1,0 +1,57 @@
+<silo-example-article>
+  <ng-container headerContent>
+    <p>Number box is not required</p>
+  </ng-container>
+  <ng-container bodyContent>
+    <silo-number-box label="Label"></silo-number-box>
+  </ng-container>
+</silo-example-article>
+
+<silo-example-article>
+  <ng-container headerContent>
+    <p>Number box is required</p>
+  </ng-container>
+  <ng-container bodyContent>
+    <silo-number-box label="Label" [isRequired]="true"></silo-number-box>
+  </ng-container>
+</silo-example-article>
+
+<silo-example-article>
+  <ng-container headerContent>
+    <p>Number box with hint</p>
+  </ng-container>
+  <ng-container bodyContent>
+    <silo-number-box
+      label="Label"
+      [isRequired]="true"
+      hint="Please enter a number"
+    ></silo-number-box>
+  </ng-container>
+</silo-example-article>
+
+<silo-example-article>
+  <ng-container headerContent>
+    <p>Number box with long label</p>
+  </ng-container>
+  <ng-container bodyContent>
+    <silo-number-box
+      label="Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec velit neque, auctor sit amet aliquam vel, ullamcorper sit amet ligula."
+      fieldSize="col-6"
+      outlineSize="col-4"
+    ></silo-number-box>
+  </ng-container>
+</silo-example-article>
+
+<silo-example-article>
+  <ng-container headerContent>
+    <p>Number box is read-only</p>
+  </ng-container>
+  <ng-container bodyContent>
+    <silo-number-box
+      label="Label"
+      value="123"
+      [isRequired]="true"
+      [isReadOnly]="true"
+    ></silo-number-box>
+  </ng-container>
+</silo-example-article>
