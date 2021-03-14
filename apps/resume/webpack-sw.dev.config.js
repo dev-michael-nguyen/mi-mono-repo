@@ -8,7 +8,17 @@ module.exports = {
   // WARNING: commented out to disable source maps
   //devtool: 'inline-source-map',
   entry: {
-    index: path.join(__dirname, '..', '..', 'libs', 'mi-angular-ui', 'src', 'lib', 'offline', 'service-worker.ts'),
+    index: path.join(
+      __dirname,
+      '..',
+      '..',
+      'libs',
+      'silo',
+      'ngx-lib',
+      'src',
+      'offline',
+      'service-worker.ts',
+    ),
   },
   resolve: { extensions: ['.js', '.ts'] },
   output: {
@@ -16,13 +26,15 @@ module.exports = {
     filename: 'service-worker.js',
   },
   module: {
-    rules: [{
-      test: /\.ts$/,
-      loader: 'ts-loader',
-      options: {
-        onlyCompileBundledFiles: true,
+    rules: [
+      {
+        test: /\.ts$/,
+        loader: 'ts-loader',
+        options: {
+          onlyCompileBundledFiles: true,
+        },
       },
-    },],
+    ],
   },
   plugins: [],
 };

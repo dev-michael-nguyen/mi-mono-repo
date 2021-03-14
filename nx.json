@@ -10,7 +10,6 @@
   "projects": {
     "resume": { "tags": ["type:app", "scope:resume"] },
     "silo-ngx-doc-app": { "tags": ["type:app"] },
-    "mi-angular-ui": { "tags": ["type:lib"] },
     "silo-ngx-lib": { "tags": ["type:lib"] },
     "silo-metadata-lib": { "tags": ["type:lib"] }
   }

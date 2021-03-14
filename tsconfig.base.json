@@ -16,7 +16,6 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@mi-angular-ui": ["libs/mi-angular-ui/src/index.ts"],
       "@silo/ngx": ["libs/silo/ngx-lib/src/index.ts"],
       "@silo/metadata-lib": ["libs/silo/metadata-lib/src/index.ts"]
     }

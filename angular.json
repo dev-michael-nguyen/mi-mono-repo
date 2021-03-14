@@ -195,37 +195,6 @@
         }
       }
     },
-    "mi-angular-ui": {
-      "projectType": "library",
-      "root": "libs/mi-angular-ui",
-      "sourceRoot": "libs/mi-angular-ui/src",
-      "prefix": "mi",
-      "architect": {
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": [
-              "libs/mi-angular-ui/tsconfig.lib.json",
-              "libs/mi-angular-ui/tsconfig.spec.json"
-            ],
-            "exclude": ["**/node_modules/**", "!libs/mi-angular-ui/**/*"]
-          }
-        },
-        "test": {
-          "builder": "@nrwl/jest:jest",
-          "options": {
-            "jestConfig": "libs/mi-angular-ui/jest.config.js",
-            "passWithNoTests": true
-          },
-          "outputs": ["coverage/libs/mi-angular-ui"]
-        }
-      },
-      "schematics": {
-        "@nrwl/angular:component": {
-          "style": "scss"
-        }
-      }
-    },
     "silo-ngx-lib": {
       "projectType": "library",
       "root": "libs/silo/ngx-lib",
