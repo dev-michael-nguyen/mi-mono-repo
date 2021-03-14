@@ -1,0 +1,37 @@
+<div
+  class="silo-avatar"
+  tabindex="0"
+  (click)="onAddAvatarClick()"
+  (keyup.enter)="onAddAvatarClick()"
+>
+  <ng-container *ngIf="initials">
+    <div
+      class="silo-avatar__initials-container"
+      [ngStyle]="{
+        height: size,
+        width: size,
+        'line-height': size,
+        fontSize: fontSize
+      }"
+    >
+      {{ initials }}
+    </div>
+  </ng-container>
+  <ng-container *ngIf="!initials">
+    <div
+      class="silo-avatar__image-container"
+      [ngStyle]="{
+        height: size,
+        width: size
+      }"
+    >
+      <ng-container *ngIf="!(base64ImageString$ | async)">
+        <img
+          src="./assets/images/placeholder_male.svg"
+          aria-hidden
+          role="presentation"
+        />
+      </ng-container>
+    </div>
+  </ng-container>
+</div>

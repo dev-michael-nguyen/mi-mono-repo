@@ -1,0 +1,18 @@
+.silo-avatar__initials-container {
+  text-align: center;
+  border-radius: 50%;
+  border-width: 2px;
+  border-style: solid;
+}
+
+.silo-avatar__image-container {
+  cursor: pointer;
+  overflow: hidden;
+  border-radius: 50%;
+  border-width: 2px;
+  border-style: solid;
+
+  img {
+    width: 100%;
+  }
+}
