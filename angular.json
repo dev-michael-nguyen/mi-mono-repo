@@ -129,7 +129,8 @@
               "node_modules/quill/dist/quill.bubble.css",
               "node_modules/quill/dist/quill.snow.css"
             ],
-            "scripts": []
+            "scripts": [],
+            "allowedCommonJsDependencies": ["lodash", "ngx-store"]
           },
           "configurations": {
             "production": {

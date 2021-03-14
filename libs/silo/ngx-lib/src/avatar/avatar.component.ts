@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import _get from 'lodash/get';
-import { BehaviorSubject } from 'rxjs/internal/BehaviorSubject';
+import { BehaviorSubject } from 'rxjs';
 import { IAvatarNameModel } from './avatar.model';
 
 @Component({
