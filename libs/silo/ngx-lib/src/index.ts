@@ -1,4 +1,5 @@
 export * from './avatar/avatar.public-api';
+export * from './form-builder/form-builder.public-api';
 export * from './form-field/common/common.public-api';
 export * from './form-field/date/date.public-api';
 export * from './form-field/multi-select/multi-select.public-api';

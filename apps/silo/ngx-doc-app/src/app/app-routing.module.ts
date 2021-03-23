@@ -15,6 +15,14 @@ const routes: Routes = [
         '../component-doc/routing.module'
       ).then((m) => m.RoutingModule),
   },
+  {
+    path: 'form-builder',
+    loadChildren: () =>
+      import(
+        /* webpackChunkName: 'form-builder-doc' */
+        '../form-builder-doc/routing-module'
+      ).then((m) => m.RoutingModule),
+  },
 ];
 
 @NgModule({

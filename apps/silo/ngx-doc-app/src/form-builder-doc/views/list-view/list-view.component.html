@@ -1,0 +1,37 @@
+<div class="list-view" siloStickyLayout>
+  <div class="list-view__body" siloStickyLayoutBody>
+    <table
+      mat-table
+      [dataSource]="dataSource"
+      matSort
+      matSortActive="createdDateTime"
+      matSortDisableClear
+      matSortDirection="desc"
+      (matSortChange)="resetPaging()"
+    >
+      <!-- Created Column -->
+      <ng-container matColumnDef="createdDateTime">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header disableClear>
+          Created Date
+        </th>
+        <td mat-cell *matCellDef="let row">
+          {{ row.createdDateTime | date }}
+        </td>
+      </ng-container>
+
+      <!-- Display Name Column -->
+      <ng-container matColumnDef="displayName">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header disableClear>
+          Display Name
+        </th>
+        <td mat-cell *matCellDef="let row">
+          {{ row.displayName }}
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    </table>
+    <mat-paginator [length]="resultsLength" [pageSize]="30"></mat-paginator>
+  </div>
+</div>
