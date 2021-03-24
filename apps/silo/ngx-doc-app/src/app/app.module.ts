@@ -3,7 +3,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { SiloAppLayoutModule, SiloThemePickerModule } from '@silo/ngx';
+import { AppLayoutModule, ThemePickerModule } from '@silo/ngx';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
@@ -13,10 +13,10 @@ import { AppComponent } from './app.component';
     AppRoutingModule,
     BrowserAnimationsModule,
     BrowserModule,
-    SiloThemePickerModule.forRoot(),
+    ThemePickerModule.forRoot(),
     // #endregion
     // #region AppComponent imports
-    SiloAppLayoutModule,
+    AppLayoutModule,
     MatButtonModule,
     MatToolbarModule,
     // #endregion

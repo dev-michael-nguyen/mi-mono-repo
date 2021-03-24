@@ -3,9 +3,9 @@ import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
-import { SiloResponsiveContainerModule } from '../../../responsive/responsive-container/responsive-container.module';
-import { SiloLabelModule } from '../../label/label.module';
-import { SiloPhoneBoxComponent } from './phone-box.component';
+import { ResponsiveContainerModule } from '../../../responsive/responsive-container/responsive-container.module';
+import { LabelModule } from '../../label/label.module';
+import { PhoneBoxComponent } from './phone-box.component';
 
 @NgModule({
   imports: [
@@ -13,10 +13,10 @@ import { SiloPhoneBoxComponent } from './phone-box.component';
     MatIconModule,
     MatInputModule,
     ReactiveFormsModule,
-    SiloLabelModule,
-    SiloResponsiveContainerModule,
+    LabelModule,
+    ResponsiveContainerModule,
   ],
-  declarations: [SiloPhoneBoxComponent],
-  exports: [SiloPhoneBoxComponent],
+  declarations: [PhoneBoxComponent],
+  exports: [PhoneBoxComponent],
 })
-export class SiloPhoneBoxModule {}
+export class PhoneBoxModule {}

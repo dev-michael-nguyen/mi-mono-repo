@@ -1,10 +1,10 @@
 import { ComponentHarness } from '@angular/cdk/testing';
 
-export class SiloTextBoxComponentHarness extends ComponentHarness {
+export class TextBoxComponentHarness extends ComponentHarness {
   static hostSelector = 'silo-text-box';
 
   protected getRootElement = this.locatorFor(
-    `.${SiloTextBoxComponentHarness.hostSelector}`,
+    `.${TextBoxComponentHarness.hostSelector}`,
   );
   protected getLabelElement = this.locatorFor('.silo-label');
   protected getInputElement = this.locatorFor('textarea');
@@ -38,7 +38,7 @@ export class SiloTextBoxComponentHarness extends ComponentHarness {
   async hasError() {
     const rootElement = await this.getRootElement();
     const hasError = await rootElement.hasClass(
-      `${SiloTextBoxComponentHarness.hostSelector}--has-error`,
+      `${TextBoxComponentHarness.hostSelector}--has-error`,
     );
     return hasError;
   }

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { LookupConfig } from '@silo/ngx';
+import { LookupConfigModel } from '@silo/ngx';
 
 @Component({
   selector: 'silo-preview-view',
@@ -7,7 +7,7 @@ import { LookupConfig } from '@silo/ngx';
   styleUrls: ['./preview-view.component.scss'],
 })
 export class PreviewViewComponent implements OnInit {
-  lookupConfig: LookupConfig = {
+  lookupConfig: LookupConfigModel = {
     lookups: [
       { key: 'O1', displayName: 'Option 1' },
       { key: 'O2', displayName: 'Option 2' },

@@ -1,11 +1,11 @@
 import { Component, Input } from '@angular/core';
-import { ClassExpression } from './responsive-container.model';
+import { ClassExpression } from './models/class-expression';
 
 @Component({
   selector: 'silo-responsive-container',
   templateUrl: './responsive-container.component.html',
 })
-export class SiloResponsiveContainerComponent {
+export class ResponsiveContainerComponent {
   @Input()
   colExpression: ClassExpression;
 }

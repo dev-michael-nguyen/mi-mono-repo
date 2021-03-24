@@ -1,12 +1,12 @@
 import { Directive, ElementRef, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
-import { ClassExpression } from '../../responsive/responsive-container/responsive-container.model';
+import { ClassExpression } from '../../responsive/responsive-container/models/class-expression';
 import { randomHtmlId } from '../../utils/random-html-id';
-import { SiloValidatorErrorReporter } from '../common/validator-error-reporter';
-import { SiloRichTextValidatorFactory } from './rich-text-validator.factory';
+import { ValidatorMixin } from '../services/validator.mixin';
+import { RichTextValidatorFactory } from './rich-text-validator.factory';
 
 @Directive()
-export class SiloRichTextFieldComponent implements OnInit {
+export class RichTextFieldComponent implements OnInit {
   formGroup: FormGroup;
 
   richTextFormControl: FormControl;
@@ -63,7 +63,7 @@ export class SiloRichTextFieldComponent implements OnInit {
   }
 
   setForm(value: string) {
-    const validators = SiloRichTextValidatorFactory.createValidators(this);
+    const validators = RichTextValidatorFactory.createValidators(this);
     this.hasValidators = !!validators.length;
     this.richTextFormControl = this.formBuilder.control(value, validators);
     this.formGroup = this.formBuilder.group({
@@ -76,6 +76,6 @@ export class SiloRichTextFieldComponent implements OnInit {
   }
 
   getErrorMessage() {
-    return SiloValidatorErrorReporter.getErrorMessage(this.formGroup);
+    return ValidatorMixin.getErrorMessage(this.formGroup);
   }
 }

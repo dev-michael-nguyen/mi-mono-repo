@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ThemePalette } from '@angular/material/core';
 import { ActivatedRoute } from '@angular/router';
-import { INavListItemModel } from '../../navigation/nav-list/nav-list.model';
+import { NavListItemModel } from '../../navigation/nav-list/models/nav-list-item-model';
 
 @Component({
   selector: 'silo-router-tab-layout',
@@ -10,7 +10,7 @@ import { INavListItemModel } from '../../navigation/nav-list/nav-list.model';
 })
 export class RouterTabLayoutComponent implements OnInit {
   @Input()
-  navList: Array<INavListItemModel>;
+  navList: Array<NavListItemModel>;
 
   @Input()
   color: ThemePalette;

@@ -3,11 +3,11 @@ import { NgModule } from '@angular/core';
 import { MatListModule } from '@angular/material/list';
 import { RouterModule } from '@angular/router';
 import { StickyLayoutModule } from './../../layout/sticky-layout/sticky-layout.module';
-import { SiloNavListComponent } from './nav-list.component';
+import { NavListComponent } from './nav-list.component';
 
 @NgModule({
   imports: [CommonModule, MatListModule, RouterModule, StickyLayoutModule],
-  declarations: [SiloNavListComponent],
-  exports: [SiloNavListComponent],
+  declarations: [NavListComponent],
+  exports: [NavListComponent],
 })
-export class SiloNavListModule {}
+export class NavListModule {}

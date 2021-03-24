@@ -1,9 +1,9 @@
 import { AbstractControl, ValidatorFn } from '@angular/forms';
-import { IValidatorErrorMap } from '../common/validator-error.model';
-import { SiloMultiSelectFieldComponent } from './multi-select.public-api';
+import { ValidatorErrorMap } from '../models/validator-error-map';
+import { MultiSelectFieldComponent } from './multi-select-field.component';
 
-export class SiloMultiSelectValidatorFactory {
-  static createValidators(multiSelectField: SiloMultiSelectFieldComponent) {
+export class MultiSelectValidatorFactory {
+  static createValidators(multiSelectField: MultiSelectFieldComponent) {
     const validators: Array<ValidatorFn> = [];
 
     if (multiSelectField.isRequired) {
@@ -16,7 +16,7 @@ export class SiloMultiSelectValidatorFactory {
   static createRequiredValidator(
     message = 'This field is required.',
   ): ValidatorFn {
-    return (control: AbstractControl): IValidatorErrorMap | null => {
+    return (control: AbstractControl): ValidatorErrorMap | null => {
       return control.value && control.value.length
         ? null
         : { isRequired: { message } };

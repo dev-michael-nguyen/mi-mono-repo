@@ -1,6 +1,10 @@
 import { OverlayContainer } from '@angular/cdk/overlay';
 import { Component, OnInit } from '@angular/core';
-import { IThemeLookupModel, IThemePickerModel, ThemePickerService } from '@silo/ngx';
+import {
+  ThemeLookupModel,
+  ThemePickerModel,
+  ThemePickerService,
+} from '@silo/ngx';
 import { Observable } from 'rxjs';
 
 @Component({
@@ -9,14 +13,13 @@ import { Observable } from 'rxjs';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent implements OnInit {
-
-  selectedTheme: IThemeLookupModel;
-  themeLookupList: Array<IThemeLookupModel> = [];
+  selectedTheme: ThemeLookupModel;
+  themeLookupList: Array<ThemeLookupModel> = [];
 
   constructor(
     private _overlayContainer: OverlayContainer,
-    private _themePickerService: ThemePickerService
-  ) { }
+    private _themePickerService: ThemePickerService,
+  ) {}
 
   ngOnInit() {
     this.initAppTheme();
@@ -30,22 +33,23 @@ export class AppComponent implements OnInit {
     this._themePickerService.themeChangedEvent$.subscribe((event) => {
       this.selectedTheme = event.currentTheme;
     });
-    this._themePickerService.setOverlayThemeChangeHandler(this._overlayContainer);
+    this._themePickerService.setOverlayThemeChangeHandler(
+      this._overlayContainer,
+    );
   }
 
   mockGetThemePickerModel() {
-    const themePickerModel: IThemePickerModel = {
+    const themePickerModel: ThemePickerModel = {
       lookupList: [
         { id: 'silo-light-theme', displayName: 'Light' },
-        { id: 'silo-dark-theme', displayName: 'Dark' }
+        { id: 'silo-dark-theme', displayName: 'Dark' },
       ],
-      currentThemeId: 'silo-light-theme'
+      currentThemeId: 'silo-light-theme',
     };
 
-    return new Observable<IThemePickerModel>(observer => {
+    return new Observable<ThemePickerModel>((observer) => {
       observer.next(themePickerModel);
       observer.complete();
     });
   }
-
 }

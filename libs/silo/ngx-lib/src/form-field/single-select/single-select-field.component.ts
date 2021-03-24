@@ -1,14 +1,14 @@
 import { Directive, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
-import { ClassExpression } from '../../responsive/responsive-container/responsive-container.model';
+import { ClassExpression } from '../../responsive/responsive-container/models/class-expression';
 import { randomHtmlId } from '../../utils/random-html-id';
-import { LookupConfig } from '../common/lookup-config.model';
-import { LookupModel } from '../common/lookup.model';
-import { SiloValidatorErrorReporter } from '../common/validator-error-reporter';
+import { LookupConfigModel } from '../models/lookup-config-model';
+import { LookupModel } from '../models/lookup-model';
+import { ValidatorMixin } from '../services/validator.mixin';
 import { SingleSelectValidatorFactory } from './single-select-validator.factory';
 
 @Directive()
-export class SiloSingleSelectFieldComponent implements OnInit {
+export class SingleSelectFieldComponent implements OnInit {
   formGroup: FormGroup;
 
   lookupFormControl: FormControl;
@@ -46,7 +46,7 @@ export class SiloSingleSelectFieldComponent implements OnInit {
   outlineSize: ClassExpression;
 
   @Input()
-  lookupConfig: LookupConfig;
+  lookupConfig: LookupConfigModel;
 
   constructor(public formBuilder: FormBuilder) {}
 
@@ -78,7 +78,7 @@ export class SiloSingleSelectFieldComponent implements OnInit {
   }
 
   getErrorMessage() {
-    return SiloValidatorErrorReporter.getErrorMessage(this.formGroup);
+    return ValidatorMixin.getErrorMessage(this.formGroup);
   }
 
   compareWith(o1: LookupModel, o2: LookupModel) {

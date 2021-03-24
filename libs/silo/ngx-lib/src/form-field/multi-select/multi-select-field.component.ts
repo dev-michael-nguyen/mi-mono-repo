@@ -1,14 +1,14 @@
 import { Directive, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
-import { ClassExpression } from '../../responsive/responsive-container/responsive-container.model';
+import { ClassExpression } from '../../responsive/responsive-container/models/class-expression';
 import { randomHtmlId } from '../../utils/random-html-id';
-import { LookupConfig } from '../common/lookup-config.model';
-import { LookupModel } from '../common/lookup.model';
-import { SiloValidatorErrorReporter } from '../common/validator-error-reporter';
-import { SiloMultiSelectValidatorFactory } from './multi-select-validator.factory';
+import { LookupConfigModel } from '../models/lookup-config-model';
+import { LookupModel } from '../models/lookup-model';
+import { ValidatorMixin } from '../services/validator.mixin';
+import { MultiSelectValidatorFactory } from './multi-select-validator.factory';
 
 @Directive()
-export class SiloMultiSelectFieldComponent implements OnInit {
+export class MultiSelectFieldComponent implements OnInit {
   formGroup: FormGroup;
 
   lookupListFormControl: FormControl;
@@ -46,7 +46,7 @@ export class SiloMultiSelectFieldComponent implements OnInit {
   outlineSize: ClassExpression;
 
   @Input()
-  lookupConfig: LookupConfig;
+  lookupConfig: LookupConfigModel;
 
   constructor(public formBuilder: FormBuilder) {}
 
@@ -64,7 +64,7 @@ export class SiloMultiSelectFieldComponent implements OnInit {
   }
 
   setForm(value: Array<LookupModel>) {
-    const validators = SiloMultiSelectValidatorFactory.createValidators(this);
+    const validators = MultiSelectValidatorFactory.createValidators(this);
     this.hasValidators = !!validators.length;
     this.lookupListFormControl = this.formBuilder.control(value, validators);
     this.formGroup = this.formBuilder.group({
@@ -78,7 +78,7 @@ export class SiloMultiSelectFieldComponent implements OnInit {
   }
 
   getErrorMessage() {
-    return SiloValidatorErrorReporter.getErrorMessage(this.formGroup);
+    return ValidatorMixin.getErrorMessage(this.formGroup);
   }
 
   compareWith(o1: LookupModel, o2: LookupModel) {

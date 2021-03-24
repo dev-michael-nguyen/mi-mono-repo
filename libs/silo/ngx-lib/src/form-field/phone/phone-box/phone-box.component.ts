@@ -1,12 +1,12 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
-import { SiloPhoneFieldComponent } from '../phone-field.component';
+import { PhoneFieldComponent } from '../phone-field.component';
 
 @Component({
   selector: 'silo-phone-box',
   templateUrl: './phone-box.component.html',
   styleUrls: ['./phone-box.component.scss'],
 })
-export class SiloPhoneBoxComponent extends SiloPhoneFieldComponent {
+export class PhoneBoxComponent extends PhoneFieldComponent {
   @ViewChild('telInput')
   telInput: ElementRef<HTMLInputElement>;
 

@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { INavListItemModel, RouterTabLayoutComponent } from '@silo/ngx';
+import { NavListItemModel, RouterTabLayoutComponent } from '@silo/ngx';
 import { DefinitionViewComponent } from './views/definition-view/definition-view.component';
 import { DefinitionViewModule } from './views/definition-view/definition-view.module';
 import { ListViewModule } from './views/list-view/list-view.module';
@@ -12,7 +12,7 @@ const routes: Routes = [
     data: {
       navList: [
         { label: 'Definition', routerLink: 'definition' },
-      ] as Array<INavListItemModel>,
+      ] as Array<NavListItemModel>,
     },
     children: [
       {

@@ -1,9 +1,9 @@
 import { AbstractControl, ValidatorFn } from '@angular/forms';
-import { IValidatorErrorMap } from '../common/validator-error.model';
-import { SiloTimeFieldComponent } from './time-field.component';
+import { ValidatorErrorMap } from '../models/validator-error-map';
+import { TimeFieldComponent } from './time-field.component';
 
-export class SiloTimeValidatorFactory {
-  static createValidators(timeField: SiloTimeFieldComponent) {
+export class TimeValidatorFactory {
+  static createValidators(timeField: TimeFieldComponent) {
     const validators: Array<ValidatorFn> = [];
 
     if (timeField.isRequired) {
@@ -16,7 +16,7 @@ export class SiloTimeValidatorFactory {
   static createRequiredValidator(
     message = 'This field is required.',
   ): ValidatorFn {
-    return (control: AbstractControl): IValidatorErrorMap | null => {
+    return (control: AbstractControl): ValidatorErrorMap | null => {
       return !control.value ? { isRequired: { message } } : null;
     };
   }

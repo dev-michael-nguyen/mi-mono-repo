@@ -22,7 +22,7 @@ import { AfterViewInit, Directive, ElementRef, Input } from '@angular/core';
 @Directive({
   selector: '[siloAutoFocus]',
 })
-export class SiloAutoFocusDirective implements AfterViewInit {
+export class AutoFocusDirective implements AfterViewInit {
   private readonly DEFAULT_SELECTORS =
     '[tabindex]:not([tabindex="-1"]), button';
 

@@ -2,19 +2,19 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatListModule } from '@angular/material/list';
-import { SiloResponsiveContainerModule } from '../../../responsive/responsive-container/responsive-container.module';
-import { SiloLabelModule } from '../../label/label.module';
-import { SiloCheckboxListComponent } from './checkbox-list.component';
+import { ResponsiveContainerModule } from '../../../responsive/responsive-container/responsive-container.module';
+import { LabelModule } from '../../label/label.module';
+import { CheckboxListComponent } from './checkbox-list.component';
 
 @NgModule({
   imports: [
     CommonModule,
+    LabelModule,
     MatListModule,
     ReactiveFormsModule,
-    SiloLabelModule,
-    SiloResponsiveContainerModule,
+    ResponsiveContainerModule,
   ],
-  declarations: [SiloCheckboxListComponent],
-  exports: [SiloCheckboxListComponent],
+  declarations: [CheckboxListComponent],
+  exports: [CheckboxListComponent],
 })
-export class SiloCheckboxListModule {}
+export class CheckboxListModule {}

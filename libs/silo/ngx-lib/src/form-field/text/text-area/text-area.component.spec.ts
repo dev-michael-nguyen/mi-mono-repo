@@ -7,10 +7,10 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { SiloResponsiveContainerModule } from './../../../responsive/responsive-container/responsive-container.module';
-import { SiloLabelModule } from './../../label/label.module';
-import { SiloTextAreaComponent } from './text-area.component';
-import { SiloTextAreaComponentHarness } from './text-area.component.harness';
+import { ResponsiveContainerModule } from './../../../responsive/responsive-container/responsive-container.module';
+import { LabelModule } from './../../label/label.module';
+import { TextAreaComponent } from './text-area.component';
+import { TextAreaComponentHarness } from './text-area.component.harness';
 
 @Component({
   template: `
@@ -33,7 +33,7 @@ class TestComponent {
   isRequired: boolean;
   minLength: number;
   maxLength: number;
-  @ViewChild(SiloTextAreaComponent) textBox: SiloTextAreaComponent;
+  @ViewChild(TextAreaComponent) textBox: TextAreaComponent;
 }
 
 describe('silo-text-area', () => {
@@ -49,10 +49,10 @@ describe('silo-text-area', () => {
         MatFormFieldModule,
         MatInputModule,
         ReactiveFormsModule,
-        SiloLabelModule,
-        SiloResponsiveContainerModule,
+        LabelModule,
+        ResponsiveContainerModule,
       ],
-      declarations: [SiloTextAreaComponent, TestComponent],
+      declarations: [TextAreaComponent, TestComponent],
     }).compileComponents();
   });
 
@@ -66,7 +66,7 @@ describe('silo-text-area', () => {
     // arrange
     testComponent.label = 'Label';
     const textBoxComponentHarness = await harnessLoader.getHarness(
-      SiloTextAreaComponentHarness,
+      TextAreaComponentHarness,
     );
 
     // act
@@ -82,7 +82,7 @@ describe('silo-text-area', () => {
     // arrange
     testComponent.placeholder = 'Placeholder';
     const textBoxComponentHarness = await harnessLoader.getHarness(
-      SiloTextAreaComponentHarness,
+      TextAreaComponentHarness,
     );
 
     // act
@@ -96,7 +96,7 @@ describe('silo-text-area', () => {
     // arrange
     testComponent.hint = 'Hint';
     const textBoxComponentHarness = await harnessLoader.getHarness(
-      SiloTextAreaComponentHarness,
+      TextAreaComponentHarness,
     );
 
     // act
@@ -110,7 +110,7 @@ describe('silo-text-area', () => {
     // arrange
     testComponent.isReadOnly = true;
     const textBoxComponentHarness = await harnessLoader.getHarness(
-      SiloTextAreaComponentHarness,
+      TextAreaComponentHarness,
     );
 
     // act
@@ -124,7 +124,7 @@ describe('silo-text-area', () => {
     // arrange
     testComponent.isRequired = true;
     const textBoxComponentHarness = await harnessLoader.getHarness(
-      SiloTextAreaComponentHarness,
+      TextAreaComponentHarness,
     );
     const theories = [
       { value: null, expected: true },
@@ -146,7 +146,7 @@ describe('silo-text-area', () => {
     // arrange
     testComponent.minLength = 3;
     const textBoxComponentHarness = await harnessLoader.getHarness(
-      SiloTextAreaComponentHarness,
+      TextAreaComponentHarness,
     );
     const theories = [
       { value: null, expected: true },
@@ -169,7 +169,7 @@ describe('silo-text-area', () => {
     // arrange
     testComponent.maxLength = 3;
     const textBoxComponentHarness = await harnessLoader.getHarness(
-      SiloTextAreaComponentHarness,
+      TextAreaComponentHarness,
     );
     const theories = [
       { value: null, expected: false },

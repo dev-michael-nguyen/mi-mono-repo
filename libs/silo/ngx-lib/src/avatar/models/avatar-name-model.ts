@@ -1,4 +1,4 @@
-export interface IAvatarNameModel {
+export class AvatarNameModel {
   firstName?: string;
   lastName?: string;
 }

@@ -1,4 +1,4 @@
-export interface INavListItemModel {
+export class NavListItemModel {
   label: string;
   tooltip?: string;
   ariaLabel?: string;

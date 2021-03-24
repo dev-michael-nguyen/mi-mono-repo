@@ -1,10 +1,10 @@
 import { ComponentHarness } from '@angular/cdk/testing';
 
-export class SiloSingleSelectComponentHarness extends ComponentHarness {
+export class SingleSelectComponentHarness extends ComponentHarness {
   static hostSelector = 'silo-single-select';
 
   protected getRootElement = this.locatorFor(
-    `.${SiloSingleSelectComponentHarness.hostSelector}`,
+    `.${SingleSelectComponentHarness.hostSelector}`,
   );
   protected getLabelElement = this.locatorFor('.silo-label');
   protected getInputElement = this.locatorFor('.mat-select');
@@ -39,7 +39,7 @@ export class SiloSingleSelectComponentHarness extends ComponentHarness {
   async hasError() {
     const rootElement = await this.getRootElement();
     const hasError = await rootElement.hasClass(
-      `${SiloSingleSelectComponentHarness.hostSelector}--has-error`,
+      `${SingleSelectComponentHarness.hostSelector}--has-error`,
     );
     return hasError;
   }

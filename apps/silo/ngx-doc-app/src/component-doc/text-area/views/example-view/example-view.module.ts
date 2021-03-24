@@ -1,11 +1,11 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { SiloTextAreaModule } from '@silo/ngx';
+import { TextAreaModule } from '@silo/ngx';
 import { ExampleArticleModule } from '../../../../components/example-article/example-article.module';
 import { ExampleViewComponent } from './example-view.component';
 
 @NgModule({
-  imports: [CommonModule, ExampleArticleModule, SiloTextAreaModule],
+  imports: [CommonModule, ExampleArticleModule, TextAreaModule],
   declarations: [ExampleViewComponent],
 })
 export class ExampleViewModule {}

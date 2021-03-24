@@ -7,9 +7,9 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
-import { SiloResponsiveContainerModule } from '../../../responsive/responsive-container/responsive-container.module';
-import { SiloLabelModule } from './../../label/label.module';
-import { SiloDatePickerComponent } from './date-picker.component';
+import { ResponsiveContainerModule } from '../../../responsive/responsive-container/responsive-container.module';
+import { LabelModule } from './../../label/label.module';
+import { DatePickerComponent } from './date-picker.component';
 
 @NgModule({
   imports: [
@@ -21,10 +21,10 @@ import { SiloDatePickerComponent } from './date-picker.component';
     MatInputModule,
     MatNativeDateModule,
     ReactiveFormsModule,
-    SiloLabelModule,
-    SiloResponsiveContainerModule,
+    LabelModule,
+    ResponsiveContainerModule,
   ],
-  declarations: [SiloDatePickerComponent],
-  exports: [SiloDatePickerComponent],
+  declarations: [DatePickerComponent],
+  exports: [DatePickerComponent],
 })
-export class SiloDatePickerModule {}
+export class DatePickerModule {}

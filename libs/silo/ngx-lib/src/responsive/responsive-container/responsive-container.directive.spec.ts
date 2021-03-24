@@ -1,6 +1,6 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { SiloResponsiveContainerDirective } from './responsive-container.directive';
+import { ResponsiveContainerDirective } from './responsive-container.directive';
 
 @Component({
   template: `
@@ -20,13 +20,13 @@ class TestComponent {
   @ViewChild('div4') div4: ElementRef<HTMLElement>;
 }
 
-describe('siloResponsiveContainer', () => {
+describe('ResponsiveContainerDirective', () => {
   let fixture: ComponentFixture<TestComponent>;
   let component: TestComponent;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [SiloResponsiveContainerDirective, TestComponent],
+      declarations: [ResponsiveContainerDirective, TestComponent],
     }).compileComponents();
   });
 
@@ -39,7 +39,7 @@ describe('siloResponsiveContainer', () => {
     fixture.detectChanges();
     expect(
       component.div1.nativeElement.classList.contains(
-        SiloResponsiveContainerDirective.REPONSIVE_CONTAINER_CLASS,
+        ResponsiveContainerDirective.REPONSIVE_CONTAINER_CLASS,
       ),
     ).toBeFalsy();
   });
@@ -48,7 +48,7 @@ describe('siloResponsiveContainer', () => {
     fixture.detectChanges();
     expect(
       component.div2.nativeElement.classList.contains(
-        SiloResponsiveContainerDirective.REPONSIVE_CONTAINER_CLASS,
+        ResponsiveContainerDirective.REPONSIVE_CONTAINER_CLASS,
       ),
     ).toBeTruthy();
     expect(
@@ -60,7 +60,7 @@ describe('siloResponsiveContainer', () => {
     fixture.detectChanges();
     expect(
       component.div3.nativeElement.classList.contains(
-        SiloResponsiveContainerDirective.REPONSIVE_CONTAINER_CLASS,
+        ResponsiveContainerDirective.REPONSIVE_CONTAINER_CLASS,
       ),
     ).toBeTruthy();
     expect(
@@ -75,7 +75,7 @@ describe('siloResponsiveContainer', () => {
     fixture.detectChanges();
     expect(
       component.div4.nativeElement.classList.contains(
-        SiloResponsiveContainerDirective.REPONSIVE_CONTAINER_CLASS,
+        ResponsiveContainerDirective.REPONSIVE_CONTAINER_CLASS,
       ),
     ).toBeTruthy();
     expect(

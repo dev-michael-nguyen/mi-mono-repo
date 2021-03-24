@@ -9,10 +9,10 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatSelectModule } from '@angular/material/select';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { SiloResponsiveContainerModule } from './../../../responsive/responsive-container/responsive-container.module';
-import { SiloLabelModule } from './../../label/label.module';
-import { SiloSingleSelectComponent } from './single-select.component';
-import { SiloSingleSelectComponentHarness } from './single-select.component.harness';
+import { ResponsiveContainerModule } from './../../../responsive/responsive-container/responsive-container.module';
+import { LabelModule } from './../../label/label.module';
+import { SingleSelectComponent } from './single-select.component';
+import { SingleSelectComponentHarness } from './single-select.component.harness';
 
 @Component({
   template: `
@@ -31,7 +31,7 @@ class TestComponent {
   hint: string;
   isReadOnly: boolean;
   isRequired: boolean;
-  @ViewChild(SiloSingleSelectComponent) singleSelect: SiloSingleSelectComponent;
+  @ViewChild(SingleSelectComponent) singleSelect: SingleSelectComponent;
 }
 
 describe('silo-single-select', () => {
@@ -49,10 +49,10 @@ describe('silo-single-select', () => {
         MatIconModule,
         MatSelectModule,
         ReactiveFormsModule,
-        SiloLabelModule,
-        SiloResponsiveContainerModule,
+        LabelModule,
+        ResponsiveContainerModule,
       ],
-      declarations: [SiloSingleSelectComponent, TestComponent],
+      declarations: [SingleSelectComponent, TestComponent],
     }).compileComponents();
   });
 
@@ -66,7 +66,7 @@ describe('silo-single-select', () => {
     // arrange
     testComponent.label = 'Label';
     const singleSelectComponentHarness = await harnessLoader.getHarness(
-      SiloSingleSelectComponentHarness,
+      SingleSelectComponentHarness,
     );
 
     // act
@@ -82,7 +82,7 @@ describe('silo-single-select', () => {
     // arrange
     testComponent.placeholder = 'Placeholder';
     const singleSelectComponentHarness = await harnessLoader.getHarness(
-      SiloSingleSelectComponentHarness,
+      SingleSelectComponentHarness,
     );
 
     // act
@@ -96,7 +96,7 @@ describe('silo-single-select', () => {
     // arrange
     testComponent.hint = 'Hint';
     const singleSelectComponentHarness = await harnessLoader.getHarness(
-      SiloSingleSelectComponentHarness,
+      SingleSelectComponentHarness,
     );
 
     // act
@@ -110,7 +110,7 @@ describe('silo-single-select', () => {
     // arrange
     testComponent.isReadOnly = true;
     const singleSelectComponentHarness = await harnessLoader.getHarness(
-      SiloSingleSelectComponentHarness,
+      SingleSelectComponentHarness,
     );
 
     // act
@@ -124,7 +124,7 @@ describe('silo-single-select', () => {
     // arrange
     testComponent.isRequired = true;
     const singleSelectComponentHarness = await harnessLoader.getHarness(
-      SiloSingleSelectComponentHarness,
+      SingleSelectComponentHarness,
     );
     const theories = [
       { value: null, expected: true },

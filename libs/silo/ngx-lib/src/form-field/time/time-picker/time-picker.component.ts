@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
-import { SiloTimeFieldComponent } from '../time-field.component';
+import { TimeFieldComponent } from '../time-field.component';
 
 @Component({
   selector: 'silo-time-picker',
   templateUrl: './time-picker.component.html',
   styleUrls: ['./time-picker.component.scss'],
 })
-export class SiloTimePickerComponent extends SiloTimeFieldComponent {}
+export class TimePickerComponent extends TimeFieldComponent {}

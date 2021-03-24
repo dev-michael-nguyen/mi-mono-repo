@@ -1,10 +1,10 @@
 import { Directive, ElementRef, Input, OnInit } from '@angular/core';
-import { ClassExpression } from './responsive-container.model';
+import { ClassExpression } from './models/class-expression';
 
 @Directive({
   selector: '[siloResponsiveContainer]',
 })
-export class SiloResponsiveContainerDirective implements OnInit {
+export class ResponsiveContainerDirective implements OnInit {
   static readonly REPONSIVE_CONTAINER_CLASS = 'silo-responsive-container';
 
   @Input('siloResponsiveContainer')
@@ -22,7 +22,7 @@ export class SiloResponsiveContainerDirective implements OnInit {
     }
 
     this._el.nativeElement.classList.add(
-      SiloResponsiveContainerDirective.REPONSIVE_CONTAINER_CLASS,
+      ResponsiveContainerDirective.REPONSIVE_CONTAINER_CLASS,
     );
 
     if (Array.isArray(colExpression)) {

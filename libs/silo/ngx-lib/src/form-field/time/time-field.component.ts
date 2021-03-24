@@ -1,12 +1,12 @@
 import { Directive, ElementRef, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
-import { ClassExpression } from '../../responsive/responsive-container/responsive-container.model';
+import { ClassExpression } from '../../responsive/responsive-container/models/class-expression';
 import { randomHtmlId } from '../../utils/random-html-id';
-import { SiloValidatorErrorReporter } from '../common/validator-error-reporter';
-import { SiloTimeValidatorFactory } from './time-validator.factory';
+import { ValidatorMixin } from '../services/validator.mixin';
+import { TimeValidatorFactory } from './time-validator.factory';
 
 @Directive()
-export class SiloTimeFieldComponent implements OnInit {
+export class TimeFieldComponent implements OnInit {
   formGroup: FormGroup;
 
   timeFormControl: FormControl;
@@ -63,7 +63,7 @@ export class SiloTimeFieldComponent implements OnInit {
   }
 
   setForm(value: string) {
-    const validators = SiloTimeValidatorFactory.createValidators(this);
+    const validators = TimeValidatorFactory.createValidators(this);
     this.hasValidators = !!validators.length;
     this.timeFormControl = this.formBuilder.control(value, validators);
     this.formGroup = this.formBuilder.group({
@@ -77,6 +77,6 @@ export class SiloTimeFieldComponent implements OnInit {
   }
 
   getErrorMessage() {
-    return SiloValidatorErrorReporter.getErrorMessage(this.formGroup);
+    return ValidatorMixin.getErrorMessage(this.formGroup);
   }
 }

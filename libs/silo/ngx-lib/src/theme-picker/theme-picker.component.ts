@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { IThemeLookupModel } from './theme-picker.model';
+import { ThemeLookupModel } from './models/theme-lookup-model';
 import { ThemePickerService } from './theme-picker.service';
 
 @Component({
@@ -7,23 +7,23 @@ import { ThemePickerService } from './theme-picker.service';
   templateUrl: './theme-picker.component.html',
   styleUrls: ['./theme-picker.component.scss'],
 })
-export class SiloThemePickerComponent implements OnInit {
+export class ThemePickerComponent implements OnInit {
   /**
    * The selected theme.
    */
-  value: IThemeLookupModel;
+  value: ThemeLookupModel;
 
   /**
    * The theme list.
    */
   @Input()
-  lookupList = new Array<IThemeLookupModel>();
+  lookupList = new Array<ThemeLookupModel>();
 
   /**
    * Output selected theme.
    */
   @Output()
-  selectedTheme = new EventEmitter<IThemeLookupModel>();
+  selectedTheme = new EventEmitter<ThemeLookupModel>();
 
   constructor(private _themePickerService: ThemePickerService) {}
 
@@ -37,7 +37,7 @@ export class SiloThemePickerComponent implements OnInit {
     });
   }
 
-  setTheme(theme: IThemeLookupModel) {
+  setTheme(theme: ThemeLookupModel) {
     this.value = theme;
     this.selectedTheme.emit(theme);
     this._themePickerService.setTheme(theme);

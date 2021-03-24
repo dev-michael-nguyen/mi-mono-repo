@@ -1,11 +1,9 @@
 import { OverlayContainer } from '@angular/cdk/overlay';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Subject } from 'rxjs';
-import {
-  IThemeChangedEvent,
-  IThemeLookupModel,
-  IThemePickerModel,
-} from './theme-picker.model';
+import { ThemeChangedEventModel } from './models/theme-change-event-model';
+import { ThemeLookupModel } from './models/theme-lookup-model';
+import { ThemePickerModel } from './models/theme-picker-model';
 
 @Injectable()
 export class ThemePickerService {
@@ -17,24 +15,24 @@ export class ThemePickerService {
   /**
    * The theme lookup list.
    */
-  themeLookupList: Array<IThemeLookupModel>;
+  themeLookupList: Array<ThemeLookupModel>;
 
   /**
    * The previous theme.
    */
-  previousTheme: IThemeLookupModel;
+  previousTheme: ThemeLookupModel;
 
   /**
    * The current theme.
    */
-  currentTheme: IThemeLookupModel;
+  currentTheme: ThemeLookupModel;
 
   /**
    * The theme change event.
    */
-  themeChangedEvent$ = new Subject<IThemeChangedEvent>();
+  themeChangedEvent$ = new Subject<ThemeChangedEventModel>();
 
-  init(themePickerModel: IThemePickerModel) {
+  init(themePickerModel: ThemePickerModel) {
     this.themeLookupList = themePickerModel.lookupList || [];
     const currentTheme = this.themeLookupList.find(
       (x) => x.id === themePickerModel.currentThemeId,
@@ -43,7 +41,7 @@ export class ThemePickerService {
     this.isInitialized$.next(true);
   }
 
-  setTheme(theme: IThemeLookupModel, emitEvent = true) {
+  setTheme(theme: ThemeLookupModel, emitEvent = true) {
     this.previousTheme = this.currentTheme;
     this.currentTheme = theme;
     if (emitEvent) {

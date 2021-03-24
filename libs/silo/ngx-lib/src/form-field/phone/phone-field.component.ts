@@ -1,12 +1,12 @@
 import { Directive, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
-import { ClassExpression } from '../../responsive/responsive-container/responsive-container.model';
+import { ClassExpression } from '../../responsive/responsive-container/models/class-expression';
 import { randomHtmlId } from '../../utils/random-html-id';
-import { SiloValidatorErrorReporter } from '../common/validator-error-reporter';
-import { SiloPhoneValidatorFactory } from './phone-validator.factory';
+import { ValidatorMixin } from '../services/validator.mixin';
+import { PhoneValidatorFactory } from './phone-validator.factory';
 
 @Directive()
-export class SiloPhoneFieldComponent implements OnInit {
+export class PhoneFieldComponent implements OnInit {
   formGroup: FormGroup;
 
   phoneFormControl: FormControl;
@@ -54,7 +54,7 @@ export class SiloPhoneFieldComponent implements OnInit {
   }
 
   setForm(value: string) {
-    const validators = SiloPhoneValidatorFactory.createValidators(this);
+    const validators = PhoneValidatorFactory.createValidators(this);
     this.hasValidators = !!validators.length;
     this.phoneFormControl = this.formBuilder.control(value, validators);
     this.formGroup = this.formBuilder.group({
@@ -67,6 +67,6 @@ export class SiloPhoneFieldComponent implements OnInit {
   }
 
   getErrorMessage() {
-    return SiloValidatorErrorReporter.getErrorMessage(this.formGroup);
+    return ValidatorMixin.getErrorMessage(this.formGroup);
   }
 }

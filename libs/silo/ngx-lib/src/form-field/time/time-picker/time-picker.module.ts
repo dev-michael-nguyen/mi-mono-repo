@@ -5,9 +5,9 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
-import { SiloResponsiveContainerModule } from '../../../responsive/responsive-container/responsive-container.module';
-import { SiloLabelModule } from '../../label/label.module';
-import { SiloTimePickerComponent } from './time-picker.component';
+import { ResponsiveContainerModule } from '../../../responsive/responsive-container/responsive-container.module';
+import { LabelModule } from '../../label/label.module';
+import { TimePickerComponent } from './time-picker.component';
 
 @NgModule({
   imports: [
@@ -17,10 +17,10 @@ import { SiloTimePickerComponent } from './time-picker.component';
     MatIconModule,
     MatInputModule,
     ReactiveFormsModule,
-    SiloLabelModule,
-    SiloResponsiveContainerModule,
+    LabelModule,
+    ResponsiveContainerModule,
   ],
-  declarations: [SiloTimePickerComponent],
-  exports: [SiloTimePickerComponent],
+  declarations: [TimePickerComponent],
+  exports: [TimePickerComponent],
 })
-export class SiloTimePickerModule {}
+export class TimePickerModule {}

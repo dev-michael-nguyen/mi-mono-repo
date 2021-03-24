@@ -2,19 +2,19 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
-import { SiloResponsiveContainerModule } from '../../../responsive/responsive-container/responsive-container.module';
-import { SiloLabelModule } from '../../label/label.module';
-import { SiloNumberBoxComponent } from './number-box.component';
+import { ResponsiveContainerModule } from '../../../responsive/responsive-container/responsive-container.module';
+import { LabelModule } from '../../label/label.module';
+import { NumberBoxComponent } from './number-box.component';
 
 @NgModule({
   imports: [
     CommonModule,
     MatInputModule,
     ReactiveFormsModule,
-    SiloLabelModule,
-    SiloResponsiveContainerModule,
+    LabelModule,
+    ResponsiveContainerModule,
   ],
-  declarations: [SiloNumberBoxComponent],
-  exports: [SiloNumberBoxComponent],
+  declarations: [NumberBoxComponent],
+  exports: [NumberBoxComponent],
 })
-export class SiloNumberBoxModule {}
+export class NumberBoxModule {}

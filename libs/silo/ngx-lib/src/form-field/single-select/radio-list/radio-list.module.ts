@@ -4,9 +4,9 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatRadioModule } from '@angular/material/radio';
-import { SiloResponsiveContainerModule } from '../../../responsive/responsive-container/responsive-container.module';
-import { SiloLabelModule } from '../../label/label.module';
-import { SiloRadioListComponent } from './radio-list.component';
+import { ResponsiveContainerModule } from '../../../responsive/responsive-container/responsive-container.module';
+import { LabelModule } from '../../label/label.module';
+import { RadioListComponent } from './radio-list.component';
 
 @NgModule({
   imports: [
@@ -15,10 +15,10 @@ import { SiloRadioListComponent } from './radio-list.component';
     MatIconModule,
     MatRadioModule,
     ReactiveFormsModule,
-    SiloLabelModule,
-    SiloResponsiveContainerModule,
+    LabelModule,
+    ResponsiveContainerModule,
   ],
-  declarations: [SiloRadioListComponent],
-  exports: [SiloRadioListComponent],
+  declarations: [RadioListComponent],
+  exports: [RadioListComponent],
 })
-export class SiloRadioListModule {}
+export class RadioListModule {}

@@ -6,4 +6,4 @@ import { Component, ViewEncapsulation } from '@angular/core';
   styleUrls: ['./app-layout.component.scss'],
   encapsulation: ViewEncapsulation.None,
 })
-export class SiloAppLayoutComponent {}
+export class AppLayoutComponent {}

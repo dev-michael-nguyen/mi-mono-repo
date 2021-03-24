@@ -1,9 +1,9 @@
 import { AbstractControl, ValidatorFn } from '@angular/forms';
-import { IValidatorErrorMap } from '../common/validator-error.model';
-import { SiloTextFieldComponent } from './text-field.component';
+import { ValidatorErrorMap } from '../models/validator-error-map';
+import { TextFieldComponent } from './text-field.component';
 
-export class SiloTextValidatorFactory {
-  static createValidators(textField: SiloTextFieldComponent) {
+export class TextValidatorFactory {
+  static createValidators(textField: TextFieldComponent) {
     const validators: Array<ValidatorFn> = [];
 
     if (textField.isRequired) {
@@ -24,7 +24,7 @@ export class SiloTextValidatorFactory {
   static createRequiredValidator(
     message = 'This field is required.',
   ): ValidatorFn {
-    return (control: AbstractControl): IValidatorErrorMap | null => {
+    return (control: AbstractControl): ValidatorErrorMap | null => {
       const value = control.value ?? '';
 
       if (typeof value !== 'string') {
@@ -41,7 +41,7 @@ export class SiloTextValidatorFactory {
     minLength: number,
     message = `Cannot have less than ${minLength} characters`,
   ): ValidatorFn {
-    return (control: AbstractControl): IValidatorErrorMap | null => {
+    return (control: AbstractControl): ValidatorErrorMap | null => {
       const value = control.value ?? '';
 
       if (typeof value !== 'string') {
@@ -58,7 +58,7 @@ export class SiloTextValidatorFactory {
     maxLength: number,
     message = `Cannot have more than ${maxLength} characters`,
   ): ValidatorFn {
-    return (control: AbstractControl): IValidatorErrorMap | null => {
+    return (control: AbstractControl): ValidatorErrorMap | null => {
       const value = control.value ?? '';
 
       if (typeof value !== 'string') {

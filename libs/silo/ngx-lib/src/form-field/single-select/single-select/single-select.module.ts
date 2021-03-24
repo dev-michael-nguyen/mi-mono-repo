@@ -5,9 +5,9 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatSelectModule } from '@angular/material/select';
-import { SiloResponsiveContainerModule } from './../../../responsive/responsive-container/responsive-container.module';
-import { SiloLabelModule } from './../../label/label.module';
-import { SiloSingleSelectComponent } from './single-select.component';
+import { ResponsiveContainerModule } from './../../../responsive/responsive-container/responsive-container.module';
+import { LabelModule } from './../../label/label.module';
+import { SingleSelectComponent } from './single-select.component';
 
 @NgModule({
   imports: [
@@ -17,10 +17,10 @@ import { SiloSingleSelectComponent } from './single-select.component';
     MatIconModule,
     MatSelectModule,
     ReactiveFormsModule,
-    SiloLabelModule,
-    SiloResponsiveContainerModule,
+    LabelModule,
+    ResponsiveContainerModule,
   ],
-  declarations: [SiloSingleSelectComponent],
-  exports: [SiloSingleSelectComponent],
+  declarations: [SingleSelectComponent],
+  exports: [SingleSelectComponent],
 })
-export class SiloSingleSelectModule {}
+export class SingleSelectModule {}

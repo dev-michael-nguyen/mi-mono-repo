@@ -1,12 +1,12 @@
 import { Directive, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
-import { ClassExpression } from '../../responsive/responsive-container/responsive-container.model';
+import { ClassExpression } from '../../responsive/responsive-container/models/class-expression';
 import { randomHtmlId } from '../../utils/random-html-id';
-import { SiloValidatorErrorReporter } from '../common/validator-error-reporter';
-import { SiloNumericValidatorFactory } from './numeric-validator.factory';
+import { ValidatorMixin } from '../services/validator.mixin';
+import { NumericValidatorFactory } from './numeric-validator.factory';
 
 @Directive()
-export class SiloNumericFieldComponent implements OnInit {
+export class NumericFieldComponent implements OnInit {
   formGroup: FormGroup;
 
   numericFormControl: FormControl;
@@ -54,7 +54,7 @@ export class SiloNumericFieldComponent implements OnInit {
   }
 
   setForm(value: string) {
-    const validators = SiloNumericValidatorFactory.createValidators(this);
+    const validators = NumericValidatorFactory.createValidators(this);
     this.hasValidators = !!validators.length;
     this.numericFormControl = this.formBuilder.control(value, validators);
     this.formGroup = this.formBuilder.group({
@@ -67,6 +67,6 @@ export class SiloNumericFieldComponent implements OnInit {
   }
 
   getErrorMessage() {
-    return SiloValidatorErrorReporter.getErrorMessage(this.formGroup);
+    return ValidatorMixin.getErrorMessage(this.formGroup);
   }
 }

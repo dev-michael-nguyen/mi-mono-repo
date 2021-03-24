@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
-import { SiloAutoFocusDirective } from './auto-focus.directive';
+import { AutoFocusDirective } from './auto-focus.directive';
 
 @NgModule({
-  declarations: [SiloAutoFocusDirective],
-  exports: [SiloAutoFocusDirective],
+  declarations: [AutoFocusDirective],
+  exports: [AutoFocusDirective],
 })
-export class SiloAutoFocusModule {}
+export class AutoFocusModule {}

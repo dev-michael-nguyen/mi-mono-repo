@@ -1,5 +1,5 @@
 import { AfterViewInit, Component, ViewEncapsulation } from '@angular/core';
-import { SiloRichTextFieldComponent } from './../rich-text-field.component';
+import { RichTextFieldComponent } from './../rich-text-field.component';
 
 @Component({
   selector: 'silo-quill-rich-text',
@@ -7,8 +7,8 @@ import { SiloRichTextFieldComponent } from './../rich-text-field.component';
   styleUrls: ['./quill-rich-text.component.scss'],
   encapsulation: ViewEncapsulation.None,
 })
-export class SiloQuillRichTextComponent
-  extends SiloRichTextFieldComponent
+export class QuillRichTextComponent
+  extends RichTextFieldComponent
   implements AfterViewInit {
   ngAfterViewInit() {
     this.addAccessibility();

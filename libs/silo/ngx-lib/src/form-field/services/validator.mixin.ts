@@ -1,7 +1,7 @@
 import { FormGroup } from '@angular/forms';
-import { IValidatorErrorValue } from './validator-error.model';
+import { ValidatorErrorModel } from '../models/validator-error-model';
 
-export class SiloValidatorErrorReporter {
+export class ValidatorMixin {
   static getErrorMessage(formGroup: FormGroup) {
     const firstControlKeyWithError = Object.keys(formGroup.controls).find(
       (key) => !!formGroup.controls[key].errors,
@@ -13,7 +13,7 @@ export class SiloValidatorErrorReporter {
     const firstErrorKey = Object.keys(control.errors)[0];
     const firstErrorValue = control.errors[
       firstErrorKey
-    ] as IValidatorErrorValue;
+    ] as ValidatorErrorModel;
     return firstErrorValue.message;
   }
 }

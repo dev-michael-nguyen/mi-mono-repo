@@ -7,13 +7,13 @@ import {
   ViewChild,
 } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
-import { ClassExpression } from '../../responsive/responsive-container/responsive-container.model';
+import { ClassExpression } from '../../responsive/responsive-container/models/class-expression';
 import { randomHtmlId } from '../../utils/random-html-id';
-import { SiloValidatorErrorReporter } from '../common/validator-error-reporter';
-import { SiloTextValidatorFactory } from './text-validator.factory';
+import { ValidatorMixin } from '../services/validator.mixin';
+import { TextValidatorFactory } from './text-validator.factory';
 
 @Directive()
-export class SiloTextFieldComponent implements OnInit, AfterViewInit {
+export class TextFieldComponent implements OnInit, AfterViewInit {
   formGroup: FormGroup;
 
   textFormControl: FormControl;
@@ -77,7 +77,7 @@ export class SiloTextFieldComponent implements OnInit, AfterViewInit {
   }
 
   setForm(value: string) {
-    const validators = SiloTextValidatorFactory.createValidators(this);
+    const validators = TextValidatorFactory.createValidators(this);
     this.hasValidators = !!validators.length;
     this.textFormControl = this.formBuilder.control(value, validators);
     this.formGroup = this.formBuilder.group({
@@ -90,7 +90,7 @@ export class SiloTextFieldComponent implements OnInit, AfterViewInit {
   }
 
   getErrorMessage() {
-    return SiloValidatorErrorReporter.getErrorMessage(this.formGroup);
+    return ValidatorMixin.getErrorMessage(this.formGroup);
   }
 
   setTextAreaHeightInReadOnly() {

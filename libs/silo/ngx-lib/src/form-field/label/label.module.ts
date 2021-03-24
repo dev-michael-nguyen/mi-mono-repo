@@ -1,10 +1,10 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { SiloLabelComponent } from './label.component';
+import { NgModule } from '@angular/core';
+import { LabelComponent } from './label.component';
 
 @NgModule({
   imports: [CommonModule],
-  declarations: [SiloLabelComponent],
-  exports: [SiloLabelComponent],
+  declarations: [LabelComponent],
+  exports: [LabelComponent],
 })
-export class SiloLabelModule {}
+export class LabelModule {}

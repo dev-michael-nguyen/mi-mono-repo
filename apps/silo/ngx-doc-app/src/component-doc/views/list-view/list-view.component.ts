@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { INavListItemModel } from '@silo/ngx';
+import { NavListItemModel } from '@silo/ngx';
 
 @Component({
   selector: 'silo-list-view',
@@ -7,7 +7,7 @@ import { INavListItemModel } from '@silo/ngx';
   styleUrls: ['./list-view.component.scss'],
 })
 export class ListViewComponent implements OnInit {
-  componentNavList: Array<INavListItemModel> = [
+  componentNavList: Array<NavListItemModel> = [
     { label: 'Text Box', routerLink: 'text-box' },
     { label: 'Text Area', routerLink: 'text-area' },
     { label: 'Quill Rich Text', routerLink: 'quill-rich-text' },

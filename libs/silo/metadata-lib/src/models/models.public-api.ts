@@ -1,1 +1,1 @@
-export * from './metadata.model';
+export * from './metadata-model';

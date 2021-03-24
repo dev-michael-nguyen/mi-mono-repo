@@ -1,9 +1,9 @@
 import { AbstractControl, ValidatorFn } from '@angular/forms';
-import { IValidatorErrorMap } from '../common/validator-error.model';
-import { SiloPhoneFieldComponent } from './phone.public-api';
+import { ValidatorErrorMap } from '../models/validator-error-map';
+import { PhoneFieldComponent } from './phone-field.component';
 
-export class SiloPhoneValidatorFactory {
-  static createValidators(phoneField: SiloPhoneFieldComponent) {
+export class PhoneValidatorFactory {
+  static createValidators(phoneField: PhoneFieldComponent) {
     const validators: Array<ValidatorFn> = [];
 
     if (phoneField.isRequired) {
@@ -18,7 +18,7 @@ export class SiloPhoneValidatorFactory {
   static createRequiredValidator(
     message = 'This field is required.',
   ): ValidatorFn {
-    return (control: AbstractControl): IValidatorErrorMap | null => {
+    return (control: AbstractControl): ValidatorErrorMap | null => {
       const value = control.value ?? '';
 
       const isWhitespace = value.trim().length === 0;
@@ -30,7 +30,7 @@ export class SiloPhoneValidatorFactory {
   static createPhoneFormatValidator(
     message = 'Format should be XXX-XXX-XXXX',
   ): ValidatorFn {
-    return (control: AbstractControl): IValidatorErrorMap | null => {
+    return (control: AbstractControl): ValidatorErrorMap | null => {
       const value = control.value ?? '';
 
       const phoneRegex = new RegExp('\\d{3}-\\d{3}-\\d{4}$');

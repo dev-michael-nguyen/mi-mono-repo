@@ -8,16 +8,16 @@ import {
 } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { MatListOption } from '@angular/material/list';
-import { ClassExpression } from '../../../responsive/responsive-container/responsive-container.model';
-import { SiloMultiSelectFieldComponent } from '../multi-select-field.component';
+import { ClassExpression } from '../../../responsive/responsive-container/models/class-expression';
+import { MultiSelectFieldComponent } from '../multi-select-field.component';
 
 @Component({
   selector: 'silo-checkbox-list',
   templateUrl: './checkbox-list.component.html',
   styleUrls: ['./checkbox-list.component.scss'],
 })
-export class SiloCheckboxListComponent
-  extends SiloMultiSelectFieldComponent
+export class CheckboxListComponent
+  extends MultiSelectFieldComponent
   implements AfterViewInit {
   @ViewChildren(MatListOption)
   matListOptions: QueryList<MatListOption>;

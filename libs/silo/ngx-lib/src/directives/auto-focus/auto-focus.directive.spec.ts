@@ -1,6 +1,6 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { SiloAutoFocusDirective } from './auto-focus.directive';
+import { AutoFocusDirective } from './auto-focus.directive';
 
 @Component({
   template: `
@@ -20,7 +20,7 @@ class TestComponent {
   tabIndex = -1;
   enableAutoFocus = true;
   focusChildSelectors = '';
-  @ViewChild(SiloAutoFocusDirective) directive: SiloAutoFocusDirective;
+  @ViewChild(AutoFocusDirective) directive: AutoFocusDirective;
   @ViewChild('selfDiv') selfDiv: ElementRef<HTMLElement>;
   @ViewChild('button') button: ElementRef<HTMLElement>;
   @ViewChild('targetIdDiv') targetIdDiv: ElementRef<HTMLElement>;
@@ -33,7 +33,7 @@ describe('siloAutoFocus', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [SiloAutoFocusDirective, TestComponent],
+      declarations: [AutoFocusDirective, TestComponent],
     }).compileComponents();
   });
 

@@ -1,14 +1,14 @@
 import { Directive, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
-import { ClassExpression } from '../../responsive/responsive-container/responsive-container.model';
+import { ClassExpression } from '../../responsive/responsive-container/models/class-expression';
 import { randomHtmlId } from '../../utils/random-html-id';
-import { LookupModel } from '../common/lookup.model';
-import { SiloValidatorErrorReporter } from './../common/validator-error-reporter';
-import { SiloDateValidatorFactory } from './date-validator.factory';
+import { LookupModel } from '../models/lookup-model';
+import { ValidatorMixin } from '../services/validator.mixin';
+import { DateValidatorFactory } from './date-validator.factory';
 import { NativeDate, NativeDateAdapter } from './native-date-adapter';
 
 @Directive()
-export class SiloDateFieldComponent implements OnInit {
+export class DateFieldComponent implements OnInit {
   formGroup: FormGroup;
 
   dateFormControl: FormControl;
@@ -58,7 +58,7 @@ export class SiloDateFieldComponent implements OnInit {
   }
 
   setForm(value: NativeDate) {
-    const validators = SiloDateValidatorFactory.createValidators(this);
+    const validators = DateValidatorFactory.createValidators(this);
     this.hasValidators = !!validators.length;
     this.dateFormControl = this.formBuilder.control(
       NativeDateAdapter.toDate(value),
@@ -75,7 +75,7 @@ export class SiloDateFieldComponent implements OnInit {
   }
 
   getErrorMessage() {
-    return SiloValidatorErrorReporter.getErrorMessage(this.formGroup);
+    return ValidatorMixin.getErrorMessage(this.formGroup);
   }
 
   compareWith(o1: LookupModel, o2: LookupModel) {
