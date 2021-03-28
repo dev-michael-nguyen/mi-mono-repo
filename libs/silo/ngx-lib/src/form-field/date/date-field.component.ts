@@ -60,10 +60,7 @@ export class DateFieldComponent implements OnInit {
   setForm(value: NativeDate) {
     const validators = DateValidatorFactory.createValidators(this);
     this.hasValidators = !!validators.length;
-    this.dateFormControl = this.formBuilder.control(
-      NativeDateAdapter.toDate(value),
-      validators,
-    );
+    this.dateFormControl = this.formBuilder.control(NativeDateAdapter.toDate(value), validators);
     this.formGroup = this.formBuilder.group({
       date: this.dateFormControl,
     });
@@ -75,7 +72,7 @@ export class DateFieldComponent implements OnInit {
   }
 
   getErrorMessage() {
-    return ValidatorMixin.getErrorMessage(this.formGroup);
+    return ValidatorMixin.getFormGroupErrorMessage(this.formGroup);
   }
 
   compareWith(o1: LookupModel, o2: LookupModel) {

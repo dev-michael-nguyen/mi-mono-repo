@@ -2,10 +2,10 @@
   class="silo-legacy-text-box"
   [class.silo-legacy-text-box--is-required]="isRequired"
   [class.silo-legacy-text-box--is-filled]="
-    isRequired && formGroup.dirty && formGroup.valid
+    isRequired && textFormControl.dirty && textFormControl.valid
   "
   [class.silo-legacy-text-box--has-error]="
-    hasValidators && formGroup.dirty && formGroup.invalid
+    hasValidators && textFormControl.dirty && textFormControl.invalid
   "
   [colExpression]="fieldSize"
 >
@@ -39,17 +39,10 @@
     </div>
   </silo-responsive-container>
   <div [id]="describebyId" class="silo-form-field-message-container">
-    <span
-      class="mat-hint"
-      *ngIf="hint && !(formGroup.dirty && formGroup.invalid)"
-    >
+    <span class="mat-hint" *ngIf="hint && !(textFormControl.dirty && textFormControl.invalid)">
       {{ hint }}
     </span>
-    <span
-      class="mat-error"
-      role="alert"
-      *ngIf="formGroup.dirty && formGroup.invalid"
-    >
+    <span class="mat-error" role="alert" *ngIf="textFormControl.dirty && textFormControl.invalid">
       {{ getErrorMessage() }}
     </span>
   </div>

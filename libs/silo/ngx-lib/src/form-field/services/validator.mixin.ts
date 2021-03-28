@@ -1,8 +1,8 @@
-import { FormGroup } from '@angular/forms';
+import { FormControl, FormGroup } from '@angular/forms';
 import { ValidatorErrorModel } from '../models/validator-error-model';
 
 export class ValidatorMixin {
-  static getErrorMessage(formGroup: FormGroup) {
+  static getFormGroupErrorMessage(formGroup: FormGroup) {
     const firstControlKeyWithError = Object.keys(formGroup.controls).find(
       (key) => !!formGroup.controls[key].errors,
     );
@@ -11,9 +11,13 @@ export class ValidatorMixin {
     }
     const control = formGroup.get(firstControlKeyWithError);
     const firstErrorKey = Object.keys(control.errors)[0];
-    const firstErrorValue = control.errors[
-      firstErrorKey
-    ] as ValidatorErrorModel;
+    const firstErrorValue = control.errors[firstErrorKey] as ValidatorErrorModel;
+    return firstErrorValue.message;
+  }
+
+  static getFormControlErrorMessage(formControl: FormControl) {
+    const firstErrorKey = Object.keys(formControl.errors)[0];
+    const firstErrorValue = formControl.errors[firstErrorKey] as ValidatorErrorModel;
     return firstErrorValue.message;
   }
 }

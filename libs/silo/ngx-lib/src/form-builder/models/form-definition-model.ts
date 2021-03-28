@@ -1,4 +1,5 @@
 import { FormElementMemberModel } from './form-element-member-model';
+import { FormGroupDefinitionModel } from './form-group-definition-model';
 import { FormTextDefinitionModel } from './form-text-definition-model';
 
 /**
@@ -10,5 +11,6 @@ export class FormDefinitionModel {
   description: string;
   rootMemberKey: string;
   memberList: Array<FormElementMemberModel> = [];
+  groupDefinitionList: Array<FormGroupDefinitionModel> = [];
   textDefinitionList: Array<FormTextDefinitionModel> = [];
 }

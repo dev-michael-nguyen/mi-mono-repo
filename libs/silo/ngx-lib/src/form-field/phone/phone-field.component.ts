@@ -67,6 +67,6 @@ export class PhoneFieldComponent implements OnInit {
   }
 
   getErrorMessage() {
-    return ValidatorMixin.getErrorMessage(this.formGroup);
+    return ValidatorMixin.getFormGroupErrorMessage(this.formGroup);
   }
 }

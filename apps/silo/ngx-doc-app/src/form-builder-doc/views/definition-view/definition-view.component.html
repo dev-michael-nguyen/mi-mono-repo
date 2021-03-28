@@ -1,1 +1,6 @@
-<silo-form-builder></silo-form-builder>
+<silo-form-builder
+  [formDefinitionModel]="formDefinitionModel"
+  [memberKeyList]="[formDefinitionModel.rootMemberKey]"
+  mode="Definition"
+  (handle)="handleEvent($event)"
+></silo-form-builder>

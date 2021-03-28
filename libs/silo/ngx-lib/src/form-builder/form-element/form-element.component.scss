@@ -1,0 +1,27 @@
+.form-element {
+  border: 1px solid #dadce0;
+  border-radius: 8px;
+  box-shadow: none;
+
+  .form-element__left-border {
+    min-width: 12px;
+    border-left: 8px solid transparent;
+    border-radius: 8px;
+  }
+
+  .form-element__content {
+    width: 100%;
+  }
+
+  &.active {
+    .form-element__content {
+      box-shadow: 0 2px 1px -1px rgb(0 0 0 / 20%), 0 1px 1px 0 rgb(0 0 0 / 14%),
+        0 1px 3px 0 rgb(0 0 0 / 12%) 0 0 0 0;
+      transition: box-shadow 280ms cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .form-element__left-border {
+      border-left: 8px solid black;
+    }
+  }
+}

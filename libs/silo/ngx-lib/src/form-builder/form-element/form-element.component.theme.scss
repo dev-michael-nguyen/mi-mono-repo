@@ -1,0 +1,25 @@
+@mixin silo-form-element-color($config-or-theme) {
+  // Extract the color configuration in case a theme has been passed.
+  $config: mat-get-color-config($config-or-theme);
+  $primary: map-get($config, primary);
+
+  .form-element {
+    &.active {
+      border-color: mat-color($primary) !important;
+      .form-element__left-border {
+        border-left-color: mat-color($primary) !important;
+      }
+    }
+  }
+}
+
+@mixin silo-form-element-theme($theme) {
+  // Extracts the color and typography configurations from the theme.
+  $color: mat-get-color-config($theme);
+
+  // Do not generate styles if configurations for individual theming
+  // systems have been explicitly set to `null`.
+  @if $color !=null {
+    @include silo-form-element-color($color);
+  }
+}

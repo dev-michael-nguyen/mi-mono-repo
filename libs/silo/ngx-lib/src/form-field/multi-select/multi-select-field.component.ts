@@ -78,7 +78,7 @@ export class MultiSelectFieldComponent implements OnInit {
   }
 
   getErrorMessage() {
-    return ValidatorMixin.getErrorMessage(this.formGroup);
+    return ValidatorMixin.getFormGroupErrorMessage(this.formGroup);
   }
 
   compareWith(o1: LookupModel, o2: LookupModel) {

@@ -47,10 +47,7 @@ export class RichTextFieldComponent implements OnInit {
   @Input()
   outlineSize: ClassExpression;
 
-  constructor(
-    public elementRef: ElementRef<HTMLElement>,
-    public formBuilder: FormBuilder,
-  ) {}
+  constructor(public elementRef: ElementRef<HTMLElement>, public formBuilder: FormBuilder) {}
 
   ngOnInit() {
     this.setDefinition();
@@ -76,6 +73,6 @@ export class RichTextFieldComponent implements OnInit {
   }
 
   getErrorMessage() {
-    return ValidatorMixin.getErrorMessage(this.formGroup);
+    return ValidatorMixin.getFormGroupErrorMessage(this.formGroup);
   }
 }

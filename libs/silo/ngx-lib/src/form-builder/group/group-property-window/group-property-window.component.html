@@ -1,0 +1,19 @@
+<div class="group-property-window">
+  <h2>{{ definitionModel.type }} Properties</h2>
+  <details>
+    <summary>JSON</summary>
+    <pre>{{ nodeModel | json }}</pre>
+  </details>
+  <silo-text-box
+    fieldSize="col-6"
+    label="Title"
+    [isRequired]="true"
+    [textFormControl]="titleFormControl"
+  ></silo-text-box>
+  <silo-text-area
+    fieldSize="col-12"
+    label="Description"
+    [isRequired]="true"
+    [textFormControl]="descriptionFormControl"
+  ></silo-text-area>
+</div>
