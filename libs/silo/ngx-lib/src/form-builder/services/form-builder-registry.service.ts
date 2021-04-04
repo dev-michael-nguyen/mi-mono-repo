@@ -1,24 +1,17 @@
 import { Injectable } from '@angular/core';
-import { FormElementDefinitionType } from '../models/form-definition-types';
 import { FormElementRegistryConfigMode } from '../models/form-element-registry-config-model';
 
 @Injectable({
   providedIn: 'root',
 })
 export class FormBuilderRegistryService {
-  private _elementConfigMap = new Map<
-    FormElementDefinitionType,
-    FormElementRegistryConfigMode
-  >();
+  private _elementConfigMap = new Map<string, FormElementRegistryConfigMode>();
 
-  register(
-    type: FormElementDefinitionType,
-    elementConfigModel: FormElementRegistryConfigMode,
-  ) {
-    this._elementConfigMap.set(type, elementConfigModel);
+  register(key: string, elementConfigModel: FormElementRegistryConfigMode) {
+    this._elementConfigMap.set(key, elementConfigModel);
   }
 
-  get(type: FormElementDefinitionType) {
-    return this._elementConfigMap.get(type);
+  get(key: string) {
+    return this._elementConfigMap.get(key);
   }
 }

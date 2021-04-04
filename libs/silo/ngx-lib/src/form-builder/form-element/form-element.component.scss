@@ -3,10 +3,9 @@
   border-radius: 8px;
   box-shadow: none;
 
-  .form-element__left-border {
-    min-width: 12px;
+  silo-vertical-drag-handle {
     border-left: 8px solid transparent;
-    border-radius: 8px;
+    border-radius: 6px;
   }
 
   .form-element__content {
@@ -20,7 +19,7 @@
       transition: box-shadow 280ms cubic-bezier(0.4, 0, 0.2, 1);
     }
 
-    .form-element__left-border {
+    silo-vertical-drag-handle {
       border-left: 8px solid black;
     }
   }

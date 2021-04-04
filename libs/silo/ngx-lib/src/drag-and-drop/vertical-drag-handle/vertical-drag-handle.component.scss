@@ -1,0 +1,7 @@
+.silo-vertial-drag-handle {
+  height: 100%;
+  cursor: move;
+  mat-icon {
+    transform: rotate(90deg);
+  }
+}

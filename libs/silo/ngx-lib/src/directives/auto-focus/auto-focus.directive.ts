@@ -23,8 +23,7 @@ import { AfterViewInit, Directive, ElementRef, Input } from '@angular/core';
   selector: '[siloAutoFocus]',
 })
 export class AutoFocusDirective implements AfterViewInit {
-  private readonly DEFAULT_SELECTORS =
-    '[tabindex]:not([tabindex="-1"]), button';
+  static readonly DEFAULT_SELECTORS = '[tabindex]:not([tabindex="-1"]), button';
 
   /**
    * Reference to last focus element.
@@ -48,9 +47,23 @@ export class AutoFocusDirective implements AfterViewInit {
 
   constructor(private _el: ElementRef<HTMLElement>) {}
 
+  static focusFirstFocusable(
+    el: ElementRef<HTMLElement>,
+    selectors: string = this.DEFAULT_SELECTORS,
+  ): HTMLElement {
+    const focusable = el.nativeElement.querySelectorAll(selectors);
+    if (!focusable.length) {
+      return null;
+    }
+
+    const firstFocusable = focusable[0] as HTMLElement;
+    firstFocusable.focus();
+    return firstFocusable;
+  }
+
   ngAfterViewInit() {
     this.focusFirstFocusable(
-      this.focusChildSelectors || this.DEFAULT_SELECTORS,
+      this.focusChildSelectors || AutoFocusDirective.DEFAULT_SELECTORS,
     );
   }
 
@@ -69,12 +82,9 @@ export class AutoFocusDirective implements AfterViewInit {
       return;
     }
 
-    const focusable = this._el.nativeElement.querySelectorAll(selectors);
-    if (focusable.length) {
-      const firstFocusable = focusable[0] as HTMLElement;
-      firstFocusable.focus();
-      this.lastFocusElement = firstFocusable;
-      return;
-    }
+    this.lastFocusElement = AutoFocusDirective.focusFirstFocusable(
+      this._el,
+      selectors,
+    );
   }
 }

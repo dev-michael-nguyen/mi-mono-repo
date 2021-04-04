@@ -1,7 +1,5 @@
-import {
-  FormElementDefinitionIdentifier,
-  FormTextDefinitionType,
-} from './form-definition-types';
+import { LookupModel } from './../../form-field/models/lookup-model';
+import { FormElementDefinitionIdentifier } from './form-definition-types';
 
 /**
  * The definition model for a text element of a form.
@@ -9,7 +7,7 @@ import {
 export class FormTextDefinitionModel {
   identifier: FormElementDefinitionIdentifier = 'Text';
   key: string;
-  type: FormTextDefinitionType;
+  type: LookupModel;
   label: string;
   placeholder: string;
   hint: string;

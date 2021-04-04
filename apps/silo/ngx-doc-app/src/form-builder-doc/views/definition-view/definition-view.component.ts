@@ -22,7 +22,10 @@ export class DefinitionViewComponent implements OnInit {
   setFormDefinitionModel() {
     const mockRootDefinitionModel = new FormGroupDefinitionModel();
     mockRootDefinitionModel.key = uuidv4();
-    mockRootDefinitionModel.type = 'Form';
+    mockRootDefinitionModel.type = {
+      key: 'FormGroup',
+      displayName: 'Form',
+    };
     mockRootDefinitionModel.title = 'Form Name';
     mockRootDefinitionModel.description = 'Form Description';
 

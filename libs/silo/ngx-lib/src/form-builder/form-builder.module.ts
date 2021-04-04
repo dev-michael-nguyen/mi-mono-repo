@@ -5,10 +5,10 @@ import { StickyLayoutModule } from '../layout/sticky-layout/sticky-layout.module
 import { FormBuilderComponent } from './form-builder.component';
 import { FormElementPropertyWindowModule } from './form-element-property-window/form-element-property-window.module';
 import { FormElementModule } from './form-element/form-element.module';
+import { FormGroupElementComponent } from './group/form-group-element/form-group-element.component';
+import { FormGroupElementModule } from './group/form-group-element/form-group-element.module';
 import { GroupPropertyWindowComponent } from './group/group-property-window/group-property-window.component';
 import { GroupPropertyWindowModule } from './group/group-property-window/group-property-window.module';
-import { RootElementComponent } from './group/root-element/root-element.component';
-import { RootElementModule } from './group/root-element/root-element.module';
 import { FormBuilderRegistryService } from './services/form-builder-registry.service';
 
 @NgModule({
@@ -17,8 +17,8 @@ import { FormBuilderRegistryService } from './services/form-builder-registry.ser
     FlexLayoutModule,
     FormElementModule,
     FormElementPropertyWindowModule,
+    FormGroupElementModule,
     GroupPropertyWindowModule,
-    RootElementModule,
     StickyLayoutModule,
   ],
   declarations: [FormBuilderComponent],
@@ -26,8 +26,8 @@ import { FormBuilderRegistryService } from './services/form-builder-registry.ser
 })
 export class FormBuilderModule {
   constructor(private _formBuilderRegistryService: FormBuilderRegistryService) {
-    this._formBuilderRegistryService.register('Form', {
-      elementType: RootElementComponent,
+    this._formBuilderRegistryService.register('FormGroup', {
+      elementType: FormGroupElementComponent,
       windowType: GroupPropertyWindowComponent,
     });
   }

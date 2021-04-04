@@ -6,7 +6,7 @@
   .form-element {
     &.active {
       border-color: mat-color($primary) !important;
-      .form-element__left-border {
+      silo-vertical-drag-handle {
         border-left-color: mat-color($primary) !important;
       }
     }

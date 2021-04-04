@@ -26,26 +26,20 @@ export class FormElementPropertyWindowComponent
   @ViewChild(CdkPortalOutlet, { static: true })
   portalOutlet: CdkPortalOutlet;
 
-  constructor(
-    private _formBuilderRegistryService: FormBuilderRegistryService,
-  ) {}
+  constructor(private _formBuilderRegistryService: FormBuilderRegistryService) {}
 
   ngOnInit() {
     this.attachComponent();
   }
 
   ngOnChanges(changes: SimpleChanges) {
-    if (
-      changes.nodeModel &&
-      !changes.nodeModel.isFirstChange() &&
-      changes.nodeModel.currentValue
-    ) {
+    if (changes.nodeModel && !changes.nodeModel.isFirstChange() && changes.nodeModel.currentValue) {
       this.attachComponent();
     }
   }
 
   attachComponent() {
-    if (!this.nodeModel?.definitionModel?.type) {
+    if (!this.nodeModel?.definitionModel?.type?.key) {
       throw new Error('Element definition type is required');
     }
 
@@ -53,14 +47,11 @@ export class FormElementPropertyWindowComponent
       this.portalOutlet.detach();
     }
 
-    const config = this._formBuilderRegistryService.get(
-      this.nodeModel.definitionModel.type,
-    );
+    const config = this._formBuilderRegistryService.get(this.nodeModel.definitionModel.type.key);
     const componentPortal = new ComponentPortal(config.windowType);
     this.portalOutlet.attachComponentPortal(componentPortal);
 
-    const componentRef = this.portalOutlet
-      .attachedRef as ComponentRef<IFormElementComponent>;
+    const componentRef = this.portalOutlet.attachedRef as ComponentRef<IFormElementComponent>;
     componentRef.instance.nodeModel = this.nodeModel;
   }
 

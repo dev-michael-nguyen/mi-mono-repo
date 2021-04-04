@@ -4,11 +4,11 @@ import { FormElementNodeModel } from '../../models/form-element-node-model';
 import { FormGroupDefinitionModel } from '../../models/form-group-definition-model';
 
 @Component({
-  selector: 'silo-root-element',
-  templateUrl: './root-element.component.html',
-  styleUrls: ['./root-element.component.scss'],
+  selector: 'silo-form-group-element',
+  templateUrl: './form-group-element.component.html',
+  styleUrls: ['./form-group-element.component.scss'],
 })
-export class RootElementComponent implements OnInit, IFormElementComponent {
+export class FormGroupElementComponent implements OnInit, IFormElementComponent {
   definitionModel: FormGroupDefinitionModel;
 
   @Input()
@@ -17,7 +17,6 @@ export class RootElementComponent implements OnInit, IFormElementComponent {
   constructor() {}
 
   ngOnInit() {
-    this.definitionModel = this.nodeModel
-      .definitionModel as FormGroupDefinitionModel;
+    this.definitionModel = this.nodeModel.definitionModel as FormGroupDefinitionModel;
   }
 }
