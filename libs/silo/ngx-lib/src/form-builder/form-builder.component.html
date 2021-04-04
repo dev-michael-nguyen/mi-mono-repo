@@ -1,19 +1,52 @@
-<div class="form-builder" siloStickyLayout fxLayout="row">
-  <div class="form-builder__form" siloStickyLayout fxFlex="60">
-    <div class="form-builder__form__body" siloStickyLayoutBody>
-      <silo-form-element
-        *ngFor="let nodeModel of nodeModelList"
-        [nodeModel]="nodeModel"
+<div class="form-builder" siloStickyLayout>
+  <div class="form-builder__header">
+    <silo-control-menu-bar>
+      <button
+        *ngIf="activeNodeModel?.definitionModel.type.key == 'FormGroup'"
+        mat-button
+        siloControlMenuBarButton="A"
+        (click)="addSection($event)"
       >
-      </silo-form-element>
-    </div>
+        <u>A</u>dd Section
+      </button>
+      <button
+        *ngIf="activeNodeModel?.definitionModel.type.key == 'Section'"
+        mat-button
+        [matMenuTriggerFor]="addMenu"
+        siloControlMenuBarButton="A"
+      >
+        <u>A</u>dd
+      </button>
+      <button
+        *ngIf="activeNodeModel?.definitionModel.type.key == 'FormGroup'"
+        mat-button
+        siloControlMenuBarButton="E"
+      >
+        <u>E</u>dit Properties
+      </button>
+      <mat-menu #addMenu="matMenu">
+        <button mat-menu-item>Text Box</button>
+        <button mat-menu-item>Text Area</button>
+      </mat-menu>
+    </silo-control-menu-bar>
   </div>
-  <div class="form-builder__property-window" siloStickyLayout fxFlex="40">
-    <div class="form-builder__property-window__body" siloStickyLayoutBody>
-      <silo-form-element-property-window
-        *ngIf="activeNodeModel"
-        [nodeModel]="activeNodeModel"
-      ></silo-form-element-property-window>
+  <div class="form-builder__body" siloStickyLayoutBody fxLayout="row">
+    <div class="form-builder__form" siloStickyLayout fxFlex="60">
+      <div class="form-builder__form__body" siloStickyLayoutBody>
+        <silo-form-element
+          *ngFor="let nodeModel of nodeModelList"
+          [nodeModel]="nodeModel"
+        >
+        </silo-form-element>
+      </div>
+    </div>
+    <div class="form-builder__property-window" siloStickyLayout fxFlex="40">
+      <div class="form-builder__property-window__body" siloStickyLayoutBody>
+        <silo-form-element-property-window
+          *ngIf="activeNodeModel"
+          [nodeModel]="activeNodeModel"
+        ></silo-form-element-property-window>
+      </div>
     </div>
   </div>
 </div>

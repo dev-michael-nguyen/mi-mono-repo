@@ -1,6 +1,9 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-import { FormBuilderEvent } from './models/form-builder-events';
+import {
+  AddElementEvent,
+  FormBuilderEvent,
+} from './models/form-builder-events';
 import { FormDefinitionModel } from './models/form-definition-model';
 import { FormBuilderMode } from './models/form-definition-types';
 import { FormElementNodeModel } from './models/form-element-node-model';
@@ -54,6 +57,13 @@ export class FormBuilderComponent implements OnInit {
     nodeModel.state.isActive = true;
     this.activeNodeModel = nodeModel;
     this.lastActiveDefinitionKey$.next(nodeModel.definitionKey);
-    console.log(this.lastActiveDefinitionKey$.value);
+  }
+
+  addSection($event: Event) {
+    $event.stopPropagation();
+    const event = new AddElementEvent();
+    event.type = 'Section';
+    event.parentMemberKey = this.activeNodeModel.memberKey;
+    this.handle.next(event);
   }
 }

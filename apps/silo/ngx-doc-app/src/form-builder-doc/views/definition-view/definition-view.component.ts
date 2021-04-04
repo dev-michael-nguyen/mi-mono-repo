@@ -35,11 +35,9 @@ export class DefinitionViewComponent implements OnInit {
         $event.type,
         $event.parentMemberKey,
       );
-      console.log(this.formBuilderComponent.lastActiveDefinitionKey$.value);
       this.formBuilderComponent.lastActiveDefinitionKey$.next(
         definitionModel.key,
       );
-      console.log(this.formBuilderComponent.lastActiveDefinitionKey$.value);
       this.formBuilderComponent.setNodeModelList();
     }
   }

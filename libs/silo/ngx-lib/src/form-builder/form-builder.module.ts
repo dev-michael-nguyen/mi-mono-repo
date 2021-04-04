@@ -1,7 +1,10 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { MatButtonModule } from '@angular/material/button';
+import { MatMenuModule } from '@angular/material/menu';
 import { StickyLayoutModule } from '../layout/sticky-layout/sticky-layout.module';
+import { ControlMenuBarModule } from './../control-menu-bar/control-menu-bar.module';
 import { FormBuilderComponent } from './form-builder.component';
 import { FormElementPropertyWindowModule } from './form-element-property-window/form-element-property-window.module';
 import { FormElementModule } from './form-element/form-element.module';
@@ -16,11 +19,14 @@ import { FormBuilderRegistryService } from './services/form-builder-registry.ser
 @NgModule({
   imports: [
     CommonModule,
+    ControlMenuBarModule,
     FlexLayoutModule,
     FormElementModule,
     FormElementPropertyWindowModule,
     FormGroupElementModule,
     GroupPropertyWindowModule,
+    MatButtonModule,
+    MatMenuModule,
     SectionElementModule,
     StickyLayoutModule,
   ],

@@ -10,6 +10,7 @@ import {
   SimpleChanges,
   ViewChild,
 } from '@angular/core';
+import { AutoFocusDirective } from '../../directives/auto-focus/auto-focus.directive';
 import { FormBuilderComponent } from '../form-builder.component';
 import { IFormElementComponent } from '../models/form-element-component-interface';
 import { FormElementNodeModel } from '../models/form-element-node-model';
@@ -70,13 +71,14 @@ export class FormElementComponent
       this.nodeModel.definitionKey ==
       this._formBuilderComponent.lastActiveDefinitionKey$.value
     ) {
-      this._formBuilderComponent.setActiveNode(this.nodeModel);
       // on next cycle, scroll into view after view has been rendered
       setTimeout(() => {
+        this._formBuilderComponent.setActiveNode(this.nodeModel);
         this._elementRef.nativeElement.scrollIntoView({
           behavior: 'auto',
           block: 'start',
         });
+        AutoFocusDirective.focusFirstFocusable(this._elementRef);
       });
     }
   }
