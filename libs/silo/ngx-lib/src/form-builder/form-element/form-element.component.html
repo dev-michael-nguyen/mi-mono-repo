@@ -2,16 +2,19 @@
   class="form-element"
   [class.active]="nodeModel.state.isActive"
   tabindex="0"
-  (click)="setActiveNode()"
-  (keydown.space)="setActiveNode()"
-  (focus)="setActiveNode()"
+  (keydown.space)="setActiveNode($event)"
+  (focus)="setActiveNode($event)"
 >
   <div fxLayout="row">
-    <silo-vertical-drag-handle></silo-vertical-drag-handle>
-    <div class="form-element__content">
-      <silo-menu-bar *ngIf="nodeModel.state.isActive">
-        <button mat-button siloMenuBarButton="A">Add Section</button>
-      </silo-menu-bar>
+    <div
+      class="form-element__left-border"
+      [class.active]="nodeModel.state.isActive"
+    ></div>
+    <div
+      class="form-element__content"
+      [class.active]="nodeModel.state.isActive"
+    >
+      <silo-drag-handle></silo-drag-handle>
       <ng-template cdkPortalOutlet></ng-template>
     </div>
   </div>

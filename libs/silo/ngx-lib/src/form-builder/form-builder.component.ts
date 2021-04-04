@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
 import { FormBuilderEvent } from './models/form-builder-events';
 import { FormDefinitionModel } from './models/form-definition-model';
 import { FormBuilderMode } from './models/form-definition-types';
@@ -12,6 +13,7 @@ import { FormElementNodeModel } from './models/form-element-node-model';
 export class FormBuilderComponent implements OnInit {
   nodeModelList: Array<FormElementNodeModel> = [];
 
+  lastActiveDefinitionKey$ = new BehaviorSubject<string>(null);
   activeNodeModel: FormElementNodeModel;
 
   /**
@@ -33,8 +35,15 @@ export class FormBuilderComponent implements OnInit {
   handle = new EventEmitter<FormBuilderEvent>();
 
   ngOnInit() {
+    this.setNodeModelList();
+  }
+
+  setNodeModelList() {
     this.nodeModelList = this.memberKeyList.map((memberKey) =>
-      FormElementNodeModel.mapFromMemberKey(this.formDefinitionModel, memberKey),
+      FormElementNodeModel.mapFromMemberKey(
+        this.formDefinitionModel,
+        memberKey,
+      ),
     );
   }
 
@@ -44,5 +53,7 @@ export class FormBuilderComponent implements OnInit {
     }
     nodeModel.state.isActive = true;
     this.activeNodeModel = nodeModel;
+    this.lastActiveDefinitionKey$.next(nodeModel.definitionKey);
+    console.log(this.lastActiveDefinitionKey$.value);
   }
 }

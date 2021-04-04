@@ -39,6 +39,10 @@ export class FormElementNodeModel {
       }
     }
 
+    nodeModel.children = memberModel.children.map((child) =>
+      FormElementNodeModel.mapFromMemberKey(formDefinitionModel, child.key),
+    );
+
     return nodeModel;
   }
 }

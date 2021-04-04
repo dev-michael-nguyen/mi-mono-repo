@@ -1,4 +1,15 @@
 <div class="form-group-element">
+  <silo-control-menu-bar *ngIf="nodeModel.state.isActive">
+    <button
+      mat-button
+      siloControlMenuBarButton="A"
+      (click)="addSection($event)"
+    >
+      <u>A</u>dd Section
+    </button>
+  </silo-control-menu-bar>
   <h1>{{ definitionModel.title }}</h1>
   <p>{{ definitionModel.description }}</p>
 </div>
+<silo-form-element *ngFor="let child of nodeModel.children" [nodeModel]="child">
+</silo-form-element>

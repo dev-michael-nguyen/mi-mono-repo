@@ -5,8 +5,8 @@ import { FormElementDefinitionIdentifier } from './form-definition-types';
  * The definition model for a text element of a form.
  */
 export class FormTextDefinitionModel {
-  identifier: FormElementDefinitionIdentifier = 'Text';
   key: string;
+  identifier: FormElementDefinitionIdentifier = 'Text';
   type: LookupModel;
   label: string;
   placeholder: string;

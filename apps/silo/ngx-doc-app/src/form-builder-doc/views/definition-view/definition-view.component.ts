@@ -1,9 +1,11 @@
-import { Component, OnInit } from '@angular/core';
-import { FormDefinitionModel } from '@silo/ngx';
-import { FormBuilderEvent } from 'libs/silo/ngx-lib/src/form-builder/models/form-builder-events';
-import { FormElementMemberModel } from 'libs/silo/ngx-lib/src/form-builder/models/form-element-member-model';
-import { FormGroupDefinitionModel } from 'libs/silo/ngx-lib/src/form-builder/models/form-group-definition-model';
-import { v4 as uuidv4 } from 'uuid';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import {
+  AddElementEvent,
+  FormBuilderComponent,
+  FormBuilderEvent,
+  FormBuilderFactory,
+  FormDefinitionModel,
+} from '@silo/ngx';
 
 @Component({
   selector: 'silo-definition-view',
@@ -13,37 +15,32 @@ import { v4 as uuidv4 } from 'uuid';
 export class DefinitionViewComponent implements OnInit {
   formDefinitionModel: FormDefinitionModel;
 
-  constructor() {}
+  @ViewChild(FormBuilderComponent, { static: true })
+  formBuilderComponent: FormBuilderComponent;
+
+  constructor(private _formBuilderFactory: FormBuilderFactory) {}
 
   ngOnInit() {
     this.setFormDefinitionModel();
   }
 
   setFormDefinitionModel() {
-    const mockRootDefinitionModel = new FormGroupDefinitionModel();
-    mockRootDefinitionModel.key = uuidv4();
-    mockRootDefinitionModel.type = {
-      key: 'FormGroup',
-      displayName: 'Form',
-    };
-    mockRootDefinitionModel.title = 'Form Name';
-    mockRootDefinitionModel.description = 'Form Description';
-
-    const mockRootMemberModel = new FormElementMemberModel();
-    mockRootMemberModel.key = uuidv4();
-    mockRootMemberModel.definitionKey = mockRootDefinitionModel.key;
-    mockRootMemberModel.identifier = 'Group';
-
-    const mockFormDefinitionModel = new FormDefinitionModel();
-    mockFormDefinitionModel.key = uuidv4();
-    mockFormDefinitionModel.rootMemberKey = mockRootMemberModel.key;
-    mockFormDefinitionModel.memberList.push(mockRootMemberModel);
-    mockFormDefinitionModel.groupDefinitionList.push(mockRootDefinitionModel);
-
-    this.formDefinitionModel = mockFormDefinitionModel;
+    this.formDefinitionModel = this._formBuilderFactory.createFormDefinition();
   }
 
   handleEvent($event: FormBuilderEvent) {
-    console.log($event);
+    if ($event instanceof AddElementEvent) {
+      const { definitionModel } = this._formBuilderFactory.addElement(
+        this.formDefinitionModel,
+        $event.type,
+        $event.parentMemberKey,
+      );
+      console.log(this.formBuilderComponent.lastActiveDefinitionKey$.value);
+      this.formBuilderComponent.lastActiveDefinitionKey$.next(
+        definitionModel.key,
+      );
+      console.log(this.formBuilderComponent.lastActiveDefinitionKey$.value);
+      this.formBuilderComponent.setNodeModelList();
+    }
   }
 }

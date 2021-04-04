@@ -2,9 +2,11 @@
   class="silo-text-area"
   [class.silo-text-area--is-readonly]="isReadOnly"
   [class.silo-text-area--is-required]="isRequired"
-  [class.silo-text-area--is-filled]="isRequired && textFormControl.valid"
+  [class.silo-text-area--is-filled]="isRequired && textFormControl.value"
   [class.silo-text-area--has-error]="
-    hasValidators && textFormControl.touched && textFormControl.invalid
+    hasValidators &&
+    textFormControl.touched &&
+    textFormControl.status === 'INVALID'
   "
   [siloResponsiveContainer]="fieldSize"
 >

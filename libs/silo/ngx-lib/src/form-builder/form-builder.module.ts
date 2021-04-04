@@ -9,6 +9,8 @@ import { FormGroupElementComponent } from './group/form-group-element/form-group
 import { FormGroupElementModule } from './group/form-group-element/form-group-element.module';
 import { GroupPropertyWindowComponent } from './group/group-property-window/group-property-window.component';
 import { GroupPropertyWindowModule } from './group/group-property-window/group-property-window.module';
+import { SectionElementComponent } from './group/section-element/section-element.component';
+import { SectionElementModule } from './group/section-element/section-element.module';
 import { FormBuilderRegistryService } from './services/form-builder-registry.service';
 
 @NgModule({
@@ -19,6 +21,7 @@ import { FormBuilderRegistryService } from './services/form-builder-registry.ser
     FormElementPropertyWindowModule,
     FormGroupElementModule,
     GroupPropertyWindowModule,
+    SectionElementModule,
     StickyLayoutModule,
   ],
   declarations: [FormBuilderComponent],
@@ -28,6 +31,11 @@ export class FormBuilderModule {
   constructor(private _formBuilderRegistryService: FormBuilderRegistryService) {
     this._formBuilderRegistryService.register('FormGroup', {
       elementType: FormGroupElementComponent,
+      windowType: GroupPropertyWindowComponent,
+    });
+
+    this._formBuilderRegistryService.register('Section', {
+      elementType: SectionElementComponent,
       windowType: GroupPropertyWindowComponent,
     });
   }

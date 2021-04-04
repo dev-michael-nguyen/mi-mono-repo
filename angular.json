@@ -12,7 +12,7 @@
       },
       "root": "apps/resume",
       "sourceRoot": "apps/resume/src",
-      "prefix": "mi-mono-repo",
+      "prefix": "silo",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
@@ -288,5 +288,5 @@
       "style": "scss"
     }
   },
-  "defaultProject": "resume"
+  "defaultProject": "silo-ngx-doc-app"
 }

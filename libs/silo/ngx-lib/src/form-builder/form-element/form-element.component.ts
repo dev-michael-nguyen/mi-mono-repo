@@ -2,6 +2,7 @@ import { CdkPortalOutlet, ComponentPortal } from '@angular/cdk/portal';
 import {
   Component,
   ComponentRef,
+  ElementRef,
   Input,
   OnChanges,
   OnDestroy,
@@ -19,7 +20,8 @@ import { FormBuilderRegistryService } from '../services/form-builder-registry.se
   templateUrl: './form-element.component.html',
   styleUrls: ['./form-element.component.scss'],
 })
-export class FormElementComponent implements OnInit, OnChanges, OnDestroy, IFormElementComponent {
+export class FormElementComponent
+  implements OnInit, OnChanges, OnDestroy, IFormElementComponent {
   @Input()
   nodeModel: FormElementNodeModel;
 
@@ -27,6 +29,7 @@ export class FormElementComponent implements OnInit, OnChanges, OnDestroy, IForm
   portalOutlet: CdkPortalOutlet;
 
   constructor(
+    private _elementRef: ElementRef<HTMLElement>,
     private _formBuilderRegistryService: FormBuilderRegistryService,
     private _formBuilderComponent: FormBuilderComponent,
   ) {}
@@ -36,7 +39,11 @@ export class FormElementComponent implements OnInit, OnChanges, OnDestroy, IForm
   }
 
   ngOnChanges(changes: SimpleChanges) {
-    if (changes.nodeModel && !changes.nodeModel.isFirstChange() && changes.nodeModel.currentValue) {
+    if (
+      changes.nodeModel &&
+      !changes.nodeModel.isFirstChange() &&
+      changes.nodeModel.currentValue
+    ) {
       this.attachComponent();
     }
   }
@@ -50,14 +57,32 @@ export class FormElementComponent implements OnInit, OnChanges, OnDestroy, IForm
       this.portalOutlet.detach();
     }
 
-    const config = this._formBuilderRegistryService.get(this.nodeModel.definitionModel.type.key);
+    const config = this._formBuilderRegistryService.get(
+      this.nodeModel.definitionModel.type.key,
+    );
     const componentPortal = new ComponentPortal(config.elementType);
     this.portalOutlet.attachComponentPortal(componentPortal);
-    const componentRef = this.portalOutlet.attachedRef as ComponentRef<IFormElementComponent>;
+    const componentRef = this.portalOutlet
+      .attachedRef as ComponentRef<IFormElementComponent>;
     componentRef.instance.nodeModel = this.nodeModel;
+
+    if (
+      this.nodeModel.definitionKey ==
+      this._formBuilderComponent.lastActiveDefinitionKey$.value
+    ) {
+      this._formBuilderComponent.setActiveNode(this.nodeModel);
+      // on next cycle, scroll into view after view has been rendered
+      setTimeout(() => {
+        this._elementRef.nativeElement.scrollIntoView({
+          behavior: 'auto',
+          block: 'start',
+        });
+      });
+    }
   }
 
-  setActiveNode() {
+  setActiveNode($event: Event) {
+    $event.stopPropagation();
     this._formBuilderComponent.setActiveNode(this.nodeModel);
   }
 

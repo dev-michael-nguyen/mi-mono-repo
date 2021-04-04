@@ -3,18 +3,16 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatButtonModule } from '@angular/material/button';
-import { VerticalDragHandleModule } from './../../drag-and-drop/vertical-drag-handle/vertical-drag-handle.module';
-import { MenuBarModule } from './../../menu-bar/menu-bar.module';
+import { DragHandleModule } from './../../drag-and-drop/drag-handle/drag-handle.module';
 import { FormElementComponent } from './form-element.component';
 
 @NgModule({
   imports: [
     CommonModule,
+    DragHandleModule,
     FlexLayoutModule,
-    MenuBarModule,
     MatButtonModule,
     PortalModule,
-    VerticalDragHandleModule,
   ],
   declarations: [FormElementComponent],
   exports: [FormElementComponent],
