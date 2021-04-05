@@ -3,6 +3,7 @@ import {
   Component,
   ContentChildren,
   ElementRef,
+  Input,
   OnDestroy,
   OnInit,
   QueryList,
@@ -28,28 +29,34 @@ import { ControlMenuBarButtonDirective } from './control-menu-bar-button.directi
 export class ControlMenuBarComponent implements OnInit, OnDestroy {
   private _destroy$ = new Subject();
 
+  @Input()
+  label: string;
+
+  @Input()
+  eventCode: string;
+
   @ContentChildren(ControlMenuBarButtonDirective)
   controlMenuBarButtons: QueryList<ControlMenuBarButtonDirective>;
 
   constructor(private _elementRef: ElementRef<HTMLElement>) {}
 
   ngOnInit() {
-    // if control key is pressed anywhere, focus first focusable element
     fromEvent(document, 'keydown')
       .pipe(takeUntil(this._destroy$))
       .subscribe((event: KeyboardEvent) => {
-        if (event.ctrlKey) {
+        // if shift + event code key is pressed anywhere, focus first focusable element
+        if (event.shiftKey && this.eventCode == event.code) {
           AutoFocusDirective.focusFirstFocusable(this._elementRef);
           return;
         }
       });
 
-    // if bound key is pressed when menu is focus, click button that match with bound key
     fromEvent(this._elementRef.nativeElement, 'keydown')
       .pipe(takeUntil(this._destroy$))
       .subscribe((event: KeyboardEvent) => {
+        // if bound key is pressed when menu is focus, click button that match with bound key
         const foundButton = this.controlMenuBarButtons.find(
-          (x) => x.char.toLowerCase() === event.key.toLowerCase(),
+          (x) => x.eventKey.toLowerCase() === event.key.toLowerCase(),
         );
         if (foundButton) {
           foundButton.click();

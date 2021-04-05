@@ -1,0 +1,30 @@
+@mixin silo-control-menu-bar-color($config-or-theme) {
+  // Extract the color configuration in case a theme has been passed.
+  $config: mat-get-color-config($config-or-theme);
+  $primary: map-get($config, primary);
+
+  .silo-control-menu-bar {
+    &:focus-within {
+      .silo-control-menu-bar__icon {
+        color: mat-color($primary);
+      }
+      .silo-control-menu-bar__label {
+        color: mat-color($primary);
+      }
+      .silo-control-menu-bar-button__key {
+        color: mat-color($primary);
+      }
+    }
+  }
+}
+
+@mixin silo-control-menu-bar-theme($theme) {
+  // Extracts the color and typography configurations from the theme.
+  $color: mat-get-color-config($theme);
+
+  // Do not generate styles if configurations for individual theming
+  // systems have been explicitly set to `null`.
+  @if $color !=null {
+    @include silo-control-menu-bar-color($color);
+  }
+}

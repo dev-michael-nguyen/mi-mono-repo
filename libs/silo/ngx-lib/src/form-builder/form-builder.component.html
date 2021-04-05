@@ -1,32 +1,27 @@
 <div class="form-builder" siloStickyLayout>
   <div class="form-builder__header">
-    <silo-control-menu-bar>
+    <silo-control-menu-bar label="2" eventCode="Digit2">
       <button
-        *ngIf="activeNodeModel?.definitionModel.type.key == 'FormGroup'"
         mat-button
         siloControlMenuBarButton="A"
         (click)="addElement($event, 'Section')"
       >
-        <u>A</u>dd Section
+        Add Section
       </button>
       <button
-        *ngIf="activeNodeModel?.definitionModel.type.key == 'Section'"
         mat-button
         [matMenuTriggerFor]="addMenu"
         siloControlMenuBarButton="A"
       >
-        <u>A</u>dd
+        Add
       </button>
-      <button *ngIf="activeNodeModel" mat-button siloControlMenuBarButton="E">
-        <u>E</u>dit Properties
-      </button>
+      <button mat-button siloControlMenuBarButton="E">Edit Properties</button>
       <button
-        *ngIf="activeNodeModel"
         mat-button
         siloControlMenuBarButton="x"
         (click)="exportFormDefinition()"
       >
-        E<u>x</u>port Form
+        Export Form
       </button>
       <mat-menu #addMenu="matMenu">
         <button mat-menu-item (click)="addElement($event, 'TextBox')">
