@@ -5,15 +5,19 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatMenuModule } from '@angular/material/menu';
 import { StickyLayoutModule } from '../layout/sticky-layout/sticky-layout.module';
 import { ControlMenuBarModule } from './../control-menu-bar/control-menu-bar.module';
+import { FormElementPropertyWindowModule } from './components/form-element-property-window/form-element-property-window.module';
+import { FormElementModule } from './components/form-element/form-element.module';
+import { FormGroupElementComponent } from './components/group/form-group-element/form-group-element.component';
+import { FormGroupElementModule } from './components/group/form-group-element/form-group-element.module';
+import { GroupPropertyWindowComponent } from './components/group/group-property-window/group-property-window.component';
+import { GroupPropertyWindowModule } from './components/group/group-property-window/group-property-window.module';
+import { SectionElementComponent } from './components/group/section-element/section-element.component';
+import { SectionElementModule } from './components/group/section-element/section-element.module';
+import { TextBoxElementComponent } from './components/text/text-box-element/text-box-element.component';
+import { TextBoxElementModule } from './components/text/text-box-element/text-box-element.module';
+import { TextPropertyWindowComponent } from './components/text/text-property-window/text-property-window.component';
+import { TextPropertyWindowModule } from './components/text/text-property-window/text-property-window.module';
 import { FormBuilderComponent } from './form-builder.component';
-import { FormElementPropertyWindowModule } from './form-element-property-window/form-element-property-window.module';
-import { FormElementModule } from './form-element/form-element.module';
-import { FormGroupElementComponent } from './group/form-group-element/form-group-element.component';
-import { FormGroupElementModule } from './group/form-group-element/form-group-element.module';
-import { GroupPropertyWindowComponent } from './group/group-property-window/group-property-window.component';
-import { GroupPropertyWindowModule } from './group/group-property-window/group-property-window.module';
-import { SectionElementComponent } from './group/section-element/section-element.component';
-import { SectionElementModule } from './group/section-element/section-element.module';
 import { FormBuilderRegistryService } from './services/form-builder-registry.service';
 
 @NgModule({
@@ -29,6 +33,8 @@ import { FormBuilderRegistryService } from './services/form-builder-registry.ser
     MatMenuModule,
     SectionElementModule,
     StickyLayoutModule,
+    TextBoxElementModule,
+    TextPropertyWindowModule,
   ],
   declarations: [FormBuilderComponent],
   exports: [FormBuilderComponent],
@@ -43,6 +49,11 @@ export class FormBuilderModule {
     this._formBuilderRegistryService.register('Section', {
       elementType: SectionElementComponent,
       windowType: GroupPropertyWindowComponent,
+    });
+
+    this._formBuilderRegistryService.register('TextBox', {
+      elementType: TextBoxElementComponent,
+      windowType: TextPropertyWindowComponent,
     });
   }
 }

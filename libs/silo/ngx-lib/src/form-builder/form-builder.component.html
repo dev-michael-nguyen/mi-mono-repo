@@ -5,7 +5,7 @@
         *ngIf="activeNodeModel?.definitionModel.type.key == 'FormGroup'"
         mat-button
         siloControlMenuBarButton="A"
-        (click)="addSection($event)"
+        (click)="addElement($event, 'Section')"
       >
         <u>A</u>dd Section
       </button>
@@ -25,7 +25,9 @@
         <u>E</u>dit Properties
       </button>
       <mat-menu #addMenu="matMenu">
-        <button mat-menu-item>Text Box</button>
+        <button mat-menu-item (click)="addElement($event, 'TextBox')">
+          Text Box
+        </button>
         <button mat-menu-item>Text Area</button>
       </mat-menu>
     </silo-control-menu-bar>

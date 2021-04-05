@@ -1,0 +1,17 @@
+<div class="silo-section-element">
+  <silo-expansion-panel>
+    <ng-container headerContent>
+      <h2>{{ definitionModel.title }}</h2>
+    </ng-container>
+    <ng-container descriptionContent *ngIf="definitionModel.description">
+      <p>{{ definitionModel.description }}</p>
+    </ng-container>
+    <ng-container bodyContent>
+      <silo-form-element
+        *ngFor="let child of nodeModel.children"
+        [nodeModel]="child"
+      >
+      </silo-form-element>
+    </ng-container>
+  </silo-expansion-panel>
+</div>

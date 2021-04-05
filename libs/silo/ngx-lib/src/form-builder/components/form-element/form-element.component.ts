@@ -10,11 +10,11 @@ import {
   SimpleChanges,
   ViewChild,
 } from '@angular/core';
-import { AutoFocusDirective } from '../../directives/auto-focus/auto-focus.directive';
-import { FormBuilderComponent } from '../form-builder.component';
-import { IFormElementComponent } from '../models/form-element-component-interface';
-import { FormElementNodeModel } from '../models/form-element-node-model';
-import { FormBuilderRegistryService } from '../services/form-builder-registry.service';
+import { AutoFocusDirective } from '../../../directives/auto-focus/auto-focus.directive';
+import { FormBuilderComponent } from '../../form-builder.component';
+import { IFormElementComponent } from '../../models/form-element-component-interface';
+import { FormElementNodeModel } from '../../models/form-element-node-model';
+import { FormBuilderRegistryService } from '../../services/form-builder-registry.service';
 
 @Component({
   selector: 'silo-form-element',

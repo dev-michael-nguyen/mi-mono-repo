@@ -1,4 +1,4 @@
-@import './form-element/form-element.component.theme.scss';
+@import './components/form-element/form-element.component.theme.scss';
 
 @mixin silo-form-builder-color($config-or-theme) {
   // Extract the color configuration in case a theme has been passed.

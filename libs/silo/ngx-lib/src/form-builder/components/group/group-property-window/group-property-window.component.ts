@@ -1,18 +1,19 @@
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { Subject } from 'rxjs';
-import { FormBuilderComponent } from '../../form-builder.component';
-import { GroupPropertyWindowValueChangesEvent } from '../../models/form-builder-events';
-import { IFormElementComponent } from '../../models/form-element-component-interface';
-import { FormElementNodeModel } from '../../models/form-element-node-model';
-import { FormGroupDefinitionModel } from '../../models/form-group-definition-model';
+import { FormBuilderComponent } from '../../../form-builder.component';
+import { GroupPropertyWindowValueChangesEvent } from '../../../models/form-builder-events';
+import { IFormElementComponent } from '../../../models/form-element-component-interface';
+import { FormElementNodeModel } from '../../../models/form-element-node-model';
+import { FormGroupDefinitionModel } from '../../../models/form-group-definition-model';
 
 @Component({
   selector: 'silo-group-property-window',
   templateUrl: './group-property-window.component.html',
   styleUrls: ['./group-property-window.component.scss'],
 })
-export class GroupPropertyWindowComponent implements IFormElementComponent, OnInit, OnDestroy {
+export class GroupPropertyWindowComponent
+  implements IFormElementComponent, OnInit, OnDestroy {
   private _destroy$ = new Subject<void>();
 
   definitionModel: FormGroupDefinitionModel;
@@ -30,13 +31,18 @@ export class GroupPropertyWindowComponent implements IFormElementComponent, OnIn
   ) {}
 
   ngOnInit() {
-    this.definitionModel = this.nodeModel.definitionModel as FormGroupDefinitionModel;
+    this.definitionModel = this.nodeModel
+      .definitionModel as FormGroupDefinitionModel;
     this.setForm();
   }
 
   setForm() {
-    this.titleFormControl = this._formBuilder.control(this.definitionModel.title);
-    this.descriptionFormControl = this._formBuilder.control(this.definitionModel.description);
+    this.titleFormControl = this._formBuilder.control(
+      this.definitionModel.title,
+    );
+    this.descriptionFormControl = this._formBuilder.control(
+      this.definitionModel.description,
+    );
     this.formGroup = this._formBuilder.group({
       title: this.titleFormControl,
       description: this.descriptionFormControl,

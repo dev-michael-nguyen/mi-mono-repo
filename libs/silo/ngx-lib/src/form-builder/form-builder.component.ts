@@ -5,7 +5,10 @@ import {
   FormBuilderEvent,
 } from './models/form-builder-events';
 import { FormDefinitionModel } from './models/form-definition-model';
-import { FormBuilderMode } from './models/form-definition-types';
+import {
+  FormBuilderMode,
+  FormElementDefinitionType,
+} from './models/form-definition-types';
 import { FormElementNodeModel } from './models/form-element-node-model';
 
 @Component({
@@ -59,10 +62,10 @@ export class FormBuilderComponent implements OnInit {
     this.lastActiveDefinitionKey$.next(nodeModel.definitionKey);
   }
 
-  addSection($event: Event) {
+  addElement($event: Event, type: FormElementDefinitionType) {
     $event.stopPropagation();
     const event = new AddElementEvent();
-    event.type = 'Section';
+    event.type = type;
     event.parentMemberKey = this.activeNodeModel.memberKey;
     this.handle.next(event);
   }

@@ -37,6 +37,12 @@ export class FormElementNodeModel {
         );
         break;
       }
+      case 'Text': {
+        nodeModel.definitionModel = formDefinitionModel.textDefinitionList.find(
+          (x) => x.key === memberModel.definitionKey,
+        );
+        break;
+      }
     }
 
     nodeModel.children = memberModel.children.map((child) =>

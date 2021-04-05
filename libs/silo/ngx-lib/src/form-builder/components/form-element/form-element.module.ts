@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatButtonModule } from '@angular/material/button';
-import { DragHandleModule } from './../../drag-and-drop/drag-handle/drag-handle.module';
+import { DragHandleModule } from '../../../drag-and-drop/drag-handle/drag-handle.module';
 import { FormElementComponent } from './form-element.component';
 
 @NgModule({
