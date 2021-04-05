@@ -17,12 +17,16 @@
       >
         <u>A</u>dd
       </button>
-      <button
-        *ngIf="activeNodeModel?.definitionModel.type.key == 'FormGroup'"
-        mat-button
-        siloControlMenuBarButton="E"
-      >
+      <button *ngIf="activeNodeModel" mat-button siloControlMenuBarButton="E">
         <u>E</u>dit Properties
+      </button>
+      <button
+        *ngIf="activeNodeModel"
+        mat-button
+        siloControlMenuBarButton="x"
+        (click)="exportFormDefinition()"
+      >
+        E<u>x</u>port Form
       </button>
       <mat-menu #addMenu="matMenu">
         <button mat-menu-item (click)="addElement($event, 'TextBox')">

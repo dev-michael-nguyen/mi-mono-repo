@@ -69,4 +69,14 @@ export class FormBuilderComponent implements OnInit {
     event.parentMemberKey = this.activeNodeModel.memberKey;
     this.handle.next(event);
   }
+
+  exportFormDefinition() {
+    const a = document.createElement('a');
+    const file = new Blob([JSON.stringify(this.formDefinitionModel)], {
+      type: 'json',
+    });
+    a.href = URL.createObjectURL(file);
+    a.download = 'form-definition.json';
+    a.click();
+  }
 }
