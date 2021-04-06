@@ -3,8 +3,9 @@
     <silo-control-menu-bar label="2" eventCode="Digit2">
       <button
         mat-button
-        siloControlMenuBarButton="A"
+        siloControlMenuBarButton="S"
         (click)="addElement($event, 'Section')"
+        [disabled]="!activeNodeModel"
       >
         Add Section
       </button>
@@ -12,10 +13,18 @@
         mat-button
         [matMenuTriggerFor]="addMenu"
         siloControlMenuBarButton="A"
+        [disabled]="!activeNodeModel"
       >
         Add
       </button>
-      <button mat-button siloControlMenuBarButton="E">Edit Properties</button>
+      <button
+        mat-button
+        siloControlMenuBarButton="E"
+        [disabled]="!activeNodeModel"
+        (click)="editProperties()"
+      >
+        Edit Properties
+      </button>
       <button
         mat-button
         siloControlMenuBarButton="x"

@@ -1,5 +1,13 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import {
+  Component,
+  ElementRef,
+  EventEmitter,
+  Input,
+  OnInit,
+  Output,
+} from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
+import { AutoFocusDirective } from '../directives/auto-focus/auto-focus.directive';
 import {
   AddElementEvent,
   FormBuilderEvent,
@@ -40,6 +48,8 @@ export class FormBuilderComponent implements OnInit {
   @Output()
   handle = new EventEmitter<FormBuilderEvent>();
 
+  constructor(private _elementRef: ElementRef<HTMLElement>) {}
+
   ngOnInit() {
     this.setNodeModelList();
   }
@@ -68,6 +78,14 @@ export class FormBuilderComponent implements OnInit {
     event.type = type;
     event.parentMemberKey = this.activeNodeModel.memberKey;
     this.handle.next(event);
+  }
+
+  editProperties() {
+    const propertyWindow = this._elementRef.nativeElement.querySelector(
+      // eslint-disable-next-line quotes
+      "[class*='-property-window'",
+    ) as HTMLElement;
+    AutoFocusDirective.focusFirstFocusable(propertyWindow);
   }
 
   exportFormDefinition() {

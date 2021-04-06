@@ -11,8 +11,10 @@
       .silo-control-menu-bar__label {
         color: mat-color($primary);
       }
-      .silo-control-menu-bar-button__key {
-        color: mat-color($primary);
+      button:not(:disabled) {
+        .silo-control-menu-bar-button__key {
+          color: mat-color($primary);
+        }
       }
     }
   }

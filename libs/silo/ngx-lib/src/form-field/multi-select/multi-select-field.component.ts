@@ -1,4 +1,4 @@
-import { Directive, Input, OnInit } from '@angular/core';
+import { Directive, ElementRef, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { ClassExpression } from '../../responsive/responsive-container/models/class-expression';
 import { randomHtmlId } from '../../utils/random-html-id';
@@ -48,7 +48,10 @@ export class MultiSelectFieldComponent implements OnInit {
   @Input()
   lookupConfig: LookupConfigModel;
 
-  constructor(public formBuilder: FormBuilder) {}
+  constructor(
+    protected _elementRef: ElementRef<HTMLElement>,
+    protected _formBuilder: FormBuilder,
+  ) {}
 
   ngOnInit() {
     this.setDefinition();
@@ -66,8 +69,8 @@ export class MultiSelectFieldComponent implements OnInit {
   setForm(value: Array<LookupModel>) {
     const validators = MultiSelectValidatorFactory.createValidators(this);
     this.hasValidators = !!validators.length;
-    this.lookupListFormControl = this.formBuilder.control(value, validators);
-    this.formGroup = this.formBuilder.group({
+    this.lookupListFormControl = this._formBuilder.control(value, validators);
+    this.formGroup = this._formBuilder.group({
       lookupList: this.lookupListFormControl,
     });
   }

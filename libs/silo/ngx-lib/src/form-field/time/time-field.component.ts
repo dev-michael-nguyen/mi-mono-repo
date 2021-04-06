@@ -1,4 +1,4 @@
-import { Directive, ElementRef, Input, OnInit } from '@angular/core';
+import { Directive, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { ClassExpression } from '../../responsive/responsive-container/models/class-expression';
 import { randomHtmlId } from '../../utils/random-html-id';
@@ -47,7 +47,7 @@ export class TimeFieldComponent implements OnInit {
   @Input()
   outlineSize: ClassExpression;
 
-  constructor(public elementRef: ElementRef<HTMLElement>, public formBuilder: FormBuilder) {}
+  constructor(protected _formBuilder: FormBuilder) {}
 
   ngOnInit() {
     this.setDefinition();
@@ -62,8 +62,8 @@ export class TimeFieldComponent implements OnInit {
   setForm(value: string) {
     const validators = TimeValidatorFactory.createValidators(this);
     this.hasValidators = !!validators.length;
-    this.timeFormControl = this.formBuilder.control(value, validators);
-    this.formGroup = this.formBuilder.group({
+    this.timeFormControl = this._formBuilder.control(value, validators);
+    this.formGroup = this._formBuilder.group({
       time: this.timeFormControl,
     });
   }

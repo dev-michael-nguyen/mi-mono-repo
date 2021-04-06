@@ -1,12 +1,10 @@
 import {
   AfterViewInit,
   Component,
-  ElementRef,
   Input,
   QueryList,
   ViewChildren,
 } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
 import { MatListOption } from '@angular/material/list';
 import { ClassExpression } from '../../../responsive/responsive-container/models/class-expression';
 import { MultiSelectFieldComponent } from '../multi-select-field.component';
@@ -25,13 +23,6 @@ export class CheckboxListComponent
   @Input()
   fieldSize: ClassExpression = 'col-6';
 
-  constructor(
-    public formBuilder: FormBuilder,
-    private _el: ElementRef<HTMLElement>,
-  ) {
-    super(formBuilder);
-  }
-
   ngAfterViewInit() {
     this.setSelectionListAsReadOnly();
   }
@@ -48,12 +39,12 @@ export class CheckboxListComponent
       };
     });
 
-    this._el.nativeElement
+    this._elementRef.nativeElement
       .querySelectorAll('.mat-selection-list')
       .forEach((item) => {
         item.removeAttribute('tabindex');
       });
-    this._el.nativeElement
+    this._elementRef.nativeElement
       .querySelectorAll('.mat-list-option')
       .forEach((item) => {
         if (item.attributes.getNamedItem('aria-disabled').nodeValue == 'true') {

@@ -59,6 +59,7 @@ export class ControlMenuBarComponent implements OnInit, OnDestroy {
           (x) => x.eventKey.toLowerCase() === event.key.toLowerCase(),
         );
         if (foundButton) {
+          event.preventDefault();
           foundButton.click();
         }
       });

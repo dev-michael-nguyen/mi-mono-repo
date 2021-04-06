@@ -23,7 +23,8 @@ import { AfterViewInit, Directive, ElementRef, Input } from '@angular/core';
   selector: '[siloAutoFocus]',
 })
 export class AutoFocusDirective implements AfterViewInit {
-  static readonly DEFAULT_SELECTORS = '[tabindex]:not([tabindex="-1"]), button';
+  static readonly DEFAULT_SELECTORS =
+    '[tabindex]:not([tabindex="-1"]), button, input, textarea';
 
   /**
    * Reference to last focus element.
@@ -45,18 +46,32 @@ export class AutoFocusDirective implements AfterViewInit {
   @Input()
   focusChildSelectors: string;
 
-  constructor(private _el: ElementRef<HTMLElement>) {}
+  constructor(private _elementRef: ElementRef<HTMLElement>) {}
 
   static focusFirstFocusable(
-    el: ElementRef<HTMLElement>,
+    elementRef: ElementRef<HTMLElement> | HTMLElement,
     selectors: string = this.DEFAULT_SELECTORS,
   ): HTMLElement {
-    const focusable = el.nativeElement.querySelectorAll(selectors);
+    const element =
+      elementRef instanceof ElementRef
+        ? (elementRef as ElementRef<HTMLElement>).nativeElement
+        : elementRef;
+
+    // self focus
+    if (element.tabIndex === 0) {
+      element.focus();
+      return element;
+    }
+
+    // find focusable
+    const focusable = element.querySelectorAll(selectors);
     if (!focusable.length) {
       return null;
     }
 
-    const firstFocusable = focusable[0] as HTMLElement;
+    const firstFocusable = Array.from(focusable).find(
+      (x: HTMLButtonElement) => !x.disabled,
+    ) as HTMLElement;
     firstFocusable.focus();
     return firstFocusable;
   }
@@ -76,14 +91,17 @@ export class AutoFocusDirective implements AfterViewInit {
     }
 
     // self focus
-    if (this._el.nativeElement.tabIndex === 0 && !this.focusChildSelectors) {
-      this._el.nativeElement.focus();
-      this.lastFocusElement = this._el.nativeElement;
+    if (
+      this._elementRef.nativeElement.tabIndex === 0 &&
+      !this.focusChildSelectors
+    ) {
+      this._elementRef.nativeElement.focus();
+      this.lastFocusElement = this._elementRef.nativeElement;
       return;
     }
 
     this.lastFocusElement = AutoFocusDirective.focusFirstFocusable(
-      this._el,
+      this._elementRef,
       selectors,
     );
   }
