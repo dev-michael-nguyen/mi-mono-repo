@@ -17,7 +17,7 @@ export class QuillRichTextComponent
   addAccessibility() {
     // in read-only, allow ql-editor to be focusable
     if (this.isReadOnly) {
-      const qlEditor = this.elementRef.nativeElement.querySelector(
+      const qlEditor = this._elementRef.nativeElement.querySelector(
         '.ql-editor',
       ) as HTMLElement;
       if (qlEditor) {

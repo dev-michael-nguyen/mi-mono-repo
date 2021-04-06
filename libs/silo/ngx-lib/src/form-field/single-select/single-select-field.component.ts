@@ -48,7 +48,7 @@ export class SingleSelectFieldComponent implements OnInit {
   @Input()
   lookupConfig: LookupConfigModel;
 
-  constructor(public formBuilder: FormBuilder) {}
+  constructor(protected _formBuilder: FormBuilder) {}
 
   ngOnInit() {
     this.setDefinition();
@@ -66,8 +66,8 @@ export class SingleSelectFieldComponent implements OnInit {
   setForm(value: LookupModel) {
     const validators = SingleSelectValidatorFactory.createValidators(this);
     this.hasValidators = !!validators.length;
-    this.lookupFormControl = this.formBuilder.control(value, validators);
-    this.formGroup = this.formBuilder.group({
+    this.lookupFormControl = this._formBuilder.control(value, validators);
+    this.formGroup = this._formBuilder.group({
       lookup: this.lookupFormControl,
     });
   }
@@ -78,7 +78,7 @@ export class SingleSelectFieldComponent implements OnInit {
   }
 
   getErrorMessage() {
-    return ValidatorMixin.getErrorMessage(this.formGroup);
+    return ValidatorMixin.getFormGroupErrorMessage(this.formGroup);
   }
 
   compareWith(o1: LookupModel, o2: LookupModel) {

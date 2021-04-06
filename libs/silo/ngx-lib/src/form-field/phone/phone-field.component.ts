@@ -41,7 +41,7 @@ export class PhoneFieldComponent implements OnInit {
   @Input()
   outlineSize: ClassExpression;
 
-  constructor(public formBuilder: FormBuilder) {}
+  constructor(protected _formBuilder: FormBuilder) {}
 
   ngOnInit() {
     this.setDefinition();
@@ -56,8 +56,8 @@ export class PhoneFieldComponent implements OnInit {
   setForm(value: string) {
     const validators = PhoneValidatorFactory.createValidators(this);
     this.hasValidators = !!validators.length;
-    this.phoneFormControl = this.formBuilder.control(value, validators);
-    this.formGroup = this.formBuilder.group({
+    this.phoneFormControl = this._formBuilder.control(value, validators);
+    this.formGroup = this._formBuilder.group({
       phone: this.phoneFormControl,
     });
   }
@@ -67,6 +67,6 @@ export class PhoneFieldComponent implements OnInit {
   }
 
   getErrorMessage() {
-    return ValidatorMixin.getErrorMessage(this.formGroup);
+    return ValidatorMixin.getFormGroupErrorMessage(this.formGroup);
   }
 }

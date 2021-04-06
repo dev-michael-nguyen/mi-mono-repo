@@ -1,13 +1,19 @@
-import { Directive, ElementRef } from '@angular/core';
+import { Directive, ElementRef, HostBinding, OnInit } from '@angular/core';
 
 @Directive({
   selector: '[siloStickyLayout]',
 })
-export class StickyLayoutDirective {
-  constructor(public el: ElementRef<HTMLElement>) {
-    this.el.nativeElement.style.boxSizing = 'border-box';
-    this.el.nativeElement.style.display = 'flex';
-    this.el.nativeElement.style.flexDirection = 'column';
-    this.el.nativeElement.style.height = '100%';
+export class StickyLayoutDirective implements OnInit {
+  @HostBinding('class.silo-sticky-layout')
+  class = true;
+
+  constructor(public elementRef: ElementRef<HTMLElement>) {}
+
+  ngOnInit() {
+    this.elementRef.nativeElement.className;
+    this.elementRef.nativeElement.style.boxSizing = 'border-box';
+    this.elementRef.nativeElement.style.display = 'flex';
+    this.elementRef.nativeElement.style.flexDirection = 'column';
+    this.elementRef.nativeElement.style.height = '100%';
   }
 }

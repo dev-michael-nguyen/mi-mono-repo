@@ -4,6 +4,7 @@
 @import '../../../../apps-common/styles/mat-font-configs';
 @import '../../../../apps-common/styles/mat-foreground-configs';
 @import '../../../../apps-common/styles/mat-background-configs';
+@import '../../../../apps-common/styles/sticky-layout';
 
 // **Be sure that you only ever include this mixin once!**
 @include mat-core($fontConfig);

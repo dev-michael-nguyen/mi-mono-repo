@@ -1,4 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import {
+  AddElementEvent,
+  FormBuilderComponent,
+  FormBuilderEvent,
+  FormBuilderFactory,
+  FormDefinitionModel,
+} from '@silo/ngx';
 
 @Component({
   selector: 'silo-definition-view',
@@ -6,7 +13,32 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./definition-view.component.scss'],
 })
 export class DefinitionViewComponent implements OnInit {
-  constructor() {}
+  formDefinitionModel: FormDefinitionModel;
 
-  ngOnInit() {}
+  @ViewChild(FormBuilderComponent, { static: true })
+  formBuilderComponent: FormBuilderComponent;
+
+  constructor(private _formBuilderFactory: FormBuilderFactory) {}
+
+  ngOnInit() {
+    this.setFormDefinitionModel();
+  }
+
+  setFormDefinitionModel() {
+    this.formDefinitionModel = this._formBuilderFactory.createFormDefinition();
+  }
+
+  handleEvent($event: FormBuilderEvent) {
+    if ($event instanceof AddElementEvent) {
+      const { definitionModel } = this._formBuilderFactory.addElement(
+        this.formDefinitionModel,
+        $event.type,
+        $event.parentMemberKey,
+      );
+      this.formBuilderComponent.lastActiveDefinitionKey$.next(
+        definitionModel.key,
+      );
+      this.formBuilderComponent.setNodeModelList();
+    }
+  }
 }

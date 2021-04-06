@@ -1,0 +1,13 @@
+<mat-expansion-panel class="silo-expansion-panel" [expanded]="true">
+  <mat-expansion-panel-header>
+    <mat-panel-title>
+      <div>
+        <ng-content select="[headerContent]"></ng-content>
+        <mat-panel-description>
+          <ng-content select="[descriptionContent]"></ng-content>
+        </mat-panel-description>
+      </div>
+    </mat-panel-title>
+  </mat-expansion-panel-header>
+  <ng-content select="[bodyContent]"></ng-content>
+</mat-expansion-panel>

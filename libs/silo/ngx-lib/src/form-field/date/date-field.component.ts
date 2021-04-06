@@ -45,7 +45,7 @@ export class DateFieldComponent implements OnInit {
   @Input()
   outlineSize: ClassExpression;
 
-  constructor(public formBuilder: FormBuilder) {}
+  constructor(protected _formBuilder: FormBuilder) {}
 
   ngOnInit() {
     this.setDefinition();
@@ -60,11 +60,11 @@ export class DateFieldComponent implements OnInit {
   setForm(value: NativeDate) {
     const validators = DateValidatorFactory.createValidators(this);
     this.hasValidators = !!validators.length;
-    this.dateFormControl = this.formBuilder.control(
+    this.dateFormControl = this._formBuilder.control(
       NativeDateAdapter.toDate(value),
       validators,
     );
-    this.formGroup = this.formBuilder.group({
+    this.formGroup = this._formBuilder.group({
       date: this.dateFormControl,
     });
   }
@@ -75,7 +75,7 @@ export class DateFieldComponent implements OnInit {
   }
 
   getErrorMessage() {
-    return ValidatorMixin.getErrorMessage(this.formGroup);
+    return ValidatorMixin.getFormGroupErrorMessage(this.formGroup);
   }
 
   compareWith(o1: LookupModel, o2: LookupModel) {

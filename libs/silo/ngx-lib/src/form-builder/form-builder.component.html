@@ -1,3 +1,62 @@
-<p>
-  form-builder works!
-</p>
+<div class="form-builder" siloStickyLayout>
+  <div class="form-builder__header">
+    <silo-control-menu-bar label="2" eventCode="Digit2">
+      <button
+        mat-button
+        siloControlMenuBarButton="S"
+        (click)="addElement($event, 'Section')"
+        [disabled]="!activeNodeModel"
+      >
+        Add Section
+      </button>
+      <button
+        mat-button
+        [matMenuTriggerFor]="addMenu"
+        siloControlMenuBarButton="A"
+        [disabled]="!activeNodeModel"
+      >
+        Add
+      </button>
+      <button
+        mat-button
+        siloControlMenuBarButton="E"
+        [disabled]="!activeNodeModel"
+        (click)="editProperties()"
+      >
+        Edit Properties
+      </button>
+      <button
+        mat-button
+        siloControlMenuBarButton="x"
+        (click)="exportFormDefinition()"
+      >
+        Export Form
+      </button>
+      <mat-menu #addMenu="matMenu">
+        <button mat-menu-item (click)="addElement($event, 'TextBox')">
+          Text Box
+        </button>
+        <button mat-menu-item>Text Area</button>
+      </mat-menu>
+    </silo-control-menu-bar>
+  </div>
+  <div class="form-builder__body" siloStickyLayoutBody fxLayout="row">
+    <div class="form-builder__form" siloStickyLayout fxFlex="60">
+      <div class="form-builder__form__body" siloStickyLayoutBody>
+        <silo-form-element
+          *ngFor="let nodeModel of nodeModelList"
+          [nodeModel]="nodeModel"
+        >
+        </silo-form-element>
+      </div>
+    </div>
+    <div class="form-builder__property-window" siloStickyLayout fxFlex="40">
+      <div class="form-builder__property-window__body" siloStickyLayoutBody>
+        <silo-form-element-property-window
+          *ngIf="activeNodeModel"
+          [nodeModel]="activeNodeModel"
+        ></silo-form-element-property-window>
+      </div>
+    </div>
+  </div>
+</div>

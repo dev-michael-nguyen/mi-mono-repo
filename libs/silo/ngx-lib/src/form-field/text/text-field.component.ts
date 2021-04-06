@@ -6,7 +6,7 @@ import {
   OnInit,
   ViewChild,
 } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { FormBuilder, FormControl } from '@angular/forms';
 import { ClassExpression } from '../../responsive/responsive-container/models/class-expression';
 import { randomHtmlId } from '../../utils/random-html-id';
 import { ValidatorMixin } from '../services/validator.mixin';
@@ -14,10 +14,6 @@ import { TextValidatorFactory } from './text-validator.factory';
 
 @Directive()
 export class TextFieldComponent implements OnInit, AfterViewInit {
-  formGroup: FormGroup;
-
-  textFormControl: FormControl;
-
   hasValidators = false;
 
   labelId: string;
@@ -49,6 +45,9 @@ export class TextFieldComponent implements OnInit, AfterViewInit {
   value: string;
 
   @Input()
+  textFormControl: FormControl;
+
+  @Input()
   fieldSize: ClassExpression = 'col-2';
 
   @Input()
@@ -58,8 +57,8 @@ export class TextFieldComponent implements OnInit, AfterViewInit {
   textarea: ElementRef<HTMLTextAreaElement>;
 
   constructor(
-    public elementRef: ElementRef<HTMLElement>,
-    public formBuilder: FormBuilder,
+    protected _elementRef: ElementRef<HTMLElement>,
+    protected _formBuilder: FormBuilder,
   ) {}
 
   ngOnInit() {
@@ -79,10 +78,12 @@ export class TextFieldComponent implements OnInit, AfterViewInit {
   setForm(value: string) {
     const validators = TextValidatorFactory.createValidators(this);
     this.hasValidators = !!validators.length;
-    this.textFormControl = this.formBuilder.control(value, validators);
-    this.formGroup = this.formBuilder.group({
-      text: this.textFormControl,
-    });
+
+    if (!this.textFormControl) {
+      this.textFormControl = this._formBuilder.control(value, validators);
+    } else {
+      this.textFormControl.setValidators(validators);
+    }
   }
 
   clearForm() {
@@ -90,14 +91,14 @@ export class TextFieldComponent implements OnInit, AfterViewInit {
   }
 
   getErrorMessage() {
-    return ValidatorMixin.getErrorMessage(this.formGroup);
+    return ValidatorMixin.getFormControlErrorMessage(this.textFormControl);
   }
 
   setTextAreaHeightInReadOnly() {
     if (!this.isReadOnly || !this.textarea) {
       return;
     }
-    // NOTE: On refresh, scrollheight may not be accurated so do this next cycle
+    // NOTE: On refresh, scroll height may not be accurate so do this next cycle
     setTimeout(() => {
       this.textarea.nativeElement.style.height = `${this.textarea.nativeElement.scrollHeight}px`;
     });

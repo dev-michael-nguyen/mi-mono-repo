@@ -41,7 +41,7 @@ export class NumericFieldComponent implements OnInit {
   @Input()
   outlineSize: ClassExpression;
 
-  constructor(public formBuilder: FormBuilder) {}
+  constructor(protected _formBuilder: FormBuilder) {}
 
   ngOnInit() {
     this.setDefinition();
@@ -56,8 +56,8 @@ export class NumericFieldComponent implements OnInit {
   setForm(value: string) {
     const validators = NumericValidatorFactory.createValidators(this);
     this.hasValidators = !!validators.length;
-    this.numericFormControl = this.formBuilder.control(value, validators);
-    this.formGroup = this.formBuilder.group({
+    this.numericFormControl = this._formBuilder.control(value, validators);
+    this.formGroup = this._formBuilder.group({
       numeric: this.numericFormControl,
     });
   }
@@ -67,6 +67,6 @@ export class NumericFieldComponent implements OnInit {
   }
 
   getErrorMessage() {
-    return ValidatorMixin.getErrorMessage(this.formGroup);
+    return ValidatorMixin.getFormGroupErrorMessage(this.formGroup);
   }
 }
