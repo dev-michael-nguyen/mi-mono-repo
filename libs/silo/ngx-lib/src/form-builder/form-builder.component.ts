@@ -9,7 +9,7 @@ import {
 import { BehaviorSubject } from 'rxjs';
 import { AutoFocusDirective } from '../directives/auto-focus/auto-focus.directive';
 import {
-  AddElementEvent,
+  AddFormElementEvent,
   FormBuilderEvent,
 } from './models/form-builder-events';
 import { FormDefinitionModel } from './models/form-definition-model';
@@ -46,7 +46,7 @@ export class FormBuilderComponent implements OnInit {
   mode: FormBuilderMode;
 
   @Output()
-  handle = new EventEmitter<FormBuilderEvent>();
+  handleEvent = new EventEmitter<FormBuilderEvent>();
 
   constructor(private _elementRef: ElementRef<HTMLElement>) {}
 
@@ -74,10 +74,10 @@ export class FormBuilderComponent implements OnInit {
 
   addElement($event: Event, type: FormElementDefinitionType) {
     $event.stopPropagation();
-    const event = new AddElementEvent();
+    const event = new AddFormElementEvent();
     event.type = type;
     event.parentMemberKey = this.activeNodeModel.memberKey;
-    this.handle.next(event);
+    this.handleEvent.next(event);
   }
 
   editProperties() {

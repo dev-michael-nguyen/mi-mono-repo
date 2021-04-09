@@ -1,17 +1,18 @@
-import { FormGroup } from '@angular/forms';
 import { FormElementDefinitionType } from './form-definition-types';
+import { FormGroupDefinitionModel } from './form-group-definition-model';
+import { FormTextDefinitionModel } from './form-text-definition-model';
 
 export class FormBuilderEvent {}
 
-export class GroupPropertyWindowValueChangesEvent extends FormBuilderEvent {
-  formGroup: FormGroup;
+export class UpdateFormGroupDefinitionEvent extends FormBuilderEvent {
+  formGroupDefinitionModel: FormGroupDefinitionModel;
 }
 
-export class TextPropertyWindowValueChangesEvent extends FormBuilderEvent {
-  formGroup: FormGroup;
+export class UpdateFormTextDefinitionEvent extends FormBuilderEvent {
+  formTextDefinitionModel: FormTextDefinitionModel;
 }
 
-export class AddElementEvent extends FormBuilderEvent {
+export class AddFormElementEvent extends FormBuilderEvent {
   type: FormElementDefinitionType;
   parentMemberKey: string;
 }

@@ -1,8 +1,9 @@
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { merge } from 'lodash';
 import { Subject } from 'rxjs';
 import { FormBuilderComponent } from '../../../form-builder.component';
-import { TextPropertyWindowValueChangesEvent } from '../../../models/form-builder-events';
+import { UpdateFormTextDefinitionEvent } from '../../../models/form-builder-events';
 import { IFormElementComponent } from '../../../models/form-element-component-interface';
 import { FormElementNodeModel } from '../../../models/form-element-node-model';
 import { FormTextDefinitionModel } from '../../../models/form-text-definition-model';
@@ -51,9 +52,19 @@ export class TextPropertyWindowComponent
   }
 
   emitValueChanges() {
-    const event = new TextPropertyWindowValueChangesEvent();
-    event.formGroup = this.formGroup;
-    this._formBuilderComponent.handle.next(event);
+    if (this.formGroup.invalid) {
+      this.formGroup.markAllAsTouched();
+      return;
+    }
+
+    const event = new UpdateFormTextDefinitionEvent();
+    const formTextDefinitionModel = merge(
+      {},
+      this.definitionModel,
+      this.formGroup.value,
+    ) as FormTextDefinitionModel;
+    event.formTextDefinitionModel = formTextDefinitionModel;
+    this._formBuilderComponent.handleEvent.next(event);
   }
 
   ngOnDestroy() {

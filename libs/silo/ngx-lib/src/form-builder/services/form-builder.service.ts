@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { merge } from 'lodash';
 import { v4 as uuidv4 } from 'uuid';
 import { FormDefinitionModel } from '../models/form-definition-model';
 import { FormGroupDefinitionModel } from '../models/form-group-definition-model';
@@ -12,7 +13,7 @@ import { FormElementMemberModel } from './../models/form-element-member-model';
 @Injectable({
   providedIn: 'root',
 })
-export class FormBuilderFactory {
+export class FormBuilderService {
   constructor() {}
 
   createFormDefinition(): FormDefinitionModel {
@@ -49,6 +50,32 @@ export class FormBuilderFactory {
         return { definitionModel, memberModel };
       }
     }
+  }
+
+  updateGroupDefinition(
+    formDefinitionModel: FormDefinitionModel,
+    formGroupDefinitionModel: FormGroupDefinitionModel,
+  ) {
+    const found = formDefinitionModel.groupDefinitionList.find(
+      (x) => x.key == formGroupDefinitionModel.key,
+    );
+    if (!found) {
+      throw new Error(`Cannot find group definition`);
+    }
+    merge(found, formGroupDefinitionModel);
+  }
+
+  updateTextDefinition(
+    formDefinitionModel: FormDefinitionModel,
+    formTextDefinitionModel: FormTextDefinitionModel,
+  ) {
+    const found = formDefinitionModel.textDefinitionList.find(
+      (x) => x.key == formTextDefinitionModel.key,
+    );
+    if (!found) {
+      throw new Error(`Cannot find text definition`);
+    }
+    merge(found, formTextDefinitionModel);
   }
 
   private _createMember(

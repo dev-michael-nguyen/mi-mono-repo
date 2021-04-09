@@ -1,8 +1,9 @@
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { merge } from 'lodash';
 import { Subject } from 'rxjs';
 import { FormBuilderComponent } from '../../../form-builder.component';
-import { GroupPropertyWindowValueChangesEvent } from '../../../models/form-builder-events';
+import { UpdateFormGroupDefinitionEvent } from '../../../models/form-builder-events';
 import { IFormElementComponent } from '../../../models/form-element-component-interface';
 import { FormElementNodeModel } from '../../../models/form-element-node-model';
 import { FormGroupDefinitionModel } from '../../../models/form-group-definition-model';
@@ -51,9 +52,19 @@ export class GroupPropertyWindowComponent
   }
 
   emitValueChanges() {
-    const event = new GroupPropertyWindowValueChangesEvent();
-    event.formGroup = this.formGroup;
-    this._formBuilderComponent.handle.next(event);
+    if (this.formGroup.invalid) {
+      this.formGroup.markAllAsTouched();
+      return;
+    }
+
+    const event = new UpdateFormGroupDefinitionEvent();
+    const formGroupDefinitionModel = merge(
+      {},
+      this.definitionModel,
+      this.formGroup.value,
+    ) as FormGroupDefinitionModel;
+    event.formGroupDefinitionModel = formGroupDefinitionModel;
+    this._formBuilderComponent.handleEvent.next(event);
   }
 
   ngOnDestroy() {
