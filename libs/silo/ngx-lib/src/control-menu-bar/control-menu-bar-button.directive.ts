@@ -20,10 +20,12 @@ export class ControlMenuBarButtonDirective implements OnInit {
   setHtml() {
     this._originalHtml = this._elementRef.nativeElement.innerHTML;
     const originalLabel = this._elementRef.nativeElement.innerText;
-    const newLabel = originalLabel.replace(
-      this.eventKey,
-      `<u class="silo-control-menu-bar-button__key">${this.eventKey}</u>`,
-    );
+    const newLabel = originalLabel
+      .replace(originalLabel, `<span>${originalLabel}</span>`)
+      .replace(
+        this.eventKey,
+        `<u class="silo-control-menu-bar-button__key">${this.eventKey}</u>`,
+      );
     this._highlightHtml = this._elementRef.nativeElement.innerHTML.replace(
       originalLabel,
       newLabel,
