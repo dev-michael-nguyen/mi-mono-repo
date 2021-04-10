@@ -1,9 +1,9 @@
-import { FormBuilderMode } from './form-definition-types';
+import { FormBuilderType } from './form-definition-types';
 
 /**
  * The state model for a form element.
  */
 export class FormElementStateModel {
-  mode: FormBuilderMode;
+  formBuilderType: FormBuilderType;
   isActive = false;
 }

@@ -3,20 +3,27 @@
     <silo-control-menu-bar label="2" eventCode="Digit2">
       <button
         mat-button
-        siloControlMenuBarButton="S"
-        (click)="addElement($event, 'Section')"
-        [disabled]="!activeNodeModel"
-      >
-        Add Section
-      </button>
-      <button
-        mat-button
         [matMenuTriggerFor]="addMenu"
         siloControlMenuBarButton="A"
         [disabled]="!activeNodeModel"
       >
         Add
       </button>
+      <mat-menu #addMenu="matMenu">
+        <button
+          mat-menu-item
+          [disabled]="
+            activeNodeModel?.definitionModel?.type?.key != 'FormGroup'
+          "
+          (click)="addElement('Section')"
+        >
+          Section
+        </button>
+        <button mat-menu-item (click)="addElement('TextBox')">Text Box</button>
+        <button mat-menu-item (click)="addElement('TextArea')">
+          Text Area
+        </button>
+      </mat-menu>
       <button
         mat-button
         siloControlMenuBarButton="E"
@@ -32,12 +39,6 @@
       >
         Export Form
       </button>
-      <mat-menu #addMenu="matMenu">
-        <button mat-menu-item (click)="addElement($event, 'TextBox')">
-          Text Box
-        </button>
-        <button mat-menu-item>Text Area</button>
-      </mat-menu>
     </silo-control-menu-bar>
   </div>
   <div class="form-builder__body" siloStickyLayoutBody fxLayout="row">

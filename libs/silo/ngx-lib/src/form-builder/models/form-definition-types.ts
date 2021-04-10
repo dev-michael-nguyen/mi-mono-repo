@@ -1,4 +1,4 @@
-export type FormBuilderMode = 'Definition' | 'Preview' | 'Instance';
+export type FormBuilderType = 'Definition' | 'DefinitionPreview' | 'Instance';
 
 export type FormElementDefinitionIdentifier = 'Group' | 'Text' | 'Numeric';
 

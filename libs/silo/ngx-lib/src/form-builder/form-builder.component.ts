@@ -14,7 +14,7 @@ import {
 } from './models/form-builder-events';
 import { FormDefinitionModel } from './models/form-definition-model';
 import {
-  FormBuilderMode,
+  FormBuilderType,
   FormElementDefinitionType,
 } from './models/form-definition-types';
 import { FormElementNodeModel } from './models/form-element-node-model';
@@ -43,7 +43,7 @@ export class FormBuilderComponent implements OnInit {
   memberKeyList: Array<string> = [];
 
   @Input()
-  mode: FormBuilderMode;
+  type: FormBuilderType;
 
   @Output()
   handleEvent = new EventEmitter<FormBuilderEvent>();
@@ -72,18 +72,21 @@ export class FormBuilderComponent implements OnInit {
     this.lastActiveDefinitionKey$.next(nodeModel.definitionKey);
   }
 
-  addElement($event: Event, type: FormElementDefinitionType) {
-    $event.stopPropagation();
+  addElement(type: FormElementDefinitionType) {
     const event = new AddFormElementEvent();
     event.type = type;
-    event.parentMemberKey = this.activeNodeModel.memberKey;
+    // if active node is not a group, add as a child to parent which should be a group
+    // else, add as child to active node
+    event.parentMemberKey =
+      this.activeNodeModel.definitionModel.identifier != 'Group'
+        ? this.activeNodeModel.parentMemberKey
+        : this.activeNodeModel.memberKey;
     this.handleEvent.next(event);
   }
 
   editProperties() {
     const propertyWindow = this._elementRef.nativeElement.querySelector(
-      // eslint-disable-next-line quotes
-      "[class*='-property-window'",
+      `[class*='-property-window'`,
     ) as HTMLElement;
     AutoFocusDirective.focusFirstFocusable(propertyWindow);
   }

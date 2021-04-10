@@ -8,6 +8,8 @@ import { FormTextDefinitionModel } from './form-text-definition-model';
  * The node model for a form element.
  */
 export class FormElementNodeModel {
+  parentMemberKey: string;
+
   memberKey: string;
   memberModel: FormElementMemberModel;
 
@@ -21,8 +23,14 @@ export class FormElementNodeModel {
   static mapFromMemberKey(
     formDefinitionModel: FormDefinitionModel,
     memberKey: string,
+    parentMemberKey?: string,
   ) {
     const nodeModel = new FormElementNodeModel();
+    nodeModel.parentMemberKey =
+      parentMemberKey ||
+      formDefinitionModel.memberList.find((x) =>
+        x.children.find((c) => c.key === memberKey),
+      )?.key;
     const memberModel = formDefinitionModel.memberList.find(
       (x) => x.key === memberKey,
     );
@@ -46,7 +54,11 @@ export class FormElementNodeModel {
     }
 
     nodeModel.children = memberModel.children.map((child) =>
-      FormElementNodeModel.mapFromMemberKey(formDefinitionModel, child.key),
+      FormElementNodeModel.mapFromMemberKey(
+        formDefinitionModel,
+        child.key,
+        memberKey,
+      ),
     );
 
     return nodeModel;

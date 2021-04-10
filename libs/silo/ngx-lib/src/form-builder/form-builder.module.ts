@@ -13,6 +13,8 @@ import { GroupPropertyWindowComponent } from './components/group/group-property-
 import { GroupPropertyWindowModule } from './components/group/group-property-window/group-property-window.module';
 import { SectionElementComponent } from './components/group/section-element/section-element.component';
 import { SectionElementModule } from './components/group/section-element/section-element.module';
+import { TextAreaElementComponent } from './components/text/text-area-element/text-area-element.component';
+import { TextAreaElementModule } from './components/text/text-area-element/text-area-element.module';
 import { TextBoxElementComponent } from './components/text/text-box-element/text-box-element.component';
 import { TextBoxElementModule } from './components/text/text-box-element/text-box-element.module';
 import { TextPropertyWindowComponent } from './components/text/text-property-window/text-property-window.component';
@@ -33,6 +35,7 @@ import { FormBuilderRegistryService } from './services/form-builder-registry.ser
     MatMenuModule,
     SectionElementModule,
     StickyLayoutModule,
+    TextAreaElementModule,
     TextBoxElementModule,
     TextPropertyWindowModule,
   ],
@@ -53,6 +56,11 @@ export class FormBuilderModule {
 
     this._formBuilderRegistryService.register('TextBox', {
       elementType: TextBoxElementComponent,
+      windowType: TextPropertyWindowComponent,
+    });
+
+    this._formBuilderRegistryService.register('TextArea', {
+      elementType: TextAreaElementComponent,
       windowType: TextPropertyWindowComponent,
     });
   }

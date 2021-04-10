@@ -14,8 +14,6 @@ import { FormElementMemberModel } from './../models/form-element-member-model';
   providedIn: 'root',
 })
 export class FormBuilderService {
-  constructor() {}
-
   createFormDefinition(): FormDefinitionModel {
     const formDefinitionModel = new FormDefinitionModel();
     formDefinitionModel.key = uuidv4();
@@ -45,6 +43,12 @@ export class FormBuilderService {
       }
       case 'TextBox': {
         const { definitionModel, memberModel } = this._createTextBox();
+        formDefinitionModel.textDefinitionList.push(definitionModel);
+        this._addMember(formDefinitionModel, parentMemberKey, memberModel);
+        return { definitionModel, memberModel };
+      }
+      case 'TextArea': {
+        const { definitionModel, memberModel } = this._createTextArea();
         formDefinitionModel.textDefinitionList.push(definitionModel);
         this._addMember(formDefinitionModel, parentMemberKey, memberModel);
         return { definitionModel, memberModel };
@@ -144,6 +148,23 @@ export class FormBuilderService {
       displayName: 'Text Box',
     };
     definitionModel.label = 'Text Box Label';
+
+    const memberModel = this._createMember(
+      definitionModel.identifier,
+      definitionModel.key,
+    );
+
+    return { definitionModel, memberModel };
+  }
+
+  private _createTextArea() {
+    const definitionModel = new FormTextDefinitionModel();
+    definitionModel.key = uuidv4();
+    definitionModel.type = {
+      key: 'TextArea',
+      displayName: 'Text Area',
+    };
+    definitionModel.label = 'Text Area Label';
 
     const memberModel = this._createMember(
       definitionModel.identifier,
