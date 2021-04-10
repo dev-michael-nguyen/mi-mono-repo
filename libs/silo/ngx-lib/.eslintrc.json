@@ -4,23 +4,26 @@
   "overrides": [
     {
       "files": ["*.ts"],
-      "extends": [
-        "plugin:@nrwl/nx/angular",
-        "plugin:@angular-eslint/template/process-inline-templates"
-      ],
-      "parserOptions": { "project": ["libs/silo/ngx-lib/tsconfig.*?.json"] },
+      "parserOptions": {
+        "project": ["libs/silo/ngx-lib/tsconfig.*?.json"]
+      },
       "rules": {
         "@angular-eslint/directive-selector": [
           "error",
-          { "type": "attribute", "prefix": "silo", "style": "camelCase" }
+          {
+            "type": "attribute",
+            "prefix": "silo",
+            "style": "camelCase"
+          }
         ],
         "@angular-eslint/component-selector": [
           "error",
-          { "type": "element", "prefix": "silo", "style": "kebab-case" }
-        ],
-        "@angular-eslint/directive-class-suffix": "off",
-        "@angular-eslint/no-empty-lifecycle-method": "off",
-        "@typescript-eslint/no-empty-function": "off"
+          {
+            "type": "element",
+            "prefix": "silo",
+            "style": "kebab-case"
+          }
+        ]
       }
     },
     {
