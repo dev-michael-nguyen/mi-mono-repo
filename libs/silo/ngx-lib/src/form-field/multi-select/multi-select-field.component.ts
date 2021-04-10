@@ -1,4 +1,4 @@
-import { Directive, ElementRef, Input, OnInit } from '@angular/core';
+import { Component, ElementRef, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { ClassExpression } from '../../responsive/responsive-container/models/class-expression';
 import { randomHtmlId } from '../../utils/random-html-id';
@@ -7,7 +7,9 @@ import { LookupModel } from '../models/lookup-model';
 import { ValidatorMixin } from '../services/validator.mixin';
 import { MultiSelectValidatorFactory } from './multi-select-validator.factory';
 
-@Directive()
+@Component({
+  template: '',
+})
 export class MultiSelectFieldComponent implements OnInit {
   formGroup: FormGroup;
 
@@ -53,12 +55,12 @@ export class MultiSelectFieldComponent implements OnInit {
     protected _formBuilder: FormBuilder,
   ) {}
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.setDefinition();
     this.setForm(this.value);
   }
 
-  setDefinition() {
+  setDefinition(): void {
     this.labelId = randomHtmlId();
     this.describebyId = randomHtmlId();
     if (this.lookupConfig && this.lookupConfig.lookups) {
@@ -66,7 +68,7 @@ export class MultiSelectFieldComponent implements OnInit {
     }
   }
 
-  setForm(value: Array<LookupModel>) {
+  setForm(value: Array<LookupModel>): void {
     const validators = MultiSelectValidatorFactory.createValidators(this);
     this.hasValidators = !!validators.length;
     this.lookupListFormControl = this._formBuilder.control(value, validators);
@@ -75,20 +77,20 @@ export class MultiSelectFieldComponent implements OnInit {
     });
   }
 
-  clearForm($event: Event) {
+  clearForm($event: Event): void {
     $event.stopPropagation();
     this.lookupListFormControl.setValue(null);
   }
 
-  getErrorMessage() {
+  getErrorMessage(): string {
     return ValidatorMixin.getFormGroupErrorMessage(this.formGroup);
   }
 
-  compareWith(o1: LookupModel, o2: LookupModel) {
+  compareWith(o1: LookupModel, o2: LookupModel): boolean {
     return o1 && o2 && o1.key === o2.key;
   }
 
-  isSelected(option: LookupModel) {
+  isSelected(option: LookupModel): boolean {
     const valueList = this.lookupListFormControl.value as Array<LookupModel>;
     return valueList && !!valueList.find((x) => x.key === option.key);
   }

@@ -1,11 +1,13 @@
-import { Directive, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { ClassExpression } from '../../responsive/responsive-container/models/class-expression';
 import { randomHtmlId } from '../../utils/random-html-id';
 import { ValidatorMixin } from '../services/validator.mixin';
 import { NumericValidatorFactory } from './numeric-validator.factory';
 
-@Directive()
+@Component({
+  template: '',
+})
 export class NumericFieldComponent implements OnInit {
   formGroup: FormGroup;
 
@@ -43,17 +45,17 @@ export class NumericFieldComponent implements OnInit {
 
   constructor(protected _formBuilder: FormBuilder) {}
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.setDefinition();
     this.setForm(this.value || '');
   }
 
-  setDefinition() {
+  setDefinition(): void {
     this.labelId = randomHtmlId();
     this.describebyId = randomHtmlId();
   }
 
-  setForm(value: string) {
+  setForm(value: string): void {
     const validators = NumericValidatorFactory.createValidators(this);
     this.hasValidators = !!validators.length;
     this.numericFormControl = this._formBuilder.control(value, validators);
@@ -62,11 +64,11 @@ export class NumericFieldComponent implements OnInit {
     });
   }
 
-  clearForm() {
+  clearForm(): void {
     this.numericFormControl.setValue(null);
   }
 
-  getErrorMessage() {
+  getErrorMessage(): string {
     return ValidatorMixin.getFormGroupErrorMessage(this.formGroup);
   }
 }

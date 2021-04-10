@@ -1,4 +1,4 @@
-import { Directive, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { ClassExpression } from '../../responsive/responsive-container/models/class-expression';
 import { randomHtmlId } from '../../utils/random-html-id';
@@ -7,7 +7,9 @@ import { ValidatorMixin } from '../services/validator.mixin';
 import { DateValidatorFactory } from './date-validator.factory';
 import { NativeDate, NativeDateAdapter } from './native-date-adapter';
 
-@Directive()
+@Component({
+  template: '',
+})
 export class DateFieldComponent implements OnInit {
   formGroup: FormGroup;
 
@@ -47,17 +49,17 @@ export class DateFieldComponent implements OnInit {
 
   constructor(protected _formBuilder: FormBuilder) {}
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.setDefinition();
     this.setForm(this.value);
   }
 
-  setDefinition() {
+  setDefinition(): void {
     this.labelId = randomHtmlId();
     this.describebyId = randomHtmlId();
   }
 
-  setForm(value: NativeDate) {
+  setForm(value: NativeDate): void {
     const validators = DateValidatorFactory.createValidators(this);
     this.hasValidators = !!validators.length;
     this.dateFormControl = this._formBuilder.control(
@@ -69,16 +71,16 @@ export class DateFieldComponent implements OnInit {
     });
   }
 
-  clearForm($event: Event) {
+  clearForm($event: Event): void {
     $event.stopPropagation();
     this.dateFormControl.setValue(null);
   }
 
-  getErrorMessage() {
+  getErrorMessage(): string {
     return ValidatorMixin.getFormGroupErrorMessage(this.formGroup);
   }
 
-  compareWith(o1: LookupModel, o2: LookupModel) {
+  compareWith(o1: LookupModel, o2: LookupModel): boolean {
     return o1 && o2 && o1.key === o2.key;
   }
 }

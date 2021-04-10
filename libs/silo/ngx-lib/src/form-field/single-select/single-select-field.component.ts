@@ -1,4 +1,4 @@
-import { Directive, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { ClassExpression } from '../../responsive/responsive-container/models/class-expression';
 import { randomHtmlId } from '../../utils/random-html-id';
@@ -7,7 +7,9 @@ import { LookupModel } from '../models/lookup-model';
 import { ValidatorMixin } from '../services/validator.mixin';
 import { SingleSelectValidatorFactory } from './single-select-validator.factory';
 
-@Directive()
+@Component({
+  template: '',
+})
 export class SingleSelectFieldComponent implements OnInit {
   formGroup: FormGroup;
 

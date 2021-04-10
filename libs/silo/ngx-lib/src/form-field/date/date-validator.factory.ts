@@ -3,7 +3,7 @@ import { ValidatorErrorMap } from '../models/validator-error-map';
 import { DateFieldComponent } from './date-field.component';
 
 export class DateValidatorFactory {
-  static createValidators(dateField: DateFieldComponent) {
+  static createValidators(dateField: DateFieldComponent): Array<ValidatorFn> {
     const validators: Array<ValidatorFn> = [];
 
     if (dateField.isRequired) {
