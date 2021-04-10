@@ -17,11 +17,11 @@ import { FormElementNodeModel } from '../../models/form-element-node-model';
 import { FormBuilderRegistryService } from '../../services/form-builder-registry.service';
 
 @Component({
-  selector: 'silo-form-element',
-  templateUrl: './form-element.component.html',
-  styleUrls: ['./form-element.component.scss'],
+  selector: 'silo-form-element-portal',
+  templateUrl: './form-element-portal.component.html',
+  styleUrls: ['./form-element-portal.component.scss'],
 })
-export class FormElementComponent
+export class FormElementPortalComponent
   implements OnInit, OnChanges, OnDestroy, IFormElementComponent {
   @Input()
   nodeModel: FormElementNodeModel;

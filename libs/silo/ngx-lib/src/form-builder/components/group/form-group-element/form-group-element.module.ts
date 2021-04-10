@@ -1,10 +1,10 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { FormElementModule } from '../../form-element/form-element.module';
+import { FormElementPortalModule } from '../../form-element-portal/form-element-portal.module';
 import { FormGroupElementComponent } from './form-group-element.component';
 
 @NgModule({
-  imports: [CommonModule, FormElementModule],
+  imports: [CommonModule, FormElementPortalModule],
   declarations: [FormGroupElementComponent],
   exports: [FormGroupElementComponent],
 })

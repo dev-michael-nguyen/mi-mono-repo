@@ -4,7 +4,7 @@ import { NgModule } from '@angular/core';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatButtonModule } from '@angular/material/button';
 import { DragHandleModule } from '../../../drag-and-drop/drag-handle/drag-handle.module';
-import { FormElementComponent } from './form-element.component';
+import { FormElementPortalComponent } from './form-element-portal.component';
 
 @NgModule({
   imports: [
@@ -14,7 +14,7 @@ import { FormElementComponent } from './form-element.component';
     MatButtonModule,
     PortalModule,
   ],
-  declarations: [FormElementComponent],
-  exports: [FormElementComponent],
+  declarations: [FormElementPortalComponent],
+  exports: [FormElementPortalComponent],
 })
-export class FormElementModule {}
+export class FormElementPortalModule {}

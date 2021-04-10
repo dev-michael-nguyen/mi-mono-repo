@@ -1,9 +1,9 @@
 <div class="form-group-element">
   <h1>{{ definitionModel.title }}</h1>
   <p>{{ definitionModel.description }}</p>
-  <silo-form-element
+  <silo-form-element-portal
     *ngFor="let child of nodeModel.children"
     [nodeModel]="child"
   >
-  </silo-form-element>
+  </silo-form-element-portal>
 </div>

@@ -44,11 +44,11 @@
   <div class="form-builder__body" siloStickyLayoutBody fxLayout="row">
     <div class="form-builder__form" siloStickyLayout fxFlex="60">
       <div class="form-builder__form__body" siloStickyLayoutBody>
-        <silo-form-element
+        <silo-form-element-portal
           *ngFor="let nodeModel of nodeModelList"
           [nodeModel]="nodeModel"
         >
-        </silo-form-element>
+        </silo-form-element-portal>
       </div>
     </div>
     <div class="form-builder__property-window" siloStickyLayout fxFlex="40">

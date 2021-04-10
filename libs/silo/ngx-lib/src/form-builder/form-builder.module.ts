@@ -5,8 +5,8 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatMenuModule } from '@angular/material/menu';
 import { StickyLayoutModule } from '../layout/sticky-layout/sticky-layout.module';
 import { ControlMenuBarModule } from './../control-menu-bar/control-menu-bar.module';
+import { FormElementPortalModule } from './components/form-element-portal/form-element-portal.module';
 import { FormElementPropertyWindowModule } from './components/form-element-property-window/form-element-property-window.module';
-import { FormElementModule } from './components/form-element/form-element.module';
 import { FormGroupElementComponent } from './components/group/form-group-element/form-group-element.component';
 import { FormGroupElementModule } from './components/group/form-group-element/form-group-element.module';
 import { GroupPropertyWindowComponent } from './components/group/group-property-window/group-property-window.component';
@@ -27,7 +27,7 @@ import { FormBuilderRegistryService } from './services/form-builder-registry.ser
     CommonModule,
     ControlMenuBarModule,
     FlexLayoutModule,
-    FormElementModule,
+    FormElementPortalModule,
     FormElementPropertyWindowModule,
     FormGroupElementModule,
     GroupPropertyWindowModule,

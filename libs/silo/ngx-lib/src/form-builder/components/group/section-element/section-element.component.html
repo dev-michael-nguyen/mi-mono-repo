@@ -7,11 +7,11 @@
       <p>{{ definitionModel.description }}</p>
     </ng-container>
     <ng-container bodyContent>
-      <silo-form-element
+      <silo-form-element-portal
         *ngFor="let child of nodeModel.children"
         [nodeModel]="child"
       >
-      </silo-form-element>
+      </silo-form-element-portal>
     </ng-container>
   </silo-expansion-panel>
 </div>
