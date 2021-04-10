@@ -1,14 +1,14 @@
 <div class="silo-text-property-window">
   <h2>{{ definitionModel.type.displayName }} Properties</h2>
   <silo-text-box
+    #labelField
     fieldSize="col-6"
     label="Label"
     [isRequired]="true"
-    [textFormControl]="labelFormControl"
   ></silo-text-box>
   <silo-text-area
+    #placeholderField
     fieldSize="col-12"
     label="Placeholder"
-    [textFormControl]="placeholderFormControl"
   ></silo-text-area>
 </div>

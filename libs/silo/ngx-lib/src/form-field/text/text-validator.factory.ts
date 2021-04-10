@@ -3,7 +3,7 @@ import { ValidatorErrorMap } from '../models/validator-error-map';
 import { TextFieldComponent } from './text-field.component';
 
 export class TextValidatorFactory {
-  static createValidators(textField: TextFieldComponent) {
+  static createValidators(textField: TextFieldComponent): Array<ValidatorFn> {
     const validators: Array<ValidatorFn> = [];
 
     if (textField.isRequired) {

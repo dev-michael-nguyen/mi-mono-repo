@@ -1,14 +1,16 @@
 <div class="silo-group-property-window">
   <h2>{{ definitionModel.type.displayName }} Properties</h2>
   <silo-text-box
+    #titleField
     fieldSize="col-6"
     label="Title"
     [isRequired]="true"
-    [textFormControl]="titleFormControl"
+    [value]="definitionModel.title"
   ></silo-text-box>
   <silo-text-area
+    #descriptionField
     fieldSize="col-12"
     label="Description"
-    [textFormControl]="descriptionFormControl"
+    [value]="definitionModel.description"
   ></silo-text-area>
 </div>
