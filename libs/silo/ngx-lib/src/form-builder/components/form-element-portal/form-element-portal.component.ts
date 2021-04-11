@@ -83,11 +83,6 @@ export class FormElementPortalComponent
     }
   }
 
-  setActiveNode($event: Event) {
-    $event.stopPropagation();
-    this._formBuilderComponent.setActiveNode(this.nodeModel);
-  }
-
   ngOnDestroy() {
     this.portalOutlet.dispose();
   }

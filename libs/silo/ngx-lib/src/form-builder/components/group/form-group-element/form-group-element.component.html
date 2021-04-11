@@ -1,9 +1,11 @@
 <div class="form-group-element">
-  <h1>{{ definitionModel.title }}</h1>
-  <p>{{ definitionModel.description }}</p>
-  <silo-form-element-portal
-    *ngFor="let child of nodeModel.children"
-    [nodeModel]="child"
-  >
-  </silo-form-element-portal>
+  <silo-form-element-definition-container [nodeModel]="nodeModel">
+    <h1>{{ definitionModel.title }}</h1>
+    <p>{{ definitionModel.description }}</p>
+    <silo-form-element-portal
+      *ngFor="let child of nodeModel.children"
+      [nodeModel]="child"
+    >
+    </silo-form-element-portal>
+  </silo-form-element-definition-container>
 </div>

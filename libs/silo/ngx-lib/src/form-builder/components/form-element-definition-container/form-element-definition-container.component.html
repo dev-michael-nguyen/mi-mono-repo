@@ -1,0 +1,21 @@
+<div
+  class="form-element-definition-container"
+  [class.active]="nodeModel.state.isActive"
+  tabindex="0"
+  (keydown.space)="setActiveNode($event)"
+  (focus)="setActiveNode($event)"
+>
+  <div fxLayout="row">
+    <div
+      class="form-element-definition-container__left-border"
+      [class.active]="nodeModel.state.isActive"
+    ></div>
+    <div
+      class="form-element-definition-container__content"
+      [class.active]="nodeModel.state.isActive"
+    >
+      <silo-drag-handle></silo-drag-handle>
+      <ng-content></ng-content>
+    </div>
+  </div>
+</div>

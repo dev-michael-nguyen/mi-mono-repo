@@ -1,4 +1,4 @@
-@import './components/form-element-portal/form-element-portal.component.theme.scss';
+@import './components/form-element-definition-container/form-element-definition-container.component.theme.scss';
 
 @mixin silo-form-builder-color($config-or-theme) {
   // Extract the color configuration in case a theme has been passed.
@@ -7,7 +7,7 @@
 }
 
 @mixin silo-form-builder-theme($theme) {
-  @include silo-form-element-theme($theme);
+  @include silo-form-element-definition-container-theme($theme);
 
   // Extracts the color and typography configurations from the theme.
   $color: mat-get-color-config($theme);

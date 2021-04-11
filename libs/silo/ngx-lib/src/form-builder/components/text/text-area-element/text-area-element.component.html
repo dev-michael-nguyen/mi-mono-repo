@@ -1,7 +1,9 @@
 <div class="silo-text-box-element">
-  <silo-text-area
-    fieldSize="col-12"
-    [label]="definitionModel.label"
-    [placeholder]="definitionModel.placeholder"
-  ></silo-text-area>
+  <silo-form-element-definition-container [nodeModel]="nodeModel">
+    <silo-text-area
+      fieldSize="col-12"
+      [label]="definitionModel.label"
+      [placeholder]="definitionModel.placeholder"
+    ></silo-text-area>
+  </silo-form-element-definition-container>
 </div>
