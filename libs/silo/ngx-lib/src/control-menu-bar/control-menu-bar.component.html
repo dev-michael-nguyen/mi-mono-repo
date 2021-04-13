@@ -5,7 +5,11 @@
   [color]="color"
 >
   <ng-content select="[before]"></ng-content>
-  <mat-icon class="silo-control-menu-bar__icon">keyboard</mat-icon>
+  <mat-icon
+    class="silo-control-menu-bar__icon"
+    matTooltip="Use Shift + {{ label }} to focus this menu"
+    >keyboard</mat-icon
+  >
   <span class="silo-control-menu-bar__label">
     {{ label }}
   </span>
