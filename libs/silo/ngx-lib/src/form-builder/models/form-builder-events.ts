@@ -2,17 +2,25 @@ import { FormElementDefinitionType } from './form-definition-types';
 import { FormGroupDefinitionModel } from './form-group-definition-model';
 import { FormTextDefinitionModel } from './form-text-definition-model';
 
-export class FormBuilderEvent {}
+export type FormBuilderEvent =
+  | AddFormElementEvent
+  | ImportFormEvent
+  | UpdateFormGroupDefinitionEvent
+  | UpdateFormTextDefinitionEvent;
 
-export class UpdateFormGroupDefinitionEvent extends FormBuilderEvent {
+export class AddFormElementEvent {
+  type: FormElementDefinitionType;
+  parentMemberKey: string;
+}
+
+export class ImportFormEvent {
+  formDefinitionJson: string;
+}
+
+export class UpdateFormGroupDefinitionEvent {
   formGroupDefinitionModel: FormGroupDefinitionModel;
 }
 
-export class UpdateFormTextDefinitionEvent extends FormBuilderEvent {
+export class UpdateFormTextDefinitionEvent {
   formTextDefinitionModel: FormTextDefinitionModel;
-}
-
-export class AddFormElementEvent extends FormBuilderEvent {
-  type: FormElementDefinitionType;
-  parentMemberKey: string;
 }

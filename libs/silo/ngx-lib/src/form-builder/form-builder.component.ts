@@ -11,6 +11,7 @@ import { AutoFocusDirective } from '../directives/auto-focus/auto-focus.directiv
 import {
   AddFormElementEvent,
   FormBuilderEvent,
+  ImportFormEvent,
 } from './models/form-builder-events';
 import { FormDefinitionModel } from './models/form-definition-model';
 import {
@@ -51,16 +52,22 @@ export class FormBuilderComponent implements OnInit {
   constructor(private _elementRef: ElementRef<HTMLElement>) {}
 
   ngOnInit() {
-    this.setNodeModelList();
+    this.render(this.formDefinitionModel, this.memberKeyList);
   }
 
-  setNodeModelList() {
-    this.nodeModelList = this.memberKeyList.map((memberKey) =>
-      FormElementNodeModel.mapFromMemberKey(
-        this.formDefinitionModel,
-        memberKey,
-      ),
+  render(
+    formDefinitionModel: FormDefinitionModel,
+    memberKeyList: Array<string>,
+  ) {
+    this.formDefinitionModel = formDefinitionModel;
+    this.memberKeyList = memberKeyList;
+    this.nodeModelList = memberKeyList.map((memberKey) =>
+      FormElementNodeModel.mapFromMemberKey(formDefinitionModel, memberKey),
     );
+  }
+
+  rerender() {
+    this.render(this.formDefinitionModel, this.memberKeyList);
   }
 
   setActiveNode(nodeModel: FormElementNodeModel) {
@@ -89,6 +96,25 @@ export class FormBuilderComponent implements OnInit {
       `[class*='-property-window'`,
     ) as HTMLElement;
     AutoFocusDirective.focusFirstFocusable(propertyWindow);
+  }
+
+  importFormDefinition() {
+    const fileInput = document.createElement('INPUT') as HTMLInputElement;
+    fileInput.setAttribute('type', 'file');
+    fileInput.oninput = () => {
+      const file = fileInput.files[0];
+      if (file) {
+        const reader = new FileReader();
+        reader.readAsText(file, 'UTF-8');
+        reader.onload = (fileReaderEvent) => {
+          const formDefinitionJson = fileReaderEvent.target.result as string;
+          const event = new ImportFormEvent();
+          event.formDefinitionJson = formDefinitionJson;
+          this.handleEvent.next(event);
+        };
+      }
+    };
+    fileInput.click();
   }
 
   exportFormDefinition() {

@@ -5,6 +5,7 @@ import {
   FormBuilderEvent,
   FormBuilderService,
   FormDefinitionModel,
+  ImportFormEvent,
   UpdateFormGroupDefinitionEvent,
   UpdateFormTextDefinitionEvent,
 } from '@silo/ngx';
@@ -16,6 +17,7 @@ import {
 })
 export class DefinitionViewComponent implements OnInit {
   formDefinitionModel: FormDefinitionModel;
+  memberKeyList: Array<string>;
 
   @ViewChild(FormBuilderComponent, { static: true })
   formBuilderComponent: FormBuilderComponent;
@@ -23,15 +25,25 @@ export class DefinitionViewComponent implements OnInit {
   constructor(private _formBuilderService: FormBuilderService) {}
 
   ngOnInit() {
-    this.setFormDefinitionModel();
+    this.setFormDefinition();
   }
 
-  setFormDefinitionModel() {
+  setFormDefinition() {
     this.formDefinitionModel = this._formBuilderService.createFormDefinition();
+    this.memberKeyList = [this.formDefinitionModel.rootMemberKey];
   }
 
   handleEvent($event: FormBuilderEvent) {
-    if ($event instanceof AddFormElementEvent) {
+    if ($event instanceof ImportFormEvent) {
+      this.formDefinitionModel = JSON.parse(
+        $event.formDefinitionJson,
+      ) as FormDefinitionModel;
+      this.memberKeyList = [this.formDefinitionModel.rootMemberKey];
+      this.formBuilderComponent.render(
+        this.formDefinitionModel,
+        this.memberKeyList,
+      );
+    } else if ($event instanceof AddFormElementEvent) {
       const { definitionModel } = this._formBuilderService.addElement(
         this.formDefinitionModel,
         $event.type,
@@ -40,7 +52,7 @@ export class DefinitionViewComponent implements OnInit {
       this.formBuilderComponent.lastActiveDefinitionKey$.next(
         definitionModel.key,
       );
-      this.formBuilderComponent.setNodeModelList();
+      this.formBuilderComponent.rerender();
     } else if ($event instanceof UpdateFormGroupDefinitionEvent) {
       this._formBuilderService.updateGroupDefinition(
         this.formDefinitionModel,

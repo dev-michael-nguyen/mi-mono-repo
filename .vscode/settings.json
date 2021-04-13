@@ -6,5 +6,9 @@
   "editor.formatOnSave": true,
   "editor.tabSize": 2,
   "prettier.singleQuote": true,
-  "cSpell.words": ["focusable", "tabindex"]
+  "cSpell.words": [
+    "focusable",
+    "rerender",
+    "tabindex"
+  ]
 }
