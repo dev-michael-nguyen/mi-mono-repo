@@ -1,12 +1,26 @@
 <silo-app-layout [ngClass]="selectedTheme ? selectedTheme.id : ''">
   <ng-container headerContent>
-    <mat-toolbar color="primary">
-      <span>Silo NGX</span>
-      <a mat-button routerLink="./components">Components</a>
-      <a mat-button routerLink="./form-builder">Form Builder</a>
+    <silo-control-menu-bar color="primary" label="1" eventCode="Digit1">
+      <ng-container before>
+        <span class="app-brand">Silo NGX</span>
+      </ng-container>
+      <a
+        mat-button
+        routerLink="./components"
+        siloKeyboardClick
+        siloControlMenuBarButton="C"
+        >Components</a
+      >
+      <a
+        mat-button
+        routerLink="./form-builder"
+        siloKeyboardClick
+        siloControlMenuBarButton="F"
+        >Form Builder</a
+      >
       <span style="flex: 1 1 auto"></span>
       <silo-theme-picker></silo-theme-picker>
-    </mat-toolbar>
+    </silo-control-menu-bar>
   </ng-container>
   <ng-container bodyContent>
     <router-outlet></router-outlet>

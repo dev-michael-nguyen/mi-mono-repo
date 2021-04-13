@@ -40,7 +40,8 @@ export class ControlMenuBarButtonDirective implements OnInit {
     this._elementRef.nativeElement.innerHTML = this._originalHtml;
   }
 
-  click() {
+  focusClick() {
+    this._elementRef.nativeElement.focus();
     this._elementRef.nativeElement.click();
   }
 }

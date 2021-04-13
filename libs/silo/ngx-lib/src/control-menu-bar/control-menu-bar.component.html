@@ -1,4 +1,10 @@
-<mat-toolbar class="silo-control-menu-bar" @render>
+<mat-toolbar
+  @render
+  class="silo-control-menu-bar"
+  [class.silo-control-menu-bar--slim]="isSlim"
+  [color]="color"
+>
+  <ng-content select="[before]"></ng-content>
   <mat-icon class="silo-control-menu-bar__icon">keyboard</mat-icon>
   <span class="silo-control-menu-bar__label">
     {{ label }}

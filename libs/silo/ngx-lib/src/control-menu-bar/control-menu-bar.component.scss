@@ -1,6 +1,8 @@
 .silo-control-menu-bar {
-  height: 36px;
-  padding: 0;
+  &--slim {
+    height: 36px;
+  }
+
   .silo-control-menu-bar__icon {
     padding: 2px;
   }

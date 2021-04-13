@@ -8,6 +8,7 @@ import {
   OnInit,
   QueryList,
 } from '@angular/core';
+import { ThemePalette } from '@angular/material/core';
 import { fromEvent, Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { AutoFocusDirective } from '../directives/auto-focus/auto-focus.directive';
@@ -28,6 +29,12 @@ import { ControlMenuBarButtonDirective } from './control-menu-bar-button.directi
 })
 export class ControlMenuBarComponent implements OnInit, OnDestroy {
   private _destroy$ = new Subject();
+
+  @Input()
+  isSlim = false;
+
+  @Input()
+  color: ThemePalette;
 
   @Input()
   label: string;
@@ -60,7 +67,7 @@ export class ControlMenuBarComponent implements OnInit, OnDestroy {
         );
         if (foundButton) {
           event.preventDefault();
-          foundButton.click();
+          foundButton.focusClick();
         }
       });
   }
