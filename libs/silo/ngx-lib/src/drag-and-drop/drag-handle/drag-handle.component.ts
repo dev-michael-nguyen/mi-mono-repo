@@ -1,12 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'silo-drag-handle',
   templateUrl: './drag-handle.component.html',
   styleUrls: ['./drag-handle.component.scss'],
 })
-export class DragHandleComponent implements OnInit {
-  constructor() {}
-
-  ngOnInit() {}
-}
+export class DragHandleComponent {}

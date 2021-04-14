@@ -14,7 +14,42 @@
       class="form-element-definition-container__content"
       [class.active]="nodeModel.state.isActive"
     >
-      <silo-drag-handle></silo-drag-handle>
+      <div
+        class="form-element-definition-container__actions"
+        fxLayout="row"
+        fxLayoutAlign="end center"
+      >
+        <mat-icon matTooltip="Edit form element">edit</mat-icon>
+        <div
+          @render
+          *ngIf="
+            nodeModel.state.isActive &&
+            nodeModel.definitionModel.type.key !== 'FormGroup'
+          "
+        >
+          <button
+            mat-icon-button
+            aria-label="Move form element up"
+            matTooltip="Move form element up"
+          >
+            <mat-icon>arrow_upward</mat-icon>
+          </button>
+          <button
+            mat-icon-button
+            aria-label="Move form element down"
+            matTooltip="Move form element down"
+          >
+            <mat-icon>arrow_downward</mat-icon>
+          </button>
+          <button
+            mat-icon-button
+            aria-label="Delete form element"
+            matTooltip="Delete form element"
+          >
+            <mat-icon>delete</mat-icon>
+          </button>
+        </div>
+      </div>
       <ng-content></ng-content>
     </div>
   </div>

@@ -15,9 +15,14 @@
     }
   }
 
+  .form-element-definition-container__actions {
+    cursor: pointer;
+    padding-bottom: 8px;
+  }
+
   .form-element-definition-container__content {
     width: 100%;
-    padding: 12px 12px 12px 0;
+    padding: 8px 8px 8px 0;
     &.active {
       box-shadow: 0 2px 1px -1px rgb(0 0 0 / 20%), 0 1px 1px 0 rgb(0 0 0 / 14%),
         0 1px 3px 0 rgb(0 0 0 / 12%) 0 0 0 0;
