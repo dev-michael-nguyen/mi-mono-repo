@@ -43,8 +43,9 @@
           </button>
           <button
             mat-icon-button
-            aria-label="Delete form element"
-            matTooltip="Delete form element"
+            aria-label="Remove form element"
+            matTooltip="Remove form element"
+            (click)="removeElement(nodeModel)"
           >
             <mat-icon>delete</mat-icon>
           </button>

@@ -4,6 +4,7 @@ import { FormTextDefinitionModel } from './form-text-definition-model';
 
 export type FormBuilderEvent =
   | AddFormElementEvent
+  | RemoveFormElementEvent
   | ImportFormEvent
   | UpdateFormGroupDefinitionEvent
   | UpdateFormTextDefinitionEvent;
@@ -11,6 +12,10 @@ export type FormBuilderEvent =
 export class AddFormElementEvent {
   type: FormElementDefinitionType;
   parentMemberKey: string;
+}
+
+export class RemoveFormElementEvent {
+  memberKey: string;
 }
 
 export class ImportFormEvent {

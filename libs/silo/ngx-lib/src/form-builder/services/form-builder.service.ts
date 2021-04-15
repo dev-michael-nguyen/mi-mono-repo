@@ -56,6 +56,40 @@ export class FormBuilderService {
     }
   }
 
+  removeElement(
+    formDefinitionModel: FormDefinitionModel,
+    memberKey: string,
+  ): void {
+    const memberModel = formDefinitionModel.memberList.find(
+      (member) => member.key === memberKey,
+    );
+    // remove member from member list
+    formDefinitionModel.memberList = formDefinitionModel.memberList.filter(
+      (member) => member.key !== memberKey,
+    );
+    // remove member from member children list
+    formDefinitionModel.memberList.forEach((member) => {
+      member.children = member.children.filter(
+        (child) => child.key !== memberKey,
+      );
+    });
+    // remove definition
+    switch (memberModel.identifier) {
+      case 'Group': {
+        formDefinitionModel.groupDefinitionList = formDefinitionModel.groupDefinitionList.filter(
+          (definition) => definition.key !== memberModel.definitionKey,
+        );
+        break;
+      }
+      case 'Text': {
+        formDefinitionModel.textDefinitionList = formDefinitionModel.textDefinitionList.filter(
+          (definition) => definition.key !== memberModel.definitionKey,
+        );
+        break;
+      }
+    }
+  }
+
   updateGroupDefinition(
     formDefinitionModel: FormDefinitionModel,
     formGroupDefinitionModel: FormGroupDefinitionModel,

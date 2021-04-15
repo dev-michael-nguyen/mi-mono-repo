@@ -6,6 +6,7 @@ import {
   FormBuilderService,
   FormDefinitionModel,
   ImportFormEvent,
+  RemoveFormElementEvent,
   UpdateFormGroupDefinitionEvent,
   UpdateFormTextDefinitionEvent,
 } from '@silo/ngx';
@@ -51,6 +52,12 @@ export class DefinitionViewComponent implements OnInit {
       );
       this.formBuilderComponent.lastActiveDefinitionKey$.next(
         definitionModel.key,
+      );
+      this.formBuilderComponent.rerender();
+    } else if ($event instanceof RemoveFormElementEvent) {
+      this._formBuilderService.removeElement(
+        this.formDefinitionModel,
+        $event.memberKey,
       );
       this.formBuilderComponent.rerender();
     } else if ($event instanceof UpdateFormGroupDefinitionEvent) {

@@ -27,4 +27,8 @@ export class FormElementContainerComponent implements IFormElementComponent {
     $event.stopPropagation();
     this._formBuilderComponent.setActiveNode(this.nodeModel);
   }
+
+  removeElement(nodeModel: FormElementNodeModel) {
+    this._formBuilderComponent.removeElement(nodeModel);
+  }
 }

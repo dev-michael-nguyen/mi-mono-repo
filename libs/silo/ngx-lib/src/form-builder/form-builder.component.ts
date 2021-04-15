@@ -12,6 +12,7 @@ import {
   AddFormElementEvent,
   FormBuilderEvent,
   ImportFormEvent,
+  RemoveFormElementEvent,
 } from './models/form-builder-events';
 import { FormDefinitionModel } from './models/form-definition-model';
 import {
@@ -88,6 +89,12 @@ export class FormBuilderComponent implements OnInit {
       this.activeNodeModel.definitionModel.identifier != 'Group'
         ? this.activeNodeModel.parentMemberKey
         : this.activeNodeModel.memberKey;
+    this.handleEvent.next(event);
+  }
+
+  removeElement(nodeModel: FormElementNodeModel): void {
+    const event = new RemoveFormElementEvent();
+    event.memberKey = nodeModel.memberKey;
     this.handleEvent.next(event);
   }
 
