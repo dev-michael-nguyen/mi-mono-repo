@@ -37,6 +37,9 @@ export class TextPropertyWindowComponent
   @ViewChild('placeholderField')
   placeholderField: TextAreaComponent;
 
+  @ViewChild('hintField')
+  hintField: TextAreaComponent;
+
   constructor(private _formBuilderComponent: FormBuilderComponent) {}
 
   ngOnInit(): void {
@@ -52,6 +55,7 @@ export class TextPropertyWindowComponent
     merge(
       this.labelField.formGroup.valueChanges,
       this.placeholderField.formGroup.valueChanges,
+      this.hintField.formGroup.valueChanges,
     )
       .pipe(takeUntil(this._destroy$))
       .subscribe(() => this.emitValueChanges());
@@ -60,10 +64,12 @@ export class TextPropertyWindowComponent
   emitValueChanges(): void {
     if (
       this.labelField.formGroup.invalid ||
-      this.placeholderField.formGroup.invalid
+      this.placeholderField.formGroup.invalid ||
+      this.hintField.formGroup.invalid
     ) {
       this.labelField.formGroup.markAllAsTouched();
       this.placeholderField.formGroup.markAllAsTouched();
+      this.hintField.formGroup.markAllAsTouched();
       return;
     }
 
@@ -73,6 +79,7 @@ export class TextPropertyWindowComponent
       {
         label: this.labelField.getValue(),
         placeholder: this.placeholderField.getValue(),
+        hint: this.hintField.getValue(),
       } as FormTextDefinitionModel,
     );
     const event = new UpdateFormTextDefinitionEvent();

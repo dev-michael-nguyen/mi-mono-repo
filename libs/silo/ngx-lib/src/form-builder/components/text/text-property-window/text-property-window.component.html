@@ -2,7 +2,7 @@
   <h2>{{ definitionModel.type.displayName }} Properties</h2>
   <silo-text-box
     #labelField
-    fieldSize="col-6"
+    fieldSize="col-12"
     label="Label"
     [isRequired]="true"
     [value]="definitionModel.label"
@@ -13,4 +13,10 @@
     label="Placeholder"
     [value]="definitionModel.placeholder"
   ></silo-text-area>
+  <silo-text-box
+    #hintField
+    fieldSize="col-12"
+    label="Hint"
+    [value]="definitionModel.hint"
+  ></silo-text-box>
 </div>
