@@ -1,5 +1,8 @@
-import 'reflect-metadata';
-
-export function Placeholder(value: string) {
-  return Reflect.metadata('placeholder', value);
+/**
+ * Identify this property to have placeholder metadata.
+ *
+ * @param {string} label The placeholder string.
+ */
+export function Placeholder(placeholder: string) {
+  return Reflect.metadata('placeholder', placeholder);
 }

@@ -1,76 +1,134 @@
+import 'reflect-metadata';
+
+/**
+ * Model with metadata for it's class and properties.
+ */
 export class MetadataModel {
-  $type: string;
+  metadataMap: MetadataMap;
 
-  /**
-   * Get the metadata of this entity
-   */
-  get metadata(): unknown {
-    return MetadataModel.recursiveBuildMetadata(this);
-  }
-
-  static recursiveBuildMetadata(
+  static createMetadataMap(
     metadataModel: MetadataModel,
-    metadata: unknown = {},
-  ) {
-    metadata[metadataModel.$type] = {
-      classMetadata: MetadataModel.buildClassMetadata(metadataModel),
-      childrenMetadata: MetadataModel.recursiveBuildChildrenMetadata(
-        metadataModel,
-        metadata,
-      ),
+    metadataMap: MetadataMap = {},
+  ): MetadataMap {
+    const classMetadata = MetadataModel.createClassMetadata(metadataModel);
+
+    if (!classMetadata?.metadataIdentifier) {
+      throw new Error('metadataIdentifier is required');
+    }
+
+    const propertyMetadataMap = MetadataModel.createPropertyMetadataMap(
+      metadataModel,
+      metadataMap,
+    );
+
+    metadataMap[classMetadata.metadataIdentifier] = {
+      classMetadata: classMetadata,
+      propertyMetadataMap: propertyMetadataMap,
     };
 
-    return metadata;
+    return metadataMap;
   }
 
-  static buildClassMetadata(modelMetadata: MetadataModel) {
-    const classMetadata = {
-      $type: modelMetadata.$type,
-      template: 'MetadataModel',
-    };
+  static createClassMetadata(metadataModel: MetadataModel): ClassMetadata {
+    const classMetadata = Reflect.getMetadataKeys(
+      metadataModel,
+    ).reduce<ClassMetadata>(
+      (classMetadata: ClassMetadata, metadataKey: string) => {
+        const metadata = Reflect.getMetadata(metadataKey, metadataModel);
+        if (metadata) {
+          classMetadata[metadataKey] = metadata;
+        }
+        return classMetadata;
+      },
+      {} as ClassMetadata,
+    );
 
-    return classMetadata;
+    return Object.keys(classMetadata).length ? classMetadata : undefined;
   }
 
-  static recursiveBuildChildrenMetadata(
+  static createPropertyMetadataMap(
     metadataModel: MetadataModel,
-    metadata: unknown = {},
-  ) {
-    const childrenMetadata = {};
-    Object.keys(metadataModel)
-      .filter((propertyKey) => !propertyKey.startsWith('$'))
-      .forEach((propertyKey) => {
+    metadataMap: MetadataMap = {},
+  ): PropertyMetadataMap {
+    const propertyMetadataMap = Object.keys(
+      metadataModel,
+    ).reduce<PropertyMetadataMap>(
+      (propertyMetadataMap: PropertyMetadataMap, propertyKey: string) => {
         if (metadataModel[propertyKey] instanceof MetadataModel) {
-          childrenMetadata[propertyKey] = MetadataModel.buildClassMetadata(
+          propertyMetadataMap[propertyKey] = MetadataModel.createClassMetadata(
             metadataModel[propertyKey],
           );
-          MetadataModel.recursiveBuildMetadata(
+          MetadataModel.createMetadataMap(
             metadataModel[propertyKey],
-            metadata,
+            metadataMap,
           );
-          return;
+          return propertyMetadataMap;
         }
 
-        const propertyMetadata = {};
-        const metadataKeys = Reflect.getMetadataKeys(
+        const propertyMetadata = this.createPropertyMetadata(
           metadataModel,
           propertyKey,
         );
-        metadataKeys.splice(0, 1); // remove first element which is not a metadata key
-        metadataKeys.forEach((metadataKey) => {
-          const metadataValue = Reflect.getMetadata(
+
+        if (propertyMetadata) {
+          propertyMetadataMap[propertyKey] = propertyMetadata;
+        }
+
+        return propertyMetadataMap;
+      },
+      {},
+    );
+
+    return Object.keys(propertyMetadataMap).length
+      ? propertyMetadataMap
+      : undefined;
+  }
+
+  static createPropertyMetadata(
+    metadataModel: MetadataModel,
+    propertyKey: string,
+  ) {
+    const propertyMetadata = Reflect.getMetadataKeys(metadataModel, propertyKey)
+      .filter((metadataKey: string) => !metadataKey.startsWith('design:'))
+      .reduce<PropertyMetadata>(
+        (propertyMetadata: PropertyMetadata, metadataKey: string) => {
+          const metadata = Reflect.getMetadata(
             metadataKey,
             metadataModel,
             propertyKey,
           );
-          if (metadataValue) {
-            propertyMetadata[metadataKey] = metadataValue;
+
+          if (metadata) {
+            propertyMetadata[metadataKey] = metadata;
           }
-        });
 
-        childrenMetadata[propertyKey] = propertyMetadata;
-      });
+          return propertyMetadata;
+        },
+        {},
+      );
 
-    return childrenMetadata;
+    return Object.keys(propertyMetadata).length ? propertyMetadata : undefined;
   }
 }
+
+export type MetadataMap = {
+  [key: string]: Metadata;
+};
+
+export type Metadata = {
+  classMetadata: ClassMetadata;
+  propertyMetadataMap: PropertyMetadataMap;
+};
+
+export type ClassMetadata = {
+  metadataIdentifier: string;
+  [key: string]: unknown;
+};
+
+export type PropertyMetadataMap = {
+  [key: string]: PropertyMetadata;
+};
+
+export type PropertyMetadata = {
+  [key: string]: unknown;
+};

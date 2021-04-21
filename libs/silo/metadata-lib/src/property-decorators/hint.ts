@@ -1,5 +1,8 @@
-import 'reflect-metadata';
-
-export function Hint(value: string) {
-  return Reflect.metadata('hint', value);
+/**
+ * Identify this property to have hint metadata.
+ *
+ * @param {string} hint The hint string.
+ */
+export function Hint(hint: string) {
+  return Reflect.metadata('hint', hint);
 }
