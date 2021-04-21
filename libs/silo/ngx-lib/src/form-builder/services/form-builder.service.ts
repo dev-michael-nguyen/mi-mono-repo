@@ -176,7 +176,6 @@ export class FormBuilderService {
 
   private _createTextBox() {
     const definitionModel = new FormTextDefinitionModel();
-    definitionModel.key = uuidv4();
     definitionModel.type = {
       key: 'TextBox',
       displayName: 'Text Box',
@@ -193,7 +192,6 @@ export class FormBuilderService {
 
   private _createTextArea() {
     const definitionModel = new FormTextDefinitionModel();
-    definitionModel.key = uuidv4();
     definitionModel.type = {
       key: 'TextArea',
       displayName: 'Text Area',

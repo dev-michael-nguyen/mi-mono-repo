@@ -45,6 +45,7 @@ export class TextPropertyWindowComponent
   ngOnInit(): void {
     this.definitionModel = this.nodeModel
       .definitionModel as FormTextDefinitionModel;
+    console.log(this.definitionModel.metadataMap);
   }
 
   ngAfterViewInit(): void {
