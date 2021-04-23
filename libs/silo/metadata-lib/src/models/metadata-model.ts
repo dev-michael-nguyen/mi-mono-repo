@@ -6,6 +6,14 @@ import 'reflect-metadata';
 export class MetadataModel {
   metadataMap: MetadataMap;
 
+  /**
+   * Create metadata map for metadata model.
+   *
+   * @static
+   * @param {MetadataModel} metadataModel The metadata model to get metadata from.
+   * @param {MetadataMap} [metadataMap={}] Optional metadata map to use instead of create a new one.
+   * @return {MetadataMap}  {MetadataMap} The metadata map or empty.
+   */
   static createMetadataMap(
     metadataModel: MetadataModel,
     metadataMap: MetadataMap = {},
@@ -29,6 +37,13 @@ export class MetadataModel {
     return metadataMap;
   }
 
+  /**
+   * Create class metadata for metadata model.
+   *
+   * @static
+   * @param {MetadataModel} metadataModel The metadata model to get metadata from.
+   * @return {ClassMetadata}  {ClassMetadata} The class metadata or undefined.
+   */
   static createClassMetadata(metadataModel: MetadataModel): ClassMetadata {
     const classMetadata = Reflect.getMetadataKeys(
       metadataModel,
@@ -46,32 +61,47 @@ export class MetadataModel {
     return Object.keys(classMetadata).length ? classMetadata : undefined;
   }
 
+  /**
+   * Create property metadata map for metadata model.
+   *
+   * @static
+   * @param {MetadataModel} metadataModel The metadata model to get metadata from.
+   * @param {MetadataMap} [metadataMap] The metadata map to populate when property is a metadata model.
+   * @return {PropertyMetadataMap}  {PropertyMetadataMap} The property metadata map or undefined.
+   */
   static createPropertyMetadataMap(
     metadataModel: MetadataModel,
-    metadataMap: MetadataMap = {},
+    metadataMap: MetadataMap,
   ): PropertyMetadataMap {
     const propertyMetadataMap = Object.keys(
       metadataModel,
     ).reduce<PropertyMetadataMap>(
       (propertyMetadataMap: PropertyMetadataMap, propertyKey: string) => {
-        if (metadataModel[propertyKey] instanceof MetadataModel) {
-          propertyMetadataMap[propertyKey] = MetadataModel.createClassMetadata(
-            metadataModel[propertyKey],
-          );
+        const propertyMetadata: PropertyMetadata =
+          MetadataModel.createPropertyMetadata(metadataModel, propertyKey) ??
+          {};
+
+        const propertyClassMetadata: ClassMetadata =
+          metadataModel[propertyKey] instanceof MetadataModel
+            ? MetadataModel.createClassMetadata(metadataModel[propertyKey])
+            : undefined;
+
+        if (propertyClassMetadata?.metadataIdentifier) {
           MetadataModel.createMetadataMap(
             metadataModel[propertyKey],
             metadataMap,
           );
-          return propertyMetadataMap;
         }
 
-        const propertyMetadata = this.createPropertyMetadata(
-          metadataModel,
-          propertyKey,
+        // property metadata have priority over class metadata
+        const mergedPropertyMetadata = Object.assign(
+          {},
+          propertyClassMetadata,
+          propertyMetadata,
         );
 
-        if (propertyMetadata) {
-          propertyMetadataMap[propertyKey] = propertyMetadata;
+        if (Object.keys(propertyMetadata).length) {
+          propertyMetadataMap[propertyKey] = mergedPropertyMetadata;
         }
 
         return propertyMetadataMap;
@@ -84,10 +114,18 @@ export class MetadataModel {
       : undefined;
   }
 
+  /**
+   * Create property metadata for a property of metadata model.
+   *
+   * @static
+   * @param {MetadataModel} metadataModel The metadata model to get metadata from.
+   * @param {string} propertyKey The property key to create property metadata for.
+   * @return {PropertyMetadata}  {PropertyMetadata} The property metadata or undefined.
+   */
   static createPropertyMetadata(
     metadataModel: MetadataModel,
     propertyKey: string,
-  ) {
+  ): PropertyMetadata {
     const propertyMetadata = Reflect.getMetadataKeys(metadataModel, propertyKey)
       .filter((metadataKey: string) => !metadataKey.startsWith('design:'))
       .reduce<PropertyMetadata>(
@@ -116,13 +154,14 @@ export type MetadataMap = {
 };
 
 export type Metadata = {
-  classMetadata: ClassMetadata;
-  propertyMetadataMap: PropertyMetadataMap;
+  classMetadata?: ClassMetadata;
+  propertyMetadataMap?: PropertyMetadataMap;
 };
 
 export type ClassMetadata = {
-  metadataIdentifier: string;
   [key: string]: unknown;
+  metadataIdentifier?: string;
+  templateIdentifier?: string;
 };
 
 export type PropertyMetadataMap = {
@@ -131,4 +170,12 @@ export type PropertyMetadataMap = {
 
 export type PropertyMetadata = {
   [key: string]: unknown;
+  hint?: string;
+  isRequiredToSave?: boolean;
+  isRequiredToSubmit?: boolean;
+  label?: string;
+  labelDescription?: string;
+  metadataIdentifier?: string;
+  placeholder?: string;
+  templateIdentifier?: string;
 };
