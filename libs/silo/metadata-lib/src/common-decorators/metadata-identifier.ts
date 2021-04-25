@@ -1,3 +1,7 @@
+import { MetadataModel } from './../models/metadata-model';
+
+export const metadataIdentifierSymbol = 'metadataIdentifier';
+
 /**
  * Identify this class/property to have metadata identifier metadata.
  *
@@ -8,7 +12,7 @@ export function MetadataIdentifier(metadataIdentifier: string) {
     // property decorator
     if (target && propertyKey) {
       Reflect.defineMetadata(
-        'metadataIdentifier',
+        metadataIdentifierSymbol,
         metadataIdentifier,
         target,
         propertyKey,
@@ -18,10 +22,14 @@ export function MetadataIdentifier(metadataIdentifier: string) {
     // class decorator
     if (target?.prototype) {
       Reflect.defineMetadata(
-        'metadataIdentifier',
+        metadataIdentifierSymbol,
         metadataIdentifier,
         target.prototype,
       );
     }
   };
+}
+
+export function getMetadataIdentifier(metadataModel: MetadataModel): string {
+  return Reflect.getMetadata(metadataIdentifierSymbol, metadataModel);
 }

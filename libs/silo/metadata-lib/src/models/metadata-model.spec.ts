@@ -60,6 +60,44 @@ describe('MetadataModel', () => {
     expect(propertyMetadata.templateIdentifier).toBe('CustomPersonName');
   });
 
+  it('should get property metadata', () => {
+    // arrange
+    const testPersonModel = new TestPersonModel();
+    testPersonModel.metadataMap = MetadataModel.createMetadataMap(
+      testPersonModel,
+    );
+
+    // act
+    const firstNameMetadata = MetadataModel.getPropertyMetadata(
+      testPersonModel,
+      null,
+      'name.firstName',
+    );
+
+    // assert
+    expect(firstNameMetadata).toBeTruthy();
+    expect(firstNameMetadata.label).toBe('First Name');
+    expect(firstNameMetadata.templateIdentifier).toBe('TextBox');
+  });
+
+  it('should get undefined property metadata if full property path is invalid', () => {
+    // arrange
+    const testPersonModel = new TestPersonModel();
+    testPersonModel.metadataMap = MetadataModel.createMetadataMap(
+      testPersonModel,
+    );
+
+    // act
+    const firstNameMetadata = MetadataModel.getPropertyMetadata(
+      testPersonModel,
+      null,
+      'names.firstName',
+    );
+
+    // assert
+    expect(firstNameMetadata).toBeUndefined();
+  });
+
   it('should create property metadata map', () => {
     // arrange
     const testPersonModel = new TestPersonModel();

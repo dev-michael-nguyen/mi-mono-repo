@@ -1,4 +1,5 @@
 import 'reflect-metadata';
+import { getMetadataIdentifier } from '../common-decorators/metadata-identifier';
 
 /**
  * Model with metadata for it's class and properties.
@@ -146,6 +147,33 @@ export class MetadataModel {
       );
 
     return Object.keys(propertyMetadata).length ? propertyMetadata : undefined;
+  }
+
+  /**
+   * Get property metadata for a property of metadata model.
+   *
+   * @param metadataModel The metadata model to get metadata from.
+   * @param fullPropertyPath The full path to the property
+   */
+  static getPropertyMetadata(
+    metadataModel: MetadataModel,
+    metadataIdentifier: string,
+    fullPropertyPath: string,
+  ): PropertyMetadata {
+    metadataIdentifier =
+      metadataIdentifier || getMetadataIdentifier(metadataModel);
+    const propertyKeys = fullPropertyPath.split('.');
+    return propertyKeys.reduce<PropertyMetadata>(
+      (previousPropertyMetadata, currentKey) => {
+        const metadata = previousPropertyMetadata
+          ? metadataModel.metadataMap[
+              previousPropertyMetadata.metadataIdentifier
+            ]
+          : metadataModel.metadataMap[metadataIdentifier];
+        return metadata.propertyMetadataMap[currentKey];
+      },
+      null,
+    );
   }
 }
 
