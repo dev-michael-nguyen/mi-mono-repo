@@ -41,7 +41,7 @@ export class PhoneFieldComponent implements OnInit {
   fieldSize: ClassExpression = 'col-2';
 
   @Input()
-  outlineSize: ClassExpression;
+  fieldOutlineSize: ClassExpression;
 
   constructor(protected _formBuilder: FormBuilder) {}
 

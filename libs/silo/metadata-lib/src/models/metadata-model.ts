@@ -1,10 +1,15 @@
 import 'reflect-metadata';
 import { getMetadataIdentifier } from '../common-decorators/metadata-identifier';
+import { ClassMetadata } from './class-metadata';
+import { MetadataMap } from './metadata-map';
+import { PropertyMetadata } from './property-metadata';
+import { PropertyMetadataMap } from './property-metadata-map';
 
 /**
  * Model with metadata for it's class and properties.
  */
 export class MetadataModel {
+  [key: string]: unknown;
   metadataMap: MetadataMap;
 
   /**
@@ -82,16 +87,16 @@ export class MetadataModel {
           MetadataModel.createPropertyMetadata(metadataModel, propertyKey) ??
           {};
 
-        const propertyClassMetadata: ClassMetadata =
-          metadataModel[propertyKey] instanceof MetadataModel
-            ? MetadataModel.createClassMetadata(metadataModel[propertyKey])
-            : undefined;
+        const propertyValue = metadataModel[propertyKey];
 
-        if (propertyClassMetadata?.metadataIdentifier) {
-          MetadataModel.createMetadataMap(
-            metadataModel[propertyKey],
-            metadataMap,
+        let propertyClassMetadata: ClassMetadata;
+        if (propertyValue instanceof MetadataModel) {
+          propertyClassMetadata = MetadataModel.createClassMetadata(
+            propertyValue,
           );
+          if (propertyClassMetadata?.metadataIdentifier) {
+            MetadataModel.createMetadataMap(propertyValue, metadataMap);
+          }
         }
 
         // property metadata have priority over class metadata
@@ -176,34 +181,3 @@ export class MetadataModel {
     );
   }
 }
-
-export type MetadataMap = {
-  [key: string]: Metadata;
-};
-
-export type Metadata = {
-  classMetadata?: ClassMetadata;
-  propertyMetadataMap?: PropertyMetadataMap;
-};
-
-export type ClassMetadata = {
-  [key: string]: unknown;
-  metadataIdentifier?: string;
-  templateIdentifier?: string;
-};
-
-export type PropertyMetadataMap = {
-  [key: string]: PropertyMetadata;
-};
-
-export type PropertyMetadata = {
-  [key: string]: unknown;
-  hint?: string;
-  isRequiredToSave?: boolean;
-  isRequiredToSubmit?: boolean;
-  label?: string;
-  labelDescription?: string;
-  metadataIdentifier?: string;
-  placeholder?: string;
-  templateIdentifier?: string;
-};

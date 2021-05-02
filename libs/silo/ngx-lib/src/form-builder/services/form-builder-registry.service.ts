@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { FormElementDefinitionType } from '../models/form-definition-types';
-import { FormElementRegistryConfigMode } from '../models/form-element-registry-config-model';
+import { FormElementRegistryConfigModel } from '../models/form-element-registry-config-model';
 
 @Injectable({
   providedIn: 'root',
@@ -8,12 +8,12 @@ import { FormElementRegistryConfigMode } from '../models/form-element-registry-c
 export class FormBuilderRegistryService {
   private _elementConfigMap = new Map<
     FormElementDefinitionType,
-    FormElementRegistryConfigMode
+    FormElementRegistryConfigModel
   >();
 
   register(
     key: FormElementDefinitionType,
-    elementConfigModel: FormElementRegistryConfigMode,
+    elementConfigModel: FormElementRegistryConfigModel,
   ) {
     this._elementConfigMap.set(key, elementConfigModel);
   }

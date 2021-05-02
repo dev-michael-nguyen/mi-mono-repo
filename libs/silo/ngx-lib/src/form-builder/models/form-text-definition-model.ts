@@ -1,5 +1,7 @@
 import {
-  IsRequiredToSave,
+  DisplayOrder,
+  FieldSize,
+  IsRequired,
   Label,
   MetadataIdentifier,
   MetadataModel,
@@ -24,22 +26,28 @@ export class FormTextDefinitionModel extends MetadataModel {
 
   type: LookupModel<FormTextDefinitionType> = null;
 
-  @Label('Label')
-  @IsRequiredToSave()
+  @DisplayOrder(10)
   @TemplateIdentifier('TextBox')
+  @FieldSize('col-12')
+  @Label('Label')
+  @IsRequired()
   label: string = null;
 
-  @Label('Placeholder')
+  @DisplayOrder(20)
   @TemplateIdentifier('TextArea')
+  @FieldSize('col-12')
+  @Label('Placeholder')
   placeholder: string = null;
 
-  @Label('Hint')
+  @DisplayOrder(30)
   @TemplateIdentifier('TextBox')
+  @FieldSize('col-12')
+  @Label('Hint')
   hint: string = null;
 
   isReadOnly = false;
 
-  isRequiredToSave = false;
+  isRequired = false;
 
   isRequiredToSubmit = false;
 

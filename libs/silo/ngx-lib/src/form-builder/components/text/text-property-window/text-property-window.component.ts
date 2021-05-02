@@ -26,7 +26,7 @@ export class TextPropertyWindowComponent
   implements IFormElementComponent, OnInit, AfterViewInit, OnDestroy {
   private _destroy$ = new Subject<void>();
 
-  definitionModel: FormTextDefinitionModel;
+  textDefinitionModel: FormTextDefinitionModel;
 
   @Input()
   nodeModel: FormElementNodeModel;
@@ -43,9 +43,8 @@ export class TextPropertyWindowComponent
   constructor(private _formBuilderComponent: FormBuilderComponent) {}
 
   ngOnInit(): void {
-    this.definitionModel = this.nodeModel
+    this.textDefinitionModel = this.nodeModel
       .definitionModel as FormTextDefinitionModel;
-    console.log(this.definitionModel.metadataMap);
   }
 
   ngAfterViewInit(): void {
@@ -76,7 +75,7 @@ export class TextPropertyWindowComponent
 
     const formTextDefinitionModel: FormTextDefinitionModel = _merge(
       {},
-      this.definitionModel,
+      this.textDefinitionModel,
       {
         label: this.labelField.getValue(),
         placeholder: this.placeholderField.getValue(),

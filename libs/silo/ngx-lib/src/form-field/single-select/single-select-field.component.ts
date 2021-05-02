@@ -45,7 +45,7 @@ export class SingleSelectFieldComponent implements OnInit {
   fieldSize: ClassExpression = 'col-2';
 
   @Input()
-  outlineSize: ClassExpression;
+  fieldOutlineSize: ClassExpression;
 
   @Input()
   lookupConfig: LookupConfigModel;

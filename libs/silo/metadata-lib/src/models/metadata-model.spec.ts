@@ -1,7 +1,8 @@
 import { MetadataIdentifier } from '../common-decorators/metadata-identifier';
 import { TemplateIdentifier } from '../common-decorators/template-identifier';
 import { Label } from '../property-decorators/label';
-import { MetadataMap, MetadataModel } from './metadata-model';
+import { MetadataMap } from './metadata-map';
+import { MetadataModel } from './metadata-model';
 
 @MetadataIdentifier('TestPersonNameModel')
 @TemplateIdentifier('CommonPersonName')

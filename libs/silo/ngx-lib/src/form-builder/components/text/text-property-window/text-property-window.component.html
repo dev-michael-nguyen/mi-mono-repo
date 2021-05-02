@@ -1,22 +1,25 @@
 <div class="silo-text-property-window">
-  <h2>{{ definitionModel.type.displayName }} Properties</h2>
+  <h2>{{ textDefinitionModel.type.displayName }} Properties</h2>
   <silo-text-box
     #labelField
     fieldSize="col-12"
     label="Label"
     [isRequired]="true"
-    [value]="definitionModel.label"
+    [value]="textDefinitionModel.label"
   ></silo-text-box>
   <silo-text-area
     #placeholderField
     fieldSize="col-12"
     label="Placeholder"
-    [value]="definitionModel.placeholder"
+    [value]="textDefinitionModel.placeholder"
   ></silo-text-area>
   <silo-text-box
     #hintField
     fieldSize="col-12"
     label="Hint"
-    [value]="definitionModel.hint"
+    [value]="textDefinitionModel.hint"
   ></silo-text-box>
+  <!-- <silo-metadata-form
+    [metadataModel]="textDefinitionModel"
+  ></silo-metadata-form> -->
 </div>

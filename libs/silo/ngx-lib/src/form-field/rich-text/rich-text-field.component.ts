@@ -47,7 +47,7 @@ export class RichTextFieldComponent implements OnInit {
   fieldSize: ClassExpression = 'col-6';
 
   @Input()
-  outlineSize: ClassExpression;
+  fieldOutlineSize: ClassExpression;
 
   constructor(
     protected _elementRef: ElementRef<HTMLElement>,

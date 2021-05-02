@@ -7,6 +7,7 @@ import {
   ViewChild,
 } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { PropertyMetadata, PropertyMetadataApplicator } from '@silo/metadata';
 import { ClassExpression } from '../../responsive/responsive-container/models/class-expression';
 import { randomHtmlId } from '../../utils/random-html-id';
 import { ValidatorMixin } from '../services/validator.mixin';
@@ -15,7 +16,8 @@ import { TextValidatorFactory } from './text-validator.factory';
 @Component({
   template: '',
 })
-export class TextFieldComponent implements OnInit, AfterViewInit {
+export class TextFieldComponent
+  implements OnInit, AfterViewInit, PropertyMetadataApplicator {
   formGroup: FormGroup;
 
   textFormControl: FormControl;
@@ -54,7 +56,7 @@ export class TextFieldComponent implements OnInit, AfterViewInit {
   fieldSize: ClassExpression = 'col-2';
 
   @Input()
-  outlineSize: ClassExpression;
+  fieldOutlineSize: ClassExpression;
 
   @ViewChild('textarea', { static: true })
   textarea: ElementRef<HTMLTextAreaElement>;
@@ -63,6 +65,19 @@ export class TextFieldComponent implements OnInit, AfterViewInit {
     protected _elementRef: ElementRef<HTMLElement>,
     protected _formBuilder: FormBuilder,
   ) {}
+
+  applyPropertyMetadata(
+    propertyMetadata: PropertyMetadata,
+    propertyValue: string,
+  ) {
+    this.value = propertyValue;
+    this.label = propertyMetadata.label;
+    this.placeholder = propertyMetadata.placeholder;
+    this.hint = propertyMetadata.hint;
+    this.isRequired = propertyMetadata.isRequired;
+    this.fieldSize = propertyMetadata.fieldSize;
+    this.fieldOutlineSize = propertyMetadata.fieldOutlineSize;
+  }
 
   ngOnInit(): void {
     this.setDefinition();
