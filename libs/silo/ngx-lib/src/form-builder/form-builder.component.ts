@@ -19,7 +19,10 @@ import {
   FormBuilderType,
   FormElementDefinitionType,
 } from './models/form-definition-types';
-import { FormElementNodeModel } from './models/form-element-node-model';
+import {
+  FormElementNodeModel,
+  FormElementNodeModelExtensions,
+} from './models/form-element-node-model';
 
 @Component({
   selector: 'silo-form-builder',
@@ -63,7 +66,10 @@ export class FormBuilderComponent implements OnInit {
     this.formDefinitionModel = formDefinitionModel;
     this.memberKeyList = memberKeyList;
     this.nodeModelList = memberKeyList.map((memberKey) =>
-      FormElementNodeModel.mapFromMemberKey(formDefinitionModel, memberKey),
+      FormElementNodeModelExtensions.mapFromFormDefinitionModel(
+        formDefinitionModel,
+        memberKey,
+      ),
     );
   }
 
@@ -86,7 +92,7 @@ export class FormBuilderComponent implements OnInit {
     // if active node is not a group, add as a child to parent which should be a group
     // else, add as child to active node
     event.parentMemberKey =
-      this.activeNodeModel.definitionModel.identifier != 'Group'
+      this.activeNodeModel.definitionModel.category != 'Group'
         ? this.activeNodeModel.parentMemberKey
         : this.activeNodeModel.memberKey;
     this.handleEvent.next(event);

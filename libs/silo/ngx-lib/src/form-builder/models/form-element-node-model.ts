@@ -19,8 +19,10 @@ export class FormElementNodeModel {
   children: Array<FormElementNodeModel> = [];
 
   state = new FormElementStateModel();
+}
 
-  static mapFromMemberKey(
+export class FormElementNodeModelExtensions {
+  static mapFromFormDefinitionModel(
     formDefinitionModel: FormDefinitionModel,
     memberKey: string,
     parentMemberKey?: string,
@@ -38,7 +40,7 @@ export class FormElementNodeModel {
     nodeModel.memberKey = memberKey;
     nodeModel.definitionKey = memberModel.definitionKey;
     nodeModel.memberModel = memberModel;
-    switch (memberModel.identifier) {
+    switch (memberModel.category) {
       case 'Group': {
         nodeModel.definitionModel = formDefinitionModel.groupDefinitionList.find(
           (x) => x.key === memberModel.definitionKey,
@@ -54,7 +56,7 @@ export class FormElementNodeModel {
     }
 
     nodeModel.children = memberModel.children.map((child) =>
-      FormElementNodeModel.mapFromMemberKey(
+      FormElementNodeModelExtensions.mapFromFormDefinitionModel(
         formDefinitionModel,
         child.key,
         memberKey,

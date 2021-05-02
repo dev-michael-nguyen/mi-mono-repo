@@ -1,11 +1,11 @@
-import { FormElementDefinitionIdentifier } from './form-definition-types';
+import { FormElementDefinitionCategory } from './form-definition-types';
 
 /**
  * The member model for an element of a form.
  */
 export class FormElementMemberModel {
   key: string;
-  identifier: FormElementDefinitionIdentifier;
+  category: FormElementDefinitionCategory;
   definitionKey: string;
   children: Array<FormElementMemberModel> = [];
 }

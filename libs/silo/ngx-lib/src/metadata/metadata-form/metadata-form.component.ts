@@ -13,6 +13,7 @@ import {
   PropertyMetadata,
 } from '@silo/metadata';
 import { TemplateRegistryConfig } from '../models/template-registry-config';
+import { MetadataFormService } from '../services/metadata-form.service';
 import { MetadataTemplateRegistryService } from '../services/metadata-template-registry.service';
 
 @Component({
@@ -29,10 +30,14 @@ export class MetadataFormComponent implements OnInit {
 
   constructor(
     private _componentFactoryResolver: ComponentFactoryResolver,
+    private _metadataFormService: MetadataFormService,
     private _metadataTemplateRegistryService: MetadataTemplateRegistryService,
   ) {}
 
   ngOnInit() {
+    const formDefinitionModel = this._metadataFormService.createFormDefinition(
+      this.metadataModel,
+    );
     const metadataIdentifier = getMetadataIdentifier(this.metadataModel);
     const rootMetadata = this.metadataModel.metadataMap[metadataIdentifier];
     Object.entries(rootMetadata.propertyMetadataMap).forEach(

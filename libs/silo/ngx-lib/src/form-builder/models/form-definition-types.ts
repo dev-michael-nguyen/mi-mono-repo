@@ -1,6 +1,10 @@
 export type FormBuilderType = 'Definition' | 'DefinitionPreview' | 'Instance';
 
-export type FormElementDefinitionIdentifier = 'Group' | 'Text' | 'Numeric';
+export type FormElementDefinitionCategory =
+  | 'Custom'
+  | 'Group'
+  | 'Text'
+  | 'Numeric';
 
 export type FormGroupDefinitionType =
   | 'FormGroup'
@@ -13,6 +17,7 @@ export type FormTextDefinitionType = 'TextBox' | 'TextArea';
 export type FormNumericDefinitionType = 'NumberBox';
 
 export type FormElementDefinitionType =
+  | string
   | FormGroupDefinitionType
   | FormTextDefinitionType
   | FormNumericDefinitionType;

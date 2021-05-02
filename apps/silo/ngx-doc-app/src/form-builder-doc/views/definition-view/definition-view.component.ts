@@ -31,6 +31,12 @@ export class DefinitionViewComponent implements OnInit {
 
   setFormDefinition() {
     this.formDefinitionModel = this._formBuilderService.createFormDefinition();
+    const { memberModel } = this._formBuilderService.addElement(
+      this.formDefinitionModel,
+      'FormGroup',
+      null,
+    );
+    this.formDefinitionModel.rootMemberKey = memberModel.key;
     this.memberKeyList = [this.formDefinitionModel.rootMemberKey];
   }
 

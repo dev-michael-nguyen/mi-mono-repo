@@ -1,6 +1,6 @@
 import { LookupModel } from './../../form-field/models/lookup-model';
 import {
-  FormElementDefinitionIdentifier,
+  FormElementDefinitionCategory,
   FormGroupDefinitionType,
 } from './form-definition-types';
 /**
@@ -8,7 +8,7 @@ import {
  */
 export class FormGroupDefinitionModel {
   key: string;
-  identifier: FormElementDefinitionIdentifier = 'Group';
+  category: FormElementDefinitionCategory = 'Group';
   type: LookupModel<FormGroupDefinitionType>;
   title: string;
   description: string;

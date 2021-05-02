@@ -5,12 +5,12 @@ import {
   Label,
   MetadataIdentifier,
   MetadataModel,
+  MetadataModelExtensions,
   TemplateIdentifier,
 } from '@silo/metadata';
-import { v4 as uuidv4 } from 'uuid';
 import { LookupModel } from './../../form-field/models/lookup-model';
 import {
-  FormElementDefinitionIdentifier,
+  FormElementDefinitionCategory,
   FormTextDefinitionType,
 } from './form-definition-types';
 
@@ -20,9 +20,9 @@ import {
 @MetadataIdentifier('FormTextDefinitionModel')
 @TemplateIdentifier('Form')
 export class FormTextDefinitionModel extends MetadataModel {
-  key = uuidv4();
+  key: string = null;
 
-  identifier: FormElementDefinitionIdentifier = 'Text';
+  category: FormElementDefinitionCategory = 'Text';
 
   type: LookupModel<FormTextDefinitionType> = null;
 
@@ -51,8 +51,10 @@ export class FormTextDefinitionModel extends MetadataModel {
 
   isRequiredToSubmit = false;
 
+  defaultValue: string = null;
+
   constructor() {
     super();
-    this.metadataMap = MetadataModel.createMetadataMap(this);
+    this.metadataMap = MetadataModelExtensions.createMetadataMap(this);
   }
 }

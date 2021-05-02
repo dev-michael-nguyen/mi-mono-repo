@@ -1,11 +1,12 @@
 import { Injectable } from '@angular/core';
 import { merge } from 'lodash';
 import { v4 as uuidv4 } from 'uuid';
+import { FormCustomDefinitionModel } from '../models/form-custom-definition-model';
 import { FormDefinitionModel } from '../models/form-definition-model';
 import { FormGroupDefinitionModel } from '../models/form-group-definition-model';
 import { FormTextDefinitionModel } from '../models/form-text-definition-model';
 import {
-  FormElementDefinitionIdentifier,
+  FormElementDefinitionCategory,
   FormElementDefinitionType,
 } from './../models/form-definition-types';
 import { FormElementMemberModel } from './../models/form-element-member-model';
@@ -17,7 +18,6 @@ export class FormBuilderService {
   createFormDefinition(): FormDefinitionModel {
     const formDefinitionModel = new FormDefinitionModel();
     formDefinitionModel.key = uuidv4();
-    this.addElement(formDefinitionModel, 'FormGroup', null);
 
     return formDefinitionModel;
   }
@@ -31,26 +31,31 @@ export class FormBuilderService {
       case 'FormGroup': {
         const { definitionModel, memberModel } = this._createFormGroup();
         formDefinitionModel.groupDefinitionList.push(definitionModel);
-        formDefinitionModel.memberList.push(memberModel);
-        formDefinitionModel.rootMemberKey = memberModel.key;
+        this._addMember(formDefinitionModel, memberModel, parentMemberKey);
         return { definitionModel, memberModel };
       }
       case 'Section': {
         const { definitionModel, memberModel } = this._createSection();
         formDefinitionModel.groupDefinitionList.push(definitionModel);
-        this._addMember(formDefinitionModel, parentMemberKey, memberModel);
+        this._addMember(formDefinitionModel, memberModel, parentMemberKey);
         return { definitionModel, memberModel };
       }
       case 'TextBox': {
         const { definitionModel, memberModel } = this._createTextBox();
         formDefinitionModel.textDefinitionList.push(definitionModel);
-        this._addMember(formDefinitionModel, parentMemberKey, memberModel);
+        this._addMember(formDefinitionModel, memberModel, parentMemberKey);
         return { definitionModel, memberModel };
       }
       case 'TextArea': {
         const { definitionModel, memberModel } = this._createTextArea();
         formDefinitionModel.textDefinitionList.push(definitionModel);
-        this._addMember(formDefinitionModel, parentMemberKey, memberModel);
+        this._addMember(formDefinitionModel, memberModel, parentMemberKey);
+        return { definitionModel, memberModel };
+      }
+      default: {
+        const { definitionModel, memberModel } = this._createCustomDefinition();
+        formDefinitionModel.customDefinitionList.push(definitionModel);
+        this._addMember(formDefinitionModel, memberModel, parentMemberKey);
         return { definitionModel, memberModel };
       }
     }
@@ -74,7 +79,7 @@ export class FormBuilderService {
       );
     });
     // remove definition
-    switch (memberModel.identifier) {
+    switch (memberModel.category) {
       case 'Group': {
         formDefinitionModel.groupDefinitionList = formDefinitionModel.groupDefinitionList.filter(
           (definition) => definition.key !== memberModel.definitionKey,
@@ -117,12 +122,12 @@ export class FormBuilderService {
   }
 
   private _createMember(
-    identifier: FormElementDefinitionIdentifier,
+    category: FormElementDefinitionCategory,
     definitionKey: string,
   ) {
     const memberModel = new FormElementMemberModel();
     memberModel.key = uuidv4();
-    memberModel.identifier = identifier;
+    memberModel.category = category;
     memberModel.definitionKey = definitionKey;
 
     return memberModel;
@@ -130,14 +135,28 @@ export class FormBuilderService {
 
   private _addMember(
     formDefinitionModel: FormDefinitionModel,
-    parentMemberKey: string,
     memberModel: FormElementMemberModel,
+    parentMemberKey: string,
   ): void {
     formDefinitionModel.memberList.push(memberModel);
-    const parentMember = formDefinitionModel.memberList.find(
-      (member) => member.key === parentMemberKey,
+    if (parentMemberKey) {
+      const parentMember = formDefinitionModel.memberList.find(
+        (member) => member.key === parentMemberKey,
+      );
+      parentMember.children.push(memberModel);
+    }
+  }
+
+  private _createCustomDefinition() {
+    const definitionModel = new FormCustomDefinitionModel();
+    definitionModel.key = uuidv4();
+
+    const memberModel = this._createMember(
+      definitionModel.category,
+      definitionModel.key,
     );
-    parentMember.children.push(memberModel);
+
+    return { definitionModel, memberModel };
   }
 
   private _createFormGroup() {
@@ -150,7 +169,7 @@ export class FormBuilderService {
     definitionModel.title = 'Form Title';
 
     const memberModel = this._createMember(
-      definitionModel.identifier,
+      definitionModel.category,
       definitionModel.key,
     );
 
@@ -167,7 +186,7 @@ export class FormBuilderService {
     definitionModel.title = 'Section Title';
 
     const memberModel = this._createMember(
-      definitionModel.identifier,
+      definitionModel.category,
       definitionModel.key,
     );
 
@@ -176,6 +195,7 @@ export class FormBuilderService {
 
   private _createTextBox() {
     const definitionModel = new FormTextDefinitionModel();
+    definitionModel.key = uuidv4();
     definitionModel.type = {
       key: 'TextBox',
       displayName: 'Text Box',
@@ -183,7 +203,7 @@ export class FormBuilderService {
     definitionModel.label = 'Text Box Label';
 
     const memberModel = this._createMember(
-      definitionModel.identifier,
+      definitionModel.category,
       definitionModel.key,
     );
 
@@ -192,6 +212,7 @@ export class FormBuilderService {
 
   private _createTextArea() {
     const definitionModel = new FormTextDefinitionModel();
+    definitionModel.key = uuidv4();
     definitionModel.type = {
       key: 'TextArea',
       displayName: 'Text Area',
@@ -199,7 +220,7 @@ export class FormBuilderService {
     definitionModel.label = 'Text Area Label';
 
     const memberModel = this._createMember(
-      definitionModel.identifier,
+      definitionModel.category,
       definitionModel.key,
     );
 
