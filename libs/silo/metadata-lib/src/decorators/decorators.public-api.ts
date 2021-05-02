@@ -1,3 +1,4 @@
+export * from './description';
 export * from './display-order';
 export * from './field-outline-size';
 export * from './field-size';
@@ -5,5 +6,7 @@ export * from './hint';
 export * from './is-required';
 export * from './is-required-to-submit';
 export * from './label';
-export * from './label-description';
+export * from './metadata-identifier';
 export * from './placeholder';
+export * from './template-identifier';
+export * from './title';

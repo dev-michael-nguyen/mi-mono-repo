@@ -1,5 +1,5 @@
 import 'reflect-metadata';
-import { getMetadataIdentifier } from '../common-decorators/metadata-identifier';
+import { getMetadataIdentifier } from '../decorators/metadata-identifier';
 import { ClassMetadata } from './class-metadata';
 import { MetadataMap } from './metadata-map';
 import { PropertyMetadata } from './property-metadata';
@@ -11,7 +11,9 @@ import { PropertyMetadataMap } from './property-metadata-map';
 export class MetadataModel {
   [key: string]: unknown;
   metadataMap: MetadataMap;
+}
 
+export class MetadataModelExtensions {
   /**
    * Create metadata map for metadata model.
    *
@@ -24,13 +26,15 @@ export class MetadataModel {
     metadataModel: MetadataModel,
     metadataMap: MetadataMap = {},
   ): MetadataMap {
-    const classMetadata = MetadataModel.createClassMetadata(metadataModel);
+    const classMetadata = MetadataModelExtensions.createClassMetadata(
+      metadataModel,
+    );
 
     if (!classMetadata?.metadataIdentifier) {
       throw new Error('metadataIdentifier is required');
     }
 
-    const propertyMetadataMap = MetadataModel.createPropertyMetadataMap(
+    const propertyMetadataMap = MetadataModelExtensions.createPropertyMetadataMap(
       metadataModel,
       metadataMap,
     );
@@ -84,18 +88,23 @@ export class MetadataModel {
     ).reduce<PropertyMetadataMap>(
       (propertyMetadataMap: PropertyMetadataMap, propertyKey: string) => {
         const propertyMetadata: PropertyMetadata =
-          MetadataModel.createPropertyMetadata(metadataModel, propertyKey) ??
-          {};
+          MetadataModelExtensions.createPropertyMetadata(
+            metadataModel,
+            propertyKey,
+          ) ?? {};
 
         const propertyValue = metadataModel[propertyKey];
 
         let propertyClassMetadata: ClassMetadata;
         if (propertyValue instanceof MetadataModel) {
-          propertyClassMetadata = MetadataModel.createClassMetadata(
+          propertyClassMetadata = MetadataModelExtensions.createClassMetadata(
             propertyValue,
           );
           if (propertyClassMetadata?.metadataIdentifier) {
-            MetadataModel.createMetadataMap(propertyValue, metadataMap);
+            MetadataModelExtensions.createMetadataMap(
+              propertyValue,
+              metadataMap,
+            );
           }
         }
 
@@ -132,7 +141,8 @@ export class MetadataModel {
     metadataModel: MetadataModel,
     propertyKey: string,
   ): PropertyMetadata {
-    const propertyMetadata = Reflect.getMetadataKeys(metadataModel, propertyKey)
+    const metadataKeys = Reflect.getMetadataKeys(metadataModel, propertyKey);
+    const propertyMetadata = metadataKeys
       .filter((metadataKey: string) => !metadataKey.startsWith('design:'))
       .reduce<PropertyMetadata>(
         (propertyMetadata: PropertyMetadata, metadataKey: string) => {

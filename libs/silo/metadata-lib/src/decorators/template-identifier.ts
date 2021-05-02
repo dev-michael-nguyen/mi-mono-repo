@@ -1,3 +1,5 @@
+import 'reflect-metadata';
+
 /**
  * Identify this class/property to have template identifier metadata.
  *

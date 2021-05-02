@@ -1,3 +1,4 @@
+import 'reflect-metadata';
 import { MetadataModel } from './../models/metadata-model';
 
 export const metadataIdentifierSymbol = 'metadataIdentifier';

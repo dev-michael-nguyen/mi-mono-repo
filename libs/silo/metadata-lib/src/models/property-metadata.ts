@@ -6,8 +6,9 @@ export class PropertyMetadata {
   isRequired?: boolean;
   isRequiredToSubmit?: boolean;
   label?: string;
-  labelDescription?: string;
+  description?: string;
   metadataIdentifier?: string;
   placeholder?: string;
   templateIdentifier?: string;
+  title?: string;
 }

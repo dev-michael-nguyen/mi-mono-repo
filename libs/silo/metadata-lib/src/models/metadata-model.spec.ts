@@ -1,8 +1,8 @@
-import { MetadataIdentifier } from '../common-decorators/metadata-identifier';
-import { TemplateIdentifier } from '../common-decorators/template-identifier';
-import { Label } from '../property-decorators/label';
+import { Label } from '../decorators/label';
+import { MetadataIdentifier } from '../decorators/metadata-identifier';
+import { TemplateIdentifier } from '../decorators/template-identifier';
 import { MetadataMap } from './metadata-map';
-import { MetadataModel } from './metadata-model';
+import { MetadataModel, MetadataModelExtensions } from './metadata-model';
 
 @MetadataIdentifier('TestPersonNameModel')
 @TemplateIdentifier('CommonPersonName')
@@ -37,7 +37,9 @@ describe('MetadataModel', () => {
     const testPersonModel = new TestPersonModel();
 
     // act
-    const classMetadata = MetadataModel.createClassMetadata(testPersonModel);
+    const classMetadata = MetadataModelExtensions.createClassMetadata(
+      testPersonModel,
+    );
 
     // assert
     expect(classMetadata).toBeTruthy();
@@ -50,7 +52,7 @@ describe('MetadataModel', () => {
     const testPersonModel = new TestPersonModel();
 
     // act
-    const propertyMetadata = MetadataModel.createPropertyMetadata(
+    const propertyMetadata = MetadataModelExtensions.createPropertyMetadata(
       testPersonModel,
       'name',
     );
@@ -64,12 +66,12 @@ describe('MetadataModel', () => {
   it('should get property metadata', () => {
     // arrange
     const testPersonModel = new TestPersonModel();
-    testPersonModel.metadataMap = MetadataModel.createMetadataMap(
+    testPersonModel.metadataMap = MetadataModelExtensions.createMetadataMap(
       testPersonModel,
     );
 
     // act
-    const firstNameMetadata = MetadataModel.getPropertyMetadata(
+    const firstNameMetadata = MetadataModelExtensions.getPropertyMetadata(
       testPersonModel,
       null,
       'name.firstName',
@@ -84,12 +86,12 @@ describe('MetadataModel', () => {
   it('should get undefined property metadata if full property path is invalid', () => {
     // arrange
     const testPersonModel = new TestPersonModel();
-    testPersonModel.metadataMap = MetadataModel.createMetadataMap(
+    testPersonModel.metadataMap = MetadataModelExtensions.createMetadataMap(
       testPersonModel,
     );
 
     // act
-    const firstNameMetadata = MetadataModel.getPropertyMetadata(
+    const firstNameMetadata = MetadataModelExtensions.getPropertyMetadata(
       testPersonModel,
       null,
       'names.firstName',
@@ -105,7 +107,7 @@ describe('MetadataModel', () => {
     const metadataMap: MetadataMap = {};
 
     // act
-    const propertyMetadataMap = MetadataModel.createPropertyMetadataMap(
+    const propertyMetadataMap = MetadataModelExtensions.createPropertyMetadataMap(
       testPersonModel,
       metadataMap,
     );
@@ -132,7 +134,7 @@ describe('MetadataModel', () => {
     const metadataMap: MetadataMap = {};
 
     // act
-    const propertyMetadataMap = MetadataModel.createPropertyMetadataMap(
+    const propertyMetadataMap = MetadataModelExtensions.createPropertyMetadataMap(
       testPersonModel,
       metadataMap,
     );
@@ -146,11 +148,13 @@ describe('MetadataModel', () => {
     const testPersonModel = new TestPersonModel();
 
     // act
-    const metadataMap = MetadataModel.createMetadataMap(testPersonModel);
+    testPersonModel.metadataMap = MetadataModelExtensions.createMetadataMap(
+      testPersonModel,
+    );
 
     // assert
-    expect(metadataMap).toBeTruthy();
-    expect(metadataMap.TestPersonModel).toBeTruthy();
-    expect(metadataMap.TestPersonNameModel).toBeTruthy();
+    expect(testPersonModel.metadataMap).toBeTruthy();
+    expect(testPersonModel.metadataMap.TestPersonModel).toBeTruthy();
+    expect(testPersonModel.metadataMap.TestPersonNameModel).toBeTruthy();
   });
 });
