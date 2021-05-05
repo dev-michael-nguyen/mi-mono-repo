@@ -1,4 +1,4 @@
-import { FormElementDefinitionType } from './form-definition-types';
+import { FormElementTemplateIdentifier } from './form-definition-types';
 import { FormGroupDefinitionModel } from './form-group-definition-model';
 import { FormTextDefinitionModel } from './form-text-definition-model';
 
@@ -10,7 +10,7 @@ export type FormBuilderEvent =
   | UpdateFormTextDefinitionEvent;
 
 export class AddFormElementEvent {
-  type: FormElementDefinitionType;
+  type: FormElementTemplateIdentifier;
   parentMemberKey: string;
 }
 

@@ -6,7 +6,7 @@ import {
 } from '@silo/metadata';
 import { FormCustomDefinitionModel } from '../../form-builder/models/form-custom-definition-model';
 import { FormDefinitionModel } from '../../form-builder/models/form-definition-model';
-import { FormElementDefinitionType } from '../../form-builder/models/form-definition-types';
+import { FormElementTemplateIdentifier } from '../../form-builder/models/form-definition-types';
 import { FormBuilderService } from '../../form-builder/services/form-builder.service';
 import { MetadataTemplateRegistryService } from './metadata-template-registry.service';
 
@@ -51,7 +51,7 @@ export class MetadataFormService {
   addMetadataModelAsElement(
     formDefinitionModel: FormDefinitionModel,
     metadataModel: MetadataModel,
-    formElementDefinitionType: FormElementDefinitionType,
+    formElementDefinitionType: FormElementTemplateIdentifier,
     parentMemberKey: string,
   ) {
     const metadataIdentifier = getMetadataIdentifier(metadataModel);

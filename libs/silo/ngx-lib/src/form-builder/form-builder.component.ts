@@ -17,7 +17,7 @@ import {
 import { FormDefinitionModel } from './models/form-definition-model';
 import {
   FormBuilderType,
-  FormElementDefinitionType,
+  FormElementTemplateIdentifier,
 } from './models/form-definition-types';
 import {
   FormElementNodeModel,
@@ -86,7 +86,7 @@ export class FormBuilderComponent implements OnInit {
     this.lastActiveDefinitionKey$.next(nodeModel.definitionKey);
   }
 
-  addElement(type: FormElementDefinitionType) {
+  addElement(type: FormElementTemplateIdentifier) {
     const event = new AddFormElementEvent();
     event.type = type;
     // if active node is not a group, add as a child to parent which should be a group

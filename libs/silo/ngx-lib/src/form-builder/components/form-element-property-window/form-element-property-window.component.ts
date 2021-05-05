@@ -45,8 +45,8 @@ export class FormElementPropertyWindowComponent
   }
 
   attachComponent() {
-    if (!this.nodeModel?.definitionModel?.type?.key) {
-      throw new Error('Element definition type is required');
+    if (!this.nodeModel?.definitionModel?.templateIdentifier) {
+      throw new Error('Template identifier is required');
     }
 
     if (this.portalOutlet.hasAttached()) {
@@ -54,7 +54,7 @@ export class FormElementPropertyWindowComponent
     }
 
     const config = this._formBuilderRegistryService.get(
-      this.nodeModel.definitionModel.type.key,
+      this.nodeModel.definitionModel.templateIdentifier,
     );
     const componentPortal = new ComponentPortal(config.windowType);
     this.portalOutlet.attachComponentPortal(componentPortal);

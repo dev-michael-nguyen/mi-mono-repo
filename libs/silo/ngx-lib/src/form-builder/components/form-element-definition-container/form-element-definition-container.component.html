@@ -24,7 +24,7 @@
           @render
           *ngIf="
             nodeModel.state.isActive &&
-            nodeModel.definitionModel.type.key !== 'FormGroup'
+            nodeModel.definitionModel.templateIdentifier !== 'FormGroup'
           "
         >
           <button

@@ -1,7 +1,6 @@
-import { LookupModel } from './../../form-field/models/lookup-model';
 import {
   FormElementDefinitionCategory,
-  FormGroupDefinitionType,
+  FormGroupTemplateIdentifier,
 } from './form-definition-types';
 /**
  * The definition model for a group element of a form.
@@ -9,7 +8,8 @@ import {
 export class FormGroupDefinitionModel {
   key: string;
   category: FormElementDefinitionCategory = 'Group';
-  type: LookupModel<FormGroupDefinitionType>;
+  templateIdentifier: FormGroupTemplateIdentifier = null;
+  templateDisplayName: string = null;
   title: string;
   description: string;
 }

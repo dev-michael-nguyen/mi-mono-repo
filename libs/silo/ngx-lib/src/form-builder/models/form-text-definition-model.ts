@@ -8,10 +8,9 @@ import {
   MetadataModelExtensions,
   TemplateIdentifier,
 } from '@silo/metadata';
-import { LookupModel } from './../../form-field/models/lookup-model';
 import {
   FormElementDefinitionCategory,
-  FormTextDefinitionType,
+  FormTextTemplateIdentifier,
 } from './form-definition-types';
 
 /**
@@ -24,7 +23,9 @@ export class FormTextDefinitionModel extends MetadataModel {
 
   category: FormElementDefinitionCategory = 'Text';
 
-  type: LookupModel<FormTextDefinitionType> = null;
+  templateIdentifier: FormTextTemplateIdentifier = null;
+
+  templateDisplayName: string = null;
 
   @DisplayOrder(10)
   @TemplateIdentifier('TextBox')

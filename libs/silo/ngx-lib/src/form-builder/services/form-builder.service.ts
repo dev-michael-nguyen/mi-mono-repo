@@ -7,7 +7,7 @@ import { FormGroupDefinitionModel } from '../models/form-group-definition-model'
 import { FormTextDefinitionModel } from '../models/form-text-definition-model';
 import {
   FormElementDefinitionCategory,
-  FormElementDefinitionType,
+  FormElementTemplateIdentifier,
 } from './../models/form-definition-types';
 import { FormElementMemberModel } from './../models/form-element-member-model';
 
@@ -24,7 +24,7 @@ export class FormBuilderService {
 
   addElement(
     formDefinitionModel: FormDefinitionModel,
-    formElementDefinitionType: FormElementDefinitionType,
+    formElementDefinitionType: FormElementTemplateIdentifier,
     parentMemberKey: string,
   ) {
     switch (formElementDefinitionType) {
@@ -162,10 +162,8 @@ export class FormBuilderService {
   private _createFormGroup() {
     const definitionModel = new FormGroupDefinitionModel();
     definitionModel.key = uuidv4();
-    definitionModel.type = {
-      key: 'FormGroup',
-      displayName: 'Form',
-    };
+    definitionModel.templateIdentifier = 'FormGroup';
+    definitionModel.templateDisplayName = 'Form';
     definitionModel.title = 'Form Title';
 
     const memberModel = this._createMember(
@@ -179,10 +177,8 @@ export class FormBuilderService {
   private _createSection() {
     const definitionModel = new FormGroupDefinitionModel();
     definitionModel.key = uuidv4();
-    definitionModel.type = {
-      key: 'Section',
-      displayName: 'Section',
-    };
+    definitionModel.templateIdentifier = 'Section';
+    definitionModel.templateDisplayName = 'Section';
     definitionModel.title = 'Section Title';
 
     const memberModel = this._createMember(
@@ -196,10 +192,8 @@ export class FormBuilderService {
   private _createTextBox() {
     const definitionModel = new FormTextDefinitionModel();
     definitionModel.key = uuidv4();
-    definitionModel.type = {
-      key: 'TextBox',
-      displayName: 'Text Box',
-    };
+    definitionModel.templateIdentifier = 'TextBox';
+    definitionModel.templateDisplayName = 'Text Box';
     definitionModel.label = 'Text Box Label';
 
     const memberModel = this._createMember(
@@ -213,10 +207,8 @@ export class FormBuilderService {
   private _createTextArea() {
     const definitionModel = new FormTextDefinitionModel();
     definitionModel.key = uuidv4();
-    definitionModel.type = {
-      key: 'TextArea',
-      displayName: 'Text Area',
-    };
+    definitionModel.templateIdentifier = 'TextArea';
+    definitionModel.templateDisplayName = 'Text Area';
     definitionModel.label = 'Text Area Label';
 
     const memberModel = this._createMember(

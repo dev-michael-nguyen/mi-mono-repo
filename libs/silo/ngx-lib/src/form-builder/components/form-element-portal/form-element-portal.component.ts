@@ -50,8 +50,8 @@ export class FormElementPortalComponent
   }
 
   attachComponent() {
-    if (!this.nodeModel?.definitionModel?.type) {
-      throw new Error('Element definition type is required');
+    if (!this.nodeModel?.definitionModel?.templateIdentifier) {
+      throw new Error('Template identifier is required');
     }
 
     if (this.portalOutlet.hasAttached()) {
@@ -59,7 +59,7 @@ export class FormElementPortalComponent
     }
 
     const config = this._formBuilderRegistryService.get(
-      this.nodeModel.definitionModel.type.key,
+      this.nodeModel.definitionModel.templateIdentifier,
     );
     const componentPortal = new ComponentPortal(config.elementType);
     this.portalOutlet.attachComponentPortal(componentPortal);

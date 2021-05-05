@@ -6,18 +6,18 @@ export type FormElementDefinitionCategory =
   | 'Text'
   | 'Numeric';
 
-export type FormGroupDefinitionType =
+export type FormGroupTemplateIdentifier =
   | 'FormGroup'
   | 'Section'
   | 'Fieldset'
   | 'List';
 
-export type FormTextDefinitionType = 'TextBox' | 'TextArea';
+export type FormTextTemplateIdentifier = 'TextBox' | 'TextArea';
 
-export type FormNumericDefinitionType = 'NumberBox';
+export type FormNumericTemplateIdentifier = 'NumberBox';
 
-export type FormElementDefinitionType =
+export type FormElementTemplateIdentifier =
   | string
-  | FormGroupDefinitionType
-  | FormTextDefinitionType
-  | FormNumericDefinitionType;
+  | FormGroupTemplateIdentifier
+  | FormTextTemplateIdentifier
+  | FormNumericTemplateIdentifier;
