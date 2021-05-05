@@ -10,7 +10,7 @@ import { MultiSelectValidatorFactory } from './multi-select-validator.factory';
 @Component({
   template: '',
 })
-export class MultiSelectFieldComponent implements OnInit {
+export abstract class MultiSelectFieldComponent implements OnInit {
   formGroup: FormGroup;
 
   lookupListFormControl: FormControl;

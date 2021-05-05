@@ -8,7 +8,7 @@ import { RichTextValidatorFactory } from './rich-text-validator.factory';
 @Component({
   template: '',
 })
-export class RichTextFieldComponent implements OnInit {
+export abstract class RichTextFieldComponent implements OnInit {
   formGroup: FormGroup;
 
   richTextFormControl: FormControl;

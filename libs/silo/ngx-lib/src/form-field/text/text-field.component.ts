@@ -16,7 +16,7 @@ import { TextValidatorFactory } from './text-validator.factory';
 @Component({
   template: '',
 })
-export class TextFieldComponent
+export abstract class TextFieldComponent
   implements OnInit, AfterViewInit, PropertyMetadataApplicator {
   formGroup: FormGroup;
 

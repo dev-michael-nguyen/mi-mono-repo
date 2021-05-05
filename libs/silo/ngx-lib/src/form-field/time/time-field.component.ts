@@ -8,7 +8,7 @@ import { TimeValidatorFactory } from './time-validator.factory';
 @Component({
   template: '',
 })
-export class TimeFieldComponent implements OnInit {
+export abstract class TimeFieldComponent implements OnInit {
   formGroup: FormGroup;
 
   timeFormControl: FormControl;

@@ -10,7 +10,7 @@ import { NativeDate, NativeDateAdapter } from './native-date-adapter';
 @Component({
   template: '',
 })
-export class DateFieldComponent implements OnInit {
+export abstract class DateFieldComponent implements OnInit {
   formGroup: FormGroup;
 
   dateFormControl: FormControl;

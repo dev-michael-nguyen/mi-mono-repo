@@ -8,7 +8,7 @@ import { NumericValidatorFactory } from './numeric-validator.factory';
 @Component({
   template: '',
 })
-export class NumericFieldComponent implements OnInit {
+export abstract class NumericFieldComponent implements OnInit {
   formGroup: FormGroup;
 
   numericFormControl: FormControl;

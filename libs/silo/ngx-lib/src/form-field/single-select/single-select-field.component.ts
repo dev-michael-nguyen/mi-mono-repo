@@ -10,7 +10,7 @@ import { SingleSelectValidatorFactory } from './single-select-validator.factory'
 @Component({
   template: '',
 })
-export class SingleSelectFieldComponent implements OnInit {
+export abstract class SingleSelectFieldComponent implements OnInit {
   formGroup: FormGroup;
 
   lookupFormControl: FormControl;

@@ -8,7 +8,7 @@ import { PhoneValidatorFactory } from './phone-validator.factory';
 @Component({
   template: '',
 })
-export class PhoneFieldComponent implements OnInit {
+export abstract class PhoneFieldComponent implements OnInit {
   formGroup: FormGroup;
 
   phoneFormControl: FormControl;
