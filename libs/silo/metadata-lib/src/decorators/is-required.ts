@@ -1,4 +1,4 @@
-import 'reflect-metadata';
+import { ReflectMetadataExtensions } from '../utils/reflect-metadata-extensions';
 
 /**
  * Identify this property to have required to save metadata.
@@ -7,9 +7,11 @@ import 'reflect-metadata';
  */
 export function IsRequired(isRequired = true) {
   return (target, propertyKey?: string) => {
-    // property decorator
-    if (target && propertyKey) {
-      Reflect.defineMetadata('isRequired', isRequired, target, propertyKey);
-    }
+    ReflectMetadataExtensions.defineMetadata(
+      'isRequired',
+      isRequired,
+      target,
+      propertyKey,
+    );
   };
 }

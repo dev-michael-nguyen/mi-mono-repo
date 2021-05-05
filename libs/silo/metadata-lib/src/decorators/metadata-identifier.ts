@@ -1,4 +1,4 @@
-import 'reflect-metadata';
+import { ReflectMetadataExtensions } from '../utils/reflect-metadata-extensions';
 import { MetadataModel } from './../models/metadata-model';
 
 export const metadataIdentifierSymbol = 'metadataIdentifier';
@@ -10,27 +10,18 @@ export const metadataIdentifierSymbol = 'metadataIdentifier';
  */
 export function MetadataIdentifier(metadataIdentifier: string) {
   return (target, propertyKey?: string) => {
-    // property decorator
-    if (target && propertyKey) {
-      Reflect.defineMetadata(
-        metadataIdentifierSymbol,
-        metadataIdentifier,
-        target,
-        propertyKey,
-      );
-    }
-
-    // class decorator
-    if (target?.prototype) {
-      Reflect.defineMetadata(
-        metadataIdentifierSymbol,
-        metadataIdentifier,
-        target.prototype,
-      );
-    }
+    ReflectMetadataExtensions.defineMetadata(
+      metadataIdentifierSymbol,
+      metadataIdentifier,
+      target,
+      propertyKey,
+    );
   };
 }
 
 export function getMetadataIdentifier(metadataModel: MetadataModel): string {
-  return Reflect.getMetadata(metadataIdentifierSymbol, metadataModel);
+  return ReflectMetadataExtensions.getMetadata(
+    metadataIdentifierSymbol,
+    metadataModel,
+  );
 }

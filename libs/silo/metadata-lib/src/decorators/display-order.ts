@@ -1,4 +1,4 @@
-import 'reflect-metadata';
+import { ReflectMetadataExtensions } from '../utils/reflect-metadata-extensions';
 
 /**
  * Identify this property to have display order metadata.
@@ -7,9 +7,11 @@ import 'reflect-metadata';
  */
 export function DisplayOrder(orderNumber: number) {
   return (target, propertyKey?: string) => {
-    // property decorator
-    if (target && propertyKey) {
-      Reflect.defineMetadata('displayOrder', orderNumber, target, propertyKey);
-    }
+    ReflectMetadataExtensions.defineMetadata(
+      'displayOrder',
+      orderNumber,
+      target,
+      propertyKey,
+    );
   };
 }

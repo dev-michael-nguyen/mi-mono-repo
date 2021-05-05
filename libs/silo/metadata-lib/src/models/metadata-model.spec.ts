@@ -1,29 +1,29 @@
 import { Label } from '../decorators/label';
 import { MetadataIdentifier } from '../decorators/metadata-identifier';
-import { TemplateIdentifier } from '../decorators/template-identifier';
+import { Template } from '../decorators/template';
 import { MetadataMap } from './metadata-map';
 import { MetadataModel, MetadataModelExtensions } from './metadata-model';
 
 @MetadataIdentifier('TestPersonNameModel')
-@TemplateIdentifier('CommonPersonName')
+@Template('CommonPersonName', 'Person Name')
 class TestPersonNameModel extends MetadataModel {
-  @TemplateIdentifier('TextBox')
+  @Template('TextBox', 'Text Box')
   @Label('First Name')
   firstName: string = null;
 
-  @TemplateIdentifier('TextBox')
+  @Template('TextBox', 'Text Box')
   @Label('Last Name')
   lastName: string = null;
 }
 
 @MetadataIdentifier('TestPersonModel')
-@TemplateIdentifier('Form')
+@Template('FormGroup', 'Form')
 class TestPersonModel extends MetadataModel {
-  @TemplateIdentifier('Date')
+  @Template('Date', 'Date')
   @Label('DOB')
   birthDate: string = null;
 
-  @TemplateIdentifier('CustomPersonName')
+  @Template('CustomPersonName', 'Person Name')
   @Label('Name')
   name: TestPersonNameModel = new TestPersonNameModel();
 

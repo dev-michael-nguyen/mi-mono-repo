@@ -8,5 +8,5 @@ export * from './is-required-to-submit';
 export * from './label';
 export * from './metadata-identifier';
 export * from './placeholder';
-export * from './template-identifier';
+export * from './template';
 export * from './title';

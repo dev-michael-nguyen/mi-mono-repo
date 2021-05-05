@@ -1,4 +1,4 @@
-import 'reflect-metadata';
+import { ReflectMetadataExtensions } from '../utils/reflect-metadata-extensions';
 
 /**
  * Identify this property to have label metadata.
@@ -7,9 +7,11 @@ import 'reflect-metadata';
  */
 export function Label(label: string) {
   return (target, propertyKey?: string) => {
-    // property decorator
-    if (target && propertyKey) {
-      Reflect.defineMetadata('label', label, target, propertyKey);
-    }
+    ReflectMetadataExtensions.defineMetadata(
+      'label',
+      label,
+      target,
+      propertyKey,
+    );
   };
 }

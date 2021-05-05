@@ -1,4 +1,4 @@
-import 'reflect-metadata';
+import { ReflectMetadataExtensions } from '../utils/reflect-metadata-extensions';
 
 /**
  * Identify this property to have field outline size metadata.
@@ -7,14 +7,11 @@ import 'reflect-metadata';
  */
 export function FieldOutlineSize(fieldOutlineSize: string) {
   return (target, propertyKey?: string) => {
-    // property decorator
-    if (target && propertyKey) {
-      Reflect.defineMetadata(
-        'fieldOutlineSize',
-        fieldOutlineSize,
-        target,
-        propertyKey,
-      );
-    }
+    ReflectMetadataExtensions.defineMetadata(
+      'fieldOutlineSize',
+      fieldOutlineSize,
+      target,
+      propertyKey,
+    );
   };
 }

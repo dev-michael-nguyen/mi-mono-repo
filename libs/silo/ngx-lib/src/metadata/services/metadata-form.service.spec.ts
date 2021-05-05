@@ -4,7 +4,7 @@ import {
   MetadataIdentifier,
   MetadataModel,
   MetadataModelExtensions,
-  TemplateIdentifier,
+  Template,
 } from '@silo/metadata';
 import { render } from '@testing-library/angular';
 import 'reflect-metadata';
@@ -13,29 +13,29 @@ import { MetadataFormService } from './metadata-form.service';
 import { MetadataTemplateRegistryService } from './metadata-template-registry.service';
 
 @MetadataIdentifier('TestPersonNameModel')
-@TemplateIdentifier('CommonPersonName')
+@Template('CommonPersonName', 'Person Name')
 class TestPersonNameModel extends MetadataModel {
-  @TemplateIdentifier('TextBox')
+  @Template('TextBox', 'Text Box')
   @Label('First Name')
   firstName: string = null;
 
-  @TemplateIdentifier('TextBox')
+  @Template('TextBox', 'Text Box')
   @Label('Last Name')
   lastName: string = null;
 }
 
 @MetadataIdentifier('TestPersonModel')
-@TemplateIdentifier('FormGroup')
+@Template('FormGroup', 'Form')
 class TestPersonModel extends MetadataModel {
-  @TemplateIdentifier('Date')
+  @Template('Date', 'Date')
   @Label('DOB')
   birthDate: string = null;
 
-  @TemplateIdentifier('CustomPersonName')
+  @Template('CustomPersonName', 'Person Name')
   @Label('Name')
   name: TestPersonNameModel = new TestPersonNameModel();
 
-  @TemplateIdentifier('TextBox')
+  @Template('TextBox', 'Text Box')
   @Label('Age')
   age: number = null;
 }

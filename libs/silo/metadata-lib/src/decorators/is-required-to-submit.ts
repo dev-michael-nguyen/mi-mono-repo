@@ -1,4 +1,4 @@
-import 'reflect-metadata';
+import { ReflectMetadataExtensions } from '../utils/reflect-metadata-extensions';
 
 /**
  * Identify this property to have required to submit metadata.
@@ -7,14 +7,11 @@ import 'reflect-metadata';
  */
 export function IsRequiredToSubmit(isRequiredToSubmit = true) {
   return (target, propertyKey?: string) => {
-    // property decorator
-    if (target && propertyKey) {
-      Reflect.defineMetadata(
-        'isRequiredToSubmit',
-        isRequiredToSubmit,
-        target,
-        propertyKey,
-      );
-    }
+    ReflectMetadataExtensions.defineMetadata(
+      'isRequiredToSubmit',
+      isRequiredToSubmit,
+      target,
+      propertyKey,
+    );
   };
 }

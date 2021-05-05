@@ -6,7 +6,7 @@ import {
   MetadataIdentifier,
   MetadataModel,
   MetadataModelExtensions,
-  TemplateIdentifier,
+  Template,
 } from '@silo/metadata';
 import {
   FormElementDefinitionCategory,
@@ -17,7 +17,7 @@ import {
  * The definition model for a text element of a form.
  */
 @MetadataIdentifier('FormTextDefinitionModel')
-@TemplateIdentifier('Form')
+@Template('FormGroup', 'Form')
 export class FormTextDefinitionModel extends MetadataModel {
   key: string = null;
 
@@ -28,20 +28,20 @@ export class FormTextDefinitionModel extends MetadataModel {
   templateDisplayName: string = null;
 
   @DisplayOrder(10)
-  @TemplateIdentifier('TextBox')
+  @Template('TextBox', 'Text Box')
   @FieldSize('col-12')
   @Label('Label')
   @IsRequired()
   label: string = null;
 
   @DisplayOrder(20)
-  @TemplateIdentifier('TextArea')
+  @Template('TextArea', 'Text Area')
   @FieldSize('col-12')
   @Label('Placeholder')
   placeholder: string = null;
 
   @DisplayOrder(30)
-  @TemplateIdentifier('TextBox')
+  @Template('TextBox', 'Text Box')
   @FieldSize('col-12')
   @Label('Hint')
   hint: string = null;

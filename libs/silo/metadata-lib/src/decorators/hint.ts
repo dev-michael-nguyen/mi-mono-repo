@@ -1,4 +1,4 @@
-import 'reflect-metadata';
+import { ReflectMetadataExtensions } from '../utils/reflect-metadata-extensions';
 
 /**
  * Identify this property to have hint metadata.
@@ -7,9 +7,6 @@ import 'reflect-metadata';
  */
 export function Hint(hint: string) {
   return (target, propertyKey?: string) => {
-    // property decorator
-    if (target && propertyKey) {
-      Reflect.defineMetadata('hint', hint, target, propertyKey);
-    }
+    ReflectMetadataExtensions.defineMetadata('hint', hint, target, propertyKey);
   };
 }

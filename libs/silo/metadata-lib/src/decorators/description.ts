@@ -1,4 +1,4 @@
-import 'reflect-metadata';
+import { ReflectMetadataExtensions } from '../utils/reflect-metadata-extensions';
 
 /**
  * Identify this class/property to have description metadata.
@@ -7,14 +7,11 @@ import 'reflect-metadata';
  */
 export function Description(description: string) {
   return (target, propertyKey?: string) => {
-    // property decorator
-    if (target && propertyKey) {
-      Reflect.defineMetadata('description', description, target, propertyKey);
-    }
-
-    // class decorator
-    if (target?.prototype) {
-      Reflect.defineMetadata('description', description, target.prototype);
-    }
+    ReflectMetadataExtensions.defineMetadata(
+      'description',
+      description,
+      target,
+      propertyKey,
+    );
   };
 }
