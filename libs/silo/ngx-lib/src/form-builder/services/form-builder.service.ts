@@ -3,10 +3,11 @@ import { merge } from 'lodash';
 import { v4 as uuidv4 } from 'uuid';
 import { FormCustomDefinitionModel } from '../models/form-custom-definition-model';
 import { FormDefinitionModel } from '../models/form-definition-model';
+import { FormElementDefinitionModel } from '../models/form-element-definition-model';
 import { FormGroupDefinitionModel } from '../models/form-group-definition-model';
 import { FormTextDefinitionModel } from '../models/form-text-definition-model';
 import {
-  FormElementDefinitionCategory,
+  FormElementDataType,
   FormElementTemplateIdentifier,
 } from './../models/form-definition-types';
 import { FormElementMemberModel } from './../models/form-element-member-model';
@@ -79,8 +80,8 @@ export class FormBuilderService {
       );
     });
     // remove definition
-    switch (memberModel.category) {
-      case 'Group': {
+    switch (memberModel.dataType) {
+      case 'Object' || 'Array': {
         formDefinitionModel.groupDefinitionList = formDefinitionModel.groupDefinitionList.filter(
           (definition) => definition.key !== memberModel.definitionKey,
         );
@@ -93,6 +94,19 @@ export class FormBuilderService {
         break;
       }
     }
+  }
+
+  updateElementDefinition(
+    formDefinitionModel: FormDefinitionModel,
+    formElementDefinitionModel: FormElementDefinitionModel,
+  ) {
+    const definition = formDefinitionModel.definitionList.find(
+      (x) => x.key == formElementDefinitionModel.key,
+    );
+    if (!definition) {
+      throw new Error(`Cannot find definition`);
+    }
+    merge(definition, formElementDefinitionModel);
   }
 
   updateGroupDefinition(
@@ -121,13 +135,10 @@ export class FormBuilderService {
     merge(found, formTextDefinitionModel);
   }
 
-  private _createMember(
-    category: FormElementDefinitionCategory,
-    definitionKey: string,
-  ) {
+  private _createMember(category: FormElementDataType, definitionKey: string) {
     const memberModel = new FormElementMemberModel();
     memberModel.key = uuidv4();
-    memberModel.category = category;
+    memberModel.dataType = category;
     memberModel.definitionKey = definitionKey;
 
     return memberModel;
@@ -152,7 +163,7 @@ export class FormBuilderService {
     definitionModel.key = uuidv4();
 
     const memberModel = this._createMember(
-      definitionModel.category,
+      definitionModel.dataType,
       definitionModel.key,
     );
 
@@ -167,7 +178,7 @@ export class FormBuilderService {
     definitionModel.title = 'Form Title';
 
     const memberModel = this._createMember(
-      definitionModel.category,
+      definitionModel.dataType,
       definitionModel.key,
     );
 
@@ -182,7 +193,7 @@ export class FormBuilderService {
     definitionModel.title = 'Section Title';
 
     const memberModel = this._createMember(
-      definitionModel.category,
+      definitionModel.dataType,
       definitionModel.key,
     );
 
@@ -197,7 +208,7 @@ export class FormBuilderService {
     definitionModel.label = 'Text Box Label';
 
     const memberModel = this._createMember(
-      definitionModel.category,
+      definitionModel.dataType,
       definitionModel.key,
     );
 
@@ -212,7 +223,7 @@ export class FormBuilderService {
     definitionModel.label = 'Text Area Label';
 
     const memberModel = this._createMember(
-      definitionModel.category,
+      definitionModel.dataType,
       definitionModel.key,
     );
 

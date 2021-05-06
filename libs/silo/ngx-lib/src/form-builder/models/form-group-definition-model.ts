@@ -1,16 +1,33 @@
 import {
-  FormElementDefinitionCategory,
-  FormGroupTemplateIdentifier,
-} from './form-definition-types';
+  DisplayOrder,
+  FieldSize,
+  IsRequired,
+  Label,
+  MetadataIdentifier,
+  Template,
+} from '@silo/metadata';
+import { FormElementDataType } from './form-definition-types';
+import { FormElementDefinitionModel } from './form-element-definition-model';
+
 /**
  * The definition model for a group element of a form.
  */
-export class FormGroupDefinitionModel {
-  key: string;
-  category: FormElementDefinitionCategory = 'Group';
-  templateIdentifier: FormGroupTemplateIdentifier = null;
-  templateDisplayName: string = null;
-  title: string;
-  description: string;
-  defaultValue: unknown;
+@MetadataIdentifier('FormGroupDefinitionModel')
+@Template('FormGroup', 'Form')
+export class FormGroupDefinitionModel extends FormElementDefinitionModel<unknown> {
+  dataType: FormElementDataType = 'Object';
+
+  @DisplayOrder(10)
+  @Template('TextBox', 'Text Box')
+  @FieldSize('col-12')
+  @Label('Title')
+  @IsRequired()
+  title: string = null;
+
+  @DisplayOrder(20)
+  @Template('TextArea', 'Text Area')
+  @FieldSize('col-12')
+  @Label('Description')
+  @IsRequired()
+  description: string = null;
 }

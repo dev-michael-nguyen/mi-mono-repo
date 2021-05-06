@@ -7,6 +7,7 @@ import {
   FormDefinitionModel,
   ImportFormEvent,
   RemoveFormElementEvent,
+  UpdateFormElementDefinitionEvent,
   UpdateFormGroupDefinitionEvent,
   UpdateFormTextDefinitionEvent,
 } from '@silo/ngx';
@@ -50,32 +51,53 @@ export class DefinitionViewComponent implements OnInit {
         this.formDefinitionModel,
         this.memberKeyList,
       );
-    } else if ($event instanceof AddFormElementEvent) {
+      return;
+    }
+
+    if ($event instanceof AddFormElementEvent) {
       const { definitionModel } = this._formBuilderService.addElement(
         this.formDefinitionModel,
-        $event.type,
+        $event.templateIdentifier,
         $event.parentMemberKey,
       );
       this.formBuilderComponent.lastActiveDefinitionKey$.next(
         definitionModel.key,
       );
       this.formBuilderComponent.rerender();
-    } else if ($event instanceof RemoveFormElementEvent) {
+      return;
+    }
+
+    if ($event instanceof RemoveFormElementEvent) {
       this._formBuilderService.removeElement(
         this.formDefinitionModel,
         $event.memberKey,
       );
       this.formBuilderComponent.rerender();
-    } else if ($event instanceof UpdateFormGroupDefinitionEvent) {
+      return;
+    }
+
+    if ($event instanceof UpdateFormElementDefinitionEvent) {
+      this._formBuilderService.updateElementDefinition(
+        this.formDefinitionModel,
+        $event.formElementDefinitionModel,
+      );
+      return;
+    }
+
+    if ($event instanceof UpdateFormGroupDefinitionEvent) {
       this._formBuilderService.updateGroupDefinition(
         this.formDefinitionModel,
         $event.formGroupDefinitionModel,
       );
-    } else if ($event instanceof UpdateFormTextDefinitionEvent) {
+      return;
+    }
+
+    if ($event instanceof UpdateFormTextDefinitionEvent) {
       this._formBuilderService.updateTextDefinition(
         this.formDefinitionModel,
         $event.formTextDefinitionModel,
       );
+      return;
     }
   }
 }

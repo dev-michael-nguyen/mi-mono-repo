@@ -1,10 +1,11 @@
 export type FormBuilderType = 'Definition' | 'DefinitionPreview' | 'Instance';
 
-export type FormElementDefinitionCategory =
-  | 'Custom'
-  | 'Group'
+export type FormElementDataType =
+  | 'Unknown'
+  | 'Object'
+  | 'Array'
   | 'Text'
-  | 'Numeric';
+  | 'Number';
 
 export type FormGroupTemplateIdentifier =
   | 'FormGroup'

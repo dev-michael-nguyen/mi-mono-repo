@@ -49,8 +49,8 @@ export class FormElementNodeModelExtensions {
     nodeModel.memberKey = memberKey;
     nodeModel.definitionKey = memberModel.definitionKey;
     nodeModel.memberModel = memberModel;
-    switch (memberModel.category) {
-      case 'Group': {
+    switch (memberModel.dataType) {
+      case 'Object' || 'Array': {
         nodeModel.definitionModel = formDefinitionModel.groupDefinitionList.find(
           (x) => x.key === memberModel.definitionKey,
         );
@@ -62,7 +62,7 @@ export class FormElementNodeModelExtensions {
         );
         break;
       }
-      case 'Custom': {
+      case 'Any' || 'Unknown': {
         nodeModel.definitionModel = formDefinitionModel.customDefinitionList.find(
           (x) => x.key === memberModel.definitionKey,
         );

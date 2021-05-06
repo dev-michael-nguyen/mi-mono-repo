@@ -5,7 +5,6 @@ import {
   MetadataModel,
   PropertyMetadata,
 } from '@silo/metadata';
-import { FormCustomDefinitionModel } from '../../form-builder/models/form-custom-definition-model';
 import { FormDefinitionModel } from '../../form-builder/models/form-definition-model';
 import { FormElementTemplateIdentifier } from '../../form-builder/models/form-definition-types';
 import { FormBuilderService } from '../../form-builder/services/form-builder.service';
@@ -117,18 +116,8 @@ export class MetadataFormService {
       parentMemberKey,
     );
 
-    const definitionModel = element.definitionModel as FormCustomDefinitionModel;
-    if (definitionModel.category == 'Custom') {
-      definitionModel.type = {
-        key: propertyMetadata.templateIdentifier,
-        displayName: propertyMetadata.templateIdentifier,
-      };
-    }
-    definitionModel.propertyKey = propertyKey;
-    definitionModel.label = propertyMetadata.label;
-    definitionModel.placeholder = propertyMetadata.placeholder;
-    definitionModel.hint = propertyMetadata.hint;
-    definitionModel.isRequired = propertyMetadata.isRequired;
-    definitionModel.defaultValue = propertyValue;
+    Object.assign(element.definitionModel, propertyMetadata);
+    element.definitionModel.propertyKey = propertyKey;
+    element.definitionModel.defaultValue = propertyValue;
   }
 }

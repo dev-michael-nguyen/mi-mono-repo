@@ -4,28 +4,19 @@ import {
   IsRequired,
   Label,
   MetadataIdentifier,
-  MetadataModel,
   MetadataModelExtensions,
   Template,
 } from '@silo/metadata';
-import {
-  FormElementDefinitionCategory,
-  FormTextTemplateIdentifier,
-} from './form-definition-types';
+import { FormElementDataType } from './form-definition-types';
+import { FormElementDefinitionModel } from './form-element-definition-model';
 
 /**
  * The definition model for a text element of a form.
  */
 @MetadataIdentifier('FormTextDefinitionModel')
 @Template('FormGroup', 'Form')
-export class FormTextDefinitionModel extends MetadataModel {
-  key: string = null;
-
-  category: FormElementDefinitionCategory = 'Text';
-
-  templateIdentifier: FormTextTemplateIdentifier = null;
-
-  templateDisplayName: string = null;
+export class FormTextDefinitionModel extends FormElementDefinitionModel<string> {
+  dataType: FormElementDataType = 'Text';
 
   @DisplayOrder(10)
   @Template('TextBox', 'Text Box')

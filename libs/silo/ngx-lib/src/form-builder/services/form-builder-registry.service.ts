@@ -12,13 +12,13 @@ export class FormBuilderRegistryService {
   >();
 
   register(
-    key: FormElementTemplateIdentifier,
+    templateIdentifier: FormElementTemplateIdentifier,
     elementConfigModel: FormElementRegistryConfigModel,
   ) {
-    this._elementConfigMap.set(key, elementConfigModel);
+    this._elementConfigMap.set(templateIdentifier, elementConfigModel);
   }
 
-  get(key: FormElementTemplateIdentifier) {
-    return this._elementConfigMap.get(key);
+  get(templateIdentifier: FormElementTemplateIdentifier) {
+    return this._elementConfigMap.get(templateIdentifier);
   }
 }

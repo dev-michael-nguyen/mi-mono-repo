@@ -86,13 +86,13 @@ export class FormBuilderComponent implements OnInit {
     this.lastActiveDefinitionKey$.next(nodeModel.definitionKey);
   }
 
-  addElement(type: FormElementTemplateIdentifier) {
+  addElement(templateIdentifier: FormElementTemplateIdentifier) {
     const event = new AddFormElementEvent();
-    event.type = type;
-    // if active node is not a group, add as a child to parent which should be a group
+    event.templateIdentifier = templateIdentifier;
+    // if active node data type is not Object, add as a child to parent
     // else, add as child to active node
     event.parentMemberKey =
-      this.activeNodeModel.definitionModel.category != 'Group'
+      this.activeNodeModel.definitionModel.dataType != 'Object'
         ? this.activeNodeModel.parentMemberKey
         : this.activeNodeModel.memberKey;
     this.handleEvent.next(event);

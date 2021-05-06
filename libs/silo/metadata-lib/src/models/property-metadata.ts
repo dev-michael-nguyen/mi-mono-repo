@@ -1,4 +1,5 @@
 export class PropertyMetadata {
+  description?: string;
   displayOrder?: number;
   fieldOutlineSize?: string;
   fieldSize?: string;
@@ -6,9 +7,10 @@ export class PropertyMetadata {
   isRequired?: boolean;
   isRequiredToSubmit?: boolean;
   label?: string;
-  description?: string;
   metadataIdentifier?: string;
   placeholder?: string;
+  templateDisplayName?: string;
   templateIdentifier?: string;
   title?: string;
+  [key: string]: unknown;
 }
