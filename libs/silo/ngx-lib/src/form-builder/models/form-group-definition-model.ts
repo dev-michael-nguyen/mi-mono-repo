@@ -12,4 +12,5 @@ export class FormGroupDefinitionModel {
   templateDisplayName: string = null;
   title: string;
   description: string;
+  defaultValue: unknown;
 }

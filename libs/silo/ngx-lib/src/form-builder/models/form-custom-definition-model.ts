@@ -6,5 +6,7 @@ import { FormElementDefinitionCategory } from './form-definition-types';
 export class FormCustomDefinitionModel {
   key: string = null;
   category: FormElementDefinitionCategory = 'Custom';
+  templateIdentifier: string;
+  templateDisplayName: string;
   [key: string]: unknown;
 }

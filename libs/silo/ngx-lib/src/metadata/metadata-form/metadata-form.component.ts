@@ -7,11 +7,11 @@ import {
   ViewContainerRef,
 } from '@angular/core';
 import {
-  getMetadataIdentifier,
   isPropertyMetadataApplicator,
   MetadataModel,
   PropertyMetadata,
 } from '@silo/metadata';
+import { FormElementNodeModelExtensions } from '../../form-builder/models/form-element-node-model';
 import { TemplateRegistryConfig } from '../models/template-registry-config';
 import { MetadataFormService } from '../services/metadata-form.service';
 import { MetadataTemplateRegistryService } from '../services/metadata-template-registry.service';
@@ -38,21 +38,22 @@ export class MetadataFormComponent implements OnInit {
     const formDefinitionModel = this._metadataFormService.createFormDefinition(
       this.metadataModel,
     );
-    const metadataIdentifier = getMetadataIdentifier(this.metadataModel);
-    const rootMetadata = this.metadataModel.metadataMap[metadataIdentifier];
-    Object.entries(rootMetadata.propertyMetadataMap).forEach(
-      ([propertyKey, propertyMetadata]) => {
-        const templateRegistryConfig = this._metadataTemplateRegistryService.get(
-          propertyMetadata.templateIdentifier,
-        );
-        const propertyValue = this.metadataModel[propertyKey];
-        this.createComponent(
-          templateRegistryConfig,
-          propertyMetadata,
-          propertyValue,
-        );
-      },
+
+    const rootNode = FormElementNodeModelExtensions.mapFromFormDefinitionModel(
+      formDefinitionModel,
+      formDefinitionModel.rootMemberKey,
     );
+
+    rootNode.forEach((node) => {
+      const templateRegistryConfig = this._metadataTemplateRegistryService.get(
+        node.definitionModel.templateIdentifier,
+      );
+      this.createComponent(
+        templateRegistryConfig,
+        node.definitionModel,
+        node.definitionModel.defaultValue,
+      );
+    });
   }
 
   createComponent(
@@ -60,6 +61,11 @@ export class MetadataFormComponent implements OnInit {
     propertyMetadata: PropertyMetadata,
     propertyValue: unknown,
   ): void {
+    if (!templateRegistryConfig) {
+      console.warn('No template registry config.');
+      return;
+    }
+
     const componentFactory = this._componentFactoryResolver.resolveComponentFactory(
       templateRegistryConfig.componentType,
     );

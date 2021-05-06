@@ -10,7 +10,6 @@ import { render } from '@testing-library/angular';
 import 'reflect-metadata';
 import { FormBuilderService } from '../../form-builder/services/form-builder.service';
 import { MetadataFormService } from './metadata-form.service';
-import { MetadataTemplateRegistryService } from './metadata-template-registry.service';
 
 @MetadataIdentifier('TestPersonNameModel')
 @Template('CommonPersonName', 'Person Name')
@@ -49,7 +48,7 @@ class TestComponent {
 
 const setup = async () => {
   const renderResult = await render(TestComponent, {
-    providers: [FormBuilderService, MetadataTemplateRegistryService],
+    providers: [FormBuilderService],
   });
 
   const fixture = renderResult.fixture;

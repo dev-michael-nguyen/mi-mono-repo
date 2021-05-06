@@ -1,3 +1,4 @@
+import { FormCustomDefinitionModel } from './form-custom-definition-model';
 import { FormDefinitionModel } from './form-definition-model';
 import { FormElementMemberModel } from './form-element-member-model';
 import { FormElementStateModel } from './form-element-state-model';
@@ -14,11 +15,19 @@ export class FormElementNodeModel {
   memberModel: FormElementMemberModel;
 
   definitionKey: string;
-  definitionModel: FormTextDefinitionModel | FormGroupDefinitionModel;
+  definitionModel:
+    | FormCustomDefinitionModel
+    | FormTextDefinitionModel
+    | FormGroupDefinitionModel;
 
   children: Array<FormElementNodeModel> = [];
 
   state = new FormElementStateModel();
+
+  forEach(callbackfn: (node: FormElementNodeModel) => void) {
+    callbackfn(this);
+    this.children.forEach((c) => callbackfn(c));
+  }
 }
 
 export class FormElementNodeModelExtensions {
@@ -26,7 +35,7 @@ export class FormElementNodeModelExtensions {
     formDefinitionModel: FormDefinitionModel,
     memberKey: string,
     parentMemberKey?: string,
-  ) {
+  ): FormElementNodeModel {
     const nodeModel = new FormElementNodeModel();
     nodeModel.parentMemberKey =
       parentMemberKey ||
@@ -49,6 +58,12 @@ export class FormElementNodeModelExtensions {
       }
       case 'Text': {
         nodeModel.definitionModel = formDefinitionModel.textDefinitionList.find(
+          (x) => x.key === memberModel.definitionKey,
+        );
+        break;
+      }
+      case 'Custom': {
+        nodeModel.definitionModel = formDefinitionModel.customDefinitionList.find(
           (x) => x.key === memberModel.definitionKey,
         );
         break;

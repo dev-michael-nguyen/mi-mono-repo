@@ -24,10 +24,10 @@ export class FormBuilderService {
 
   addElement(
     formDefinitionModel: FormDefinitionModel,
-    formElementDefinitionType: FormElementTemplateIdentifier,
+    templateIdentifier: FormElementTemplateIdentifier,
     parentMemberKey: string,
   ) {
-    switch (formElementDefinitionType) {
+    switch (templateIdentifier) {
       case 'FormGroup': {
         const { definitionModel, memberModel } = this._createFormGroup();
         formDefinitionModel.groupDefinitionList.push(definitionModel);

@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import {
   getMetadataIdentifier,
+  Metadata,
   MetadataModel,
   PropertyMetadata,
 } from '@silo/metadata';
@@ -8,16 +9,12 @@ import { FormCustomDefinitionModel } from '../../form-builder/models/form-custom
 import { FormDefinitionModel } from '../../form-builder/models/form-definition-model';
 import { FormElementTemplateIdentifier } from '../../form-builder/models/form-definition-types';
 import { FormBuilderService } from '../../form-builder/services/form-builder.service';
-import { MetadataTemplateRegistryService } from './metadata-template-registry.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class MetadataFormService {
-  constructor(
-    private _formBuilderService: FormBuilderService,
-    private _metadataTemplateRegistryService: MetadataTemplateRegistryService,
-  ) {}
+  constructor(private _formBuilderService: FormBuilderService) {}
 
   createFormDefinition(metadataModel: MetadataModel) {
     const formDefinitionModel = this._formBuilderService.createFormDefinition();
@@ -32,26 +29,57 @@ export class MetadataFormService {
     formDefinitionModel.rootMemberKey = memberModel.key;
 
     // add children
-    Object.entries(metadata.propertyMetadataMap).forEach(
-      ([propertyKey, propertyMetadata]) => {
-        const propertyValue = metadataModel[propertyKey];
-        this.addPropertyAsElement(
-          formDefinitionModel,
-          propertyKey,
-          propertyValue,
-          propertyMetadata,
-          memberModel.key,
-        );
-      },
+    this.addEntriesAsElement(
+      formDefinitionModel,
+      metadataModel,
+      metadata,
+      memberModel.key,
     );
 
     return formDefinitionModel;
   }
 
+  addEntriesAsElement(
+    formDefinitionModel: FormDefinitionModel,
+    metadataModel: MetadataModel,
+    metadata: Metadata,
+    parentMemeberKey: string,
+  ) {
+    Object.entries(metadataModel).forEach(([propertyKey, propertyValue]) => {
+      const propertyMetadata = metadata.propertyMetadataMap[propertyKey];
+
+      if (propertyMetadata) {
+        this.addPropertyAsElement(
+          formDefinitionModel,
+          propertyKey,
+          propertyValue,
+          propertyMetadata,
+          parentMemeberKey,
+        );
+      }
+
+      if (propertyValue instanceof MetadataModel) {
+        this.addMetadataModelAsElement(
+          formDefinitionModel,
+          propertyValue,
+          null,
+          parentMemeberKey,
+        );
+        const metadataIdentifier = getMetadataIdentifier(propertyValue);
+        this.addEntriesAsElement(
+          formDefinitionModel,
+          propertyValue,
+          propertyValue.metadataMap[metadataIdentifier],
+          parentMemeberKey,
+        );
+      }
+    });
+  }
+
   addMetadataModelAsElement(
     formDefinitionModel: FormDefinitionModel,
     metadataModel: MetadataModel,
-    formElementDefinitionType: FormElementTemplateIdentifier,
+    templateIdentifier: FormElementTemplateIdentifier,
     parentMemberKey: string,
   ) {
     const metadataIdentifier = getMetadataIdentifier(metadataModel);
@@ -61,9 +89,15 @@ export class MetadataFormService {
       memberModel,
     } = this._formBuilderService.addElement(
       formDefinitionModel,
-      formElementDefinitionType,
+      templateIdentifier,
       parentMemberKey,
     );
+    if (!templateIdentifier) {
+      definitionModel.templateIdentifier =
+        metadata.classMetadata.templateIdentifier;
+      definitionModel.templateDisplayName =
+        metadata.classMetadata.templateDisplayName;
+    }
     definitionModel.title = metadata.classMetadata.title;
     definitionModel.description = metadata.classMetadata.description;
 
@@ -90,9 +124,11 @@ export class MetadataFormService {
         displayName: propertyMetadata.templateIdentifier,
       };
     }
+    definitionModel.propertyKey = propertyKey;
     definitionModel.label = propertyMetadata.label;
     definitionModel.placeholder = propertyMetadata.placeholder;
     definitionModel.hint = propertyMetadata.hint;
+    definitionModel.isRequired = propertyMetadata.isRequired;
     definitionModel.defaultValue = propertyValue;
   }
 }
