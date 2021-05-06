@@ -49,8 +49,8 @@
     </silo-control-menu-bar>
   </div>
   <div class="form-builder__body" siloStickyLayoutBody fxLayout="row">
-    <div class="form-builder__form" siloStickyLayout fxFlex="60">
-      <div class="form-builder__form__body" siloStickyLayoutBody>
+    <div class="form-builder__element-portal" siloStickyLayout fxFlex="60">
+      <div class="form-builder__element-portal__body" siloStickyLayoutBody>
         <silo-form-element-portal
           *ngFor="let nodeModel of nodeModelList"
           [nodeModel]="nodeModel"
@@ -58,12 +58,19 @@
         </silo-form-element-portal>
       </div>
     </div>
-    <div class="form-builder__property-window" siloStickyLayout fxFlex="40">
-      <div class="form-builder__property-window__body" siloStickyLayoutBody>
-        <silo-form-element-property-window
+    <div
+      class="form-builder__definition-form-portal"
+      siloStickyLayout
+      fxFlex="40"
+    >
+      <div
+        class="form-builder__definition-form-portal__body"
+        siloStickyLayoutBody
+      >
+        <silo-form-element-definition-form-portal
           *ngIf="activeNodeModel"
           [nodeModel]="activeNodeModel"
-        ></silo-form-element-property-window>
+        ></silo-form-element-definition-form-portal>
       </div>
     </div>
   </div>

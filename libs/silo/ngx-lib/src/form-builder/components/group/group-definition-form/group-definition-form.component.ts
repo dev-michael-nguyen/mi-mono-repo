@@ -18,11 +18,11 @@ import { TextAreaComponent } from './../../../../form-field/text/text-area/text-
 import { TextBoxComponent } from './../../../../form-field/text/text-box/text-box.component';
 
 @Component({
-  selector: 'silo-group-property-window',
-  templateUrl: './group-property-window.component.html',
-  styleUrls: ['./group-property-window.component.scss'],
+  selector: 'silo-group-definition-form',
+  templateUrl: './group-definition-form.component.html',
+  styleUrls: ['./group-definition-form.component.scss'],
 })
-export class GroupPropertyWindowComponent
+export class GroupDefinitionFormComponent
   implements IFormElementComponent, OnInit, AfterViewInit, OnDestroy {
   private _destroy$ = new Subject<void>();
 

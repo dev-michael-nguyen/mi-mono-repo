@@ -4,11 +4,11 @@ import {
   TextAreaModule,
   TextBoxModule,
 } from '../../../../form-field/form-field.public-api';
-import { GroupPropertyWindowComponent } from './group-property-window.component';
+import { GroupDefinitionFormComponent } from './group-definition-form.component';
 
 @NgModule({
   imports: [CommonModule, TextBoxModule, TextAreaModule],
-  declarations: [GroupPropertyWindowComponent],
-  exports: [GroupPropertyWindowComponent],
+  declarations: [GroupDefinitionFormComponent],
+  exports: [GroupDefinitionFormComponent],
 })
-export class GroupPropertyWindowModule {}
+export class GroupDefinitionFormModule {}

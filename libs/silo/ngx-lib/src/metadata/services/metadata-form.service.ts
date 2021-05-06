@@ -43,7 +43,7 @@ export class MetadataFormService {
     formDefinitionModel: FormDefinitionModel,
     metadataModel: MetadataModel,
     metadata: Metadata,
-    parentMemeberKey: string,
+    parentMemberKey: string,
   ) {
     Object.entries(metadataModel).forEach(([propertyKey, propertyValue]) => {
       const propertyMetadata = metadata.propertyMetadataMap[propertyKey];
@@ -54,7 +54,7 @@ export class MetadataFormService {
           propertyKey,
           propertyValue,
           propertyMetadata,
-          parentMemeberKey,
+          parentMemberKey,
         );
       }
 
@@ -63,14 +63,14 @@ export class MetadataFormService {
           formDefinitionModel,
           propertyValue,
           null,
-          parentMemeberKey,
+          parentMemberKey,
         );
         const metadataIdentifier = getMetadataIdentifier(propertyValue);
         this.addEntriesAsElement(
           formDefinitionModel,
           propertyValue,
           propertyValue.metadataMap[metadataIdentifier],
-          parentMemeberKey,
+          parentMemberKey,
         );
       }
     });

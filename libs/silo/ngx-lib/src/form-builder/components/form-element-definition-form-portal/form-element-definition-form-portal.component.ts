@@ -14,9 +14,9 @@ import { FormElementNodeModel } from '../../models/form-element-node-model';
 import { FormBuilderRegistryService } from '../../services/form-builder-registry.service';
 
 @Component({
-  selector: 'silo-form-element-property-window',
-  templateUrl: './form-element-property-window.component.html',
-  styleUrls: ['./form-element-property-window.component.scss'],
+  selector: 'silo-form-element-definition-form-portal',
+  templateUrl: './form-element-definition-form-portal.component.html',
+  styleUrls: ['./form-element-definition-form-portal.component.scss'],
 })
 export class FormElementPropertyWindowComponent
   implements OnInit, OnChanges, OnDestroy, IFormElementComponent {

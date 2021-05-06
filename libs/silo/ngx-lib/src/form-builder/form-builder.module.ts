@@ -5,20 +5,20 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatMenuModule } from '@angular/material/menu';
 import { StickyLayoutModule } from '../layout/sticky-layout/sticky-layout.module';
 import { ControlMenuBarModule } from './../control-menu-bar/control-menu-bar.module';
+import { FormElementPropertyWindowModule } from './components/form-element-definition-form-portal/form-element-definition-form.module';
 import { FormElementPortalModule } from './components/form-element-portal/form-element-portal.module';
-import { FormElementPropertyWindowModule } from './components/form-element-property-window/form-element-property-window.module';
 import { FormGroupElementComponent } from './components/group/form-group-element/form-group-element.component';
 import { FormGroupElementModule } from './components/group/form-group-element/form-group-element.module';
-import { GroupPropertyWindowComponent } from './components/group/group-property-window/group-property-window.component';
-import { GroupPropertyWindowModule } from './components/group/group-property-window/group-property-window.module';
+import { GroupDefinitionFormComponent } from './components/group/group-definition-form/group-definition-form.component';
+import { GroupDefinitionFormModule } from './components/group/group-definition-form/group-definition-form.module';
 import { SectionElementComponent } from './components/group/section-element/section-element.component';
 import { SectionElementModule } from './components/group/section-element/section-element.module';
 import { TextAreaElementComponent } from './components/text/text-area-element/text-area-element.component';
 import { TextAreaElementModule } from './components/text/text-area-element/text-area-element.module';
 import { TextBoxElementComponent } from './components/text/text-box-element/text-box-element.component';
 import { TextBoxElementModule } from './components/text/text-box-element/text-box-element.module';
-import { TextPropertyWindowComponent } from './components/text/text-property-window/text-property-window.component';
-import { TextPropertyWindowModule } from './components/text/text-property-window/text-property-window.module';
+import { TextDefinitionFormComponent } from './components/text/text-definition-form/text-definition-form.component';
+import { TextDefinitionFormModule } from './components/text/text-definition-form/text-definition-form.module';
 import { FormBuilderComponent } from './form-builder.component';
 import { FormBuilderRegistryService } from './services/form-builder-registry.service';
 
@@ -30,14 +30,14 @@ import { FormBuilderRegistryService } from './services/form-builder-registry.ser
     FormElementPortalModule,
     FormElementPropertyWindowModule,
     FormGroupElementModule,
-    GroupPropertyWindowModule,
+    GroupDefinitionFormModule,
     MatButtonModule,
     MatMenuModule,
     SectionElementModule,
     StickyLayoutModule,
     TextAreaElementModule,
     TextBoxElementModule,
-    TextPropertyWindowModule,
+    TextDefinitionFormModule,
   ],
   declarations: [FormBuilderComponent],
   exports: [FormBuilderComponent],
@@ -46,22 +46,22 @@ export class FormBuilderModule {
   constructor(private _formBuilderRegistryService: FormBuilderRegistryService) {
     this._formBuilderRegistryService.register('FormGroup', {
       elementType: FormGroupElementComponent,
-      windowType: GroupPropertyWindowComponent,
+      windowType: GroupDefinitionFormComponent,
     });
 
     this._formBuilderRegistryService.register('Section', {
       elementType: SectionElementComponent,
-      windowType: GroupPropertyWindowComponent,
+      windowType: GroupDefinitionFormComponent,
     });
 
     this._formBuilderRegistryService.register('TextBox', {
       elementType: TextBoxElementComponent,
-      windowType: TextPropertyWindowComponent,
+      windowType: TextDefinitionFormComponent,
     });
 
     this._formBuilderRegistryService.register('TextArea', {
       elementType: TextAreaElementComponent,
-      windowType: TextPropertyWindowComponent,
+      windowType: TextDefinitionFormComponent,
     });
   }
 }

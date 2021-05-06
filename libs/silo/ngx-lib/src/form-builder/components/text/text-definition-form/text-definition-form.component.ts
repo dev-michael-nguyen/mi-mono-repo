@@ -18,11 +18,11 @@ import { FormElementNodeModel } from '../../../models/form-element-node-model';
 import { FormTextDefinitionModel } from '../../../models/form-text-definition-model';
 
 @Component({
-  selector: 'silo-text-property-window',
-  templateUrl: './text-property-window.component.html',
-  styleUrls: ['./text-property-window.component.scss'],
+  selector: 'silo-text-definition-form',
+  templateUrl: './text-definition-form.component.html',
+  styleUrls: ['./text-definition-form.component.scss'],
 })
-export class TextPropertyWindowComponent
+export class TextDefinitionFormComponent
   implements IFormElementComponent, OnInit, AfterViewInit, OnDestroy {
   private _destroy$ = new Subject<void>();
 
