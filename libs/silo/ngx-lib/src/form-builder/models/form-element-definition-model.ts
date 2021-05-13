@@ -4,9 +4,7 @@ import { FormElementDataType } from './form-definition-types';
 /**
  * The base definition model for a form element.
  */
-export abstract class FormElementDefinitionModel<
-  T = unknown
-> extends MetadataModel {
+export class FormElementDefinitionModel<T = unknown> extends MetadataModel {
   key: string;
 
   propertyKey?: string;

@@ -135,11 +135,11 @@ export class FormBuilderService {
     merge(found, formTextDefinitionModel);
   }
 
-  private _createMember(category: FormElementDataType, definitionKey: string) {
+  private _createMember(definitionKey: string, dataType: FormElementDataType) {
     const memberModel = new FormElementMemberModel();
     memberModel.key = uuidv4();
-    memberModel.dataType = category;
     memberModel.definitionKey = definitionKey;
+    memberModel.dataType = dataType;
 
     return memberModel;
   }
@@ -158,13 +158,32 @@ export class FormBuilderService {
     }
   }
 
+  private _createElementDefinition(
+    templateIdentifier: string,
+    templateDisplayName: string,
+    dataType: FormElementDataType,
+  ) {
+    const definitionModel = new FormElementDefinitionModel();
+    definitionModel.key = uuidv4();
+    definitionModel.templateIdentifier = templateIdentifier;
+    definitionModel.templateDisplayName = templateDisplayName;
+    definitionModel.dataType = dataType;
+
+    const memberModel = this._createMember(
+      definitionModel.key,
+      definitionModel.dataType,
+    );
+
+    return { definitionModel, memberModel };
+  }
+
   private _createCustomDefinition() {
     const definitionModel = new FormCustomDefinitionModel();
     definitionModel.key = uuidv4();
 
     const memberModel = this._createMember(
-      definitionModel.dataType,
       definitionModel.key,
+      definitionModel.dataType,
     );
 
     return { definitionModel, memberModel };
@@ -178,8 +197,8 @@ export class FormBuilderService {
     definitionModel.title = 'Form Title';
 
     const memberModel = this._createMember(
-      definitionModel.dataType,
       definitionModel.key,
+      definitionModel.dataType,
     );
 
     return { definitionModel, memberModel };
@@ -193,8 +212,8 @@ export class FormBuilderService {
     definitionModel.title = 'Section Title';
 
     const memberModel = this._createMember(
-      definitionModel.dataType,
       definitionModel.key,
+      definitionModel.dataType,
     );
 
     return { definitionModel, memberModel };
@@ -208,8 +227,8 @@ export class FormBuilderService {
     definitionModel.label = 'Text Box Label';
 
     const memberModel = this._createMember(
-      definitionModel.dataType,
       definitionModel.key,
+      definitionModel.dataType,
     );
 
     return { definitionModel, memberModel };
@@ -223,8 +242,8 @@ export class FormBuilderService {
     definitionModel.label = 'Text Area Label';
 
     const memberModel = this._createMember(
-      definitionModel.dataType,
       definitionModel.key,
+      definitionModel.dataType,
     );
 
     return { definitionModel, memberModel };
