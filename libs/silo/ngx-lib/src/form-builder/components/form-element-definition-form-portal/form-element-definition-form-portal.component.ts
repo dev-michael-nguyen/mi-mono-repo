@@ -56,7 +56,7 @@ export class FormElementPropertyWindowComponent
     const config = this._formBuilderRegistryService.get(
       this.nodeModel.definitionModel.templateIdentifier,
     );
-    const componentPortal = new ComponentPortal(config.windowType);
+    const componentPortal = new ComponentPortal(config.definitionFormComponent);
     this.portalOutlet.attachComponentPortal(componentPortal);
 
     const componentRef = this.portalOutlet

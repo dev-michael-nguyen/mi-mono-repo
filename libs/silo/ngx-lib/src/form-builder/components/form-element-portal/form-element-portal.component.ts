@@ -61,7 +61,7 @@ export class FormElementPortalComponent
     const config = this._formBuilderRegistryService.get(
       this.nodeModel.definitionModel.templateIdentifier,
     );
-    const componentPortal = new ComponentPortal(config.elementType);
+    const componentPortal = new ComponentPortal(config.elementComponent);
     this.portalOutlet.attachComponentPortal(componentPortal);
     const componentRef = this.portalOutlet
       .attachedRef as ComponentRef<IFormElementComponent>;

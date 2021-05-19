@@ -45,23 +45,31 @@ import { FormBuilderRegistryService } from './services/form-builder-registry.ser
 export class FormBuilderModule {
   constructor(private _formBuilderRegistryService: FormBuilderRegistryService) {
     this._formBuilderRegistryService.register('FormGroup', {
-      elementType: FormGroupElementComponent,
-      windowType: GroupDefinitionFormComponent,
+      templateIdentifier: 'FormGroup',
+      templateDisplayName: 'Form',
+      elementComponent: FormGroupElementComponent,
+      definitionFormComponent: GroupDefinitionFormComponent,
     });
 
     this._formBuilderRegistryService.register('Section', {
-      elementType: SectionElementComponent,
-      windowType: GroupDefinitionFormComponent,
+      templateIdentifier: 'Section',
+      templateDisplayName: 'Section',
+      elementComponent: SectionElementComponent,
+      definitionFormComponent: GroupDefinitionFormComponent,
     });
 
     this._formBuilderRegistryService.register('TextBox', {
-      elementType: TextBoxElementComponent,
-      windowType: TextDefinitionFormComponent,
+      templateIdentifier: 'TextBox',
+      templateDisplayName: 'Text Box',
+      elementComponent: TextBoxElementComponent,
+      definitionFormComponent: TextDefinitionFormComponent,
     });
 
     this._formBuilderRegistryService.register('TextArea', {
-      elementType: TextAreaElementComponent,
-      windowType: TextDefinitionFormComponent,
+      templateIdentifier: 'TextArea',
+      templateDisplayName: 'Text Area',
+      elementComponent: TextAreaElementComponent,
+      definitionFormComponent: TextDefinitionFormComponent,
     });
   }
 }
