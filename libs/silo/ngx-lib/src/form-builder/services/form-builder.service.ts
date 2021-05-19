@@ -1,21 +1,23 @@
 import { Injectable } from '@angular/core';
 import { merge } from 'lodash';
 import { v4 as uuidv4 } from 'uuid';
-import { FormCustomDefinitionModel } from '../models/form-custom-definition-model';
 import { FormDefinitionModel } from '../models/form-definition-model';
 import { FormElementDefinitionModel } from '../models/form-element-definition-model';
-import { FormGroupDefinitionModel } from '../models/form-group-definition-model';
-import { FormTextDefinitionModel } from '../models/form-text-definition-model';
 import {
   FormElementDataType,
   FormElementTemplateIdentifier,
 } from './../models/form-definition-types';
 import { FormElementMemberModel } from './../models/form-element-member-model';
+import { FormBuilderRegistryService } from './form-builder-registry.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class FormBuilderService {
+  constructor(
+    private _formBuilderRegistryService: FormBuilderRegistryService,
+  ) {}
+
   createFormDefinition(): FormDefinitionModel {
     const formDefinitionModel = new FormDefinitionModel();
     formDefinitionModel.key = uuidv4();
@@ -28,37 +30,25 @@ export class FormBuilderService {
     templateIdentifier: FormElementTemplateIdentifier,
     parentMemberKey: string,
   ) {
-    switch (templateIdentifier) {
-      case 'FormGroup': {
-        const { definitionModel, memberModel } = this._createFormGroup();
-        formDefinitionModel.groupDefinitionList.push(definitionModel);
-        this._addMember(formDefinitionModel, memberModel, parentMemberKey);
-        return { definitionModel, memberModel };
-      }
-      case 'Section': {
-        const { definitionModel, memberModel } = this._createSection();
-        formDefinitionModel.groupDefinitionList.push(definitionModel);
-        this._addMember(formDefinitionModel, memberModel, parentMemberKey);
-        return { definitionModel, memberModel };
-      }
-      case 'TextBox': {
-        const { definitionModel, memberModel } = this._createTextBox();
-        formDefinitionModel.textDefinitionList.push(definitionModel);
-        this._addMember(formDefinitionModel, memberModel, parentMemberKey);
-        return { definitionModel, memberModel };
-      }
-      case 'TextArea': {
-        const { definitionModel, memberModel } = this._createTextArea();
-        formDefinitionModel.textDefinitionList.push(definitionModel);
-        this._addMember(formDefinitionModel, memberModel, parentMemberKey);
-        return { definitionModel, memberModel };
-      }
-      default: {
-        const { definitionModel, memberModel } = this._createCustomDefinition();
-        formDefinitionModel.customDefinitionList.push(definitionModel);
-        this._addMember(formDefinitionModel, memberModel, parentMemberKey);
-        return { definitionModel, memberModel };
-      }
+    const config = this._formBuilderRegistryService.get(templateIdentifier);
+    if (config) {
+      const { definitionModel, memberModel } = this._createElementDefinition(
+        config.templateIdentifier,
+        config.templateDisplayName,
+        config.dataType,
+      );
+      formDefinitionModel.definitionList.push(definitionModel);
+      this._addMember(formDefinitionModel, memberModel, parentMemberKey);
+      return { definitionModel, memberModel };
+    } else {
+      const { definitionModel, memberModel } = this._createElementDefinition(
+        templateIdentifier,
+        null,
+        'Unknown',
+      );
+      formDefinitionModel.definitionList.push(definitionModel);
+      this._addMember(formDefinitionModel, memberModel, parentMemberKey);
+      return { definitionModel, memberModel };
     }
   }
 
@@ -80,20 +70,9 @@ export class FormBuilderService {
       );
     });
     // remove definition
-    switch (memberModel.dataType) {
-      case 'Object' || 'Array': {
-        formDefinitionModel.groupDefinitionList = formDefinitionModel.groupDefinitionList.filter(
-          (definition) => definition.key !== memberModel.definitionKey,
-        );
-        break;
-      }
-      case 'Text': {
-        formDefinitionModel.textDefinitionList = formDefinitionModel.textDefinitionList.filter(
-          (definition) => definition.key !== memberModel.definitionKey,
-        );
-        break;
-      }
-    }
+    formDefinitionModel.definitionList = formDefinitionModel.definitionList.filter(
+      (definition) => definition.key !== memberModel.definitionKey,
+    );
   }
 
   updateElementDefinition(
@@ -107,32 +86,6 @@ export class FormBuilderService {
       throw new Error(`Cannot find definition`);
     }
     merge(definition, formElementDefinitionModel);
-  }
-
-  updateGroupDefinition(
-    formDefinitionModel: FormDefinitionModel,
-    formGroupDefinitionModel: FormGroupDefinitionModel,
-  ) {
-    const found = formDefinitionModel.groupDefinitionList.find(
-      (x) => x.key == formGroupDefinitionModel.key,
-    );
-    if (!found) {
-      throw new Error(`Cannot find group definition`);
-    }
-    merge(found, formGroupDefinitionModel);
-  }
-
-  updateTextDefinition(
-    formDefinitionModel: FormDefinitionModel,
-    formTextDefinitionModel: FormTextDefinitionModel,
-  ) {
-    const found = formDefinitionModel.textDefinitionList.find(
-      (x) => x.key == formTextDefinitionModel.key,
-    );
-    if (!found) {
-      throw new Error(`Cannot find text definition`);
-    }
-    merge(found, formTextDefinitionModel);
   }
 
   private _createMember(definitionKey: string, dataType: FormElementDataType) {
@@ -168,78 +121,6 @@ export class FormBuilderService {
     definitionModel.templateIdentifier = templateIdentifier;
     definitionModel.templateDisplayName = templateDisplayName;
     definitionModel.dataType = dataType;
-
-    const memberModel = this._createMember(
-      definitionModel.key,
-      definitionModel.dataType,
-    );
-
-    return { definitionModel, memberModel };
-  }
-
-  private _createCustomDefinition() {
-    const definitionModel = new FormCustomDefinitionModel();
-    definitionModel.key = uuidv4();
-
-    const memberModel = this._createMember(
-      definitionModel.key,
-      definitionModel.dataType,
-    );
-
-    return { definitionModel, memberModel };
-  }
-
-  private _createFormGroup() {
-    const definitionModel = new FormGroupDefinitionModel();
-    definitionModel.key = uuidv4();
-    definitionModel.templateIdentifier = 'FormGroup';
-    definitionModel.templateDisplayName = 'Form';
-    definitionModel.title = 'Form Title';
-
-    const memberModel = this._createMember(
-      definitionModel.key,
-      definitionModel.dataType,
-    );
-
-    return { definitionModel, memberModel };
-  }
-
-  private _createSection() {
-    const definitionModel = new FormGroupDefinitionModel();
-    definitionModel.key = uuidv4();
-    definitionModel.templateIdentifier = 'Section';
-    definitionModel.templateDisplayName = 'Section';
-    definitionModel.title = 'Section Title';
-
-    const memberModel = this._createMember(
-      definitionModel.key,
-      definitionModel.dataType,
-    );
-
-    return { definitionModel, memberModel };
-  }
-
-  private _createTextBox() {
-    const definitionModel = new FormTextDefinitionModel();
-    definitionModel.key = uuidv4();
-    definitionModel.templateIdentifier = 'TextBox';
-    definitionModel.templateDisplayName = 'Text Box';
-    definitionModel.label = 'Text Box Label';
-
-    const memberModel = this._createMember(
-      definitionModel.key,
-      definitionModel.dataType,
-    );
-
-    return { definitionModel, memberModel };
-  }
-
-  private _createTextArea() {
-    const definitionModel = new FormTextDefinitionModel();
-    definitionModel.key = uuidv4();
-    definitionModel.templateIdentifier = 'TextArea';
-    definitionModel.templateDisplayName = 'Text Area';
-    definitionModel.label = 'Text Area Label';
 
     const memberModel = this._createMember(
       definitionModel.key,

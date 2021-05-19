@@ -12,7 +12,7 @@ import { takeUntil } from 'rxjs/operators';
 import { TextAreaComponent } from '../../../../form-field/text/text-area/text-area.component';
 import { TextBoxComponent } from '../../../../form-field/text/text-box/text-box.component';
 import { FormBuilderComponent } from '../../../form-builder.component';
-import { UpdateFormTextDefinitionEvent } from '../../../models/form-builder-events';
+import { UpdateFormElementDefinitionEvent } from '../../../models/form-builder-events';
 import { IFormElementComponent } from '../../../models/form-element-component-interface';
 import { FormElementNodeModel } from '../../../models/form-element-node-model';
 import { FormTextDefinitionModel } from '../../../models/form-text-definition-model';
@@ -82,8 +82,8 @@ export class TextDefinitionFormComponent
         hint: this.hintField.getValue(),
       } as FormTextDefinitionModel,
     );
-    const event = new UpdateFormTextDefinitionEvent();
-    event.formTextDefinitionModel = formTextDefinitionModel;
+    const event = new UpdateFormElementDefinitionEvent();
+    event.formElementDefinitionModel = formTextDefinitionModel;
     this._formBuilderComponent.handleEvent.next(event);
   }
 

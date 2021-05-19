@@ -47,6 +47,7 @@ export class FormBuilderModule {
     this._formBuilderRegistryService.register('FormGroup', {
       templateIdentifier: 'FormGroup',
       templateDisplayName: 'Form',
+      dataType: 'Object',
       elementComponent: FormGroupElementComponent,
       definitionFormComponent: GroupDefinitionFormComponent,
     });
@@ -54,6 +55,7 @@ export class FormBuilderModule {
     this._formBuilderRegistryService.register('Section', {
       templateIdentifier: 'Section',
       templateDisplayName: 'Section',
+      dataType: 'Object',
       elementComponent: SectionElementComponent,
       definitionFormComponent: GroupDefinitionFormComponent,
     });
@@ -61,6 +63,7 @@ export class FormBuilderModule {
     this._formBuilderRegistryService.register('TextBox', {
       templateIdentifier: 'TextBox',
       templateDisplayName: 'Text Box',
+      dataType: 'Text',
       elementComponent: TextBoxElementComponent,
       definitionFormComponent: TextDefinitionFormComponent,
     });
@@ -68,6 +71,7 @@ export class FormBuilderModule {
     this._formBuilderRegistryService.register('TextArea', {
       templateIdentifier: 'TextArea',
       templateDisplayName: 'Text Area',
+      dataType: 'Text',
       elementComponent: TextAreaElementComponent,
       definitionFormComponent: TextDefinitionFormComponent,
     });

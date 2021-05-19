@@ -8,8 +8,6 @@ import {
   ImportFormEvent,
   RemoveFormElementEvent,
   UpdateFormElementDefinitionEvent,
-  UpdateFormGroupDefinitionEvent,
-  UpdateFormTextDefinitionEvent,
 } from '@silo/ngx';
 
 @Component({
@@ -80,22 +78,6 @@ export class DefinitionViewComponent implements OnInit {
       this._formBuilderService.updateElementDefinition(
         this.formDefinitionModel,
         $event.formElementDefinitionModel,
-      );
-      return;
-    }
-
-    if ($event instanceof UpdateFormGroupDefinitionEvent) {
-      this._formBuilderService.updateGroupDefinition(
-        this.formDefinitionModel,
-        $event.formGroupDefinitionModel,
-      );
-      return;
-    }
-
-    if ($event instanceof UpdateFormTextDefinitionEvent) {
-      this._formBuilderService.updateTextDefinition(
-        this.formDefinitionModel,
-        $event.formTextDefinitionModel,
       );
       return;
     }

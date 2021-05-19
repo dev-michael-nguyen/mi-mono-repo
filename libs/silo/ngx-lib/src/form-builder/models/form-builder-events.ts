@@ -1,14 +1,11 @@
 import { FormElementTemplateIdentifier } from './form-definition-types';
 import { FormElementDefinitionModel } from './form-element-definition-model';
-import { FormGroupDefinitionModel } from './form-group-definition-model';
-import { FormTextDefinitionModel } from './form-text-definition-model';
 
 export type FormBuilderEvent =
   | AddFormElementEvent
   | RemoveFormElementEvent
   | ImportFormEvent
-  | UpdateFormGroupDefinitionEvent
-  | UpdateFormTextDefinitionEvent;
+  | UpdateFormElementDefinitionEvent;
 
 export class AddFormElementEvent {
   templateIdentifier: FormElementTemplateIdentifier;
@@ -25,12 +22,4 @@ export class ImportFormEvent {
 
 export class UpdateFormElementDefinitionEvent {
   formElementDefinitionModel: FormElementDefinitionModel;
-}
-
-export class UpdateFormGroupDefinitionEvent {
-  formGroupDefinitionModel: FormGroupDefinitionModel;
-}
-
-export class UpdateFormTextDefinitionEvent {
-  formTextDefinitionModel: FormTextDefinitionModel;
 }

@@ -1,5 +1,5 @@
-import { FormCustomDefinitionModel } from './form-custom-definition-model';
 import { FormDefinitionModel } from './form-definition-model';
+import { FormElementDefinitionModel } from './form-element-definition-model';
 import { FormElementMemberModel } from './form-element-member-model';
 import { FormElementStateModel } from './form-element-state-model';
 import { FormGroupDefinitionModel } from './form-group-definition-model';
@@ -16,7 +16,7 @@ export class FormElementNodeModel {
 
   definitionKey: string;
   definitionModel:
-    | FormCustomDefinitionModel
+    | FormElementDefinitionModel
     | FormTextDefinitionModel
     | FormGroupDefinitionModel;
 
@@ -49,26 +49,9 @@ export class FormElementNodeModelExtensions {
     nodeModel.memberKey = memberKey;
     nodeModel.definitionKey = memberModel.definitionKey;
     nodeModel.memberModel = memberModel;
-    switch (memberModel.dataType) {
-      case 'Object' || 'Array': {
-        nodeModel.definitionModel = formDefinitionModel.groupDefinitionList.find(
-          (x) => x.key === memberModel.definitionKey,
-        );
-        break;
-      }
-      case 'Text': {
-        nodeModel.definitionModel = formDefinitionModel.textDefinitionList.find(
-          (x) => x.key === memberModel.definitionKey,
-        );
-        break;
-      }
-      case 'Any' || 'Unknown': {
-        nodeModel.definitionModel = formDefinitionModel.customDefinitionList.find(
-          (x) => x.key === memberModel.definitionKey,
-        );
-        break;
-      }
-    }
+    nodeModel.definitionModel = formDefinitionModel.definitionList.find(
+      (x) => x.key === memberModel.definitionKey,
+    );
 
     nodeModel.children = memberModel.children.map((child) =>
       FormElementNodeModelExtensions.mapFromFormDefinitionModel(

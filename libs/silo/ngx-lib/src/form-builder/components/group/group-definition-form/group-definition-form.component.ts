@@ -10,7 +10,7 @@ import { merge as _merge } from 'lodash';
 import { merge, Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { FormBuilderComponent } from '../../../form-builder.component';
-import { UpdateFormGroupDefinitionEvent } from '../../../models/form-builder-events';
+import { UpdateFormElementDefinitionEvent } from '../../../models/form-builder-events';
 import { IFormElementComponent } from '../../../models/form-element-component-interface';
 import { FormElementNodeModel } from '../../../models/form-element-node-model';
 import { FormGroupDefinitionModel } from '../../../models/form-group-definition-model';
@@ -75,8 +75,8 @@ export class GroupDefinitionFormComponent
         description: this.descriptionField.getValue(),
       } as FormGroupDefinitionModel,
     );
-    const event = new UpdateFormGroupDefinitionEvent();
-    event.formGroupDefinitionModel = formGroupDefinitionModel;
+    const event = new UpdateFormElementDefinitionEvent();
+    event.formElementDefinitionModel = formGroupDefinitionModel;
     this._formBuilderComponent.handleEvent.next(event);
   }
 
