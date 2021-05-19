@@ -31,20 +31,34 @@ export class FormBuilderService {
     parentMemberKey: string,
   ) {
     const config = this._formBuilderRegistryService.get(templateIdentifier);
-    if (config) {
-      const { definitionModel, memberModel } = this._createElementDefinition(
-        config.templateIdentifier,
-        config.templateDisplayName,
-        config.dataType,
+
+    if (!config) {
+      // TBD: Allow non register template to be added anyway?
+      // const { definitionModel, memberModel } = this._createElementDefinition(
+      //   templateIdentifier,
+      //   null,
+      //   'Unknown',
+      // );
+      // formDefinitionModel.definitionList.push(definitionModel);
+      // this._addMember(formDefinitionModel, memberModel, parentMemberKey);
+      // return { definitionModel, memberModel };
+      throw new Error(`${templateIdentifier} has no registered config.`);
+    }
+
+    if (config.createDefinitionModel) {
+      const definitionModel = config.createDefinitionModel();
+      const memberModel = this._createMember(
+        definitionModel.key,
+        definitionModel.dataType,
       );
       formDefinitionModel.definitionList.push(definitionModel);
       this._addMember(formDefinitionModel, memberModel, parentMemberKey);
       return { definitionModel, memberModel };
     } else {
       const { definitionModel, memberModel } = this._createElementDefinition(
-        templateIdentifier,
-        null,
-        'Unknown',
+        config.templateIdentifier,
+        config.templateDisplayName,
+        config.dataType,
       );
       formDefinitionModel.definitionList.push(definitionModel);
       this._addMember(formDefinitionModel, memberModel, parentMemberKey);
