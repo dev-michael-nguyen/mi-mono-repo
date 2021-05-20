@@ -33,15 +33,13 @@
           {{ option.displayName }}
         </mat-radio-button>
       </mat-radio-group>
-      <button
+      <div
         *ngIf="!isReadOnly && lookupFormControl.value"
-        mat-icon-button
+        class="silo-form-field-suffix-container"
         matSuffix
-        aria-label="Clear"
-        (click)="clearForm($event)"
       >
-        <mat-icon>close</mat-icon>
-      </button>
+        <button mat-stroked-button (click)="clearForm($event)">Clear</button>
+      </div>
     </div>
   </div>
   <div [id]="describebyId" class="silo-form-field-message-container">

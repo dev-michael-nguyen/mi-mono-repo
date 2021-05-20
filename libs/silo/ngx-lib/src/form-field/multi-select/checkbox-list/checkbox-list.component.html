@@ -32,6 +32,14 @@
           {{ option.displayName }}
         </mat-list-option>
       </mat-selection-list>
+      <div
+        *ngIf="!isReadOnly"
+        class="silo-form-field-suffix-container"
+        matSuffix
+      >
+        <button mat-stroked-button (click)="selectAll()">Select All</button>
+        <button mat-stroked-button (click)="clearAll()">Clear All</button>
+      </div>
     </div>
   </div>
   <div [id]="describebyId" class="silo-form-field-message-container">

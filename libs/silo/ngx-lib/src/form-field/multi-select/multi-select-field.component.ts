@@ -94,4 +94,12 @@ export abstract class MultiSelectFieldComponent implements OnInit {
     const valueList = this.lookupListFormControl.value as Array<LookupModel>;
     return valueList && !!valueList.find((x) => x.key === option.key);
   }
+
+  selectAll() {
+    this.lookupListFormControl.setValue(this.options);
+  }
+
+  clearAll() {
+    this.lookupListFormControl.reset();
+  }
 }

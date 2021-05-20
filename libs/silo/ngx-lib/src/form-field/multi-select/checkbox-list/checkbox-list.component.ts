@@ -40,11 +40,6 @@ export class CheckboxListComponent
     });
 
     this._elementRef.nativeElement
-      .querySelectorAll('.mat-selection-list')
-      .forEach((item) => {
-        item.removeAttribute('tabindex');
-      });
-    this._elementRef.nativeElement
       .querySelectorAll('.mat-list-option')
       .forEach((item) => {
         if (item.attributes.getNamedItem('aria-disabled').nodeValue == 'true') {
