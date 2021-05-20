@@ -4,7 +4,7 @@ import { ClassExpression } from '../../responsive/responsive-container/models/cl
 import { randomHtmlId } from '../../utils/random-html-id';
 import { LookupConfigModel } from '../models/lookup-config-model';
 import { LookupModel } from '../models/lookup-model';
-import { ValidatorMixin } from '../services/validator.mixin';
+import { ValidatorService } from '../services/validator.service';
 import { SingleSelectValidatorFactory } from './single-select-validator.factory';
 
 @Component({
@@ -80,7 +80,7 @@ export abstract class SingleSelectFieldComponent implements OnInit {
   }
 
   getErrorMessage() {
-    return ValidatorMixin.getFormGroupErrorMessage(this.formGroup);
+    return ValidatorService.getFormGroupErrorMessage(this.formGroup);
   }
 
   compareWith(o1: LookupModel, o2: LookupModel) {

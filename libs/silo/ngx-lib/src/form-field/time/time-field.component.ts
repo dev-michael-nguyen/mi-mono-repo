@@ -2,7 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { ClassExpression } from '../../responsive/responsive-container/models/class-expression';
 import { randomHtmlId } from '../../utils/random-html-id';
-import { ValidatorMixin } from '../services/validator.mixin';
+import { ValidatorService } from '../services/validator.service';
 import { TimeValidatorFactory } from './time-validator.factory';
 
 @Component({
@@ -76,6 +76,6 @@ export abstract class TimeFieldComponent implements OnInit {
   }
 
   getErrorMessage() {
-    return ValidatorMixin.getFormGroupErrorMessage(this.formGroup);
+    return ValidatorService.getFormGroupErrorMessage(this.formGroup);
   }
 }

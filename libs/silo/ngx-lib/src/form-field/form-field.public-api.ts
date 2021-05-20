@@ -7,7 +7,7 @@ export * from './multi-select/multi-select.public-api';
 export * from './numeric/numeric.public-api';
 export * from './phone/phone.public-api';
 export * from './rich-text/rich-text.public-api';
-export * from './services/validator.mixin';
+export * from './services/validator.service';
 export * from './single-select/single-select.public-api';
 export * from './text/text.public-api';
 export * from './time/time.public-api';

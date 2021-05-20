@@ -3,7 +3,7 @@ import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { ClassExpression } from '../../responsive/responsive-container/models/class-expression';
 import { randomHtmlId } from '../../utils/random-html-id';
 import { LookupModel } from '../models/lookup-model';
-import { ValidatorMixin } from '../services/validator.mixin';
+import { ValidatorService } from '../services/validator.service';
 import { DateValidatorFactory } from './date-validator.factory';
 import { NativeDate, NativeDateAdapter } from './native-date-adapter';
 
@@ -77,7 +77,7 @@ export abstract class DateFieldComponent implements OnInit {
   }
 
   getErrorMessage(): string {
-    return ValidatorMixin.getFormGroupErrorMessage(this.formGroup);
+    return ValidatorService.getFormGroupErrorMessage(this.formGroup);
   }
 
   compareWith(o1: LookupModel, o2: LookupModel): boolean {

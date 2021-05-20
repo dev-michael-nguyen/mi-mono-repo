@@ -10,7 +10,7 @@ import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { PropertyMetadata, PropertyMetadataApplicator } from '@silo/metadata';
 import { ClassExpression } from '../../responsive/responsive-container/models/class-expression';
 import { randomHtmlId } from '../../utils/random-html-id';
-import { ValidatorMixin } from '../services/validator.mixin';
+import { ValidatorService } from '../services/validator.service';
 import { TextValidatorFactory } from './text-validator.factory';
 
 @Component({
@@ -107,7 +107,7 @@ export abstract class TextFieldComponent
   }
 
   getErrorMessage(): string {
-    return ValidatorMixin.getFormControlErrorMessage(this.textFormControl);
+    return ValidatorService.getFormControlErrorMessage(this.textFormControl);
   }
 
   getValue(): string {
