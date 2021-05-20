@@ -1,0 +1,16 @@
+.silo-form-field-input-container {
+  .file-name {
+    width: 100%;
+    margin-left: 2px;
+  }
+  input {
+    opacity: 0;
+    position: absolute;
+    z-index: -1;
+  }
+  button {
+    width: 2em;
+    height: 2em;
+    line-height: unset;
+  }
+}

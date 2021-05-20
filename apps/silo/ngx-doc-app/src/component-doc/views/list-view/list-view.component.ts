@@ -18,6 +18,8 @@ export class ListViewComponent implements OnInit {
     { label: 'Time Picker', routerLink: 'time-picker' },
     { label: 'Phone Box', routerLink: 'phone-box' },
     { label: 'Number Box', routerLink: 'number-box' },
+    { label: 'Uppy File Box', routerLink: 'uppy-file-box' },
+    { label: 'Uppy File Dashboard', routerLink: 'uppy-file-dashboard' },
   ];
 
   constructor() {}

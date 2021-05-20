@@ -10,7 +10,6 @@
     box-shadow: 0 0 0 1px gray;
     border-radius: 2px;
     width: 100%;
-    margin: 4px 2px;
 
     &:focus-within {
       box-shadow: 0 0 0 2px mat-color($primary);
@@ -24,6 +23,7 @@
     border-left-width: 4px;
     border-left-style: solid;
     border-left-color: transparent;
+    min-height: 34px;
   }
 
   .silo-form-field-suffix-container {

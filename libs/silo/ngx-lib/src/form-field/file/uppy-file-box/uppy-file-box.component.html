@@ -1,0 +1,55 @@
+<div
+  class="silo-uppy-file-box"
+  [class.silo-uppy-file-box--is-readonly]="isReadOnly"
+  [class.silo-uppy-file-box--is-required]="isRequired"
+  [class.silo-uppy-file-box--is-filled]="
+    isRequired && formGroup.dirty && formGroup.valid
+  "
+  [class.silo-uppy-file-box--has-error]="
+    hasValidators && formGroup.touched && formGroup.invalid
+  "
+  [siloResponsiveContainer]="fieldSize"
+>
+  <silo-label [labelId]="labelId" [label]="label"></silo-label>
+  <div
+    class="silo-form-field-outline-container"
+    [siloResponsiveContainer]="fieldOutlineSize"
+  >
+    <div class="silo-form-field-input-container">
+      <input
+        #fileInput
+        type="file"
+        [attr.aria-labelledby]="labelId"
+        [multiple]="false"
+      />
+      <div class="file-name">{{ fileFormControl.value?.name }}</div>
+      <button mat-icon-button aria-label="Choose File" (click)="chooseFile()">
+        <mat-icon>file_upload</mat-icon>
+      </button>
+      <button
+        *ngIf="fileFormControl.value"
+        mat-icon-button
+        aria-label="Clear File"
+        (click)="clearFile()"
+      >
+        <mat-icon>close</mat-icon>
+      </button>
+    </div>
+    <div class="uppy-status-bar"></div>
+  </div>
+  <div [id]="describebyId" class="silo-form-field-message-container">
+    <span
+      class="mat-hint"
+      *ngIf="hint && !(formGroup.touched && formGroup.invalid)"
+    >
+      {{ hint }}
+    </span>
+    <!-- <span
+      class="mat-error"
+      role="alert"
+      *ngIf="formGroup.touched && formGroup.invalid"
+    >
+      {{ getErrorMessage() }}
+    </span> -->
+  </div>
+</div>

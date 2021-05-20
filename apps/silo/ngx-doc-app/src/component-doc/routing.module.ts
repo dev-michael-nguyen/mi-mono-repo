@@ -99,6 +99,22 @@ const routes: Routes = [
             '../component-doc/number-box/routing.module'
           ).then((m) => m.RoutingModule),
       },
+      {
+        path: 'uppy-file-box',
+        loadChildren: () =>
+          import(
+            /* webpackChunkName: 'file-box-doc-module' */
+            '../component-doc/uppy-file-box/routing.module'
+          ).then((m) => m.RoutingModule),
+      },
+      {
+        path: 'uppy-file-dashboard',
+        loadChildren: () =>
+          import(
+            /* webpackChunkName: 'file-dashboard-doc-module' */
+            '../component-doc/uppy-file-dashboard/routing.module'
+          ).then((m) => m.RoutingModule),
+      },
     ],
   },
 ];

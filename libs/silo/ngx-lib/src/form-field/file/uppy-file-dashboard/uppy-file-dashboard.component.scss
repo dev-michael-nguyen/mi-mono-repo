@@ -1,0 +1,32 @@
+/**
+ * Override uppy styles
+ */
+
+// custom style for upload button
+.uppy-StatusBar-actions {
+  justify-content: flex-end;
+  // button {
+  //   background-color: $primary !important;
+  //   color: white !important;
+  // }
+}
+
+// larger file name font
+.uppy-Dashboard-Item-name {
+  font-size: 16px;
+}
+
+// larger size font
+.uppy-Dashboard-Item-statusSize {
+  font-size: 12px;
+}
+
+// hide file selected message
+.uppy-DashboardContent-title {
+  display: none !important;
+}
+
+// hide trademark
+.uppy-Dashboard-AddFiles-info {
+  display: none !important;
+}

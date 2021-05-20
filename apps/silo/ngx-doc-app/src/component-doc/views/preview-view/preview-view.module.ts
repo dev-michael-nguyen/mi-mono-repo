@@ -13,6 +13,7 @@ import {
   TextAreaModule,
   TextBoxModule,
   TimePickerModule,
+  UppyFileBoxModule,
 } from '@silo/ngx';
 import { PreviewViewComponent } from './preview-view.component';
 
@@ -31,6 +32,7 @@ import { PreviewViewComponent } from './preview-view.component';
     TextAreaModule,
     TextBoxModule,
     TimePickerModule,
+    UppyFileBoxModule,
   ],
   declarations: [PreviewViewComponent],
 })

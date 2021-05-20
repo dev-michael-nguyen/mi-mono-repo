@@ -1,4 +1,5 @@
 export * from './date/date.public-api';
+export * from './file/file.public-api';
 export * from './models/lookup-config-model';
 export * from './models/lookup-model';
 export * from './models/validator-error-map';
