@@ -31,7 +31,11 @@
     place-content: center;
     align-items: center;
     box-sizing: border-box;
-    flex-direction: column;
+    flex-direction: row;
+
+    &.column {
+      flex-direction: column;
+    }
   }
 
   .silo-form-field-message-container {

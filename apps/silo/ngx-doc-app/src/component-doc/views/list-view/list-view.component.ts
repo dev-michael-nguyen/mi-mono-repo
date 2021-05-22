@@ -12,6 +12,7 @@ export class ListViewComponent implements OnInit {
     { label: 'Text Area', routerLink: 'text-area' },
     { label: 'Quill Rich Text', routerLink: 'quill-rich-text' },
     { label: 'Single Select', routerLink: 'single-select' },
+    { label: 'Single Autocomplete', routerLink: 'single-autocomplete' },
     { label: 'Radio List', routerLink: 'radio-list' },
     { label: 'Checkbox List', routerLink: 'checkbox-list' },
     { label: 'Date Picker', routerLink: 'date-picker' },

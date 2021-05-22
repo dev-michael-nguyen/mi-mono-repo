@@ -1,0 +1,72 @@
+<div
+  class="silo-single-autocomplete"
+  [class.silo-single-autocomplete--is-readonly]="isReadOnly"
+  [class.silo-single-autocomplete--is-required]="isRequired"
+  [class.silo-single-autocomplete--is-filled]="
+    isRequired && formGroup.dirty && formGroup.valid
+  "
+  [class.silo-single-autocomplete--has-error]="
+    hasValidators && formGroup.touched && formGroup.invalid
+  "
+  [siloResponsiveContainer]="fieldSize"
+>
+  <silo-label [labelId]="labelId" [label]="label"></silo-label>
+  <mat-form-field
+    appearance="legacy"
+    floatLabel="always"
+    [hideRequiredMarker]="true"
+    [siloResponsiveContainer]="fieldOutlineSize"
+  >
+    <mat-label>{{ label }}</mat-label>
+    <textarea
+      *ngIf="isReadOnly"
+      #textarea
+      [cdkTextareaAutosize]="!isReadOnly"
+      [cdkAutosizeMinRows]="1"
+      matInput
+      type="text"
+      [attr.aria-labelledby]="labelId"
+      [placeholder]="placeholder"
+      [formControl]="filterFormControl"
+      [required]="isRequired"
+      [readonly]="isReadOnly"
+    ></textarea>
+    <input
+      *ngIf="!isReadOnly"
+      type="text"
+      [attr.aria-labelledby]="labelId"
+      [placeholder]="placeholder"
+      matInput
+      [formControl]="filterFormControl"
+      [matAutocomplete]="auto"
+      [required]="isRequired"
+      (blur)="clearFilterForm()"
+    />
+    <mat-autocomplete
+      #auto="matAutocomplete"
+      [displayWith]="displayLookupDisplayName"
+    >
+      <mat-option
+        *ngFor="let option of filteredOptions | async"
+        [value]="option"
+      >
+        {{ option.displayName }}
+      </mat-option>
+    </mat-autocomplete>
+    <div matSuffix class="silo-form-field-suffix-container">
+      <mat-icon>arrow_drop_down</mat-icon>
+      <button
+        *ngIf="!isReadOnly && lookupFormControl.value"
+        mat-icon-button
+        aria-label="Clear"
+        (click)="clearForm($event)"
+      >
+        <mat-icon>close</mat-icon>
+      </button>
+    </div>
+    <mat-hint *ngIf="hint">{{ hint }}</mat-hint>
+    <mat-error *ngIf="formGroup.invalid">
+      {{ getErrorMessage() }}
+    </mat-error>
+  </mat-form-field>
+</div>

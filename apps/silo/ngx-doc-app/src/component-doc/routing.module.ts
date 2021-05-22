@@ -52,6 +52,14 @@ const routes: Routes = [
           ).then((m) => m.RoutingModule),
       },
       {
+        path: 'single-autocomplete',
+        loadChildren: () =>
+          import(
+            /* webpackChunkName: 'single-autocomplete-doc-module' */
+            '../component-doc/single-autocomplete/routing.module'
+          ).then((m) => m.RoutingModule),
+      },
+      {
         path: 'radio-list',
         loadChildren: () =>
           import(

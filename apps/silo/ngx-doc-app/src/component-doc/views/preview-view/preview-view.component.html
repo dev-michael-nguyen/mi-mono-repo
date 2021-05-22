@@ -80,6 +80,29 @@
         </div>
       </div>
     </a>
+    <a class="component-preview-list-item" routerLink="../single-autocomplete">
+      <div class="component-preview-list-item__card">
+        <div
+          class="component-preview-list-item__card__image"
+          fxLayout="column"
+          fxLayoutAlign="center center"
+        >
+          <silo-single-autocomplete
+            label="Label"
+            [lookupConfig]="lookupConfig"
+            [isRequired]="true"
+            hint="Please select an option"
+            fieldSize="col-12"
+          ></silo-single-autocomplete>
+        </div>
+        <div class="component-preview-list-item__card__title">
+          Single Autocomplete
+        </div>
+        <div class="component-preview-list-item__card__summary">
+          Lookup select as single autocomplete.
+        </div>
+      </div>
+    </a>
     <a class="component-preview-list-item" routerLink="../radio-list">
       <div class="component-preview-list-item__card">
         <div

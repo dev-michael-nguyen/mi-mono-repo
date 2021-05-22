@@ -1,0 +1,68 @@
+<silo-example-article>
+  <ng-container headerContent>
+    <p>Single autocomplete is not required</p>
+  </ng-container>
+  <ng-container bodyContent>
+    <silo-single-autocomplete
+      label="Label"
+      [lookupConfig]="lookupConfig"
+    ></silo-single-autocomplete>
+  </ng-container>
+</silo-example-article>
+
+<silo-example-article>
+  <ng-container headerContent>
+    <p>Single autocomplete is required</p>
+  </ng-container>
+  <ng-container bodyContent>
+    <silo-single-autocomplete
+      label="Label"
+      [lookupConfig]="lookupConfig"
+      [isRequired]="true"
+    ></silo-single-autocomplete>
+  </ng-container>
+</silo-example-article>
+
+<silo-example-article>
+  <ng-container headerContent>
+    <p>Single autocomplete with hint</p>
+  </ng-container>
+  <ng-container bodyContent>
+    <silo-single-autocomplete
+      label="Label"
+      [lookupConfig]="lookupConfig"
+      [isRequired]="true"
+      hint="Please select an option"
+    ></silo-single-autocomplete>
+  </ng-container>
+</silo-example-article>
+
+<silo-example-article>
+  <ng-container headerContent>
+    <p>Single autocomplete with long label and placeholder</p>
+  </ng-container>
+  <ng-container bodyContent>
+    <silo-single-autocomplete
+      label="Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec velit neque, auctor sit amet aliquam vel, ullamcorper sit amet ligula."
+      placeholder="Proin eget tortor risus."
+      [lookupConfig]="lookupConfig"
+      fieldSize="col-6"
+      outlineSize="col-4"
+    ></silo-single-autocomplete>
+  </ng-container>
+</silo-example-article>
+
+<silo-example-article>
+  <ng-container headerContent>
+    <p>Single autocomplete is read-only</p>
+  </ng-container>
+  <ng-container bodyContent>
+    <silo-single-autocomplete
+      label="Label"
+      [lookupConfig]="lookupConfig"
+      [defaultValue]="lookupConfig.lookups[2]"
+      [isRequired]="true"
+      [isReadOnly]="true"
+    ></silo-single-autocomplete>
+  </ng-container>
+</silo-example-article>
