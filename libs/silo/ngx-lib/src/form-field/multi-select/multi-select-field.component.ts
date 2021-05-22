@@ -39,7 +39,7 @@ export abstract class MultiSelectFieldComponent implements OnInit {
   isRequired = false;
 
   @Input()
-  value: Array<LookupModel>;
+  defaultValue: Array<LookupModel>;
 
   @Input()
   fieldSize: ClassExpression = 'col-2';
@@ -57,7 +57,7 @@ export abstract class MultiSelectFieldComponent implements OnInit {
 
   ngOnInit(): void {
     this.setDefinition();
-    this.setForm(this.value);
+    this.setForm(this.defaultValue);
   }
 
   setDefinition(): void {

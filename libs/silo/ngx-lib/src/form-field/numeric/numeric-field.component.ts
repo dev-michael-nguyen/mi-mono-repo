@@ -35,7 +35,7 @@ export abstract class NumericFieldComponent implements OnInit {
   isRequired = false;
 
   @Input()
-  value: string;
+  defaultValue: string;
 
   @Input()
   fieldSize: ClassExpression = 'col-2';
@@ -47,7 +47,7 @@ export abstract class NumericFieldComponent implements OnInit {
 
   ngOnInit(): void {
     this.setDefinition();
-    this.setForm(this.value || '');
+    this.setForm(this.defaultValue || '');
   }
 
   setDefinition(): void {

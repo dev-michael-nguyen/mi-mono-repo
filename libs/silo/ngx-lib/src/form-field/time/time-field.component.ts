@@ -41,7 +41,7 @@ export abstract class TimeFieldComponent implements OnInit {
   maxLength: number;
 
   @Input()
-  value: string;
+  defaultValue: string;
 
   @Input()
   fieldSize: ClassExpression = 'col-2';
@@ -53,7 +53,7 @@ export abstract class TimeFieldComponent implements OnInit {
 
   ngOnInit() {
     this.setDefinition();
-    this.setForm(this.value);
+    this.setForm(this.defaultValue);
   }
 
   setDefinition() {

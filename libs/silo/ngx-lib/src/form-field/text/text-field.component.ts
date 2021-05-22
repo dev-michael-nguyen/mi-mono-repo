@@ -7,7 +7,6 @@ import {
   ViewChild,
 } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
-import { PropertyMetadata, PropertyMetadataApplicator } from '@silo/metadata';
 import { ClassExpression } from '../../responsive/responsive-container/models/class-expression';
 import { randomHtmlId } from '../../utils/random-html-id';
 import { ValidatorService } from '../services/validator.service';
@@ -16,8 +15,7 @@ import { TextValidatorFactory } from './text-validator.factory';
 @Component({
   template: '',
 })
-export abstract class TextFieldComponent
-  implements OnInit, AfterViewInit, PropertyMetadataApplicator {
+export abstract class TextFieldComponent implements OnInit, AfterViewInit {
   formGroup: FormGroup;
 
   textFormControl: FormControl;
@@ -50,7 +48,7 @@ export abstract class TextFieldComponent
   maxLength: number;
 
   @Input()
-  value: string;
+  defaultValue: string;
 
   @Input()
   fieldSize: ClassExpression = 'col-2';
@@ -66,22 +64,9 @@ export abstract class TextFieldComponent
     protected _formBuilder: FormBuilder,
   ) {}
 
-  applyPropertyMetadata(
-    propertyMetadata: PropertyMetadata,
-    propertyValue: string,
-  ) {
-    this.value = propertyValue;
-    this.label = propertyMetadata.label;
-    this.placeholder = propertyMetadata.placeholder;
-    this.hint = propertyMetadata.hint;
-    this.isRequired = propertyMetadata.isRequired;
-    this.fieldSize = propertyMetadata.fieldSize;
-    this.fieldOutlineSize = propertyMetadata.fieldOutlineSize;
-  }
-
   ngOnInit(): void {
     this.setDefinition();
-    this.setForm(this.value);
+    this.setForm(this.defaultValue);
   }
 
   ngAfterViewInit(): void {

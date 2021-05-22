@@ -41,7 +41,7 @@ export abstract class RichTextFieldComponent implements OnInit {
   maxLength: number;
 
   @Input()
-  value: string;
+  defaultValue: string;
 
   @Input()
   fieldSize: ClassExpression = 'col-6';
@@ -56,7 +56,7 @@ export abstract class RichTextFieldComponent implements OnInit {
 
   ngOnInit() {
     this.setDefinition();
-    this.setForm(this.value);
+    this.setForm(this.defaultValue);
   }
 
   setDefinition() {

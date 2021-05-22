@@ -6,11 +6,7 @@ import {
   ViewChild,
   ViewContainerRef,
 } from '@angular/core';
-import {
-  isPropertyMetadataApplicator,
-  MetadataModel,
-  PropertyMetadata,
-} from '@silo/metadata';
+import { MetadataModel, PropertyMetadata } from '@silo/metadata';
 import { FormElementNodeModelExtensions } from '../../form-builder/models/form-element-node-model';
 import { TemplateRegistryConfig } from '../models/template-registry-config';
 import { MetadataFormService } from '../services/metadata-form.service';
@@ -73,12 +69,8 @@ export class MetadataFormComponent implements OnInit {
       componentFactory,
     );
 
-    if (isPropertyMetadataApplicator(componentRef.instance)) {
-      componentRef.instance.applyPropertyMetadata(
-        propertyMetadata,
-        propertyValue,
-      );
-      componentRef.changeDetectorRef.detectChanges();
-    }
+    Object.assign(componentRef.instance, propertyMetadata);
+    (componentRef.instance as PropertyMetadata).defaultValue = propertyValue;
+    componentRef.changeDetectorRef.detectChanges();
   }
 }

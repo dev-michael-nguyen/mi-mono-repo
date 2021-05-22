@@ -35,7 +35,7 @@ export abstract class PhoneFieldComponent implements OnInit {
   isRequired = false;
 
   @Input()
-  value: string;
+  defaultValue: string;
 
   @Input()
   fieldSize: ClassExpression = 'col-2';
@@ -47,7 +47,7 @@ export abstract class PhoneFieldComponent implements OnInit {
 
   ngOnInit() {
     this.setDefinition();
-    this.setForm(this.value || '');
+    this.setForm(this.defaultValue || '');
   }
 
   setDefinition() {

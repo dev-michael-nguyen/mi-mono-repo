@@ -39,7 +39,7 @@ export abstract class SingleSelectFieldComponent implements OnInit {
   isRequired = false;
 
   @Input()
-  value: LookupModel;
+  defaultValue: LookupModel;
 
   @Input()
   fieldSize: ClassExpression = 'col-2';
@@ -54,7 +54,7 @@ export abstract class SingleSelectFieldComponent implements OnInit {
 
   ngOnInit() {
     this.setDefinition();
-    this.setForm(this.value);
+    this.setForm(this.defaultValue);
   }
 
   setDefinition() {

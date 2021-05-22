@@ -39,7 +39,7 @@ export abstract class DateFieldComponent implements OnInit {
   isRequired = false;
 
   @Input()
-  value: NativeDate;
+  defaultValue: NativeDate;
 
   @Input()
   fieldSize: ClassExpression = 'col-2';
@@ -51,7 +51,7 @@ export abstract class DateFieldComponent implements OnInit {
 
   ngOnInit(): void {
     this.setDefinition();
-    this.setForm(this.value);
+    this.setForm(this.defaultValue);
   }
 
   setDefinition(): void {

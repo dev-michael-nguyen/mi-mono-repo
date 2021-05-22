@@ -5,19 +5,19 @@
     fieldSize="col-12"
     label="Label"
     [isRequired]="true"
-    [value]="textDefinitionModel.label"
+    [defaultValue]="textDefinitionModel.label"
   ></silo-text-box>
   <silo-text-area
     #placeholderField
     fieldSize="col-12"
     label="Placeholder"
-    [value]="textDefinitionModel.placeholder"
+    [defaultValue]="textDefinitionModel.placeholder"
   ></silo-text-area>
   <silo-text-box
     #hintField
     fieldSize="col-12"
     label="Hint"
-    [value]="textDefinitionModel.hint"
+    [defaultValue]="textDefinitionModel.hint"
   ></silo-text-box>
   <silo-metadata-form
     [metadataModel]="textDefinitionModel"

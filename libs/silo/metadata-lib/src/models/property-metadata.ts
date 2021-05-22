@@ -1,4 +1,5 @@
 export class PropertyMetadata {
+  defaultValue?: unknown;
   description?: string;
   displayOrder?: number;
   fieldOutlineSize?: string;
