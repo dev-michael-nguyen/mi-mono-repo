@@ -56,8 +56,11 @@ export class UppyFileBoxComponent implements OnInit, AfterViewInit {
   @Input()
   tusEndpoint: string;
 
-  @ViewChild('fileInput')
+  @ViewChild('fileInput', { static: true })
   fileInput: ElementRef<HTMLInputElement>;
+
+  @ViewChild('statusBar', { static: true })
+  statusBar: ElementRef<HTMLInputElement>;
 
   constructor(private _formBuilder: FormBuilder) {}
 
@@ -123,7 +126,7 @@ export class UppyFileBoxComponent implements OnInit, AfterViewInit {
     });
 
     this.uppyInstance.use(StatusBar, {
-      target: '.uppy-status-bar',
+      target: this.statusBar.nativeElement,
       hideUploadButton: this.preUpload,
     });
 

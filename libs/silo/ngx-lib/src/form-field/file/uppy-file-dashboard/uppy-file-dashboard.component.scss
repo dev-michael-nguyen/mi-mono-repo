@@ -1,3 +1,124 @@
+$border-color: #cbcbcb;
+$background-color: #f8f8f8;
+
+.silo-custom-uppy-file-dashboard {
+  width: 100%;
+  height: 440px;
+
+  .hide {
+    display: none !important;
+  }
+
+  .success {
+    color: green;
+  }
+
+  .error {
+    color: red;
+  }
+}
+
+.silo-custom-uppy-file-dashboard {
+  .file-upload-icon {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background-color: #4c7997;
+    color: white;
+    mat-icon {
+      width: 54px;
+      height: 54px;
+      font-size: 54px;
+    }
+
+    &.small {
+      width: 40px;
+      height: 40px;
+      mat-icon {
+        width: 24px;
+        height: 24px;
+        font-size: 24px;
+      }
+    }
+  }
+
+  .file-upload-hr {
+    width: 25%;
+    text-align: center;
+    border-bottom: 1px solid #cbcbcb;
+    line-height: 0.1em;
+    margin: 10px 0 20px;
+    color: #9ea1a7;
+
+    span {
+      background: $background-color;
+      padding: 0 10px;
+    }
+  }
+}
+
+.silo-custom-uppy-file-dashboard {
+  .uppy-StatusBar {
+    background-color: $background-color;
+  }
+}
+
+.silo-custom-uppy-file-dashboard__drop-zone {
+  width: 100%;
+  height: 100%;
+  border: 2px dashed $border-color;
+  border-radius: 8px;
+  background-color: $background-color;
+}
+
+.silo-custom-uppy-file-dashboard__dashboard {
+  width: 100%;
+  height: 100%;
+  border: 1px solid $border-color;
+  border-radius: 8px;
+  background-color: $background-color;
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 2px 1px -1px,
+    rgba(0, 0, 0, 0.14) 0px 1px 1px 0px, rgba(0, 0, 0, 0.12) 0px 1px 3px 0px;
+
+  .dashboard__header {
+    height: 80px;
+
+    .header__content {
+      margin: 0 8px;
+
+      h4 {
+        margin-left: 4px;
+      }
+    }
+  }
+
+  .dashboard__content {
+    border-top: 1px solid $border-color;
+    border-bottom: 1px solid $border-color;
+    padding: 8px;
+    overflow-y: scroll;
+
+    mat-card {
+      padding: 8px 12px;
+      margin-bottom: 8px;
+    }
+  }
+
+  .dashboard__footer {
+    height: 80px;
+
+    .footer__content {
+      margin: 0 8px;
+    }
+
+    .footer__actions {
+      button {
+        margin: 8px;
+      }
+    }
+  }
+}
+
 /**
  * Override uppy styles
  */
@@ -5,10 +126,6 @@
 // custom style for upload button
 .uppy-StatusBar-actions {
   justify-content: flex-end;
-  // button {
-  //   background-color: $primary !important;
-  //   color: white !important;
-  // }
 }
 
 // larger file name font

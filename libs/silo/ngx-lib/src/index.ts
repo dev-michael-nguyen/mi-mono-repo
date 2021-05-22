@@ -9,4 +9,5 @@ export * from './layout/sticky-layout/sticky-layout.public-api';
 export * from './metadata/metadata-form/metadata-form.public-api';
 export * from './navigation/nav-list/nav-list.public-api';
 export * from './offline/offline.public-api';
+export * from './pipes/prettier-bytes/prettier-bytes.public-api';
 export * from './theme-picker/theme-picker.public-api';

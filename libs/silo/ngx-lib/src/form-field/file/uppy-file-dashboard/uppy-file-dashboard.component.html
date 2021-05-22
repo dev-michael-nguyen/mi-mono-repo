@@ -2,3 +2,147 @@
   class="silo-uppy-file-dashboard"
   [siloResponsiveContainer]="fieldSize"
 ></div>
+<div
+  *ngIf="!useUppyDashboard"
+  class="silo-custom-uppy-file-dashboard"
+  [siloResponsiveContainer]="fieldSize"
+>
+  <input #fileInput class="hide" type="file" multiple />
+  <div
+    class="silo-custom-uppy-file-dashboard__drop-zone"
+    [class.hide]="files.length"
+    fxLayout="column"
+    fxLayoutAlign="center center"
+  >
+    <div
+      class="file-upload-icon"
+      fxLayout="column"
+      fxLayoutAlign="center center"
+    >
+      <mat-icon>file_upload</mat-icon>
+    </div>
+    <h3>Drop files or folders here to begin the upload.</h3>
+    <h4 class="file-upload-hr"><span>OR</span></h4>
+    <div>
+      <button mat-button color="primary" (click)="onAddFromComputerClick()">
+        <mat-icon>computer</mat-icon>
+        Add from Computer
+      </button>
+    </div>
+  </div>
+  <div
+    class="silo-custom-uppy-file-dashboard__dashboard"
+    [class.hide]="!files.length"
+    fxLayout="column"
+  >
+    <div class="dashboard__header" fxLayout="row" fxLayoutAlign="start center">
+      <div
+        class="header__content"
+        fxFlex="grow"
+        fxLayout="row"
+        fxLayoutAlign="start center"
+      >
+        <div
+          class="file-upload-icon small"
+          fxLayout="row"
+          fxLayoutAlign="center center"
+        >
+          <mat-icon>file_upload</mat-icon>
+        </div>
+        <h4>Drop additional files or folders here.</h4>
+      </div>
+      <div class="header__actions" fxFlex="noshrink">
+        <button mat-button color="primary" (click)="onAddFromComputerClick()">
+          <mat-icon>computer</mat-icon>
+          Add from Computer
+        </button>
+      </div>
+    </div>
+    <div class="dashboard__content" fxFlex="grow">
+      <mat-card *ngFor="let file of files">
+        <div fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="8px">
+          <div fxFlex="noshrink">
+            <mat-icon
+              color="accent"
+              *ngIf="
+                file.progress.uploadStarted && file.progress.uploadComplete
+              "
+            >
+              check_circle
+            </mat-icon>
+            <mat-icon
+              color="error"
+              *ngIf="
+                file.progress.uploadStarted && !file.progress.uploadComplete
+              "
+            >
+              error
+            </mat-icon>
+          </div>
+          <div fxFlex="noshrink">
+            {{ file.name }}
+          </div>
+          <div fxFlex="grow">
+            <mat-chip-list>
+              <mat-chip *ngFor="let metadata of currentMetadata">
+                {{ metadata }}
+              </mat-chip>
+            </mat-chip-list>
+          </div>
+          <div fxFlex="noshrink">
+            {{ file.size | siloPrettierBytes }}
+          </div>
+          <div fxFlex="noshrink">
+            <button
+              mat-icon-button
+              aria-label="Remove file"
+              (click)="onRemoveFileClick(file)"
+            >
+              <mat-icon>close</mat-icon>
+            </button>
+          </div>
+        </div>
+      </mat-card>
+    </div>
+    <div class="dashboard__footer" fxLayout="row" fxLayoutAlign="start center">
+      <div class="footer__content" fxFlex="grow">
+        <div class="footer__status-bar"></div>
+      </div>
+      <div class="footer__actions" fxFlex="noshrink">
+        <button
+          *ngIf="isUploading || failedFiles.length"
+          mat-button
+          color="primary"
+          (click)="onCancelClick()"
+        >
+          Cancel
+        </button>
+        <button
+          *ngIf="!isUploading && failedFiles.length"
+          mat-button
+          color="error"
+          (click)="onRetryClick()"
+        >
+          Retry {{ failedFiles.length }} Failed Documents
+        </button>
+        <button
+          *ngIf="!isUploading && !failedFiles.length"
+          mat-button
+          color="primary"
+          (click)="onClearClick()"
+        >
+          Clear
+        </button>
+        <button
+          *ngIf="!isUploading && !failedFiles.length"
+          mat-flat-button
+          color="primary"
+          [disabled]="!readyForUpload"
+          (click)="onUploadClick()"
+        >
+          Upload {{ files.length }} Documents
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
