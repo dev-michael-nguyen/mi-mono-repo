@@ -130,7 +130,42 @@
               "node_modules/quill/dist/quill.snow.css"
             ],
             "scripts": [],
-            "allowedCommonJsDependencies": ["lodash", "ngx-store"]
+            "allowedCommonJsDependencies": [
+              "lodash",
+              "ngx-store",
+              "js-base64",
+              "@uppy/aws-s3-multipart",
+              "@uppy/aws-s3",
+              "@uppy/box",
+              "@uppy/companion-client",
+              "@uppy/core",
+              "@uppy/dashboard",
+              "@uppy/drag-drop",
+              "@uppy/drop-target",
+              "@uppy/dropbox",
+              "@uppy/facebook",
+              "@uppy/file-input",
+              "@uppy/form",
+              "@uppy/golden-retriever",
+              "@uppy/google-drive",
+              "@uppy/image-editor",
+              "@uppy/informer",
+              "@uppy/instagram",
+              "@uppy/onedrive",
+              "@uppy/progress-bar",
+              "@uppy/provider-views",
+              "@uppy/redux-dev-tools",
+              "@uppy/screen-capture",
+              "@uppy/status-bar",
+              "@uppy/store-redux",
+              "@uppy/thumbnail-generator",
+              "@uppy/transloadit",
+              "@uppy/tus",
+              "@uppy/unsplash",
+              "@uppy/url",
+              "@uppy/webcam",
+              "@uppy/xhr-upload"
+            ]
           },
           "configurations": {
             "production": {
