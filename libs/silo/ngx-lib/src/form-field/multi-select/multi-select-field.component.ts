@@ -1,7 +1,7 @@
 import { Component, ElementRef, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { ClassExpression } from '../../responsive/responsive-container/models/class-expression';
-import { randomHtmlId } from '../../utils/random-html-id';
+import { newHtmlId } from '../../utils/new-html-id';
 import { LookupConfigModel } from '../models/lookup-config-model';
 import { LookupModel } from '../models/lookup-model';
 import { ValidatorService } from '../services/validator.service';
@@ -61,8 +61,8 @@ export abstract class MultiSelectFieldComponent implements OnInit {
   }
 
   setDefinition(): void {
-    this.labelId = randomHtmlId();
-    this.describebyId = randomHtmlId();
+    this.labelId = newHtmlId();
+    this.describebyId = newHtmlId();
     if (this.lookupConfig && this.lookupConfig.lookups) {
       this.options = this.lookupConfig.lookups;
     }

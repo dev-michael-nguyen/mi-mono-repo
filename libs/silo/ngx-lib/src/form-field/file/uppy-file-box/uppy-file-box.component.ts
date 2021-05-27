@@ -9,7 +9,7 @@ import {
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { Core, StatusBar, Tus } from 'uppy';
 import { ClassExpression } from '../../../responsive/responsive-container/models/class-expression';
-import { randomHtmlId } from '../../../utils/random-html-id';
+import { newHtmlId } from '../../../utils/new-html-id';
 
 @Component({
   selector: 'silo-uppy-file-box',
@@ -107,8 +107,8 @@ export class UppyFileBoxComponent implements OnInit, AfterViewInit {
   }
 
   setDefinition() {
-    this.labelId = randomHtmlId();
-    this.describebyId = randomHtmlId();
+    this.labelId = newHtmlId();
+    this.describebyId = newHtmlId();
   }
 
   setForm() {

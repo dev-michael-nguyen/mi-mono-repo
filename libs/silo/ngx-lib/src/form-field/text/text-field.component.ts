@@ -8,7 +8,7 @@ import {
 } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { ClassExpression } from '../../responsive/responsive-container/models/class-expression';
-import { randomHtmlId } from '../../utils/random-html-id';
+import { newHtmlId } from '../../utils/new-html-id';
 import { ValidatorService } from '../services/validator.service';
 import { TextValidatorFactory } from './text-validator.factory';
 
@@ -74,8 +74,8 @@ export abstract class TextFieldComponent implements OnInit, AfterViewInit {
   }
 
   setDefinition(): void {
-    this.labelId = randomHtmlId();
-    this.describebyId = randomHtmlId();
+    this.labelId = newHtmlId();
+    this.describebyId = newHtmlId();
   }
 
   setForm(value: string): void {

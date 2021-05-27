@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { merge } from 'lodash';
-import { v4 as uuidv4 } from 'uuid';
+import { newGuid } from '../../utils/new-guid';
 import { FormDefinitionModel } from '../models/form-definition-model';
 import { FormElementDefinitionModel } from '../models/form-element-definition-model';
 import {
@@ -20,7 +20,7 @@ export class FormBuilderService {
 
   createFormDefinition(): FormDefinitionModel {
     const formDefinitionModel = new FormDefinitionModel();
-    formDefinitionModel.key = uuidv4();
+    formDefinitionModel.key = newGuid();
 
     return formDefinitionModel;
   }
@@ -104,7 +104,7 @@ export class FormBuilderService {
 
   private _createMember(definitionKey: string, dataType: FormElementDataType) {
     const memberModel = new FormElementMemberModel();
-    memberModel.key = uuidv4();
+    memberModel.key = newGuid();
     memberModel.definitionKey = definitionKey;
     memberModel.dataType = dataType;
 
@@ -131,7 +131,7 @@ export class FormBuilderService {
     dataType: FormElementDataType,
   ) {
     const definitionModel = new FormElementDefinitionModel();
-    definitionModel.key = uuidv4();
+    definitionModel.key = newGuid();
     definitionModel.templateIdentifier = templateIdentifier;
     definitionModel.templateDisplayName = templateDisplayName;
     definitionModel.dataType = dataType;

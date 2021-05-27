@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { ClassExpression } from '../../responsive/responsive-container/models/class-expression';
-import { randomHtmlId } from '../../utils/random-html-id';
+import { newHtmlId } from '../../utils/new-html-id';
 import { LookupModel } from '../models/lookup-model';
 import { ValidatorService } from '../services/validator.service';
 import { DateValidatorFactory } from './date-validator.factory';
@@ -55,8 +55,8 @@ export abstract class DateFieldComponent implements OnInit {
   }
 
   setDefinition(): void {
-    this.labelId = randomHtmlId();
-    this.describebyId = randomHtmlId();
+    this.labelId = newHtmlId();
+    this.describebyId = newHtmlId();
   }
 
   setForm(value: NativeDate): void {
