@@ -95,8 +95,8 @@ export abstract class TextFieldComponent implements OnInit, AfterViewInit {
     return ValidatorService.getFormControlErrorMessage(this.textFormControl);
   }
 
-  getValue(): string {
-    return this.formGroup.controls.text.value;
+  getFormValue(): string {
+    return this.textFormControl.value;
   }
 
   setTextAreaHeightInReadOnly(): void {

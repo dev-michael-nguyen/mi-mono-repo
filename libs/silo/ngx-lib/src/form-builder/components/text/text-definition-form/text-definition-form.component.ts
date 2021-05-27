@@ -77,9 +77,9 @@ export class TextDefinitionFormComponent
       {},
       this.textDefinitionModel,
       {
-        label: this.labelField.getValue(),
-        placeholder: this.placeholderField.getValue(),
-        hint: this.hintField.getValue(),
+        label: this.labelField.getFormValue(),
+        placeholder: this.placeholderField.getFormValue(),
+        hint: this.hintField.getFormValue(),
       } as FormTextDefinitionModel,
     );
     const event = new UpdateFormElementDefinitionEvent();

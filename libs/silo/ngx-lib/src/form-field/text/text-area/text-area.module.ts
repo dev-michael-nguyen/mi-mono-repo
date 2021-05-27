@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { MetadataTemplateRegistryService } from '../../../metadata/services/metadata-template-registry.service';
 import { ResponsiveContainerModule } from '../../../responsive/responsive-container/responsive-container.module';
 import { LabelModule } from './../../label/label.module';
 import { TextAreaComponent } from './text-area.component';
@@ -19,4 +20,13 @@ import { TextAreaComponent } from './text-area.component';
   declarations: [TextAreaComponent],
   exports: [TextAreaComponent],
 })
-export class TextAreaModule {}
+export class TextAreaModule {
+  constructor(
+    metadataTemplateRegistryService: MetadataTemplateRegistryService,
+  ) {
+    metadataTemplateRegistryService.register('TextArea', {
+      templateIdentifier: 'TextArea',
+      metadataComponent: TextAreaComponent,
+    });
+  }
+}

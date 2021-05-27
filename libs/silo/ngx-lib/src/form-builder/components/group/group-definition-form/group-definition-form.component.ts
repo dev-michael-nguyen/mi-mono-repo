@@ -71,8 +71,8 @@ export class GroupDefinitionFormComponent
       {},
       this.definitionModel,
       {
-        title: this.titleField.getValue(),
-        description: this.descriptionField.getValue(),
+        title: this.titleField.getFormValue(),
+        description: this.descriptionField.getFormValue(),
       } as FormGroupDefinitionModel,
     );
     const event = new UpdateFormElementDefinitionEvent();

@@ -14,7 +14,6 @@ export class MetadataTemplateRegistryService {
     templateIdentifier: string,
     templateRegistryConfig: TemplateRegistryConfig,
   ) {
-    templateRegistryConfig.templateIdentifier = templateIdentifier;
     this._templateRegistryConfigMap.set(
       templateIdentifier,
       templateRegistryConfig,

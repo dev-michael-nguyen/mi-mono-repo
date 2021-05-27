@@ -63,7 +63,7 @@ export class MetadataFormComponent implements OnInit {
     }
 
     const componentFactory = this._componentFactoryResolver.resolveComponentFactory(
-      templateRegistryConfig.componentType,
+      templateRegistryConfig.metadataComponent,
     );
     const componentRef = this.viewContainerRef.createComponent(
       componentFactory,
