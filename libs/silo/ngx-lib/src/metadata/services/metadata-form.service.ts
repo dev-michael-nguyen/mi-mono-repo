@@ -21,6 +21,7 @@ export class MetadataFormService {
     // add root
     const { metadata, memberModel } = this.addMetadataModelAsElement(
       formDefinitionModel,
+      null,
       metadataModel,
       'FormGroup',
       null,
@@ -60,6 +61,7 @@ export class MetadataFormService {
       if (propertyValue instanceof MetadataModel) {
         this.addMetadataModelAsElement(
           formDefinitionModel,
+          propertyKey,
           propertyValue,
           null,
           parentMemberKey,
@@ -77,6 +79,7 @@ export class MetadataFormService {
 
   addMetadataModelAsElement(
     formDefinitionModel: FormDefinitionModel,
+    propertyKey: string,
     metadataModel: MetadataModel,
     templateIdentifier: FormElementTemplateIdentifier,
     parentMemberKey: string,
@@ -91,14 +94,17 @@ export class MetadataFormService {
       templateIdentifier,
       parentMemberKey,
     );
+
+    definitionModel.propertyKey = propertyKey;
+    definitionModel.title = metadata.classMetadata.title;
+    definitionModel.description = metadata.classMetadata.description;
+
     if (!templateIdentifier) {
       definitionModel.templateIdentifier =
         metadata.classMetadata.templateIdentifier;
       definitionModel.templateDisplayName =
         metadata.classMetadata.templateDisplayName;
     }
-    definitionModel.title = metadata.classMetadata.title;
-    definitionModel.description = metadata.classMetadata.description;
 
     return { metadata, definitionModel, memberModel };
   }
