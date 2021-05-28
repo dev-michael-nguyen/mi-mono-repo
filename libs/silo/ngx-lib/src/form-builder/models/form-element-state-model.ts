@@ -1,3 +1,4 @@
+import { ComponentRef } from '@angular/core';
 import { FormBuilderType } from './form-definition-types';
 
 /**
@@ -6,4 +7,5 @@ import { FormBuilderType } from './form-definition-types';
 export class FormElementStateModel {
   formBuilderType: FormBuilderType;
   isActive = false;
+  elementComponentRef: ComponentRef<unknown>;
 }
