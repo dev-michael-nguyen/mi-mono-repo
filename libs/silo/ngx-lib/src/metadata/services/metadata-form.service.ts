@@ -46,20 +46,10 @@ export class MetadataFormService {
     parentMemberKey: string,
   ) {
     Object.entries(metadataModel).forEach(([propertyKey, propertyValue]) => {
-      const propertyMetadata = metadata.propertyMetadataMap[propertyKey];
-
-      if (propertyMetadata) {
-        this.addPropertyAsElement(
-          formDefinitionModel,
-          propertyKey,
-          propertyValue,
-          propertyMetadata,
-          parentMemberKey,
-        );
-      }
-
-      if (propertyValue instanceof MetadataModel) {
-        this.addMetadataModelAsElement(
+      if (Array.isArray(propertyValue)) {
+        // TODO: Build node model for array
+      } else if (propertyValue instanceof MetadataModel) {
+        const { memberModel } = this.addMetadataModelAsElement(
           formDefinitionModel,
           propertyKey,
           propertyValue,
@@ -71,8 +61,20 @@ export class MetadataFormService {
           formDefinitionModel,
           propertyValue,
           propertyValue.metadataMap[metadataIdentifier],
-          parentMemberKey,
+          memberModel.key,
         );
+      } else {
+        const propertyMetadata = metadata.propertyMetadataMap[propertyKey];
+
+        if (propertyMetadata) {
+          this.addPropertyAsElement(
+            formDefinitionModel,
+            propertyKey,
+            propertyValue,
+            propertyMetadata,
+            parentMemberKey,
+          );
+        }
       }
     });
   }

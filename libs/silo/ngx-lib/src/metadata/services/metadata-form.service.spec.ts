@@ -8,6 +8,7 @@ import {
 } from '@silo/metadata';
 import { render } from '@testing-library/angular';
 import 'reflect-metadata';
+import { FormElementNodeModelExtensions } from '../../form-builder/models/form-element-node-model';
 import { FormBuilderService } from '../../form-builder/services/form-builder.service';
 import { MetadataFormService } from './metadata-form.service';
 
@@ -21,6 +22,11 @@ class TestPersonNameModel extends MetadataModel {
   @Template('TextBox', 'Text Box')
   @Label('Last Name')
   lastName: string = null;
+
+  constructor() {
+    super();
+    this.metadataMap = MetadataModelExtensions.createMetadataMap(this);
+  }
 }
 
 @MetadataIdentifier('TestPersonModel')
@@ -37,6 +43,11 @@ class TestPersonModel extends MetadataModel {
   @Template('TextBox', 'Text Box')
   @Label('Age')
   age: number = null;
+
+  constructor() {
+    super();
+    this.metadataMap = MetadataModelExtensions.createMetadataMap(this);
+  }
 }
 
 @Component({
@@ -71,9 +82,6 @@ describe('MetadataFormService', () => {
   it('should create form definition from metadata model', async () => {
     // arrange
     const testPersonModel = new TestPersonModel();
-    testPersonModel.metadataMap = MetadataModelExtensions.createMetadataMap(
-      testPersonModel,
-    );
     const { metadataFormService } = await setup();
 
     // act
@@ -81,7 +89,13 @@ describe('MetadataFormService', () => {
       testPersonModel,
     );
 
+    const nodeModel = FormElementNodeModelExtensions.mapFromFormDefinitionModel(
+      formDefinitionModel,
+      formDefinitionModel.rootMemberKey,
+    );
+
     // assert
     expect(formDefinitionModel).toBeTruthy();
+    expect(nodeModel).toBeTruthy();
   });
 });

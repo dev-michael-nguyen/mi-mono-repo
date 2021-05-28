@@ -32,19 +32,20 @@ export class FormBuilderService {
   ) {
     const config = this._formBuilderRegistryService.get(templateIdentifier);
 
+    // allow non-registered template to be added because form definition structure
+    // should be completed even if don't have all the config data
     if (!config) {
-      // TBD: Allow non register template to be added anyway?
-      // const { definitionModel, memberModel } = this._createElementDefinition(
-      //   templateIdentifier,
-      //   null,
-      //   'Unknown',
-      // );
-      // formDefinitionModel.definitionList.push(definitionModel);
-      // this._addMember(formDefinitionModel, memberModel, parentMemberKey);
-      // return { definitionModel, memberModel };
-      throw new Error(`${templateIdentifier} has no registered config.`);
+      const { definitionModel, memberModel } = this._createElementDefinition(
+        templateIdentifier,
+        templateIdentifier,
+        'Unknown',
+      );
+      formDefinitionModel.definitionList.push(definitionModel);
+      this._addMember(formDefinitionModel, memberModel, parentMemberKey);
+      return { definitionModel, memberModel };
     }
 
+    // handle custom create definition model factory function
     if (config.createDefinitionModel) {
       const definitionModel = config.createDefinitionModel();
       const memberModel = this._createMember(
@@ -54,16 +55,17 @@ export class FormBuilderService {
       formDefinitionModel.definitionList.push(definitionModel);
       this._addMember(formDefinitionModel, memberModel, parentMemberKey);
       return { definitionModel, memberModel };
-    } else {
-      const { definitionModel, memberModel } = this._createElementDefinition(
-        config.templateIdentifier,
-        config.templateDisplayName,
-        config.dataType,
-      );
-      formDefinitionModel.definitionList.push(definitionModel);
-      this._addMember(formDefinitionModel, memberModel, parentMemberKey);
-      return { definitionModel, memberModel };
     }
+
+    // default element definition creation
+    const { definitionModel, memberModel } = this._createElementDefinition(
+      config.templateIdentifier,
+      config.templateDisplayName,
+      config.dataType,
+    );
+    formDefinitionModel.definitionList.push(definitionModel);
+    this._addMember(formDefinitionModel, memberModel, parentMemberKey);
+    return { definitionModel, memberModel };
   }
 
   removeElement(
