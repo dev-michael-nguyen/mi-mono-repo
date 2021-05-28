@@ -42,7 +42,6 @@ export class MetadataFormElementPortalComponent
       changes.nodeModel.currentValue
     ) {
       this.attachComponent();
-      console.log('test');
     }
   }
 
