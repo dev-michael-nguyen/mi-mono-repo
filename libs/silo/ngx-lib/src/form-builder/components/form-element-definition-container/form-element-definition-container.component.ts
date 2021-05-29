@@ -2,7 +2,7 @@ import { animate, style, transition, trigger } from '@angular/animations';
 import { Component, Input } from '@angular/core';
 import { FormElementNodeModel } from '../../models/form-element-node-model';
 import { FormBuilderComponent } from './../../form-builder.component';
-import { IFormElementComponent } from './../../models/form-element-component-interface';
+import { HasNodeModel } from './../../models/has-node-model';
 
 @Component({
   selector: 'silo-form-element-definition-container',
@@ -17,7 +17,7 @@ import { IFormElementComponent } from './../../models/form-element-component-int
     ]),
   ],
 })
-export class FormElementContainerComponent implements IFormElementComponent {
+export class FormElementContainerComponent implements HasNodeModel {
   @Input()
   nodeModel: FormElementNodeModel;
 

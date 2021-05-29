@@ -9,8 +9,8 @@ import {
   SimpleChanges,
   ViewChild,
 } from '@angular/core';
-import { IFormElementComponent } from '../../models/form-element-component-interface';
 import { FormElementNodeModel } from '../../models/form-element-node-model';
+import { HasNodeModel } from '../../models/has-node-model';
 import { FormBuilderRegistryService } from '../../services/form-builder-registry.service';
 
 @Component({
@@ -19,7 +19,7 @@ import { FormBuilderRegistryService } from '../../services/form-builder-registry
   styleUrls: ['./form-element-definition-form-portal.component.scss'],
 })
 export class FormElementPropertyWindowComponent
-  implements OnInit, OnChanges, OnDestroy, IFormElementComponent {
+  implements OnInit, OnChanges, OnDestroy, HasNodeModel {
   @Input()
   nodeModel: FormElementNodeModel;
 
@@ -60,7 +60,7 @@ export class FormElementPropertyWindowComponent
     this.portalOutlet.attachComponentPortal(componentPortal);
 
     const componentRef = this.portalOutlet
-      .attachedRef as ComponentRef<IFormElementComponent>;
+      .attachedRef as ComponentRef<HasNodeModel>;
     componentRef.instance.nodeModel = this.nodeModel;
   }
 

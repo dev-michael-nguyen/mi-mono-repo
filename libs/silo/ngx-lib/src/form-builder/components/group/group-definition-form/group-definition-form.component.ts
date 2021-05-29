@@ -11,9 +11,9 @@ import { merge, Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { FormBuilderComponent } from '../../../form-builder.component';
 import { UpdateFormElementDefinitionEvent } from '../../../models/form-builder-events';
-import { IFormElementComponent } from '../../../models/form-element-component-interface';
 import { FormElementNodeModel } from '../../../models/form-element-node-model';
 import { FormGroupDefinitionModel } from '../../../models/form-group-definition-model';
+import { HasNodeModel } from '../../../models/has-node-model';
 import { TextAreaComponent } from './../../../../form-field/text/text-area/text-area.component';
 import { TextBoxComponent } from './../../../../form-field/text/text-box/text-box.component';
 
@@ -23,7 +23,7 @@ import { TextBoxComponent } from './../../../../form-field/text/text-box/text-bo
   styleUrls: ['./group-definition-form.component.scss'],
 })
 export class GroupDefinitionFormComponent
-  implements IFormElementComponent, OnInit, AfterViewInit, OnDestroy {
+  implements HasNodeModel, OnInit, AfterViewInit, OnDestroy {
   private _destroy$ = new Subject<void>();
 
   definitionModel: FormGroupDefinitionModel;

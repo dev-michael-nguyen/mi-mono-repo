@@ -12,8 +12,8 @@ import {
 } from '@angular/core';
 import { AutoFocusDirective } from '../../../directives/auto-focus/auto-focus.directive';
 import { FormBuilderComponent } from '../../form-builder.component';
-import { IFormElementComponent } from '../../models/form-element-component-interface';
 import { FormElementNodeModel } from '../../models/form-element-node-model';
+import { HasNodeModel } from '../../models/has-node-model';
 import { FormBuilderRegistryService } from '../../services/form-builder-registry.service';
 
 @Component({
@@ -22,7 +22,7 @@ import { FormBuilderRegistryService } from '../../services/form-builder-registry
   styleUrls: ['./form-element-portal.component.scss'],
 })
 export class FormElementPortalComponent
-  implements OnInit, OnChanges, OnDestroy, IFormElementComponent {
+  implements OnInit, OnChanges, OnDestroy, HasNodeModel {
   @Input()
   nodeModel: FormElementNodeModel;
 
@@ -64,7 +64,7 @@ export class FormElementPortalComponent
     const componentPortal = new ComponentPortal(config.elementComponent);
     this.portalOutlet.attachComponentPortal(componentPortal);
     const componentRef = this.portalOutlet
-      .attachedRef as ComponentRef<IFormElementComponent>;
+      .attachedRef as ComponentRef<HasNodeModel>;
     componentRef.instance.nodeModel = this.nodeModel;
 
     if (

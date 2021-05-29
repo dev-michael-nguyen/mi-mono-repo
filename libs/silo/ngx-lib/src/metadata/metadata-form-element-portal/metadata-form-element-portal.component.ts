@@ -10,8 +10,8 @@ import {
   ViewChild,
 } from '@angular/core';
 import { PropertyMetadata } from '@silo/metadata';
-import { IFormElementComponent } from '../../form-builder/models/form-element-component-interface';
 import { FormElementNodeModel } from '../../form-builder/models/form-element-node-model';
+import { HasNodeModel } from '../../form-builder/models/has-node-model';
 import { MetadataTemplateRegistryService } from '../services/metadata-template-registry.service';
 
 @Component({
@@ -20,7 +20,7 @@ import { MetadataTemplateRegistryService } from '../services/metadata-template-r
   styleUrls: ['./metadata-form-element-portal.component.scss'],
 })
 export class MetadataFormElementPortalComponent
-  implements OnInit, OnChanges, OnDestroy, IFormElementComponent {
+  implements OnInit, OnChanges, OnDestroy, HasNodeModel {
   @Input()
   nodeModel: FormElementNodeModel;
 

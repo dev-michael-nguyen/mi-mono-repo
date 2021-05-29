@@ -13,9 +13,9 @@ import { TextAreaComponent } from '../../../../form-field/text/text-area/text-ar
 import { TextBoxComponent } from '../../../../form-field/text/text-box/text-box.component';
 import { FormBuilderComponent } from '../../../form-builder.component';
 import { UpdateFormElementDefinitionEvent } from '../../../models/form-builder-events';
-import { IFormElementComponent } from '../../../models/form-element-component-interface';
 import { FormElementNodeModel } from '../../../models/form-element-node-model';
 import { FormTextDefinitionModel } from '../../../models/form-text-definition-model';
+import { HasNodeModel } from '../../../models/has-node-model';
 
 @Component({
   selector: 'silo-text-definition-form',
@@ -23,7 +23,7 @@ import { FormTextDefinitionModel } from '../../../models/form-text-definition-mo
   styleUrls: ['./text-definition-form.component.scss'],
 })
 export class TextDefinitionFormComponent
-  implements IFormElementComponent, OnInit, AfterViewInit, OnDestroy {
+  implements HasNodeModel, OnInit, AfterViewInit, OnDestroy {
   private _destroy$ = new Subject<void>();
 
   textDefinitionModel: FormTextDefinitionModel;
