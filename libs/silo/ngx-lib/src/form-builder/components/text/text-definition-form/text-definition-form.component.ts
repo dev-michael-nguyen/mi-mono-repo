@@ -7,10 +7,9 @@ import {
   ViewChild,
 } from '@angular/core';
 import { merge as _merge } from 'lodash';
-import { merge, Subject } from 'rxjs';
+import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
-import { TextAreaComponent } from '../../../../form-field/text/text-area/text-area.component';
-import { TextBoxComponent } from '../../../../form-field/text/text-box/text-box.component';
+import { MetadataFormComponent } from '../../../../metadata/metadata-form/metadata-form.component';
 import { FormBuilderComponent } from '../../../form-builder.component';
 import { UpdateFormElementDefinitionEvent } from '../../../models/form-builder-events';
 import { FormElementNodeModel } from '../../../models/form-element-node-model';
@@ -31,14 +30,8 @@ export class TextDefinitionFormComponent
   @Input()
   nodeModel: FormElementNodeModel;
 
-  @ViewChild('labelField')
-  labelField: TextBoxComponent;
-
-  @ViewChild('placeholderField')
-  placeholderField: TextAreaComponent;
-
-  @ViewChild('hintField')
-  hintField: TextAreaComponent;
+  @ViewChild('metadataForm')
+  metadataForm: MetadataFormComponent;
 
   constructor(private _formBuilderComponent: FormBuilderComponent) {}
 
@@ -48,39 +41,21 @@ export class TextDefinitionFormComponent
   }
 
   ngAfterViewInit(): void {
-    this.setForm();
-  }
-
-  setForm(): void {
-    merge(
-      this.labelField.formGroup.valueChanges,
-      this.placeholderField.formGroup.valueChanges,
-      this.hintField.formGroup.valueChanges,
-    )
+    this.metadataForm.nodeModel.state.formGroup.valueChanges
       .pipe(takeUntil(this._destroy$))
       .subscribe(() => this.emitValueChanges());
   }
 
   emitValueChanges(): void {
-    if (
-      this.labelField.formGroup.invalid ||
-      this.placeholderField.formGroup.invalid ||
-      this.hintField.formGroup.invalid
-    ) {
-      this.labelField.formGroup.markAllAsTouched();
-      this.placeholderField.formGroup.markAllAsTouched();
-      this.hintField.formGroup.markAllAsTouched();
+    if (this.metadataForm.nodeModel.state.formGroup.invalid) {
+      this.metadataForm.nodeModel.state.formGroup.markAllAsTouched();
       return;
     }
 
     const formTextDefinitionModel: FormTextDefinitionModel = _merge(
       {},
       this.textDefinitionModel,
-      {
-        label: this.labelField.getFormValue(),
-        placeholder: this.placeholderField.getFormValue(),
-        hint: this.hintField.getFormValue(),
-      } as FormTextDefinitionModel,
+      this.metadataForm.nodeModel.formValueInstance,
     );
     const event = new UpdateFormElementDefinitionEvent();
     event.formElementDefinitionModel = formTextDefinitionModel;

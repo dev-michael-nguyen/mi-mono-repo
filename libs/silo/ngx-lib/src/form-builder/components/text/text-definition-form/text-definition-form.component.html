@@ -1,25 +1,7 @@
 <div class="silo-text-definition-form">
   <h2>{{ textDefinitionModel.templateDisplayName }} Definition</h2>
-  <silo-text-box
-    #labelField
-    fieldSize="col-12"
-    label="Label"
-    [isRequired]="true"
-    [defaultValue]="textDefinitionModel.label"
-  ></silo-text-box>
-  <silo-text-area
-    #placeholderField
-    fieldSize="col-12"
-    label="Placeholder"
-    [defaultValue]="textDefinitionModel.placeholder"
-  ></silo-text-area>
-  <silo-text-box
-    #hintField
-    fieldSize="col-12"
-    label="Hint"
-    [defaultValue]="textDefinitionModel.hint"
-  ></silo-text-box>
   <silo-metadata-form
+    #metadataForm
     [metadataModel]="textDefinitionModel"
   ></silo-metadata-form>
 </div>
