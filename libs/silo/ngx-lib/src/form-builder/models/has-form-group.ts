@@ -8,5 +8,5 @@ export function instanceOfHasFormGroup(
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   arg: any,
 ): arg is HasFormGroup {
-  return arg && arg.formGroup;
+  return arg && Object.keys(arg).includes('formGroup');
 }

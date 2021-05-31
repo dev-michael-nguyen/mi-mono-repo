@@ -1,4 +1,5 @@
 import { ComponentRef } from '@angular/core';
+import { FormGroup } from '@angular/forms';
 import { instanceOfGetFormValue } from './get-form-value';
 import { instanceOfHasFormGroup } from './has-form-group';
 
@@ -10,9 +11,12 @@ export class FormElementStateModel {
 
   isActive = false;
 
+  formGroup = new FormGroup({});
+
   set elementComponentRef(elementComponentRef: ComponentRef<unknown>) {
     this._elementComponentRef = elementComponentRef;
   }
+
   get elementComponentRef() {
     return this._elementComponentRef;
   }
