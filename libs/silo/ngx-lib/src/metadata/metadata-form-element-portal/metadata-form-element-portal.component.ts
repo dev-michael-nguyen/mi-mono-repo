@@ -6,12 +6,18 @@ import {
   OnChanges,
   OnDestroy,
   OnInit,
+  Optional,
   SimpleChanges,
   ViewChild,
 } from '@angular/core';
 import { PropertyMetadata } from '@silo/metadata';
 import { FormElementNodeModel } from '../../form-builder/models/form-element-node-model';
-import { HasNodeModel } from '../../form-builder/models/has-node-model';
+import { instanceOfHasFormGroup } from '../../form-builder/models/has-form-group';
+import {
+  HasNodeModel,
+  instanceOfHasNodeModel,
+} from '../../form-builder/models/has-node-model';
+import { MetadataFormGroupPortalComponent } from '../metadata-form-group-portal/metadata-form-group-portal.component';
 import { MetadataTemplateRegistryService } from '../services/metadata-template-registry.service';
 
 @Component({
@@ -28,6 +34,8 @@ export class MetadataFormElementPortalComponent
   portalOutlet: CdkPortalOutlet;
 
   constructor(
+    @Optional()
+    private _metadataFormGroupPortalComponent: MetadataFormGroupPortalComponent,
     private _metadataTemplateRegistryService: MetadataTemplateRegistryService,
   ) {}
 
@@ -63,9 +71,31 @@ export class MetadataFormElementPortalComponent
     );
 
     const componentRef = this.portalOutlet.attachedRef as ComponentRef<unknown>;
+
+    // assign all property metadata to component instance
     Object.assign(componentRef.instance, this.nodeModel.definitionModel);
     (componentRef.instance as PropertyMetadata).defaultValue = this.nodeModel.definitionModel.defaultValue;
+
+    // assign node model if it has node model
+    if (instanceOfHasNodeModel(componentRef.instance)) {
+      componentRef.instance.nodeModel = this.nodeModel;
+    }
+
+    // trigger angular cycles
     componentRef.changeDetectorRef.detectChanges();
+
+    if (instanceOfHasFormGroup(componentRef.instance)) {
+      // keep reference to component instance form group
+      this.nodeModel.state.formGroup = componentRef.instance.formGroup;
+
+      // add form group to parent metadata form group portal
+      if (this._metadataFormGroupPortalComponent) {
+        this._metadataFormGroupPortalComponent.nodeModel.state.formGroup.addControl(
+          this.nodeModel.definitionModel.propertyKey,
+          componentRef.instance.formGroup,
+        );
+      }
+    }
 
     this.nodeModel.state.elementComponentRef = componentRef;
   }

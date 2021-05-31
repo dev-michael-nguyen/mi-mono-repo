@@ -1,5 +1,4 @@
 import {
-  AfterViewInit,
   Component,
   Input,
   OnInit,
@@ -18,7 +17,7 @@ import { MetadataFormService } from '../services/metadata-form.service';
   templateUrl: './metadata-form.component.html',
   styleUrls: ['./metadata-form.component.scss'],
 })
-export class MetadataFormComponent implements OnInit, AfterViewInit {
+export class MetadataFormComponent implements OnInit {
   nodeModel: FormElementNodeModel;
 
   @Input()
@@ -38,14 +37,5 @@ export class MetadataFormComponent implements OnInit, AfterViewInit {
       formDefinitionModel,
       formDefinitionModel.rootMemberKey,
     );
-  }
-
-  ngAfterViewInit() {
-    this.printNode(this.nodeModel);
-  }
-
-  printNode(nodeModel: FormElementNodeModel) {
-    console.log(nodeModel.state);
-    nodeModel.children.forEach((n) => this.printNode(n));
   }
 }
