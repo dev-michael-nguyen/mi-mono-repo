@@ -1,3 +1,4 @@
+import { sortBy } from 'lodash';
 import { FormDefinitionModel } from './form-definition-model';
 import { FormElementDefinitionModel } from './form-element-definition-model';
 import { FormElementMemberModel } from './form-element-member-model';
@@ -89,12 +90,15 @@ export class FormElementNodeModelExtensions {
       (x) => x.key === memberModel.definitionKey,
     );
 
-    nodeModel.children = memberModel.children.map((child) =>
-      FormElementNodeModelExtensions.mapFromFormDefinitionModel(
-        formDefinitionModel,
-        child.key,
-        memberKey,
+    nodeModel.children = sortBy(
+      memberModel.children.map((child) =>
+        FormElementNodeModelExtensions.mapFromFormDefinitionModel(
+          formDefinitionModel,
+          child.key,
+          memberKey,
+        ),
       ),
+      (n) => n.definitionModel.displayOrder,
     );
 
     return nodeModel;
