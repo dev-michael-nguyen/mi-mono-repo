@@ -1,7 +1,6 @@
 import { ComponentRef } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { instanceOfGetFormValue } from './get-form-value';
-import { instanceOfHasFormGroup } from './has-form-group';
 
 /**
  * The state model for a form element.
@@ -21,10 +20,8 @@ export class FormElementStateModel {
     return this._elementComponentRef;
   }
 
-  get formGroupInstance() {
-    return instanceOfHasFormGroup(this._elementComponentRef?.instance)
-      ? this._elementComponentRef?.instance.formGroup
-      : undefined;
+  get instanceOfGetFormValue() {
+    return instanceOfGetFormValue(this._elementComponentRef?.instance);
   }
 
   get formValueInstance() {

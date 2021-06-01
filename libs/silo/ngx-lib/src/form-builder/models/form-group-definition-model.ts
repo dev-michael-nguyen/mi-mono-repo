@@ -4,6 +4,7 @@ import {
   IsRequired,
   Label,
   MetadataIdentifier,
+  MetadataModelExtensions,
   Template,
 } from '@silo/metadata';
 import { FormElementDataType } from './form-definition-types';
@@ -28,6 +29,10 @@ export class FormGroupDefinitionModel extends FormElementDefinitionModel<unknown
   @Template('TextArea', 'Text Area')
   @FieldSize('col-12')
   @Label('Description')
-  @IsRequired()
   description: string = null;
+
+  constructor() {
+    super();
+    this.metadataMap = MetadataModelExtensions.createMetadataMap(this);
+  }
 }

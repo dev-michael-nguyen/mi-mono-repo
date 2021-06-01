@@ -83,6 +83,7 @@ export class MetadataFormElementPortalComponent
 
     // trigger angular cycles
     componentRef.changeDetectorRef.detectChanges();
+    this.nodeModel.state.elementComponentRef = componentRef;
 
     if (instanceOfHasFormGroup(componentRef.instance)) {
       // keep reference to component instance form group
@@ -96,8 +97,6 @@ export class MetadataFormElementPortalComponent
         );
       }
     }
-
-    this.nodeModel.state.elementComponentRef = componentRef;
   }
 
   ngOnDestroy() {

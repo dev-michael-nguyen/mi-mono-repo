@@ -39,7 +39,7 @@ export class FormElementNodeModel {
    */
   get formValueInstance() {
     // field level component should have form group instance which will have form value instance
-    if (this.state.formGroupInstance) {
+    if (this.state.instanceOfGetFormValue) {
       return this.state.formValueInstance;
     }
 

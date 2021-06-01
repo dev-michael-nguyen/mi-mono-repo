@@ -1,16 +1,7 @@
 <div class="silo-group-definition-form">
-  <h2>{{ definitionModel.templateDisplayName }} Definition</h2>
-  <silo-text-box
-    #titleField
-    fieldSize="col-6"
-    label="Title"
-    [isRequired]="true"
-    [defaultValue]="definitionModel.title"
-  ></silo-text-box>
-  <silo-text-area
-    #descriptionField
-    fieldSize="col-12"
-    label="Description"
-    [defaultValue]="definitionModel.description"
-  ></silo-text-area>
+  <h2>{{ nodeModel.definitionModel.templateDisplayName }} Definition</h2>
+  <silo-metadata-form
+    #metadataForm
+    [metadataModel]="nodeModel.definitionModel"
+  ></silo-metadata-form>
 </div>

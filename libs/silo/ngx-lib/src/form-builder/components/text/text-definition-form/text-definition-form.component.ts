@@ -3,7 +3,6 @@ import {
   Component,
   Input,
   OnDestroy,
-  OnInit,
   ViewChild,
 } from '@angular/core';
 import { merge as _merge } from 'lodash';
@@ -22,10 +21,8 @@ import { HasNodeModel } from '../../../models/has-node-model';
   styleUrls: ['./text-definition-form.component.scss'],
 })
 export class TextDefinitionFormComponent
-  implements HasNodeModel, OnInit, AfterViewInit, OnDestroy {
+  implements HasNodeModel, AfterViewInit, OnDestroy {
   private _destroy$ = new Subject<void>();
-
-  textDefinitionModel: FormTextDefinitionModel;
 
   @Input()
   nodeModel: FormElementNodeModel;
@@ -34,11 +31,6 @@ export class TextDefinitionFormComponent
   metadataForm: MetadataFormComponent;
 
   constructor(private _formBuilderComponent: FormBuilderComponent) {}
-
-  ngOnInit(): void {
-    this.textDefinitionModel = this.nodeModel
-      .definitionModel as FormTextDefinitionModel;
-  }
 
   ngAfterViewInit(): void {
     this.metadataForm.nodeModel.state.formGroup.valueChanges
@@ -54,7 +46,7 @@ export class TextDefinitionFormComponent
 
     const formTextDefinitionModel: FormTextDefinitionModel = _merge(
       {},
-      this.textDefinitionModel,
+      this.nodeModel.definitionModel as FormTextDefinitionModel,
       this.metadataForm.nodeModel.formValueInstance,
     );
     const event = new UpdateFormElementDefinitionEvent();
