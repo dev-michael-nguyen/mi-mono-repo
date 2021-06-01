@@ -76,3 +76,9 @@ nx migrate --run-migration=migrations.json
 ng update @angular/core @angular/cli
 ng update @angular/material
 ```
+
+### Run migration script for a particular angular package
+
+```cmd
+ng update @angular/cli --migrate-only --from 11 --to 12
+```
