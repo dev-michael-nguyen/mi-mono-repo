@@ -1,10 +1,11 @@
+@use '~@angular/material' as mat;
 @mixin silo-nav-list-color($config-or-theme) {
   // Extract the color configuration in case a theme has been passed.
   $config: mat-get-color-config($config-or-theme);
   $primary: map-get($config, primary);
 
   .silo-nav-list {
-    background-color: mat-color($primary);
+    background-color: mat.get-color-from-palette($primary);
   }
 
   // Define any styles affected by the theme.
@@ -15,7 +16,7 @@
     :active,
     :hover {
       background-color: $light-text !important;
-      color: mat-color($primary) !important;
+      color: mat.get-color-from-palette($primary) !important;
     }
 
     &:focus {

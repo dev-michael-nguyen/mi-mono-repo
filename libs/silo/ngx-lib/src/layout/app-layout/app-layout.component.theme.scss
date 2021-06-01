@@ -1,3 +1,4 @@
+@use '~@angular/material' as mat;
 @mixin silo-app-layout-color($config-or-theme) {
   // Extract the color configuration in case a theme has been passed.
   $config: mat-get-color-config($config-or-theme);
@@ -15,7 +16,7 @@
     /* Works on Firefox */
     * {
       scrollbar-width: thin;
-      scrollbar-color: mat-color($primary, darker) transparent;
+      scrollbar-color: mat.get-color-from-palette($primary, darker) transparent;
     }
 
     /* Works on Chrome, Edge, and Safari */
@@ -29,7 +30,7 @@
     }
 
     *::-webkit-scrollbar-thumb {
-      background-color: mat-color($primary, darker);
+      background-color: mat.get-color-from-palette($primary, darker);
       border-radius: 20px;
       border: 4px solid transparent;
     }

@@ -1,3 +1,4 @@
+@use '~@angular/material' as mat;
 @mixin silo-form-field-color($config-or-theme) {
   // Extract the color configuration in case a theme has been passed.
   $config: mat-get-color-config($config-or-theme);
@@ -12,7 +13,7 @@
     width: 100%;
 
     &:focus-within {
-      box-shadow: 0 0 0 2px mat-color($primary);
+      box-shadow: 0 0 0 2px mat.get-color-from-palette($primary);
     }
   }
 
@@ -58,8 +59,8 @@
         box-shadow: 0 0 0 2px
           if(
             $is-dark,
-            mat-color($dark-theme-highlight),
-            mat-color($light-theme-highlight)
+            mat.get-color-from-palette($dark-theme-highlight),
+            mat.get-color-from-palette($light-theme-highlight)
           );
       }
     }
@@ -67,23 +68,23 @@
     .silo-form-field-input-container {
       border-left-color: if(
         $is-dark,
-        mat-color($dark-theme-highlight),
-        mat-color($light-theme-highlight)
+        mat.get-color-from-palette($dark-theme-highlight),
+        mat.get-color-from-palette($light-theme-highlight)
       );
     }
   }
 
   .silo-form-field--has-error {
     .silo-form-field-outline-container {
-      box-shadow: 0 0 0 2px mat-color($warn);
+      box-shadow: 0 0 0 2px mat.get-color-from-palette($warn);
 
       &:focus-within {
-        box-shadow: 0 0 0 2px mat-color($warn);
+        box-shadow: 0 0 0 2px mat.get-color-from-palette($warn);
       }
     }
 
     .silo-form-field-input-container {
-      border-left-color: mat-color($warn);
+      border-left-color: mat.get-color-from-palette($warn);
     }
   }
 
@@ -93,8 +94,8 @@
         box-shadow: 0 0 0 2px
           if(
             $is-dark,
-            mat-color($dark-theme-success),
-            mat-color($light-theme-success)
+            mat.get-color-from-palette($dark-theme-success),
+            mat.get-color-from-palette($light-theme-success)
           );
       }
     }
@@ -102,8 +103,8 @@
     .silo-form-field-input-container {
       border-left-color: if(
         $is-dark,
-        mat-color($dark-theme-success),
-        mat-color($light-theme-success)
+        mat.get-color-from-palette($dark-theme-success),
+        mat.get-color-from-palette($light-theme-success)
       );
     }
   }

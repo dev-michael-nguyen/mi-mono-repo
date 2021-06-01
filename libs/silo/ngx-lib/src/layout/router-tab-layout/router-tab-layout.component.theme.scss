@@ -1,3 +1,4 @@
+@use '~@angular/material' as mat;
 @mixin silo-router-tab-layout-color($config-or-theme) {
   // Extract the color configuration in case a theme has been passed.
   $config: mat-get-color-config($config-or-theme);
@@ -15,7 +16,7 @@
       &.active,
       :active {
         color: $light-text;
-        background-color: mat-color($primary);
+        background-color: mat.get-color-from-palette($primary);
       }
 
       &.cdk-keyboard-focused {
@@ -28,13 +29,13 @@
     }
 
     .mat-tab-header {
-      border-bottom: 2px solid mat-color($primary);
+      border-bottom: 2px solid mat.get-color-from-palette($primary);
     }
 
     .silo-router-tab-layout__body {
-      border-left: 2px solid mat-color($primary);
-      border-right: 2px solid mat-color($primary);
-      border-bottom: 2px solid mat-color($primary);
+      border-left: 2px solid mat.get-color-from-palette($primary);
+      border-right: 2px solid mat.get-color-from-palette($primary);
+      border-bottom: 2px solid mat.get-color-from-palette($primary);
       border-radius: 0 0 8px 8px;
     }
   }

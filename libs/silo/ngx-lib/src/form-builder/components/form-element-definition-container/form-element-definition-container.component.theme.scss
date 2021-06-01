@@ -1,3 +1,4 @@
+@use '~@angular/material' as mat;
 @mixin silo-form-element-definition-container-color($config-or-theme) {
   // Extract the color configuration in case a theme has been passed.
   $config: mat-get-color-config($config-or-theme);
@@ -5,12 +6,12 @@
 
   .form-element-definition-container {
     &.active {
-      border-color: mat-color($primary) !important;
+      border-color: mat.get-color-from-palette($primary) !important;
     }
 
     .form-element-definition-container__left-border {
       &.active {
-        border-left-color: mat-color($primary) !important;
+        border-left-color: mat.get-color-from-palette($primary) !important;
       }
     }
   }
