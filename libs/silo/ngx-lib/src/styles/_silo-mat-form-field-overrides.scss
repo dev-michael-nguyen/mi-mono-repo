@@ -1,10 +1,12 @@
+@use 'sass:map';
 @use '~@angular/material' as mat;
+
 @mixin silo-mat-form-field-override-color($config-or-theme) {
   // Extract the color configuration in case a theme has been passed.
-  $config: mat-get-color-config($config-or-theme);
-  $primary: map-get($config, primary);
-  $warn: map-get($config, warn);
-  $is-dark: map-get($config, is-dark);
+  $config: mat.get-color-config($config-or-theme);
+  $primary: map.get($config, 'primary');
+  $warn: map.get($config, 'warn');
+  $is-dark: map.get($config, 'is-dark');
 
   // custom style for mat-form-field appearance="legacy"
   .mat-form-field-appearance-legacy {
@@ -127,7 +129,7 @@
 
 @mixin silo-mat-form-field-override-theme($theme) {
   // Extracts the color and typography configurations from the theme.
-  $color: mat-get-color-config($theme);
+  $color: mat.get-color-config($theme);
 
   // Do not generate styles if configurations for individual theming
   // systems have been explicitly set to `null`.

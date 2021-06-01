@@ -1,9 +1,11 @@
+@use 'sass:map';
 @use '~@angular/material' as mat;
+
 @mixin silo-router-tab-layout-color($config-or-theme) {
   // Extract the color configuration in case a theme has been passed.
-  $config: mat-get-color-config($config-or-theme);
-  $is-dark-theme: map-get($config, is-dark);
-  $primary: map-get($config, primary);
+  $config: mat.get-color-config($config-or-theme);
+  $is-dark-theme: map.get($config, 'is-dark');
+  $primary: map.get($config, 'primary');
 
   .silo-router-tab-layout {
     .mat-tab-link {
@@ -43,7 +45,7 @@
 
 @mixin silo-router-tab-layout-theme($theme) {
   // Extracts the color and typography configurations from the theme.
-  $color: mat-get-color-config($theme);
+  $color: mat.get-color-config($theme);
 
   // Do not generate styles if configurations for individual theming
   // systems have been explicitly set to `null`.

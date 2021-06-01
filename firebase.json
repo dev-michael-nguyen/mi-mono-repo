@@ -3,7 +3,7 @@
     {
       "target": "silo-ngx-doc-app-prod",
       "public": "./dist/apps/silo/ngx-doc-app",
-      "predeploy": ["npm run build:silo-ngx-doc-app:prod"],
+      "predeploy": ["npm run build:silo-ngx-doc-app"],
       "rewrites": [
         {
           "source": "**",

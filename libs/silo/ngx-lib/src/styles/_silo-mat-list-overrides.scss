@@ -1,6 +1,8 @@
+@use '~@angular/material' as mat;
+
 @mixin silo-mat-list-override-color($config-or-theme) {
   // Extract the color configuration in case a theme has been passed.
-  $config: mat-get-color-config($config-or-theme);
+  $config: mat.get-color-config($config-or-theme);
 
   .mat-selection-list {
     width: 100%;
@@ -10,7 +12,7 @@
 
 @mixin silo-mat-list-override-theme($theme) {
   // Extracts the color and typography configurations from the theme.
-  $color: mat-get-color-config($theme);
+  $color: mat.get-color-config($theme);
 
   // Do not generate styles if configurations for individual theming
   // systems have been explicitly set to `null`.

@@ -1,16 +1,18 @@
+@use 'sass:map';
+@use '~@angular/material' as mat;
 @import './components/form-element-definition-container/form-element-definition-container.component.theme.scss';
 
 @mixin silo-form-builder-color($config-or-theme) {
   // Extract the color configuration in case a theme has been passed.
-  $config: mat-get-color-config($config-or-theme);
-  $primary: map-get($config, primary);
+  $config: mat.get-color-config($config-or-theme);
+  $primary: map.get($config, 'primary');
 }
 
 @mixin silo-form-builder-theme($theme) {
   @include silo-form-element-definition-container-theme($theme);
 
   // Extracts the color and typography configurations from the theme.
-  $color: mat-get-color-config($theme);
+  $color: mat.get-color-config($theme);
 
   // Do not generate styles if configurations for individual theming
   // systems have been explicitly set to `null`.
