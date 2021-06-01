@@ -46,13 +46,13 @@
     }
   }
 
-  [class*='--is-readonly'] {
+  .silo-form-field--is-readonly {
     .silo-form-field-outline-container {
       background-color: if($is-dark, $dark-bg-lighter-5, $light-bg-darker-5);
     }
   }
 
-  [class*='--is-required'] {
+  .silo-form-field--is-required {
     .silo-form-field-outline-container {
       &:focus-within {
         box-shadow: 0 0 0 2px
@@ -73,7 +73,7 @@
     }
   }
 
-  [class*='--has-error'] {
+  .silo-form-field--has-error {
     .silo-form-field-outline-container {
       box-shadow: 0 0 0 2px mat-color($warn);
 
@@ -87,7 +87,7 @@
     }
   }
 
-  [class*='--is-filled'] {
+  .silo-form-field--is-filled {
     .silo-form-field-outline-container {
       &:focus-within {
         box-shadow: 0 0 0 2px

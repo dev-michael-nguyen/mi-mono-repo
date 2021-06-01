@@ -1,12 +1,12 @@
 <div
   class="silo-uppy-file-box"
-  [class.silo-uppy-file-box--is-readonly]="isReadOnly"
-  [class.silo-uppy-file-box--is-required]="isRequired"
-  [class.silo-uppy-file-box--is-filled]="
-    isRequired && formGroup.dirty && formGroup.valid
+  [class.silo-form-field--is-readonly]="isReadOnly"
+  [class.silo-form-field--is-required]="isRequired"
+  [class.silo-form-field--is-filled]="
+    hasValidators && formGroup.status === 'VALID'
   "
-  [class.silo-uppy-file-box--has-error]="
-    hasValidators && formGroup.touched && formGroup.invalid
+  [class.silo-form-field--has-error]="
+    hasValidators && formGroup.touched && formGroup.status === 'INVALID'
   "
   [siloResponsiveContainer]="fieldSize"
 >

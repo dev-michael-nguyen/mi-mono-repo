@@ -10,7 +10,7 @@
     white-space: break-spaces !important;
   }
 
-  [class*='--is-readonly'] {
+  .silo-form-field--is-readonly {
     .mat-select,
     .mat-select-trigger {
       cursor: initial;

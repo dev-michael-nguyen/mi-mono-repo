@@ -61,7 +61,7 @@ export class DefinitionViewComponent implements OnInit {
       this.formBuilderComponent.lastActiveDefinitionKey$.next(
         definitionModel.key,
       );
-      this.formBuilderComponent.rerender();
+      this.formBuilderComponent.reRender();
       return;
     }
 
@@ -70,7 +70,7 @@ export class DefinitionViewComponent implements OnInit {
         this.formDefinitionModel,
         $event.memberKey,
       );
-      this.formBuilderComponent.rerender();
+      this.formBuilderComponent.reRender();
       return;
     }
 

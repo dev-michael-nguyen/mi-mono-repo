@@ -73,7 +73,7 @@ export class FormBuilderComponent implements OnInit {
     );
   }
 
-  rerender() {
+  reRender() {
     this.render(this.formDefinitionModel, this.memberKeyList);
   }
 

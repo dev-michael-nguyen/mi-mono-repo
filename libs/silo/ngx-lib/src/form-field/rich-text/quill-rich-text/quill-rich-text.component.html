@@ -1,12 +1,12 @@
 <div
   class="silo-quill-rich-text"
-  [class.silo-quill-rich-text--is-readonly]="isReadOnly"
-  [class.silo-quill-rich-text--is-required]="isRequired"
-  [class.silo-quill-rich-text--is-filled]="
-    isRequired && formGroup.dirty && formGroup.valid
+  [class.silo-form-field--is-readonly]="isReadOnly"
+  [class.silo-form-field--is-required]="isRequired"
+  [class.silo-form-field--is-filled]="
+    hasValidators && formGroup.status === 'VALID'
   "
-  [class.silo-quill-rich-text--has-error]="
-    hasValidators && formGroup.touched && formGroup.invalid
+  [class.silo-form-field--has-error]="
+    hasValidators && formGroup.touched && formGroup.status === 'INVALID'
   "
   [siloResponsiveContainer]="fieldSize"
 >
