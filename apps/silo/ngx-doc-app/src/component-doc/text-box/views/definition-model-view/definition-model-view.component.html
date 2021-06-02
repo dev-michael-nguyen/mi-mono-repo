@@ -4,7 +4,7 @@
   </ng-container>
   <ng-container bodyContent>
     <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="32px">
-      <div fxFlex="40">
+      <div fxFlex="45">
         <silo-metadata-form
           [metadataModel]="textDefinitionModel"
           (newFormValue)="updateTextDefinitionModel($event)"
@@ -13,7 +13,7 @@
       <div>
         <mat-icon>forward</mat-icon>
       </div>
-      <div fxFlex="40">
+      <div fxFlex="45">
         <silo-text-box
           fieldSize="col-6"
           [label]="textDefinitionModel.label"
