@@ -23,6 +23,14 @@ const routes: Routes = [
         '../form-builder-doc/routing-module'
       ).then((m) => m.RoutingModule),
   },
+  {
+    path: 'typography',
+    loadChildren: () =>
+      import(
+        /* webpackChunkName: 'typography-doc' */
+        '../typography-doc/routing-module'
+      ).then((m) => m.RoutingModule),
+  },
 ];
 
 @NgModule({
