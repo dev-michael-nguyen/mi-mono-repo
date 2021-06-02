@@ -1,18 +1,10 @@
-import {
-  AfterViewInit,
-  Component,
-  Input,
-  OnDestroy,
-  ViewChild,
-} from '@angular/core';
-import { merge as _merge } from 'lodash';
+import { Component, Input, OnDestroy } from '@angular/core';
+import { merge } from 'lodash';
 import { Subject } from 'rxjs';
-import { takeUntil } from 'rxjs/operators';
-import { MetadataFormComponent } from '../../../../metadata/metadata-form/metadata-form.component';
 import { FormBuilderComponent } from '../../../form-builder.component';
 import { UpdateFormElementDefinitionEvent } from '../../../models/form-builder-events';
+import { FormElementDefinitionModel } from '../../../models/form-element-definition-model';
 import { FormElementNodeModel } from '../../../models/form-element-node-model';
-import { FormTextDefinitionModel } from '../../../models/form-text-definition-model';
 import { HasNodeModel } from '../../../models/has-node-model';
 
 @Component({
@@ -20,37 +12,22 @@ import { HasNodeModel } from '../../../models/has-node-model';
   templateUrl: './text-definition-form.component.html',
   styleUrls: ['./text-definition-form.component.scss'],
 })
-export class TextDefinitionFormComponent
-  implements HasNodeModel, AfterViewInit, OnDestroy {
+export class TextDefinitionFormComponent implements HasNodeModel, OnDestroy {
   private _destroy$ = new Subject<void>();
 
   @Input()
   nodeModel: FormElementNodeModel;
 
-  @ViewChild('metadataForm')
-  metadataForm: MetadataFormComponent;
-
   constructor(private _formBuilderComponent: FormBuilderComponent) {}
 
-  ngAfterViewInit(): void {
-    this.metadataForm.nodeModel.state.formGroup.valueChanges
-      .pipe(takeUntil(this._destroy$))
-      .subscribe(() => this.emitValueChanges());
-  }
-
-  emitValueChanges(): void {
-    if (this.metadataForm.nodeModel.state.formGroup.invalid) {
-      this.metadataForm.nodeModel.state.formGroup.markAllAsTouched();
-      return;
-    }
-
-    const formTextDefinitionModel: FormTextDefinitionModel = _merge(
+  emitUpdate(formValue: FormElementDefinitionModel): void {
+    const newDefinitionModel = merge(
       {},
-      this.nodeModel.definitionModel as FormTextDefinitionModel,
-      this.metadataForm.nodeModel.formValueInstance,
+      this.nodeModel.definitionModel,
+      formValue,
     );
     const event = new UpdateFormElementDefinitionEvent();
-    event.formElementDefinitionModel = formTextDefinitionModel;
+    event.formElementDefinitionModel = newDefinitionModel;
     this._formBuilderComponent.handleEvent.next(event);
   }
 

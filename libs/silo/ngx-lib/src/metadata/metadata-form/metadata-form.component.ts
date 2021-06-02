@@ -1,11 +1,14 @@
 import {
+  AfterViewInit,
   Component,
+  EventEmitter,
   Input,
   OnInit,
-  ViewChild,
-  ViewContainerRef,
+  Output,
 } from '@angular/core';
 import { MetadataModel } from '@silo/metadata';
+import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 import {
   FormElementNodeModel,
   FormElementNodeModelExtensions,
@@ -17,14 +20,16 @@ import { MetadataFormService } from '../services/metadata-form.service';
   templateUrl: './metadata-form.component.html',
   styleUrls: ['./metadata-form.component.scss'],
 })
-export class MetadataFormComponent implements OnInit {
+export class MetadataFormComponent implements OnInit, AfterViewInit {
+  private _destroy$ = new Subject<void>();
+
   nodeModel: FormElementNodeModel;
 
   @Input()
   metadataModel: MetadataModel;
 
-  @ViewChild('viewContainerRef', { static: true, read: ViewContainerRef })
-  viewContainerRef: ViewContainerRef;
+  @Output()
+  newFormValue = new EventEmitter();
 
   constructor(private _metadataFormService: MetadataFormService) {}
 
@@ -37,5 +42,25 @@ export class MetadataFormComponent implements OnInit {
       formDefinitionModel,
       formDefinitionModel.rootMemberKey,
     );
+  }
+
+  ngAfterViewInit(): void {
+    this.nodeModel.state.formGroup.valueChanges
+      .pipe(takeUntil(this._destroy$))
+      .subscribe(() => this.emitNewDefinitionModel());
+  }
+
+  ngOnDestroy(): void {
+    this._destroy$.next();
+    this._destroy$.complete();
+  }
+
+  emitNewDefinitionModel(): void {
+    if (this.nodeModel.state.formGroup.invalid) {
+      this.nodeModel.state.formGroup.markAllAsTouched();
+      return;
+    }
+
+    this.newFormValue.emit(this.nodeModel.formValueInstance);
   }
 }
