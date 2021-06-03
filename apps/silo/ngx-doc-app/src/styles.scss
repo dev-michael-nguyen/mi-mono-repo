@@ -25,12 +25,12 @@
   @include silo-ngx-lib-theme($dark-theme);
 }
 
-// custom theme for component-preview-list-item
-.component-preview-list-item__card {
+// custom theme for silo-preview-article
+.silo-preview-article {
   color: $dark-text;
 }
 .silo-dark-theme {
-  .component-preview-list-item__card {
+  .silo-preview-article {
     color: $light-text;
   }
 }

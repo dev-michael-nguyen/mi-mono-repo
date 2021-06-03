@@ -1,0 +1,14 @@
+<a class="silo-preview-article" [routerLink]="linkRoute">
+  <div class="preview-article-layout">
+    <div
+      class="preview-content-container"
+      fxLayout="column"
+      fxLayoutAlign="center center"
+    >
+      <ng-content select="[previewContent]"></ng-content>
+    </div>
+    <div class="summary-content-container">
+      <ng-content select="[summaryContent]"></ng-content>
+    </div>
+  </div>
+</a>

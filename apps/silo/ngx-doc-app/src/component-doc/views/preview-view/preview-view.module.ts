@@ -16,6 +16,7 @@ import {
   TimePickerModule,
   UppyFileBoxModule,
 } from '@silo/ngx';
+import { PreviewArticleModule } from '../../../components/preview-article/preview-article.module';
 import { PreviewViewComponent } from './preview-view.component';
 
 @NgModule({
@@ -24,8 +25,10 @@ import { PreviewViewComponent } from './preview-view.component';
     CommonModule,
     DatePickerModule,
     FlexLayoutModule,
+    FlexLayoutModule,
     NumberBoxModule,
     PhoneBoxModule,
+    PreviewArticleModule,
     QuillRichTextModule,
     RadioListModule,
     RouterModule,

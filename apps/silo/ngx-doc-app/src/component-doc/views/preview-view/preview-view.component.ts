@@ -1,10 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { LookupConfigModel } from '@silo/ngx';
 
 @Component({
   selector: 'silo-preview-view',
   templateUrl: './preview-view.component.html',
   styleUrls: ['./preview-view.component.scss'],
+  encapsulation: ViewEncapsulation.None,
 })
 export class PreviewViewComponent implements OnInit {
   lookupConfig: LookupConfigModel = {

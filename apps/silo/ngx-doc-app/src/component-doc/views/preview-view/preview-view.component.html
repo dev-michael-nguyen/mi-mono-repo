@@ -1,268 +1,180 @@
-<div class="preview-view">
-  <div class="component-preview-list">
-    <a class="component-preview-list-item" routerLink="../text-box">
-      <div class="component-preview-list-item__card">
-        <div
-          class="component-preview-list-item__card__image"
-          fxLayout="column"
-          fxLayoutAlign="center center"
-        >
-          <silo-text-box
-            label="Label"
-            [isRequired]="true"
-            hint="Please fill out this field"
-            fieldSize="col-12"
-          >
-          </silo-text-box>
-        </div>
-        <div class="component-preview-list-item__card__title">Text Box</div>
-        <div class="component-preview-list-item__card__summary">
-          Text field input as text box.
-        </div>
-      </div>
-    </a>
-    <a class="component-preview-list-item" routerLink="../text-area">
-      <div class="component-preview-list-item__card">
-        <div
-          class="component-preview-list-item__card__image"
-          fxLayout="column"
-          fxLayoutAlign="center center"
-        >
-          <silo-text-area
-            label="Label"
-            [isRequired]="true"
-            hint="Please fill out this field"
-            fieldSize="col-12"
-          >
-          </silo-text-area>
-        </div>
-        <div class="component-preview-list-item__card__title">Text Area</div>
-        <div class="component-preview-list-item__card__summary">
-          Text field input as text area.
-        </div>
-      </div>
-    </a>
-    <a class="component-preview-list-item" routerLink="../quill-rich-text">
-      <div class="component-preview-list-item__card">
-        <div
-          class="component-preview-list-item__card__image"
-          fxLayout="column"
-          fxLayoutAlign="center center"
-        ></div>
-        <div class="component-preview-list-item__card__title">
-          Quill Rich Text
-        </div>
-        <div class="component-preview-list-item__card__summary">
-          Rich text field input using ngx-quill.
-        </div>
-      </div>
-    </a>
-    <a class="component-preview-list-item" routerLink="../single-select">
-      <div class="component-preview-list-item__card">
-        <div
-          class="component-preview-list-item__card__image"
-          fxLayout="column"
-          fxLayoutAlign="center center"
-        >
-          <silo-single-select
-            label="Label"
-            [lookupConfig]="lookupConfig"
-            [isRequired]="true"
-            hint="Please select an option"
-            fieldSize="col-12"
-          ></silo-single-select>
-        </div>
-        <div class="component-preview-list-item__card__title">
-          Single Select
-        </div>
-        <div class="component-preview-list-item__card__summary">
-          Lookup select as single select.
-        </div>
-      </div>
-    </a>
-    <a class="component-preview-list-item" routerLink="../single-autocomplete">
-      <div class="component-preview-list-item__card">
-        <div
-          class="component-preview-list-item__card__image"
-          fxLayout="column"
-          fxLayoutAlign="center center"
-        >
-          <silo-single-autocomplete
-            label="Label"
-            [lookupConfig]="lookupConfig"
-            [isRequired]="true"
-            hint="Please select an option"
-            fieldSize="col-12"
-          ></silo-single-autocomplete>
-        </div>
-        <div class="component-preview-list-item__card__title">
-          Single Autocomplete
-        </div>
-        <div class="component-preview-list-item__card__summary">
-          Lookup select as single autocomplete.
-        </div>
-      </div>
-    </a>
-    <a class="component-preview-list-item" routerLink="../radio-list">
-      <div class="component-preview-list-item__card">
-        <div
-          class="component-preview-list-item__card__image"
-          fxLayout="column"
-          fxLayoutAlign="center center"
-        >
-          <silo-radio-list
-            label="Label"
-            [lookupConfig]="lookupConfig"
-            [isRequired]="true"
-            hint="Please select an option"
-            fieldSize="col-12"
-          ></silo-radio-list>
-        </div>
-        <div class="component-preview-list-item__card__title">Radio List</div>
-        <div class="component-preview-list-item__card__summary">
-          Lookup select as radio list.
-        </div>
-      </div>
-    </a>
-    <a class="component-preview-list-item" routerLink="../checkbox-list">
-      <div class="component-preview-list-item__card">
-        <div
-          class="component-preview-list-item__card__image"
-          fxLayout="column"
-          fxLayoutAlign="center center"
-        >
-          <silo-checkbox-list
-            label="Label"
-            [lookupConfig]="lookupConfig"
-            [isRequired]="true"
-            hint="Please select an option"
-            fieldSize="col-12"
-          ></silo-checkbox-list>
-        </div>
-        <div class="component-preview-list-item__card__title">
-          Checkbox List
-        </div>
-        <div class="component-preview-list-item__card__summary">
-          Multiple lookup select as checkbox list.
-        </div>
-      </div>
-    </a>
-    <a class="component-preview-list-item" routerLink="../date-picker">
-      <div class="component-preview-list-item__card">
-        <div
-          class="component-preview-list-item__card__image"
-          fxLayout="column"
-          fxLayoutAlign="center center"
-        >
-          <silo-date-picker
-            label="Label"
-            [isRequired]="true"
-            hint="Please enter a date"
-            fieldSize="col-12"
-          ></silo-date-picker>
-        </div>
-        <div class="component-preview-list-item__card__title">Date Picker</div>
-        <div class="component-preview-list-item__card__summary">
-          Date input as text or choosing a date from calendar.
-        </div>
-      </div>
-    </a>
-    <a class="component-preview-list-item" routerLink="../time-picker">
-      <div class="component-preview-list-item__card">
-        <div
-          class="component-preview-list-item__card__image"
-          fxLayout="column"
-          fxLayoutAlign="center center"
-        >
-          <silo-time-picker
-            label="Label"
-            [isRequired]="true"
-            hint="Please enter a date"
-            fieldSize="col-12"
-          ></silo-time-picker>
-        </div>
-        <div class="component-preview-list-item__card__title">Time Picker</div>
-        <div class="component-preview-list-item__card__summary">
-          Time input as text or choosing a time from time picker.
-        </div>
-      </div>
-    </a>
-    <a class="component-preview-list-item" routerLink="../phone-box">
-      <div class="component-preview-list-item__card">
-        <div
-          class="component-preview-list-item__card__image"
-          fxLayout="column"
-          fxLayoutAlign="center center"
-        >
-          <silo-phone-box
-            label="Label"
-            [isRequired]="true"
-            hint="Please include area code"
-            fieldSize="col-12"
-          ></silo-phone-box>
-        </div>
-        <div class="component-preview-list-item__card__title">Phone Box</div>
-        <div class="component-preview-list-item__card__summary">
-          Phone input as masked text box.
-        </div>
-      </div>
-    </a>
-    <a class="component-preview-list-item" routerLink="../number-box">
-      <div class="component-preview-list-item__card">
-        <div
-          class="component-preview-list-item__card__image"
-          fxLayout="column"
-          fxLayoutAlign="center center"
-        >
-          <silo-number-box
-            label="Label"
-            [isRequired]="true"
-            hint="Please enter a number"
-            fieldSize="col-12"
-          ></silo-number-box>
-        </div>
-        <div class="component-preview-list-item__card__title">Number Box</div>
-        <div class="component-preview-list-item__card__summary">
-          Number input as number box.
-        </div>
-      </div>
-    </a>
-    <a class="component-preview-list-item" routerLink="../uppy-file-box">
-      <div class="component-preview-list-item__card">
-        <div
-          class="component-preview-list-item__card__image"
-          fxLayout="column"
-          fxLayoutAlign="center center"
-        >
-          <silo-uppy-file-box
-            label="Label"
-            [isRequired]="true"
-            hint="Please upload a file"
-            fieldSize="col-12"
-          ></silo-uppy-file-box>
-        </div>
-        <div class="component-preview-list-item__card__title">
-          Uppy File Box
-        </div>
-        <div class="component-preview-list-item__card__summary">
-          Single file input using Uppy.
-        </div>
-      </div>
-    </a>
-    <a class="component-preview-list-item" routerLink="../uppy-file-dashboard">
-      <div class="component-preview-list-item__card">
-        <div
-          class="component-preview-list-item__card__image"
-          fxLayout="column"
-          fxLayoutAlign="center center"
-        ></div>
-        <div class="component-preview-list-item__card__title">
-          Uppy File Dashboard
-        </div>
-        <div class="component-preview-list-item__card__summary">
-          Multiple files input using Uppy.
-        </div>
-      </div>
-    </a>
-  </div>
+<div class="preview-view" fxLayout="row wrap" fxLayoutAlign="center center">
+  <silo-preview-article linkRoute="../text-box">
+    <ng-container previewContent>
+      <silo-text-box
+        label="Label"
+        [isRequired]="true"
+        hint="Please fill out this field"
+        fieldSize="col-12"
+      >
+      </silo-text-box>
+    </ng-container>
+    <ng-container summaryContent>
+      <h2>Text Box</h2>
+      <p>Text field input as text box.</p>
+    </ng-container>
+  </silo-preview-article>
+  <silo-preview-article linkRoute="../text-area">
+    <ng-container previewContent>
+      <silo-text-area
+        label="Label"
+        [isRequired]="true"
+        hint="Please fill out this field"
+        fieldSize="col-12"
+      >
+      </silo-text-area>
+    </ng-container>
+    <ng-container summaryContent>
+      <h2>Text Area</h2>
+      <p>Text field input as text area.</p>
+    </ng-container>
+  </silo-preview-article>
+  <silo-preview-article linkRoute="../quill-rich-text">
+    <ng-container previewContent>
+      <!-- TODO: Quill rich text preview -->
+    </ng-container>
+    <ng-container summaryContent>
+      <h2>Quill Rich Text</h2>
+      <p>Rich text field input using ngx-quill.</p>
+    </ng-container>
+  </silo-preview-article>
+  <silo-preview-article linkRoute="../single-select">
+    <ng-container previewContent>
+      <silo-single-select
+        label="Label"
+        [lookupConfig]="lookupConfig"
+        [isRequired]="true"
+        hint="Please select an option"
+        fieldSize="col-12"
+      ></silo-single-select>
+    </ng-container>
+    <ng-container summaryContent>
+      <h2>Single Select</h2>
+      <p>Lookup select as single select.</p>
+    </ng-container>
+  </silo-preview-article>
+  <silo-preview-article linkRoute="../single-autocomplete">
+    <ng-container previewContent>
+      <silo-single-autocomplete
+        label="Label"
+        [lookupConfig]="lookupConfig"
+        [isRequired]="true"
+        hint="Please select an option"
+        fieldSize="col-12"
+      ></silo-single-autocomplete>
+    </ng-container>
+    <ng-container summaryContent>
+      <h2>Single Autocomplete</h2>
+      <p>Lookup select as single autocomplete.</p>
+    </ng-container>
+  </silo-preview-article>
+  <silo-preview-article linkRoute="../radio-list">
+    <ng-container previewContent>
+      <silo-radio-list
+        label="Label"
+        [lookupConfig]="lookupConfig"
+        [isRequired]="true"
+        hint="Please select an option"
+        fieldSize="col-12"
+      ></silo-radio-list>
+    </ng-container>
+    <ng-container summaryContent>
+      <h2>Radio List</h2>
+      <p>Lookup select as radio list.</p>
+    </ng-container>
+  </silo-preview-article>
+  <silo-preview-article linkRoute="../checkbox-list">
+    <ng-container previewContent>
+      <silo-checkbox-list
+        label="Label"
+        [lookupConfig]="lookupConfig"
+        [isRequired]="true"
+        hint="Please select an option"
+        fieldSize="col-12"
+      ></silo-checkbox-list>
+    </ng-container>
+    <ng-container summaryContent>
+      <h2>Checkbox List</h2>
+      <p>Multiple lookup select as checkbox list.</p>
+    </ng-container>
+  </silo-preview-article>
+  <silo-preview-article linkRoute="../date-picker">
+    <ng-container previewContent>
+      <silo-date-picker
+        label="Label"
+        [isRequired]="true"
+        hint="Please enter a date"
+        fieldSize="col-12"
+      ></silo-date-picker>
+    </ng-container>
+    <ng-container summaryContent>
+      <h2>Date Picker</h2>
+      <p>Date input as text or choosing a date from calendar.</p>
+    </ng-container>
+  </silo-preview-article>
+  <silo-preview-article linkRoute="../time-picker">
+    <ng-container previewContent>
+      <silo-time-picker
+        label="Label"
+        [isRequired]="true"
+        hint="Please enter a time"
+        fieldSize="col-12"
+      ></silo-time-picker>
+    </ng-container>
+    <ng-container summaryContent>
+      <h2>Time Picker</h2>
+      <p>Time input as text or choosing a time from time picker.</p>
+    </ng-container>
+  </silo-preview-article>
+  <silo-preview-article linkRoute="../phone-box">
+    <ng-container previewContent>
+      <silo-phone-box
+        label="Label"
+        [isRequired]="true"
+        hint="Please include area code"
+        fieldSize="col-12"
+      ></silo-phone-box>
+    </ng-container>
+    <ng-container summaryContent>
+      <h2>Phone Box</h2>
+      <p>Phone input as masked text box.</p>
+    </ng-container>
+  </silo-preview-article>
+  <silo-preview-article linkRoute="../number-box">
+    <ng-container previewContent>
+      <silo-number-box
+        label="Label"
+        [isRequired]="true"
+        hint="Please enter a number"
+        fieldSize="col-12"
+      ></silo-number-box>
+    </ng-container>
+    <ng-container summaryContent>
+      <h2>Number Box</h2>
+      <p>Number input as number box.</p>
+    </ng-container>
+  </silo-preview-article>
+  <silo-preview-article linkRoute="../uppy-file-box">
+    <ng-container previewContent>
+      <silo-uppy-file-box
+        label="Label"
+        [isRequired]="true"
+        hint="Please upload a file"
+        fieldSize="col-12"
+      ></silo-uppy-file-box>
+    </ng-container>
+    <ng-container summaryContent>
+      <h2>Uppy File Box</h2>
+      <p>Single file input using Uppy.</p>
+    </ng-container>
+  </silo-preview-article>
+  <silo-preview-article linkRoute="../uppy-file-dashboard">
+    <ng-container previewContent>
+      <!-- TODO: Uppy file dashboard preview -->
+    </ng-container>
+    <ng-container summaryContent>
+      <h2>Uppy File Dashboard</h2>
+      <p>Multiple files input using Uppy.</p>
+    </ng-container>
+  </silo-preview-article>
 </div>
