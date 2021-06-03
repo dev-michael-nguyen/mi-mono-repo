@@ -1,12 +1,14 @@
 @use 'sass:map';
 @use '~@angular/material' as mat;
 
-@mixin silo-mat-form-field-override-color($config-or-theme) {
+@mixin silo-mat-form-field-override-color($config-or-theme, $custom-theme) {
   // Extract the color configuration in case a theme has been passed.
-  $config: mat.get-color-config($config-or-theme);
-  $primary: map.get($config, 'primary');
-  $warn: map.get($config, 'warn');
-  $is-dark: map.get($config, 'is-dark');
+  $color-config: mat.get-color-config($config-or-theme);
+  $primary-palette: map.get($color-config, 'primary');
+  $warn-palette: map.get($color-config, 'warn');
+  $highlight-palette: map.get($custom-theme, 'palette', 'highlight');
+  $success-palette: map.get($custom-theme, 'palette', 'success');
+  $readonly-bg: map.get($custom-theme, 'background', 'readonly');
 
   // custom style for mat-form-field appearance="legacy"
   .mat-form-field-appearance-legacy {
@@ -24,7 +26,7 @@
       border-radius: 2px;
 
       &:focus-within {
-        box-shadow: 0 0 0 2px mat.get-color-from-palette($primary);
+        box-shadow: 0 0 0 2px mat.get-color-from-palette($primary-palette);
       }
     }
 
@@ -66,74 +68,56 @@
   .silo-form-field--is-readonly {
     .mat-form-field-flex {
       cursor: initial !important;
-      background-color: if($is-dark, $dark-bg-lighter-5, $light-bg-darker-5);
+      background-color: $readonly-bg;
     }
   }
 
   .silo-form-field--is-required {
     .mat-form-field-flex {
       &:focus-within {
-        box-shadow: 0 0 0 2px
-          if(
-            $is-dark,
-            mat.get-color-from-palette($dark-theme-highlight),
-            mat.get-color-from-palette($light-theme-highlight)
-          );
+        box-shadow: 0 0 0 2px mat.get-color-from-palette($highlight-palette);
       }
     }
 
     .mat-form-field-infix {
-      border-left-color: if(
-        $is-dark,
-        mat.get-color-from-palette($dark-theme-highlight),
-        mat.get-color-from-palette($light-theme-highlight)
-      );
+      border-left-color: mat.get-color-from-palette($highlight-palette);
     }
   }
 
   .silo-form-field--has-error {
     .mat-form-field-flex {
-      box-shadow: 0 0 0 2px mat.get-color-from-palette($warn);
+      box-shadow: 0 0 0 2px mat.get-color-from-palette($warn-palette);
 
       &:focus-within {
-        box-shadow: 0 0 0 2px mat.get-color-from-palette($warn);
+        box-shadow: 0 0 0 2px mat.get-color-from-palette($warn-palette);
       }
     }
 
     .mat-form-field-infix {
-      border-left-color: mat.get-color-from-palette($warn);
+      border-left-color: mat.get-color-from-palette($warn-palette);
     }
   }
 
   .silo-form-field--is-filled {
     .mat-form-field-flex {
       &:focus-within {
-        box-shadow: 0 0 0 2px
-          if(
-            $is-dark,
-            mat.get-color-from-palette($dark-theme-success),
-            mat.get-color-from-palette($light-theme-success)
-          );
+        box-shadow: 0 0 0 2px mat.get-color-from-palette($success-palette);
       }
     }
 
     .mat-form-field-infix {
-      border-left-color: if(
-        $is-dark,
-        mat.get-color-from-palette($dark-theme-success),
-        mat.get-color-from-palette($light-theme-success)
-      );
+      border-left-color: mat.get-color-from-palette($success-palette);
     }
   }
 }
 
-@mixin silo-mat-form-field-override-theme($theme) {
+@mixin silo-mat-form-field-override-theme($theme, $custom-theme) {
   // Extracts the color and typography configurations from the theme.
   $color: mat.get-color-config($theme);
 
   // Do not generate styles if configurations for individual theming
   // systems have been explicitly set to `null`.
   @if $color !=null {
-    @include silo-mat-form-field-override-color($color);
+    @include silo-mat-form-field-override-color($color, $custom-theme);
   }
 }

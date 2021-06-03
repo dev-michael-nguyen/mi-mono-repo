@@ -4,25 +4,25 @@
 @import '~@angular/material/theming';
 @import '~@uppy/core/dist/style.css';
 @import '~@uppy/dashboard/dist/style.css';
-@import '../../../../apps-common/styles/mat-font-configs';
-@import '../../../../apps-common/styles/mat-foreground-configs';
-@import '../../../../apps-common/styles/mat-background-configs';
+@import '../../../../apps-common/themes/silo/typography-configs';
+@import '../../../../apps-common/themes/silo/foreground-configs';
+@import '../../../../apps-common/themes/silo/background-configs';
 @import '../../../../apps-common/styles/sticky-layout';
 
 // **Be sure that you only ever include this mixin once!**
-@include mat.core($fontConfig);
+@include mat.core($typography-config);
 
 // Theme Init
-@import './styles__light-theme.scss';
-@import './styles__dark-theme.scss';
+@import '../../../../apps-common/themes/silo/light-theme';
+@import '../../../../apps-common/themes/silo/dark-theme';
 @import '../../../../libs/silo/ngx-lib/src/styles/silo-ngx-lib-theme';
 
 @include mat.all-component-themes($light-theme);
-@include silo-ngx-lib-theme($light-theme);
+@include silo-ngx-lib-theme($light-theme, $light-custom-theme);
 
 .silo-dark-theme {
-  @include mat.all-component-themes($dark-theme);
-  @include silo-ngx-lib-theme($dark-theme);
+  @include mat.all-component-colors($dark-theme);
+  @include silo-ngx-lib-theme($dark-theme, $dark-custom-theme);
 }
 
 // custom theme for silo-preview-article

@@ -1,5 +1,6 @@
 @use '~@angular/material' as mat;
-@import '../../../../apps-common/styles/mat-foreground-configs';
+@import './foreground-configs';
+@import './background-configs';
 
 /**
 * Generated theme by Material Theme Generator
@@ -90,10 +91,29 @@ $light-theme-success: mat.define-palette(
   lighter,
   darker
 );
+
 $light-theme: mat.define-light-theme(
-  $light-theme-primary,
-  $light-theme-accent,
-  $light-theme-warn
+  (
+    color: (
+      primary: $light-theme-primary,
+      accent: $light-theme-accent,
+      warn: $light-theme-warn,
+    ),
+  )
+);
+
+$light-custom-theme: (
+  palette: (
+    highlight: $light-theme-highlight,
+    success: $light-theme-success,
+  ),
+  foreground: (
+    base: black,
+  ),
+  background: (
+    base: $light-background,
+    readonly: $light-bg-darker-5,
+  ),
 );
 
 // #endregion
