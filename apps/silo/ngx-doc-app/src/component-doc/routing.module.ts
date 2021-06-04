@@ -20,51 +20,11 @@ const routes: Routes = [
         component: PreviewViewComponent,
       },
       {
-        path: 'text-box',
+        path: 'boolean-checkbox',
         loadChildren: () =>
           import(
-            /* webpackChunkName: 'text-box-doc-module' */
-            '../component-doc/text-box/routing.module'
-          ).then((m) => m.RoutingModule),
-      },
-      {
-        path: 'text-area',
-        loadChildren: () =>
-          import(
-            /* webpackChunkName: 'text-area-doc-module' */
-            '../component-doc/text-area/routing.module'
-          ).then((m) => m.RoutingModule),
-      },
-      {
-        path: 'quill-rich-text',
-        loadChildren: () =>
-          import(
-            /* webpackChunkName: 'quill-rich-text-doc-module' */
-            '../component-doc/quill-rich-text/routing.module'
-          ).then((m) => m.RoutingModule),
-      },
-      {
-        path: 'single-select',
-        loadChildren: () =>
-          import(
-            /* webpackChunkName: 'single-select-doc-module' */
-            '../component-doc/single-select/routing.module'
-          ).then((m) => m.RoutingModule),
-      },
-      {
-        path: 'single-autocomplete',
-        loadChildren: () =>
-          import(
-            /* webpackChunkName: 'single-autocomplete-doc-module' */
-            '../component-doc/single-autocomplete/routing.module'
-          ).then((m) => m.RoutingModule),
-      },
-      {
-        path: 'radio-list',
-        loadChildren: () =>
-          import(
-            /* webpackChunkName: 'radio-list-doc-module' */
-            '../component-doc/radio-list/routing.module'
+            /* webpackChunkName: 'boolean-checkbox-doc-module' */
+            '../component-doc/boolean-checkbox/routing.module'
           ).then((m) => m.RoutingModule),
       },
       {
@@ -84,11 +44,11 @@ const routes: Routes = [
           ).then((m) => m.RoutingModule),
       },
       {
-        path: 'time-picker',
+        path: 'number-box',
         loadChildren: () =>
           import(
-            /* webpackChunkName: 'time-picker-doc-module' */
-            '../component-doc/time-picker/routing.module'
+            /* webpackChunkName: 'number-box-doc-module' */
+            '../component-doc/number-box/routing.module'
           ).then((m) => m.RoutingModule),
       },
       {
@@ -100,11 +60,59 @@ const routes: Routes = [
           ).then((m) => m.RoutingModule),
       },
       {
-        path: 'number-box',
+        path: 'quill-rich-text',
         loadChildren: () =>
           import(
-            /* webpackChunkName: 'number-box-doc-module' */
-            '../component-doc/number-box/routing.module'
+            /* webpackChunkName: 'quill-rich-text-doc-module' */
+            '../component-doc/quill-rich-text/routing.module'
+          ).then((m) => m.RoutingModule),
+      },
+      {
+        path: 'radio-list',
+        loadChildren: () =>
+          import(
+            /* webpackChunkName: 'radio-list-doc-module' */
+            '../component-doc/radio-list/routing.module'
+          ).then((m) => m.RoutingModule),
+      },
+      {
+        path: 'single-autocomplete',
+        loadChildren: () =>
+          import(
+            /* webpackChunkName: 'single-autocomplete-doc-module' */
+            '../component-doc/single-autocomplete/routing.module'
+          ).then((m) => m.RoutingModule),
+      },
+      {
+        path: 'single-select',
+        loadChildren: () =>
+          import(
+            /* webpackChunkName: 'single-select-doc-module' */
+            '../component-doc/single-select/routing.module'
+          ).then((m) => m.RoutingModule),
+      },
+      {
+        path: 'text-area',
+        loadChildren: () =>
+          import(
+            /* webpackChunkName: 'text-area-doc-module' */
+            '../component-doc/text-area/routing.module'
+          ).then((m) => m.RoutingModule),
+      },
+      {
+        path: 'text-box',
+        loadChildren: () =>
+          import(
+            /* webpackChunkName: 'text-box-doc-module' */
+            '../component-doc/text-box/routing.module'
+          ).then((m) => m.RoutingModule),
+      },
+      {
+        path: 'time-picker',
+        loadChildren: () =>
+          import(
+            /* webpackChunkName: 'time-picker-doc-module' */
+            '../component-doc/time-picker/routing.module'
           ).then((m) => m.RoutingModule),
       },
       {
@@ -121,14 +129,6 @@ const routes: Routes = [
           import(
             /* webpackChunkName: 'file-dashboard-doc-module' */
             '../component-doc/uppy-file-dashboard/routing.module'
-          ).then((m) => m.RoutingModule),
-      },
-      {
-        path: 'boolean-checkbox',
-        loadChildren: () =>
-          import(
-            /* webpackChunkName: 'boolean-checkbox-doc-module' */
-            '../component-doc/boolean-checkbox/routing.module'
           ).then((m) => m.RoutingModule),
       },
     ],

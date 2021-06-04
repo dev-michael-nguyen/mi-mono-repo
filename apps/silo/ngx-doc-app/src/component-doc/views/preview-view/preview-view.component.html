@@ -1,86 +1,12 @@
 <div class="preview-view" fxLayout="row wrap" fxLayoutAlign="center center">
-  <silo-preview-article linkRoute="../text-box">
+  <silo-preview-article linkRoute="../boolean-checkbox">
     <ng-container previewContent>
-      <silo-text-box
-        label="Label"
-        [isRequired]="true"
-        hint="Please fill out this field"
-        fieldSize="col-12"
-      >
-      </silo-text-box>
+      <silo-boolean-checkbox label="Label" fieldSize="col-12">
+      </silo-boolean-checkbox>
     </ng-container>
     <ng-container summaryContent>
-      <h2>Text Box</h2>
-      <p>Text field input as text box.</p>
-    </ng-container>
-  </silo-preview-article>
-  <silo-preview-article linkRoute="../text-area">
-    <ng-container previewContent>
-      <silo-text-area
-        label="Label"
-        [isRequired]="true"
-        hint="Please fill out this field"
-        fieldSize="col-12"
-      >
-      </silo-text-area>
-    </ng-container>
-    <ng-container summaryContent>
-      <h2>Text Area</h2>
-      <p>Text field input as text area.</p>
-    </ng-container>
-  </silo-preview-article>
-  <silo-preview-article linkRoute="../quill-rich-text">
-    <ng-container previewContent>
-      <!-- TODO: Quill rich text preview -->
-    </ng-container>
-    <ng-container summaryContent>
-      <h2>Quill Rich Text</h2>
-      <p>Rich text field input using ngx-quill.</p>
-    </ng-container>
-  </silo-preview-article>
-  <silo-preview-article linkRoute="../single-select">
-    <ng-container previewContent>
-      <silo-single-select
-        label="Label"
-        [lookupConfig]="lookupConfig"
-        [isRequired]="true"
-        hint="Please select an option"
-        fieldSize="col-12"
-      ></silo-single-select>
-    </ng-container>
-    <ng-container summaryContent>
-      <h2>Single Select</h2>
-      <p>Lookup select as single select.</p>
-    </ng-container>
-  </silo-preview-article>
-  <silo-preview-article linkRoute="../single-autocomplete">
-    <ng-container previewContent>
-      <silo-single-autocomplete
-        label="Label"
-        [lookupConfig]="lookupConfig"
-        [isRequired]="true"
-        hint="Please select an option"
-        fieldSize="col-12"
-      ></silo-single-autocomplete>
-    </ng-container>
-    <ng-container summaryContent>
-      <h2>Single Autocomplete</h2>
-      <p>Lookup select as single autocomplete.</p>
-    </ng-container>
-  </silo-preview-article>
-  <silo-preview-article linkRoute="../radio-list">
-    <ng-container previewContent>
-      <silo-radio-list
-        label="Label"
-        [lookupConfig]="lookupConfig"
-        [isRequired]="true"
-        hint="Please select an option"
-        fieldSize="col-12"
-      ></silo-radio-list>
-    </ng-container>
-    <ng-container summaryContent>
-      <h2>Radio List</h2>
-      <p>Lookup select as radio list.</p>
+      <h2>Boolean Checkbox</h2>
+      <p>Boolean input as checkbox.</p>
     </ng-container>
   </silo-preview-article>
   <silo-preview-article linkRoute="../checkbox-list">
@@ -112,18 +38,18 @@
       <p>Date input as text or choosing a date from calendar.</p>
     </ng-container>
   </silo-preview-article>
-  <silo-preview-article linkRoute="../time-picker">
+  <silo-preview-article linkRoute="../number-box">
     <ng-container previewContent>
-      <silo-time-picker
+      <silo-number-box
         label="Label"
         [isRequired]="true"
-        hint="Please enter a time"
+        hint="Please enter a number"
         fieldSize="col-12"
-      ></silo-time-picker>
+      ></silo-number-box>
     </ng-container>
     <ng-container summaryContent>
-      <h2>Time Picker</h2>
-      <p>Time input as text or choosing a time from time picker.</p>
+      <h2>Number Box</h2>
+      <p>Number input as number box.</p>
     </ng-container>
   </silo-preview-article>
   <silo-preview-article linkRoute="../phone-box">
@@ -140,18 +66,102 @@
       <p>Phone input as masked text box.</p>
     </ng-container>
   </silo-preview-article>
-  <silo-preview-article linkRoute="../number-box">
+  <silo-preview-article linkRoute="../quill-rich-text">
     <ng-container previewContent>
-      <silo-number-box
-        label="Label"
-        [isRequired]="true"
-        hint="Please enter a number"
-        fieldSize="col-12"
-      ></silo-number-box>
+      <!-- TODO: Quill rich text preview -->
     </ng-container>
     <ng-container summaryContent>
-      <h2>Number Box</h2>
-      <p>Number input as number box.</p>
+      <h2>Quill Rich Text</h2>
+      <p>Rich text field input using ngx-quill.</p>
+    </ng-container>
+  </silo-preview-article>
+  <silo-preview-article linkRoute="../radio-list">
+    <ng-container previewContent>
+      <silo-radio-list
+        label="Label"
+        [lookupConfig]="lookupConfig"
+        [isRequired]="true"
+        hint="Please select an option"
+        fieldSize="col-12"
+      ></silo-radio-list>
+    </ng-container>
+    <ng-container summaryContent>
+      <h2>Radio List</h2>
+      <p>Lookup select as radio list.</p>
+    </ng-container>
+  </silo-preview-article>
+  <silo-preview-article linkRoute="../single-autocomplete">
+    <ng-container previewContent>
+      <silo-single-autocomplete
+        label="Label"
+        [lookupConfig]="lookupConfig"
+        [isRequired]="true"
+        hint="Please select an option"
+        fieldSize="col-12"
+      ></silo-single-autocomplete>
+    </ng-container>
+    <ng-container summaryContent>
+      <h2>Single Autocomplete</h2>
+      <p>Lookup select as single autocomplete.</p>
+    </ng-container>
+  </silo-preview-article>
+  <silo-preview-article linkRoute="../single-select">
+    <ng-container previewContent>
+      <silo-single-select
+        label="Label"
+        [lookupConfig]="lookupConfig"
+        [isRequired]="true"
+        hint="Please select an option"
+        fieldSize="col-12"
+      ></silo-single-select>
+    </ng-container>
+    <ng-container summaryContent>
+      <h2>Single Select</h2>
+      <p>Lookup select as single select.</p>
+    </ng-container>
+  </silo-preview-article>
+  <silo-preview-article linkRoute="../text-area">
+    <ng-container previewContent>
+      <silo-text-area
+        label="Label"
+        [isRequired]="true"
+        hint="Please fill out this field"
+        fieldSize="col-12"
+      >
+      </silo-text-area>
+    </ng-container>
+    <ng-container summaryContent>
+      <h2>Text Area</h2>
+      <p>Text field input as text area.</p>
+    </ng-container>
+  </silo-preview-article>
+  <silo-preview-article linkRoute="../text-box">
+    <ng-container previewContent>
+      <silo-text-box
+        label="Label"
+        [isRequired]="true"
+        hint="Please fill out this field"
+        fieldSize="col-12"
+      >
+      </silo-text-box>
+    </ng-container>
+    <ng-container summaryContent>
+      <h2>Text Box</h2>
+      <p>Text field input as text box.</p>
+    </ng-container>
+  </silo-preview-article>
+  <silo-preview-article linkRoute="../time-picker">
+    <ng-container previewContent>
+      <silo-time-picker
+        label="Label"
+        [isRequired]="true"
+        hint="Please enter a time"
+        fieldSize="col-12"
+      ></silo-time-picker>
+    </ng-container>
+    <ng-container summaryContent>
+      <h2>Time Picker</h2>
+      <p>Time input as text or choosing a time from time picker.</p>
     </ng-container>
   </silo-preview-article>
   <silo-preview-article linkRoute="../uppy-file-box">
