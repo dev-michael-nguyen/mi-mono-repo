@@ -48,7 +48,7 @@ export abstract class TextFieldComponent
   minLength: number;
 
   @Input()
-  maxLength: number;
+  maxLength = 250;
 
   @Input()
   defaultValue: string;

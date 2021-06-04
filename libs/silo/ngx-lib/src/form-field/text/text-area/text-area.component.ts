@@ -9,5 +9,8 @@ import { TextFieldComponent } from './../text-field.component';
 })
 export class TextAreaComponent extends TextFieldComponent {
   @Input()
-  fieldSize: ClassExpression = 'col-6';
+  maxLength = 10000;
+
+  @Input()
+  fieldSize: ClassExpression = 'col-12';
 }
