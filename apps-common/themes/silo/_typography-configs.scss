@@ -5,24 +5,81 @@
 @import 'https://fonts.googleapis.com/css?family=Material+Icons';
 @import url('https://fonts.googleapis.com/css?family=Roboto:300,400,500');
 
+$font-size: 16px;
+$font-weight: 400;
+$font-weight--caption: 300;
+$font-weight--bold: 500;
+
 $typography-config: mat.define-typography-config(
   $font-family: 'Roboto, "Helvetica Neue", sans-serif',
   $display-4:
-    mat.define-typography-level(112px, 112px, 300, $letter-spacing: -0.05em),
+    mat.define-typography-level(
+      $font-size + 84px,
+      $font-size + 84px,
+      300,
+      $letter-spacing: -0.05em
+    ),
   $display-3:
-    mat.define-typography-level(56px, 56px, 400, $letter-spacing: -0.02em),
+    mat.define-typography-level(
+      $font-size + 42px,
+      $font-size + 42px,
+      $font-weight,
+      $letter-spacing: -0.02em
+    ),
   $display-2:
-    mat.define-typography-level(45px, 48px, 400, $letter-spacing: -0.005em),
-  $display-1: mat.define-typography-level(34px, 40px, 400),
-  $headline: mat.define-typography-level(24px, 32px, 400),
-  $title: mat.define-typography-level(20px, 32px, 500),
-  $subheading-2: mat.define-typography-level(16px, 28px, 400),
-  $subheading-1: mat.define-typography-level(15px, 24px, 400),
-  $body-2: mat.define-typography-level(14px, 24px, 500),
-  $body-1: mat.define-typography-level(14px, 20px, 400),
-  $caption: mat.define-typography-level(12px, 20px, 400),
-  $button: mat.define-typography-level(14px, 14px, 500),
-  $input: mat.define-typography-level(inherit, 1.125, 400),
+    mat.define-typography-level(
+      $font-size + 28px,
+      $font-size + 34px,
+      $font-weight,
+      $letter-spacing: -0.005em
+    ),
+  $display-1:
+    mat.define-typography-level(
+      $font-size + 18px,
+      $font-size + 24px,
+      $font-weight
+    ),
+  $headline:
+    mat.define-typography-level(
+      $font-size + 10px,
+      $font-size + 18px,
+      $font-weight--bold
+    ),
+  $title:
+    mat.define-typography-level(
+      $font-size + 6px,
+      $font-size + 18px,
+      $font-weight--bold
+    ),
+  $subheading-2:
+    mat.define-typography-level(
+      $font-size + 2px,
+      $font-size + 14px,
+      $font-weight
+    ),
+  $subheading-1:
+    mat.define-typography-level(
+      $font-size + 1px,
+      $font-size + 10px,
+      $font-weight
+    ),
+  $body-2:
+    mat.define-typography-level(
+      $font-size,
+      $font-size + 10px,
+      $font-weight--bold
+    ),
+  $body-1:
+    mat.define-typography-level($font-size, $font-size + 6px, $font-weight),
+  $button:
+    mat.define-typography-level($font-size, $font-size, $font-weight--bold),
+  $caption:
+    mat.define-typography-level(
+      $font-size - 2px,
+      $font-size + 6px,
+      $font-weight--caption
+    ),
+  $input: mat.define-typography-level(inherit, 1.125, $font-weight),
 );
 
 // #endregion
