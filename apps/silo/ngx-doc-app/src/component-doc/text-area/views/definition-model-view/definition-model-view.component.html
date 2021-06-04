@@ -1,0 +1,30 @@
+<silo-example-article>
+  <ng-container headerContent>
+    <h2>Text Definition Model</h2>
+  </ng-container>
+  <ng-container bodyContent>
+    <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="32px">
+      <div fxFlex="45">
+        <silo-metadata-form
+          [metadataModel]="textDefinitionModel"
+          (newFormValue)="updateTextDefinitionModel($event)"
+        ></silo-metadata-form>
+      </div>
+      <div>
+        <mat-icon>forward</mat-icon>
+      </div>
+      <div fxFlex="45">
+        <silo-text-area
+          [label]="textDefinitionModel.label"
+          [placeholder]="textDefinitionModel.placeholder"
+          [hint]="textDefinitionModel.hint"
+          [isRequired]="textDefinitionModel.isRequired"
+          [isReadOnly]="textDefinitionModel.isReadOnly"
+          [defaultValue]="textDefinitionModel.defaultValue"
+          [fieldSize]="textDefinitionModel.fieldSize"
+          [fieldOutlineSize]="textDefinitionModel.fieldOutlineSize"
+        ></silo-text-area>
+      </div>
+    </div>
+  </ng-container>
+</silo-example-article>
