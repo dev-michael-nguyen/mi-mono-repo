@@ -51,7 +51,23 @@ export class FormTextDefinitionModel extends FormElementDefinitionModel<string> 
 
   isRequiredToSubmit = false;
 
+  @DisplayOrder(70)
+  @Template('TextBox', 'Text Box')
+  @FieldSize('col-12')
+  @Label('Default Value')
   defaultValue: string = null;
+
+  @DisplayOrder(80)
+  @Template('TextBox', 'Text Box')
+  @FieldSize('col-3')
+  @Label('Field Size')
+  fieldSize = 'col-6';
+
+  @DisplayOrder(90)
+  @Template('TextBox', 'Text Box')
+  @FieldSize('col-3')
+  @Label('Field Outline Size')
+  fieldOutlineSize = 'col-12';
 
   constructor() {
     super();

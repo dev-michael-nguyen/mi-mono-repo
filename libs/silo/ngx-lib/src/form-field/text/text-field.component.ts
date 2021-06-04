@@ -80,6 +80,9 @@ export abstract class TextFieldComponent
     if (changes.isRequired && !changes.isRequired.isFirstChange()) {
       this.setForm(this.textFormControl.value);
     }
+    if (changes.defaultValue && !changes.defaultValue.isFirstChange()) {
+      this.textFormControl.setValue(this.defaultValue);
+    }
   }
 
   setDefinition(): void {

@@ -15,12 +15,14 @@
       </div>
       <div fxFlex="45">
         <silo-text-box
-          fieldSize="col-6"
           [label]="textDefinitionModel.label"
           [placeholder]="textDefinitionModel.placeholder"
           [hint]="textDefinitionModel.hint"
           [isRequired]="textDefinitionModel.isRequired"
           [isReadOnly]="textDefinitionModel.isReadOnly"
+          [defaultValue]="textDefinitionModel.defaultValue"
+          [fieldSize]="textDefinitionModel.fieldSize"
+          [fieldOutlineSize]="textDefinitionModel.fieldOutlineSize"
         ></silo-text-box>
       </div>
     </div>
