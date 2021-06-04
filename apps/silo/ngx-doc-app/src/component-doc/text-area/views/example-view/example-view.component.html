@@ -3,7 +3,7 @@
     <h2>Text area is not required</h2>
   </ng-container>
   <ng-container bodyContent>
-    <silo-text-area label="Label"></silo-text-area>
+    <silo-text-area label="Label" fieldSize="col-6"></silo-text-area>
   </ng-container>
 </silo-example-article>
 
@@ -12,7 +12,11 @@
     <h2>Text area is required</h2>
   </ng-container>
   <ng-container bodyContent>
-    <silo-text-area label="Label" [isRequired]="true"></silo-text-area>
+    <silo-text-area
+      label="Label"
+      [isRequired]="true"
+      fieldSize="col-6"
+    ></silo-text-area>
   </ng-container>
 </silo-example-article>
 
@@ -26,6 +30,7 @@
       [isRequired]="true"
       [minLength]="3"
       [maxLength]="10"
+      fieldSize="col-6"
     ></silo-text-area>
   </ng-container>
 </silo-example-article>
@@ -39,6 +44,7 @@
       label="Label"
       [isRequired]="true"
       hint="Please fill out this field"
+      fieldSize="col-6"
     >
     </silo-text-area>
   </ng-container>
@@ -52,6 +58,7 @@
     <silo-text-area
       label="Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec velit neque, auctor sit amet aliquam vel, ullamcorper sit amet ligula."
       placeholder="Proin eget tortor risus. Vivamus magna justo, lacinia eget consectetur sed, convallis at tellus."
+      fieldSize="col-6"
     >
     </silo-text-area>
   </ng-container>
@@ -67,6 +74,7 @@
       defaultValue="Quisque velit nisi, pretium ut lacinia in, elementum id enim. Sed porttitor lectus nibh. Quisque velit nisi, pretium ut lacinia in, elementum id enim. Pellentesque in ipsum id orci porta dapibus. Vivamus suscipit tortor eget felis porttitor volutpat. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec velit neque, auctor sit amet aliquam vel, ullamcorper sit amet ligula. Nulla quis lorem ut libero malesuada feugiat. Pellentesque in ipsum id orci porta dapibus. Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a. Nulla porttitor accumsan tincidunt."
       [isReadOnly]="true"
       [isRequired]="true"
+      fieldSize="col-6"
     ></silo-text-area>
   </ng-container>
 </silo-example-article>

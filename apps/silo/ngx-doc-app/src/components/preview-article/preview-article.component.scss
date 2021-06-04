@@ -2,7 +2,6 @@
   text-decoration: none;
   display: inline-block;
   margin: 20px;
-  width: 320px;
 
   :hover,
   :active {
@@ -13,6 +12,8 @@
 .preview-article-layout {
   border: 1px solid lightgray;
   border-radius: 4px;
+  width: 320px;
+  height: 320px;
 
   .preview-content-container {
     height: 156px;
