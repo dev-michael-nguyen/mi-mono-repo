@@ -9,6 +9,7 @@
   $highlight-palette: map.get($custom-theme, 'palette', 'highlight');
   $success-palette: map.get($custom-theme, 'palette', 'success');
   $readonly-bg: map.get($custom-theme, 'background', 'readonly');
+  $field-icon-color: map.get($custom-theme, 'foreground', 'field-icon');
 
   .silo-form-field-outline-container {
     box-sizing: border-box;
@@ -31,6 +32,13 @@
     min-height: 34px;
   }
 
+  // field icon color
+  .silo-form-field-input-container {
+    .mat-icon {
+      color: $field-icon-color;
+    }
+  }
+
   .silo-form-field-suffix-container {
     display: flex;
     place-content: center;
@@ -51,12 +59,14 @@
     }
   }
 
+  // field is read-only
   .silo-form-field--is-readonly {
     .silo-form-field-outline-container {
       background-color: $readonly-bg;
     }
   }
 
+  // highlight field is required
   .silo-form-field--is-required {
     .silo-form-field-outline-container {
       &:focus-within {
@@ -69,6 +79,7 @@
     }
   }
 
+  // highlight field has error
   .silo-form-field--has-error {
     .silo-form-field-outline-container {
       box-shadow: 0 0 0 2px mat.get-color-from-palette($warn-palette);
@@ -83,6 +94,7 @@
     }
   }
 
+  // highlight field is filled
   .silo-form-field--is-filled {
     .silo-form-field-outline-container {
       &:focus-within {

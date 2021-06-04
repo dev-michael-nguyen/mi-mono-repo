@@ -109,6 +109,8 @@ $light-custom-theme: (
   ),
   foreground: (
     base: black,
+    field-label: rgba(0, 0, 0, 0.54),
+    field-icon: rgba(0, 0, 0, 0.8),
   ),
   background: (
     base: $light-background,

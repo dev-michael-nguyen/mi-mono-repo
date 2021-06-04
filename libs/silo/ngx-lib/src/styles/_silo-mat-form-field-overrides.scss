@@ -9,6 +9,7 @@
   $highlight-palette: map.get($custom-theme, 'palette', 'highlight');
   $success-palette: map.get($custom-theme, 'palette', 'success');
   $readonly-bg: map.get($custom-theme, 'background', 'readonly');
+  $field-icon-color: map.get($custom-theme, 'foreground', 'field-icon');
 
   // custom style for mat-form-field appearance="legacy"
   .mat-form-field-appearance-legacy {
@@ -63,8 +64,16 @@
         }
       }
     }
+
+    // field icon color
+    .mat-icon,
+    .mat-select-arrow,
+    .mat-datepicker-toggle {
+      color: $field-icon-color;
+    }
   }
 
+  // field is read-only
   .silo-form-field--is-readonly {
     .mat-form-field-flex {
       cursor: initial !important;
@@ -72,6 +81,7 @@
     }
   }
 
+  // highlight field is required
   .silo-form-field--is-required {
     .mat-form-field-flex {
       &:focus-within {
@@ -84,6 +94,7 @@
     }
   }
 
+  // highlight field has error
   .silo-form-field--has-error {
     .mat-form-field-flex {
       box-shadow: 0 0 0 2px mat.get-color-from-palette($warn-palette);
@@ -98,6 +109,7 @@
     }
   }
 
+  // highlight field is filled
   .silo-form-field--is-filled {
     .mat-form-field-flex {
       &:focus-within {

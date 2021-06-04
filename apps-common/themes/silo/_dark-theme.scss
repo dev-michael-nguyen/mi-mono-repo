@@ -107,6 +107,8 @@ $dark-custom-theme: (
   ),
   foreground: (
     base: $light-text,
+    field-label: $light-text,
+    field-icon: $light-text,
   ),
   background: (
     base: $dark-background,
