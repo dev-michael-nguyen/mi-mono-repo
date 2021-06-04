@@ -1,0 +1,20 @@
+<silo-example-article>
+  <ng-container headerContent>
+    <h2>Boolean checkbox is not required</h2>
+  </ng-container>
+  <ng-container bodyContent>
+    <silo-boolean-checkbox label="Label"></silo-boolean-checkbox>
+  </ng-container>
+</silo-example-article>
+
+<silo-example-article>
+  <ng-container headerContent>
+    <h2>Boolean checkbox is required</h2>
+  </ng-container>
+  <ng-container bodyContent>
+    <silo-boolean-checkbox
+      label="Label"
+      [isRequired]="true"
+    ></silo-boolean-checkbox>
+  </ng-container>
+</silo-example-article>

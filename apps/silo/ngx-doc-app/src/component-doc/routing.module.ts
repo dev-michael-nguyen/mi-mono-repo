@@ -123,6 +123,14 @@ const routes: Routes = [
             '../component-doc/uppy-file-dashboard/routing.module'
           ).then((m) => m.RoutingModule),
       },
+      {
+        path: 'boolean-checkbox',
+        loadChildren: () =>
+          import(
+            /* webpackChunkName: 'boolean-checkbox-doc-module' */
+            '../component-doc/boolean-checkbox/routing.module'
+          ).then((m) => m.RoutingModule),
+      },
     ],
   },
 ];

@@ -1,0 +1,18 @@
+<div
+  class="silo-boolean-checkbox"
+  [class.silo-form-field--is-readonly]="isReadOnly"
+  [siloResponsiveContainer]="fieldSize"
+>
+  <mat-checkbox [formControl]="booleanFormControl" [required]="isRequired">
+    {{ label }}
+  </mat-checkbox>
+  <div [id]="describebyId" class="silo-form-field-message-container">
+    <span
+      class="mat-error"
+      role="alert"
+      *ngIf="formGroup.touched && formGroup.invalid"
+    >
+      {{ getErrorMessage() }}
+    </span>
+  </div>
+</div>

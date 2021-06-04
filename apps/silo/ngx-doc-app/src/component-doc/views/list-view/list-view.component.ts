@@ -21,6 +21,7 @@ export class ListViewComponent implements OnInit {
     { label: 'Number Box', routerLink: 'number-box' },
     { label: 'Uppy File Box', routerLink: 'uppy-file-box' },
     { label: 'Uppy File Dashboard', routerLink: 'uppy-file-dashboard' },
+    { label: 'Boolean Checkbox', routerLink: 'boolean-checkbox' },
   ];
 
   constructor() {}
