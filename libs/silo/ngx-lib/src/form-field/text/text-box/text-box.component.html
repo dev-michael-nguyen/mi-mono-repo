@@ -26,7 +26,7 @@
       type="text"
       spellcheck="true"
       [attr.aria-labelledby]="labelId"
-      [attr.placeholder]="placeholder"
+      [attr.placeholder]="!isReadOnly ? placeholder : ''"
       [formControl]="textFormControl"
       [required]="isRequired"
       [attr.minLength]="minLength ? minLength : null"

@@ -37,8 +37,16 @@ export class FormTextDefinitionModel extends FormElementDefinitionModel<string> 
   @Label('Hint')
   hint: string = null;
 
+  @DisplayOrder(40)
+  @Template('BooleanCheckbox', 'Checkbox')
+  @FieldSize('col-12')
+  @Label('Read-Only')
   isReadOnly = false;
 
+  @DisplayOrder(50)
+  @Template('BooleanCheckbox', 'Checkbox')
+  @FieldSize('col-12')
+  @Label('Required')
   isRequired = false;
 
   isRequiredToSubmit = false;

@@ -4,9 +4,11 @@ import {
   ElementRef,
   Input,
   OnInit,
+  SimpleChanges,
   ViewChild,
 } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { GetFormValue } from '../../form-builder/models/get-form-value';
 import { ClassExpression } from '../../responsive/responsive-container/models/class-expression';
 import { newHtmlId } from '../../utils/new-html-id';
 import { ValidatorService } from '../services/validator.service';
@@ -15,7 +17,8 @@ import { TextValidatorFactory } from './text-validator.factory';
 @Component({
   template: '',
 })
-export abstract class TextFieldComponent implements OnInit, AfterViewInit {
+export abstract class TextFieldComponent
+  implements OnInit, AfterViewInit, GetFormValue {
   formGroup: FormGroup;
 
   textFormControl: FormControl;
@@ -71,6 +74,12 @@ export abstract class TextFieldComponent implements OnInit, AfterViewInit {
 
   ngAfterViewInit(): void {
     this.setTextAreaHeightInReadOnly();
+  }
+
+  ngOnChanges(changes: SimpleChanges) {
+    if (changes.isRequired && !changes.isRequired.isFirstChange()) {
+      this.setForm(this.textFormControl.value);
+    }
   }
 
   setDefinition(): void {
