@@ -3,7 +3,7 @@
   [class.silo-form-field--is-readonly]="isReadOnly"
   [class.silo-form-field--is-required]="isRequired"
   [class.silo-form-field--is-filled]="
-    hasValidators && formGroup.status === 'VALID'
+    hasValidators && isRequired && formGroup.status === 'VALID'
   "
   [class.silo-form-field--has-error]="
     hasValidators && formGroup.touched && formGroup.status === 'INVALID'

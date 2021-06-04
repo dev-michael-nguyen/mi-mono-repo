@@ -3,7 +3,7 @@
   [class.silo-form-field--is-readonly]="isReadOnly"
   [class.silo-form-field--is-required]="isRequired"
   [class.silo-form-field--is-filled]="
-    hasValidators && formGroup.status === 'VALID'
+    hasValidators && isRequired && formGroup.status === 'VALID'
   "
   [class.silo-form-field--has-error]="
     hasValidators && formGroup.touched && formGroup.status === 'INVALID'
@@ -34,7 +34,7 @@
       [readonly]="isReadOnly"
     ></textarea>
     <mat-hint *ngIf="hint">{{ hint }}</mat-hint>
-    <mat-hint align="end">
+    <mat-hint class="no-wrap" align="end">
       {{ textFormControl.value?.length || 0 }} / {{ maxLength }}
     </mat-hint>
     <mat-error *ngIf="formGroup.invalid">
