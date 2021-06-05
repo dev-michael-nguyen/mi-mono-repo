@@ -1,10 +1,14 @@
 <div class="silo-text-box-element">
   <silo-form-element-definition-container [nodeModel]="nodeModel">
     <silo-text-box
-      fieldSize="col-6"
-      [label]="definitionModel.label"
-      [placeholder]="definitionModel.placeholder"
-      [hint]="definitionModel.hint"
+      [label]="textDefinitionModel.label"
+      [placeholder]="textDefinitionModel.placeholder"
+      [hint]="textDefinitionModel.hint"
+      [isRequired]="textDefinitionModel.isRequired"
+      [isReadOnly]="textDefinitionModel.isReadOnly"
+      [defaultValue]="textDefinitionModel.defaultValue"
+      [fieldSize]="textDefinitionModel.fieldSize"
+      [fieldOutlineSize]="textDefinitionModel.fieldOutlineSize"
     ></silo-text-box>
   </silo-form-element-definition-container>
 </div>

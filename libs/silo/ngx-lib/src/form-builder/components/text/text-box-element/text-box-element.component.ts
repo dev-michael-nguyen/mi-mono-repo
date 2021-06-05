@@ -9,13 +9,13 @@ import { HasNodeModel } from '../../../models/has-node-model';
   styleUrls: ['./text-box-element.component.scss'],
 })
 export class TextBoxElementComponent implements OnInit, HasNodeModel {
-  definitionModel: FormTextDefinitionModel;
+  textDefinitionModel: FormTextDefinitionModel;
 
   @Input()
   nodeModel: FormElementNodeModel;
 
   ngOnInit() {
-    this.definitionModel = this.nodeModel
+    this.textDefinitionModel = this.nodeModel
       .definitionModel as FormTextDefinitionModel;
   }
 }

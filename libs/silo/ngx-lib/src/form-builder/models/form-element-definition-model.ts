@@ -31,6 +31,8 @@ export class FormElementDefinitionModel<T = unknown> extends MetadataModel {
 
   isRequired?: boolean;
 
+  isReadOnly?: boolean;
+
   isRequiredToSubmit?: boolean;
 
   displayOrder?: number;
