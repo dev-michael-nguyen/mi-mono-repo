@@ -7,5 +7,5 @@ import { ClassExpression } from './models/class-expression';
 })
 export class ResponsiveContainerComponent {
   @Input()
-  colExpression: ClassExpression;
+  classExpression: ClassExpression;
 }

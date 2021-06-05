@@ -39,15 +39,15 @@ export class FormTextDefinitionModel extends FormElementDefinitionModel<string> 
 
   @DisplayOrder(40)
   @Template('BooleanCheckbox', 'Checkbox')
-  @FieldSize('col-12')
-  @Label('Read-Only')
-  isReadOnly = false;
+  @FieldSize('col-2, inline-block--start')
+  @Label('Required')
+  isRequired = false;
 
   @DisplayOrder(50)
   @Template('BooleanCheckbox', 'Checkbox')
-  @FieldSize('col-12')
-  @Label('Required')
-  isRequired = false;
+  @FieldSize('col-2, inline-block')
+  @Label('Read-Only')
+  isReadOnly = false;
 
   isRequiredToSubmit = false;
 
@@ -59,13 +59,13 @@ export class FormTextDefinitionModel extends FormElementDefinitionModel<string> 
 
   @DisplayOrder(80)
   @Template('TextBox', 'Text Box')
-  @FieldSize('col-3')
+  @FieldSize('col-6, inline-block--start')
   @Label('Field Size')
   fieldSize = 'col-6';
 
   @DisplayOrder(90)
   @Template('TextBox', 'Text Box')
-  @FieldSize('col-3')
+  @FieldSize('col-6, inline-block')
   @Label('Field Outline Size')
   fieldOutlineSize = 'col-12';
 

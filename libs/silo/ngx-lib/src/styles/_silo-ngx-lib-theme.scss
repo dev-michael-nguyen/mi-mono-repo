@@ -8,7 +8,7 @@
 @import '../layout/app-layout/app-layout.component.theme.scss';
 @import '../layout/router-tab-layout/router-tab-layout.component.theme.scss';
 @import '../navigation/nav-list/nav-list.component.theme.scss';
-@import '../responsive/responsive-container/responsive-container.component.theme.scss';
+@import '../responsive/responsive-container/responsive-container-theme';
 
 @mixin silo-ngx-lib-theme($theme, $custom-theme) {
   @include silo-form-field-theme($theme, $custom-theme);

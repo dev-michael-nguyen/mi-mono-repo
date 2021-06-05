@@ -44,19 +44,26 @@ export class ResponsiveContainerDirective implements OnInit {
     }
 
     if (typeof classExpression === 'string') {
-      this._elementRef.nativeElement.classList.add(classExpression as string);
+      classExpression
+        .split(',')
+        .map((c) => c.trim())
+        .filter(
+          (c) => c && !this._elementRef.nativeElement.classList.contains(c),
+        )
+        .forEach((c) => this._elementRef.nativeElement.classList.add(c));
       return;
     }
 
     if (typeof classExpression === 'object') {
-      Object.keys(classExpression).forEach((key) => {
-        if (
-          classExpression[key] &&
-          !this._elementRef.nativeElement.classList.contains(key)
-        ) {
+      Object.keys(classExpression)
+        .filter(
+          (key) =>
+            classExpression[key] &&
+            !this._elementRef.nativeElement.classList.contains(key),
+        )
+        .forEach((key) => {
           this._elementRef.nativeElement.classList.add(key);
-        }
-      });
+        });
       return;
     }
   }
@@ -72,18 +79,22 @@ export class ResponsiveContainerDirective implements OnInit {
     }
 
     if (typeof classExpression === 'string') {
-      this._elementRef.nativeElement.classList.remove(
-        classExpression as string,
-      );
+      classExpression
+        .split(',')
+        .map((c) => c.trim())
+        .filter(
+          (c) => c && this._elementRef.nativeElement.classList.contains(c),
+        )
+        .forEach((c) => this._elementRef.nativeElement.classList.remove(c));
       return;
     }
 
     if (typeof classExpression === 'object') {
-      Object.keys(classExpression).forEach((key) => {
-        if (this._elementRef.nativeElement.classList.contains(key)) {
+      Object.keys(classExpression)
+        .filter((key) => this._elementRef.nativeElement.classList.contains(key))
+        .forEach((key) => {
           this._elementRef.nativeElement.classList.remove(key);
-        }
-      });
+        });
       return;
     }
   }

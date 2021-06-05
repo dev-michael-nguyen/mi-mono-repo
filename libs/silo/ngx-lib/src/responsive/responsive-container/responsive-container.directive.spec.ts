@@ -5,7 +5,7 @@ import { ResponsiveContainerDirective } from './responsive-container.directive';
 @Component({
   template: `
     <div #div1 siloResponsiveContainer></div>
-    <div #div2 siloResponsiveContainer="col-1"></div>
+    <div #div2 siloResponsiveContainer="col-1, col-2"></div>
     <div #div3 [siloResponsiveContainer]="['col-1', 'col-2']"></div>
     <div
       #div4
@@ -35,32 +35,35 @@ describe('ResponsiveContainerDirective', () => {
     component = fixture.componentInstance;
   });
 
-  it('it should not init when there is no colExpression', () => {
+  it('it should not init when there is no classExpression', () => {
     fixture.detectChanges();
     expect(
       component.div1.nativeElement.classList.contains(
-        ResponsiveContainerDirective.REPONSIVE_CONTAINER_CLASS,
+        ResponsiveContainerDirective.RESPONSIVE_CONTAINER_CLASS,
       ),
     ).toBeFalsy();
   });
 
-  it('it should init when there is colExpression as string', () => {
+  it('it should init when there is classExpression as string', () => {
     fixture.detectChanges();
     expect(
       component.div2.nativeElement.classList.contains(
-        ResponsiveContainerDirective.REPONSIVE_CONTAINER_CLASS,
+        ResponsiveContainerDirective.RESPONSIVE_CONTAINER_CLASS,
       ),
     ).toBeTruthy();
     expect(
       component.div2.nativeElement.classList.contains('col-1'),
     ).toBeTruthy();
+    expect(
+      component.div2.nativeElement.classList.contains('col-2'),
+    ).toBeTruthy();
   });
 
-  it('it should init when there is colExpression as Array<string>', () => {
+  it('it should init when there is classExpression as Array<string>', () => {
     fixture.detectChanges();
     expect(
       component.div3.nativeElement.classList.contains(
-        ResponsiveContainerDirective.REPONSIVE_CONTAINER_CLASS,
+        ResponsiveContainerDirective.RESPONSIVE_CONTAINER_CLASS,
       ),
     ).toBeTruthy();
     expect(
@@ -71,11 +74,11 @@ describe('ResponsiveContainerDirective', () => {
     ).toBeTruthy();
   });
 
-  it('it should init when there is colExpression as Object', () => {
+  it('it should init when there is classExpression as Object', () => {
     fixture.detectChanges();
     expect(
       component.div4.nativeElement.classList.contains(
-        ResponsiveContainerDirective.REPONSIVE_CONTAINER_CLASS,
+        ResponsiveContainerDirective.RESPONSIVE_CONTAINER_CLASS,
       ),
     ).toBeTruthy();
     expect(
