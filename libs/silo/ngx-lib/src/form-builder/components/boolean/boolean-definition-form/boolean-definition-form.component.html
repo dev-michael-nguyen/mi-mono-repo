@@ -1,0 +1,7 @@
+<div class="silo-boolean-definition-form">
+  <h2>{{ nodeModel.definitionModel.templateDisplayName }} Definition</h2>
+  <silo-metadata-form
+    [metadataModel]="nodeModel.definitionModel"
+    (newFormValue)="emitUpdate($event)"
+  ></silo-metadata-form>
+</div>

@@ -5,7 +5,8 @@ export type FormElementDataType =
   | 'Object'
   | 'Array'
   | 'Text'
-  | 'Number';
+  | 'Number'
+  | 'Boolean';
 
 export type FormGroupTemplateIdentifier =
   | 'FormGroup'

@@ -5,6 +5,8 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatMenuModule } from '@angular/material/menu';
 import { StickyLayoutModule } from '../layout/sticky-layout/sticky-layout.module';
 import { ControlMenuBarModule } from './../control-menu-bar/control-menu-bar.module';
+import { BooleanCheckboxElementModule } from './components/boolean/boolean-checkbox-element/boolean-checkbox-element.module';
+import { BooleanDefinitionFormModule } from './components/boolean/boolean-definition-form/boolean-definition-form.module';
 import { FormElementPropertyWindowModule } from './components/form-element-definition-form-portal/form-element-definition-form.module';
 import { FormElementPortalModule } from './components/form-element-portal/form-element-portal.module';
 import { FormGroupElementModule } from './components/group/form-group-element/form-group-element.module';
@@ -22,15 +24,19 @@ import { FormBuilderComponent } from './form-builder.component';
     FlexLayoutModule,
     FormElementPortalModule,
     FormElementPropertyWindowModule,
-    FormGroupElementModule,
-    GroupDefinitionFormModule,
     MatButtonModule,
     MatMenuModule,
     SectionElementModule,
     StickyLayoutModule,
+    // #region Elements
+    BooleanCheckboxElementModule,
+    BooleanDefinitionFormModule,
+    FormGroupElementModule,
+    GroupDefinitionFormModule,
     TextAreaElementModule,
     TextBoxElementModule,
     TextDefinitionFormModule,
+    // #endregion
   ],
   declarations: [FormBuilderComponent],
   exports: [FormBuilderComponent],
