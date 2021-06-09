@@ -1,7 +1,7 @@
-import { Component, Injectable, OnDestroy, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { Component, Injectable, OnDestroy } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { render } from '@testing-library/angular';
-import { Observable, of, Subject } from 'rxjs';
+import { of, Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { SaveSubject } from './save-subject';
 
@@ -15,8 +15,9 @@ class PersonDto {
 
 class PersonModel extends PersonDto {}
 
+@Injectable()
 class TestHttpService {
-  getPerson(id: string): Observable<PersonDto> {
+  getPerson(id: string) {
     const responseDto = new PersonDto(
       id,
       { firstName: 'John', lastName: 'Doe' },
@@ -25,7 +26,7 @@ class TestHttpService {
     return of(responseDto);
   }
 
-  postPerson(personDto: PersonDto): Observable<PersonDto> {
+  postPerson(personDto: PersonDto) {
     return of(personDto);
   }
 }
@@ -34,11 +35,11 @@ class TestHttpService {
 class TestService {
   constructor(private _testHttpService: TestHttpService) {}
 
-  getPerson(id: string): Observable<PersonDto> {
+  getPerson(id: string) {
     return this._testHttpService.getPerson(id);
   }
 
-  savePerson(personDto: PersonDto): Observable<PersonModel> {
+  savePerson(personDto: PersonDto) {
     return this._testHttpService.postPerson(personDto);
   }
 }
@@ -46,7 +47,7 @@ class TestService {
 @Component({
   template: '',
 })
-class TestComponent implements OnInit, OnDestroy {
+class TestComponent implements OnDestroy {
   private readonly _destroy$ = new Subject<boolean>();
   isLoading = false;
 
@@ -54,9 +55,6 @@ class TestComponent implements OnInit, OnDestroy {
 
   saveDebounceTime = 1000;
   saveSubject$: SaveSubject<PersonDto, PersonModel>;
-  firstNameFormControl: FormControl;
-  lastNameFormControl: FormControl;
-  ageFormControl: FormControl;
   personFormGroup: FormGroup;
 
   constructor(
@@ -64,15 +62,16 @@ class TestComponent implements OnInit, OnDestroy {
     public testService: TestService,
   ) {}
 
-  ngOnInit() {
+  setSaveDebounceConfig() {
     this.saveSubject$ = new SaveSubject<
       PersonDto,
       PersonModel
-    >().setDefaultConfig(
+    >().setupDebounceConfig(
       this.testService.savePerson.bind(this.testService),
       (response) => {
         this.setPersonDto(response);
       },
+      null,
       this.saveDebounceTime,
       this._destroy$,
     );
@@ -81,7 +80,6 @@ class TestComponent implements OnInit, OnDestroy {
       .subscribe((isSaving) => {
         this.isLoading = isSaving;
       });
-    this.getData();
   }
 
   getData() {
@@ -96,20 +94,13 @@ class TestComponent implements OnInit, OnDestroy {
   }
 
   setForm(personDto: PersonDto) {
-    this.firstNameFormControl = this._formBuilder.control(
-      personDto.name.firstName,
-    );
-    this.lastNameFormControl = this._formBuilder.control(
-      personDto.name.lastName,
-    );
-    this.ageFormControl = this._formBuilder.control(personDto.age);
     this.personFormGroup = this._formBuilder.group({
       id: personDto.id,
       name: this._formBuilder.group({
-        firstName: this.firstNameFormControl,
-        lastName: this.lastNameFormControl,
+        firstName: this._formBuilder.control(personDto.name.firstName),
+        lastName: this._formBuilder.control(personDto.name.lastName),
       }),
-      age: this.ageFormControl,
+      age: this._formBuilder.control(personDto.age),
     });
     this.saveSubject$.setPreviousSubject(personDto);
     this.personFormGroup.valueChanges
@@ -127,10 +118,9 @@ const setup = async () => {
   const renderResult = await render(TestComponent, {
     providers: [TestHttpService, TestService, FormBuilder],
   });
-
   const fixture = renderResult.fixture;
-
   const testComponent = fixture.componentInstance;
+
   return { renderResult, fixture, testComponent };
 };
 
@@ -152,13 +142,18 @@ describe('SaveSubject', () => {
     // arrange
     const { testComponent } = await setup();
     testComponent.saveDebounceTime = 1000;
+    testComponent.setSaveDebounceConfig();
+    testComponent.getData();
     const setPersonDtoSpy = spyOn(testComponent, 'setPersonDto');
 
     // act
-    testComponent.firstNameFormControl.setValue('M');
-    testComponent.firstNameFormControl.setValue('Ma');
-    testComponent.firstNameFormControl.setValue('Mar');
-    testComponent.firstNameFormControl.setValue('Mary');
+    const firstNameFormControl = testComponent.personFormGroup.get(
+      'name.firstName',
+    );
+    firstNameFormControl.setValue('M');
+    firstNameFormControl.setValue('Ma');
+    firstNameFormControl.setValue('Mar');
+    firstNameFormControl.setValue('Mary');
 
     // assert
     jest.advanceTimersByTime(999);
@@ -173,10 +168,15 @@ describe('SaveSubject', () => {
     // arrange
     const { testComponent } = await setup();
     testComponent.saveDebounceTime = 1000;
+    testComponent.setSaveDebounceConfig();
+    testComponent.getData();
     const setPersonDtoSpy = spyOn(testComponent, 'setPersonDto');
 
     // act
-    testComponent.firstNameFormControl.setValue('John');
+    const firstNameFormControl = testComponent.personFormGroup.get(
+      'name.firstName',
+    );
+    firstNameFormControl.setValue('John');
 
     // assert
     jest.advanceTimersByTime(999);
