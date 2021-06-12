@@ -4,8 +4,8 @@ import { ExpansionPanelModule } from '../../../../expansion-panel/expansion-pane
 import { newGuid } from '../../../../utils/new-guid';
 import { FormGroupDefinitionModel } from '../../../models/form-group-definition-model';
 import { FormBuilderRegistryService } from '../../../services/form-builder-registry.service';
+import { FormElementDefinitionFormComponent } from '../../form-element-definition-form/form-element-definition-form.component';
 import { FormElementPortalModule } from '../../form-element-portal/form-element-portal.module';
-import { GroupDefinitionFormComponent } from '../group-definition-form/group-definition-form.component';
 import { FormElementContainerModule } from './../../form-element-definition-container/form-element-definition-container.module';
 import { SectionElementComponent } from './section-element.component';
 
@@ -26,7 +26,7 @@ export class SectionElementModule {
       templateDisplayName: 'Section',
       dataType: 'Object',
       elementComponent: SectionElementComponent,
-      definitionFormComponent: GroupDefinitionFormComponent,
+      definitionFormComponent: FormElementDefinitionFormComponent,
       createDefinitionModel: () => {
         const definitionModel = new FormGroupDefinitionModel();
         definitionModel.key = newGuid();

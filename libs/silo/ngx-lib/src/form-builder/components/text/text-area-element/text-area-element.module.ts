@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { newGuid } from '../../../../utils/new-guid';
 import { FormTextDefinitionModel } from '../../../models/form-text-definition-model';
 import { FormBuilderRegistryService } from '../../../services/form-builder-registry.service';
-import { TextDefinitionFormComponent } from '../text-definition-form/text-definition-form.component';
+import { FormElementDefinitionFormComponent } from '../../form-element-definition-form/form-element-definition-form.component';
 import { TextAreaModule } from './../../../../form-field/text/text-area/text-area.module';
 import { FormElementContainerModule } from './../../form-element-definition-container/form-element-definition-container.module';
 import { TextAreaElementComponent } from './text-area-element.component';
@@ -20,7 +20,7 @@ export class TextAreaElementModule {
       templateDisplayName: 'Text Area',
       dataType: 'Text',
       elementComponent: TextAreaElementComponent,
-      definitionFormComponent: TextDefinitionFormComponent,
+      definitionFormComponent: FormElementDefinitionFormComponent,
       createDefinitionModel: () => {
         const definitionModel = new FormTextDefinitionModel();
         definitionModel.key = newGuid();

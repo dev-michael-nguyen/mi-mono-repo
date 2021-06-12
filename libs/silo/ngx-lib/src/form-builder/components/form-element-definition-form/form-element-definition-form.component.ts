@@ -1,18 +1,19 @@
 import { Component, Input, OnDestroy } from '@angular/core';
 import { merge } from 'lodash';
 import { Subject } from 'rxjs';
-import { FormBuilderComponent } from '../../../form-builder.component';
-import { UpdateFormElementDefinitionEvent } from '../../../models/form-builder-events';
-import { FormElementDefinitionModel } from '../../../models/form-element-definition-model';
-import { FormElementNodeModel } from '../../../models/form-element-node-model';
-import { HasNodeModel } from '../../../models/has-node-model';
+import { FormBuilderComponent } from '../../form-builder.component';
+import { UpdateFormElementDefinitionEvent } from '../../models/form-builder-events';
+import { FormElementDefinitionModel } from '../../models/form-element-definition-model';
+import { FormElementNodeModel } from '../../models/form-element-node-model';
+import { HasNodeModel } from '../../models/has-node-model';
 
 @Component({
-  selector: 'silo-group-definition-form',
-  templateUrl: './group-definition-form.component.html',
-  styleUrls: ['./group-definition-form.component.scss'],
+  selector: 'silo-form-element-definition-form',
+  templateUrl: './form-element-definition-form.component.html',
+  styleUrls: ['./form-element-definition-form.component.scss'],
 })
-export class GroupDefinitionFormComponent implements HasNodeModel, OnDestroy {
+export class FormElementDefinitionFormComponent
+  implements HasNodeModel, OnDestroy {
   private _destroy$ = new Subject<void>();
 
   @Input()
@@ -31,7 +32,7 @@ export class GroupDefinitionFormComponent implements HasNodeModel, OnDestroy {
     this._formBuilderComponent.handleEvent.next(event);
   }
 
-  ngOnDestroy() {
+  ngOnDestroy(): void {
     this._destroy$.next();
     this._destroy$.complete();
   }

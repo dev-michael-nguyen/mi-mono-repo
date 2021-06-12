@@ -6,15 +6,13 @@ import { MatMenuModule } from '@angular/material/menu';
 import { StickyLayoutModule } from '../layout/sticky-layout/sticky-layout.module';
 import { ControlMenuBarModule } from './../control-menu-bar/control-menu-bar.module';
 import { BooleanCheckboxElementModule } from './components/boolean/boolean-checkbox-element/boolean-checkbox-element.module';
-import { BooleanDefinitionFormModule } from './components/boolean/boolean-definition-form/boolean-definition-form.module';
-import { FormElementPropertyWindowModule } from './components/form-element-definition-form-portal/form-element-definition-form.module';
+import { FormElementDefinitionFormPortalModule } from './components/form-element-definition-form-portal/form-element-definition-form.module';
+import { FormElementDefinitionFormModule } from './components/form-element-definition-form/form-element-definition-form.module';
 import { FormElementPortalModule } from './components/form-element-portal/form-element-portal.module';
 import { FormGroupElementModule } from './components/group/form-group-element/form-group-element.module';
-import { GroupDefinitionFormModule } from './components/group/group-definition-form/group-definition-form.module';
 import { SectionElementModule } from './components/group/section-element/section-element.module';
 import { TextAreaElementModule } from './components/text/text-area-element/text-area-element.module';
 import { TextBoxElementModule } from './components/text/text-box-element/text-box-element.module';
-import { TextDefinitionFormModule } from './components/text/text-definition-form/text-definition-form.module';
 import { FormBuilderComponent } from './form-builder.component';
 
 @NgModule({
@@ -22,20 +20,18 @@ import { FormBuilderComponent } from './form-builder.component';
     CommonModule,
     ControlMenuBarModule,
     FlexLayoutModule,
+    FormElementDefinitionFormModule,
+    FormElementDefinitionFormPortalModule,
     FormElementPortalModule,
-    FormElementPropertyWindowModule,
     MatButtonModule,
     MatMenuModule,
     SectionElementModule,
     StickyLayoutModule,
     // #region Elements
     BooleanCheckboxElementModule,
-    BooleanDefinitionFormModule,
     FormGroupElementModule,
-    GroupDefinitionFormModule,
     TextAreaElementModule,
     TextBoxElementModule,
-    TextDefinitionFormModule,
     // #endregion
   ],
   declarations: [FormBuilderComponent],

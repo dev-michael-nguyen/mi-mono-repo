@@ -18,7 +18,7 @@ import { FormBuilderRegistryService } from '../../services/form-builder-registry
   templateUrl: './form-element-definition-form-portal.component.html',
   styleUrls: ['./form-element-definition-form-portal.component.scss'],
 })
-export class FormElementPropertyWindowComponent
+export class FormElementDefinitionFormPortalComponent
   implements OnInit, OnChanges, OnDestroy, HasNodeModel {
   @Input()
   nodeModel: FormElementNodeModel;

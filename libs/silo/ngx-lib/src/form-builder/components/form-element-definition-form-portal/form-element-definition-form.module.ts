@@ -1,11 +1,11 @@
 import { PortalModule } from '@angular/cdk/portal';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { FormElementPropertyWindowComponent } from './form-element-definition-form-portal.component';
+import { FormElementDefinitionFormPortalComponent } from './form-element-definition-form-portal.component';
 
 @NgModule({
   imports: [CommonModule, PortalModule],
-  declarations: [FormElementPropertyWindowComponent],
-  exports: [FormElementPropertyWindowComponent],
+  declarations: [FormElementDefinitionFormPortalComponent],
+  exports: [FormElementDefinitionFormPortalComponent],
 })
-export class FormElementPropertyWindowModule {}
+export class FormElementDefinitionFormPortalModule {}

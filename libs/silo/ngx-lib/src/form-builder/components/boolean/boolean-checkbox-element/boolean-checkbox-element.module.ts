@@ -5,7 +5,7 @@ import { newGuid } from '../../../../utils/new-guid';
 import { FormBooleanDefinitionModel } from '../../../models/form-boolean-definition-model';
 import { FormBuilderRegistryService } from '../../../services/form-builder-registry.service';
 import { FormElementContainerModule } from '../../form-element-definition-container/form-element-definition-container.module';
-import { BooleanDefinitionFormComponent } from '../boolean-definition-form/boolean-definition-form.component';
+import { FormElementDefinitionFormComponent } from '../../form-element-definition-form/form-element-definition-form.component';
 import { BooleanCheckboxElementComponent } from './boolean-checkbox-element.component';
 
 @NgModule({
@@ -20,7 +20,7 @@ export class BooleanCheckboxElementModule {
       templateDisplayName: 'Boolean Checkbox',
       dataType: 'Boolean',
       elementComponent: BooleanCheckboxElementComponent,
-      definitionFormComponent: BooleanDefinitionFormComponent,
+      definitionFormComponent: FormElementDefinitionFormComponent,
       createDefinitionModel: () => {
         const definitionModel = new FormBooleanDefinitionModel();
         definitionModel.key = newGuid();

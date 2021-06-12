@@ -3,8 +3,8 @@ import { NgModule } from '@angular/core';
 import { newGuid } from '../../../../utils/new-guid';
 import { FormGroupDefinitionModel } from '../../../models/form-group-definition-model';
 import { FormBuilderRegistryService } from '../../../services/form-builder-registry.service';
+import { FormElementDefinitionFormComponent } from '../../form-element-definition-form/form-element-definition-form.component';
 import { FormElementPortalModule } from '../../form-element-portal/form-element-portal.module';
-import { GroupDefinitionFormComponent } from '../group-definition-form/group-definition-form.component';
 import { FormElementContainerModule } from './../../form-element-definition-container/form-element-definition-container.module';
 import { FormGroupElementComponent } from './form-group-element.component';
 
@@ -20,7 +20,7 @@ export class FormGroupElementModule {
       templateDisplayName: 'Form',
       dataType: 'Object',
       elementComponent: FormGroupElementComponent,
-      definitionFormComponent: GroupDefinitionFormComponent,
+      definitionFormComponent: FormElementDefinitionFormComponent,
       createDefinitionModel: () => {
         const definitionModel = new FormGroupDefinitionModel();
         definitionModel.key = newGuid();
