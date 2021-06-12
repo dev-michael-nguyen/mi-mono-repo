@@ -7,7 +7,7 @@ import { FormBuilderRegistryService } from '../../../services/form-builder-regis
 import { FormElementDefinitionFormComponent } from '../../form-element-definition-form/form-element-definition-form.component';
 import { FormElementPortalModule } from '../../form-element-portal/form-element-portal.module';
 import { FormElementContainerModule } from './../../form-element-definition-container/form-element-definition-container.module';
-import { SectionElementComponent } from './section-element.component';
+import { ExpansionPanelElementComponent } from './expansion-panel-element.component';
 
 @NgModule({
   imports: [
@@ -16,23 +16,23 @@ import { SectionElementComponent } from './section-element.component';
     FormElementContainerModule,
     FormElementPortalModule,
   ],
-  declarations: [SectionElementComponent],
-  exports: [SectionElementComponent],
+  declarations: [ExpansionPanelElementComponent],
+  exports: [ExpansionPanelElementComponent],
 })
-export class SectionElementModule {
+export class ExpansionPanelElementModule {
   constructor(formBuilderRegistryService: FormBuilderRegistryService) {
-    formBuilderRegistryService.register('Section', {
-      templateIdentifier: 'Section',
-      templateDisplayName: 'Section',
+    formBuilderRegistryService.register('ExpansionPanel', {
+      templateIdentifier: 'ExpansionPanel',
+      templateDisplayName: 'Expansion Panel',
       dataType: 'Object',
-      elementComponent: SectionElementComponent,
+      elementComponent: ExpansionPanelElementComponent,
       definitionFormComponent: FormElementDefinitionFormComponent,
       createDefinitionModel: () => {
         const definitionModel = new FormGroupDefinitionModel();
         definitionModel.key = newGuid();
-        definitionModel.templateIdentifier = 'Section';
-        definitionModel.templateDisplayName = 'Section';
-        definitionModel.title = 'Section Title';
+        definitionModel.templateIdentifier = 'ExpansionPanel';
+        definitionModel.templateDisplayName = 'Expansion Panel';
+        definitionModel.title = 'Expansion Panel Title';
         return definitionModel;
       },
     });

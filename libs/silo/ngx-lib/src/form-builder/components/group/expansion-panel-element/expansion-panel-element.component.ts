@@ -4,11 +4,11 @@ import { FormGroupDefinitionModel } from '../../../models/form-group-definition-
 import { HasNodeModel } from '../../../models/has-node-model';
 
 @Component({
-  selector: 'silo-section-element',
-  templateUrl: './section-element.component.html',
-  styleUrls: ['./section-element.component.scss'],
+  selector: 'silo-expansion-panel-element',
+  templateUrl: './expansion-panel-element.component.html',
+  styleUrls: ['./expansion-panel-element.component.scss'],
 })
-export class SectionElementComponent implements OnInit, HasNodeModel {
+export class ExpansionPanelElementComponent implements OnInit, HasNodeModel {
   definitionModel: FormGroupDefinitionModel;
 
   @Input()

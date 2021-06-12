@@ -8,6 +8,7 @@ import {
 } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { AutoFocusDirective } from '../directives/auto-focus/auto-focus.directive';
+import { FormAddMenuItemModel } from './models/form-add-menu-item-model';
 import {
   AddFormElementEvent,
   FormBuilderEvent,
@@ -23,6 +24,7 @@ import {
   FormElementNodeModel,
   FormElementNodeModelExtensions,
 } from './models/form-element-node-model';
+import { FormBuilderRegistryService } from './services/form-builder-registry.service';
 
 @Component({
   selector: 'silo-form-builder',
@@ -33,7 +35,10 @@ export class FormBuilderComponent implements OnInit {
   nodeModelList: Array<FormElementNodeModel> = [];
 
   lastActiveDefinitionKey$ = new BehaviorSubject<string>(null);
+
   activeNodeModel: FormElementNodeModel;
+
+  addMenuItemList: Array<FormAddMenuItemModel> = [];
 
   /**
    * The form definition model.
@@ -53,9 +58,13 @@ export class FormBuilderComponent implements OnInit {
   @Output()
   handleEvent = new EventEmitter<FormBuilderEvent>();
 
-  constructor(private _elementRef: ElementRef<HTMLElement>) {}
+  constructor(
+    private _elementRef: ElementRef<HTMLElement>,
+    private _formBuilderRegistryService: FormBuilderRegistryService,
+  ) {}
 
   ngOnInit() {
+    this.setAddMenuItemList();
     this.render(this.formDefinitionModel, this.memberKeyList);
   }
 
@@ -75,6 +84,10 @@ export class FormBuilderComponent implements OnInit {
 
   reRender() {
     this.render(this.formDefinitionModel, this.memberKeyList);
+  }
+
+  setAddMenuItemList() {
+    this.addMenuItemList = this._formBuilderRegistryService.getAddMenuItemList();
   }
 
   setActiveNode(nodeModel: FormElementNodeModel) {
@@ -106,7 +119,7 @@ export class FormBuilderComponent implements OnInit {
 
   editProperties() {
     const propertyWindow = this._elementRef.nativeElement.querySelector(
-      `[class*='-property-window'`,
+      `.silo-form-element-definition-form-portal`,
     ) as HTMLElement;
     AutoFocusDirective.focusFirstFocusable(propertyWindow);
   }

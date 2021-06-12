@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { FormAddMenuItemModel } from '../models/form-add-menu-item-model';
 import { FormElementTemplateIdentifier } from '../models/form-definition-types';
 import { FormElementRegistryConfigModel } from '../models/form-element-registry-config-model';
 
@@ -20,5 +21,14 @@ export class FormBuilderRegistryService {
 
   get(templateIdentifier: FormElementTemplateIdentifier) {
     return this._elementConfigMap.get(templateIdentifier);
+  }
+
+  getAddMenuItemList() {
+    return Array.from(this._elementConfigMap.values()).map((c) => {
+      const addMenuItem = new FormAddMenuItemModel();
+      addMenuItem.templateIdentifier = c.templateIdentifier;
+      addMenuItem.templateDisplayName = c.templateDisplayName;
+      return addMenuItem;
+    });
   }
 }

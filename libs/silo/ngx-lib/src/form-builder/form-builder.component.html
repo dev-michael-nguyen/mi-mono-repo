@@ -11,20 +11,11 @@
       </button>
       <mat-menu #addMenu="matMenu">
         <button
+          *ngFor="let item of addMenuItemList"
           mat-menu-item
-          [disabled]="
-            activeNodeModel?.definitionModel?.templateIdentifier != 'FormGroup'
-          "
-          (click)="addElement('Section')"
+          (click)="addElement(item.templateIdentifier)"
         >
-          Section
-        </button>
-        <button mat-menu-item (click)="addElement('TextBox')">Text Box</button>
-        <button mat-menu-item (click)="addElement('TextArea')">
-          Text Area
-        </button>
-        <button mat-menu-item (click)="addElement('BooleanCheckbox')">
-          Boolean Checkbox
+          {{ item.templateDisplayName }}
         </button>
       </mat-menu>
       <button

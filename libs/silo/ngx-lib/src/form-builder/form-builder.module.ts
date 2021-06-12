@@ -9,8 +9,8 @@ import { BooleanCheckboxElementModule } from './components/boolean/boolean-check
 import { FormElementDefinitionFormPortalModule } from './components/form-element-definition-form-portal/form-element-definition-form.module';
 import { FormElementDefinitionFormModule } from './components/form-element-definition-form/form-element-definition-form.module';
 import { FormElementPortalModule } from './components/form-element-portal/form-element-portal.module';
+import { ExpansionPanelElementModule } from './components/group/expansion-panel-element/expansion-panel-element.module';
 import { FormGroupElementModule } from './components/group/form-group-element/form-group-element.module';
-import { SectionElementModule } from './components/group/section-element/section-element.module';
 import { TextAreaElementModule } from './components/text/text-area-element/text-area-element.module';
 import { TextBoxElementModule } from './components/text/text-box-element/text-box-element.module';
 import { FormBuilderComponent } from './form-builder.component';
@@ -25,7 +25,7 @@ import { FormBuilderComponent } from './form-builder.component';
     FormElementPortalModule,
     MatButtonModule,
     MatMenuModule,
-    SectionElementModule,
+    ExpansionPanelElementModule,
     StickyLayoutModule,
     // #region Elements
     BooleanCheckboxElementModule,
