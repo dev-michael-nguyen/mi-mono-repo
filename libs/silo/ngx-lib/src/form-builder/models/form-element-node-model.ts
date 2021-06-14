@@ -1,4 +1,4 @@
-import { sortBy } from 'lodash';
+import { flow, map, sortBy } from 'lodash/fp';
 import { FormDefinitionModel } from './form-definition-model';
 import { FormElementDefinitionModel } from './form-element-definition-model';
 import { FormElementMemberModel } from './form-element-member-model';
@@ -90,16 +90,16 @@ export class FormElementNodeModelExtensions {
       (x) => x.key === memberModel.definitionKey,
     );
 
-    nodeModel.children = sortBy(
-      memberModel.children.map((child) =>
+    nodeModel.children = flow(
+      map<FormElementMemberModel, FormElementNodeModel>((x) =>
         FormElementNodeModelExtensions.mapFromFormDefinitionModel(
           formDefinitionModel,
-          child.key,
+          x.key,
           memberKey,
         ),
       ),
-      (n) => n.definitionModel.displayOrder,
-    );
+      sortBy<FormElementNodeModel>('definitionModel.displayOrder'),
+    )(memberModel.children);
 
     return nodeModel;
   }

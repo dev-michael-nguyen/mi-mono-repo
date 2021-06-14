@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { flow, map, sortBy } from 'lodash/fp';
 import { FormAddMenuItemModel } from '../models/form-add-menu-item-model';
 import { FormElementTemplateIdentifier } from '../models/form-definition-types';
 import { FormElementRegistryConfigModel } from '../models/form-element-registry-config-model';
@@ -24,11 +25,15 @@ export class FormBuilderRegistryService {
   }
 
   getAddMenuItemList() {
-    return Array.from(this._elementConfigMap.values()).map((c) => {
-      const addMenuItem = new FormAddMenuItemModel();
-      addMenuItem.templateIdentifier = c.templateIdentifier;
-      addMenuItem.templateDisplayName = c.templateDisplayName;
-      return addMenuItem;
-    });
+    return flow(
+      map<FormElementRegistryConfigModel, FormAddMenuItemModel>((c) => {
+        const addMenuItem = new FormAddMenuItemModel();
+        addMenuItem.templateIdentifier = c.templateIdentifier;
+        addMenuItem.templateDisplayName = c.templateDisplayName;
+        addMenuItem.dataType = c.dataType;
+        return addMenuItem;
+      }),
+      sortBy<FormAddMenuItemModel>('templateDisplayName'),
+    )(Array.from(this._elementConfigMap.values()));
   }
 }

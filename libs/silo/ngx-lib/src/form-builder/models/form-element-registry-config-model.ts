@@ -1,9 +1,12 @@
 import { ComponentType } from '@angular/cdk/portal';
-import { FormElementDataType } from './form-definition-types';
+import {
+  FormElementDataType,
+  FormElementTemplateIdentifier,
+} from './form-definition-types';
 import { FormElementDefinitionModel } from './form-element-definition-model';
 
 export class FormElementRegistryConfigModel {
-  templateIdentifier: string;
+  templateIdentifier: FormElementTemplateIdentifier;
   templateDisplayName: string;
   dataType: FormElementDataType;
   elementComponent: ComponentType<unknown>;

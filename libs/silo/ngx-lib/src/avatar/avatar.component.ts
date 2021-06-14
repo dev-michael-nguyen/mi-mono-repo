@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { get } from 'lodash';
+import { get } from 'lodash/fp';
 import { BehaviorSubject } from 'rxjs';
 import { AvatarNameModel } from './models/avatar-name-model';
 
@@ -14,8 +14,8 @@ export class AvatarComponent {
 
   @Input()
   public set name(name: AvatarNameModel) {
-    const firstInitial = get(name, 'firstName[0]');
-    const lastInitial = get(name, 'lastName[0]');
+    const firstInitial = get('firstName[0]')(name);
+    const lastInitial = get('lastName[0]')(name);
     this.initials = `${firstInitial}${lastInitial}`;
   }
 

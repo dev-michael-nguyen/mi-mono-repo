@@ -18,8 +18,11 @@ export type FormTextTemplateIdentifier = 'TextBox' | 'TextArea';
 
 export type FormNumericTemplateIdentifier = 'NumberBox';
 
+export type FormBooleanTemplateIdentifier = 'BooleanCheckbox';
+
 export type FormElementTemplateIdentifier =
   | string
   | FormGroupTemplateIdentifier
   | FormTextTemplateIdentifier
-  | FormNumericTemplateIdentifier;
+  | FormNumericTemplateIdentifier
+  | FormBooleanTemplateIdentifier;
