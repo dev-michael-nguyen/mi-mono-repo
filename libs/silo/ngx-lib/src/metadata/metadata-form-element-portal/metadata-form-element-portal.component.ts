@@ -83,13 +83,16 @@ export class MetadataFormElementPortalComponent
 
     // trigger angular cycles
     componentRef.changeDetectorRef.detectChanges();
+
+    // store element component ref
     this.nodeModel.state.elementComponentRef = componentRef;
 
+    // handle component instance that has form group
     if (instanceOfHasFormGroup(componentRef.instance)) {
       // keep reference to component instance form group
       this.nodeModel.state.formGroup = componentRef.instance.formGroup;
 
-      // add form group to parent metadata form group portal
+      // add form group to parent metadata-form-group-portal
       if (this._metadataFormGroupPortalComponent) {
         this._metadataFormGroupPortalComponent.nodeModel.state.formGroup.addControl(
           this.nodeModel.definitionModel.propertyKey,
