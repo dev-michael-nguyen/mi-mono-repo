@@ -41,8 +41,8 @@ export class AppComponent implements OnInit {
   mockGetThemePickerModel() {
     const themePickerModel: ThemePickerModel = {
       lookupList: [
-        { id: 'silo-light-theme', displayName: 'Light' },
-        { id: 'silo-dark-theme', displayName: 'Dark' },
+        { id: 'silo-light-theme', displayName: 'Silo Light' },
+        { id: 'silo-dark-theme', displayName: 'Silo Dark' },
       ],
       currentThemeId: 'silo-light-theme',
     };
