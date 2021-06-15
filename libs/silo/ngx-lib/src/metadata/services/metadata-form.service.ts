@@ -6,7 +6,6 @@ import {
   PropertyMetadata,
 } from '@silo/metadata';
 import { FormDefinitionModel } from '../../form-builder/models/form-definition-model';
-import { FormElementTemplateIdentifier } from '../../form-builder/models/form-definition-types';
 import { FormBuilderService } from '../../form-builder/services/form-builder.service';
 
 @Injectable({
@@ -23,7 +22,7 @@ export class MetadataFormService {
       formDefinitionModel,
       null,
       metadataModel,
-      'FormGroup',
+      null,
       null,
     );
     formDefinitionModel.rootMemberKey = memberModel.key;
@@ -46,26 +45,29 @@ export class MetadataFormService {
     parentMemberKey: string,
   ) {
     Object.entries(metadataModel).forEach(([propertyKey, propertyValue]) => {
+      const propertyMetadata = metadata.propertyMetadataMap[propertyKey];
+
       if (Array.isArray(propertyValue)) {
         // TODO: Build node model for array
       } else if (propertyValue instanceof MetadataModel) {
+        // add metadata model as element
+        // const propertyMetadata = metadata.propertyMetadataMap[propertyKey];
         const { memberModel } = this.addMetadataModelAsElement(
           formDefinitionModel,
           propertyKey,
           propertyValue,
-          null,
+          propertyMetadata,
           parentMemberKey,
         );
-        const metadataIdentifier = getMetadataIdentifier(propertyValue);
+        // add its children entries as element to itself
         this.addEntriesAsElement(
           formDefinitionModel,
           propertyValue,
-          propertyValue.metadataMap[metadataIdentifier],
+          propertyValue.metadataMap[getMetadataIdentifier(propertyValue)],
           memberModel.key,
         );
       } else {
-        const propertyMetadata = metadata.propertyMetadataMap[propertyKey];
-
+        // add other property as element
         if (propertyMetadata) {
           this.addPropertyAsElement(
             formDefinitionModel,
@@ -82,33 +84,32 @@ export class MetadataFormService {
   addMetadataModelAsElement(
     formDefinitionModel: FormDefinitionModel,
     propertyKey: string,
-    metadataModel: MetadataModel,
-    templateIdentifier: FormElementTemplateIdentifier,
+    propertyValue: MetadataModel,
+    propertyMetadata: PropertyMetadata,
     parentMemberKey: string,
   ) {
-    const metadataIdentifier = getMetadataIdentifier(metadataModel);
-    const metadata = metadataModel.metadataMap[metadataIdentifier];
-    const {
-      definitionModel,
-      memberModel,
-    } = this._formBuilderService.addElement(
+    const metadataIdentifier = getMetadataIdentifier(propertyValue);
+    const metadata = propertyValue.metadataMap[metadataIdentifier];
+    const element = this._formBuilderService.addElement(
       formDefinitionModel,
-      templateIdentifier,
+      propertyMetadata?.templateIdentifier ??
+        metadata.classMetadata.templateIdentifier,
+      propertyMetadata?.templateDisplayName ??
+        metadata.classMetadata.templateDisplayName,
       parentMemberKey,
     );
 
-    definitionModel.propertyKey = propertyKey;
-    definitionModel.title = metadata.classMetadata.title;
-    definitionModel.description = metadata.classMetadata.description;
+    element.definitionModel.propertyKey = propertyKey;
+    element.definitionModel.title =
+      propertyMetadata?.title ?? metadata?.classMetadata?.title;
+    element.definitionModel.description =
+      propertyMetadata?.description ?? metadata?.classMetadata?.description;
 
-    if (!templateIdentifier) {
-      definitionModel.templateIdentifier =
-        metadata.classMetadata.templateIdentifier;
-      definitionModel.templateDisplayName =
-        metadata.classMetadata.templateDisplayName;
-    }
-
-    return { metadata, definitionModel, memberModel };
+    return {
+      metadata,
+      definitionModel: element.definitionModel,
+      memberModel: element.memberModel,
+    };
   }
 
   addPropertyAsElement(
@@ -121,6 +122,7 @@ export class MetadataFormService {
     const element = this._formBuilderService.addElement(
       formDefinitionModel,
       propertyMetadata.templateIdentifier,
+      propertyMetadata.templateDisplayName,
       parentMemberKey,
     );
 

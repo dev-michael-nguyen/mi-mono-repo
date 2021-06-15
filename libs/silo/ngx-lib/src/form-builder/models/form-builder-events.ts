@@ -9,6 +9,7 @@ export type FormBuilderEvent =
 
 export class AddFormElementEvent {
   templateIdentifier: FormElementTemplateIdentifier;
+  templateDisplayName: string;
   parentMemberKey: string;
 }
 

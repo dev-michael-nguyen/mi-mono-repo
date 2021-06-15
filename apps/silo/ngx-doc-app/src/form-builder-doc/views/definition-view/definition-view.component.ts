@@ -33,6 +33,7 @@ export class DefinitionViewComponent implements OnInit {
     const { memberModel } = this._formBuilderService.addElement(
       this.formDefinitionModel,
       'FormGroup',
+      'Form',
       null,
     );
     this.formDefinitionModel.rootMemberKey = memberModel.key;
@@ -56,6 +57,7 @@ export class DefinitionViewComponent implements OnInit {
       const { definitionModel } = this._formBuilderService.addElement(
         this.formDefinitionModel,
         $event.templateIdentifier,
+        $event.templateDisplayName,
         $event.parentMemberKey,
       );
       this.formBuilderComponent.lastActiveDefinitionKey$.next(

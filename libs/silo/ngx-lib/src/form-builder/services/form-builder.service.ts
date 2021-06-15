@@ -28,6 +28,7 @@ export class FormBuilderService {
   addElement(
     formDefinitionModel: FormDefinitionModel,
     templateIdentifier: FormElementTemplateIdentifier,
+    templateDisplayName: string,
     parentMemberKey: string,
   ) {
     const config = this._formBuilderRegistryService.get(templateIdentifier);
@@ -37,7 +38,7 @@ export class FormBuilderService {
     if (!config) {
       const { definitionModel, memberModel } = this._createElementDefinition(
         templateIdentifier,
-        templateIdentifier,
+        templateDisplayName,
         'Unknown',
       );
       formDefinitionModel.definitionList.push(definitionModel);

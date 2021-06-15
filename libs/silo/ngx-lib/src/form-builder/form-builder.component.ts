@@ -16,10 +16,7 @@ import {
   RemoveFormElementEvent,
 } from './models/form-builder-events';
 import { FormDefinitionModel } from './models/form-definition-model';
-import {
-  FormBuilderType,
-  FormElementTemplateIdentifier,
-} from './models/form-definition-types';
+import { FormBuilderType } from './models/form-definition-types';
 import {
   FormElementNodeModel,
   FormElementNodeModelExtensions,
@@ -99,9 +96,10 @@ export class FormBuilderComponent implements OnInit {
     this.lastActiveDefinitionKey$.next(nodeModel.definitionKey);
   }
 
-  addElement(templateIdentifier: FormElementTemplateIdentifier) {
+  addElement(item: FormAddMenuItemModel) {
     const event = new AddFormElementEvent();
-    event.templateIdentifier = templateIdentifier;
+    event.templateIdentifier = item.templateIdentifier;
+    event.templateDisplayName = item.templateDisplayName;
     // if active node data type is not Object, add as a child to parent
     // else, add as child to active node
     event.parentMemberKey =

@@ -22,9 +22,11 @@ export class FormElementDefinitionFormComponent
   constructor(private _formBuilderComponent: FormBuilderComponent) {}
 
   emitUpdate(formValue: FormElementDefinitionModel): void {
-    const newDefinitionModel = merge(this.nodeModel.definitionModel, formValue);
     const event = new UpdateFormElementDefinitionEvent();
-    event.formElementDefinitionModel = newDefinitionModel;
+    event.formElementDefinitionModel = merge(
+      this.nodeModel.definitionModel,
+      formValue,
+    );
     this._formBuilderComponent.handleEvent.next(event);
   }
 
