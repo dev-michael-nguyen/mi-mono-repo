@@ -5,6 +5,7 @@ import {
   MetadataModel,
   PropertyMetadata,
 } from '@silo/metadata';
+import { merge } from 'lodash';
 import { FormDefinitionModel } from '../../form-builder/models/form-definition-model';
 import { FormBuilderService } from '../../form-builder/services/form-builder.service';
 
@@ -126,7 +127,7 @@ export class MetadataFormService {
       parentMemberKey,
     );
 
-    Object.assign(element.definitionModel, propertyMetadata);
+    merge(element.definitionModel, propertyMetadata);
     element.definitionModel.propertyKey = propertyKey;
     element.definitionModel.defaultValue = propertyValue;
   }

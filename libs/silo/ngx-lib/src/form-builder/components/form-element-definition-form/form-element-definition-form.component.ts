@@ -1,5 +1,5 @@
 import { Component, Input, OnDestroy } from '@angular/core';
-import { merge } from 'lodash/fp';
+import { merge } from 'lodash';
 import { Subject } from 'rxjs';
 import { FormBuilderComponent } from '../../form-builder.component';
 import { UpdateFormElementDefinitionEvent } from '../../models/form-builder-events';
@@ -24,6 +24,7 @@ export class FormElementDefinitionFormComponent
   emitUpdate(formValue: FormElementDefinitionModel): void {
     const event = new UpdateFormElementDefinitionEvent();
     event.formElementDefinitionModel = merge(
+      {},
       this.nodeModel.definitionModel,
       formValue,
     );

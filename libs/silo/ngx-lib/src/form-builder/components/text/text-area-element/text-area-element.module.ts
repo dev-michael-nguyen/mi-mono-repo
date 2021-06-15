@@ -27,6 +27,7 @@ export class TextAreaElementModule {
         definitionModel.templateIdentifier = 'TextArea';
         definitionModel.templateDisplayName = 'Text Area';
         definitionModel.label = 'Text Area Label';
+        definitionModel.fieldSize = 'col-12';
         return definitionModel;
       },
     });

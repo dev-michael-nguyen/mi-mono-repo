@@ -11,6 +11,7 @@ import {
   ViewChild,
 } from '@angular/core';
 import { PropertyMetadata } from '@silo/metadata';
+import { merge } from 'lodash';
 import { FormElementNodeModel } from '../../form-builder/models/form-element-node-model';
 import { instanceOfHasFormGroup } from '../../form-builder/models/has-form-group';
 import {
@@ -73,7 +74,7 @@ export class MetadataFormElementPortalComponent
     const componentRef = this.portalOutlet.attachedRef as ComponentRef<unknown>;
 
     // assign all property metadata to component instance
-    Object.assign(componentRef.instance, this.nodeModel.definitionModel);
+    merge(componentRef.instance, this.nodeModel.definitionModel);
     (componentRef.instance as PropertyMetadata).defaultValue = this.nodeModel.definitionModel.defaultValue;
 
     // assign node model if it has node model

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormElementDefinitionModel, FormTextDefinitionModel } from '@silo/ngx';
-import { merge } from 'lodash/fp';
+import { merge } from 'lodash';
 
 @Component({
   selector: 'silo-definition-model-view',
@@ -18,6 +18,6 @@ export class DefinitionModelViewComponent implements OnInit {
   }
 
   updateTextDefinitionModel(formValue: FormElementDefinitionModel): void {
-    this.textDefinitionModel = merge(this.textDefinitionModel, formValue);
+    merge(this.textDefinitionModel, formValue);
   }
 }

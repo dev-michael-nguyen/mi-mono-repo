@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { merge } from 'lodash/fp';
+import { merge } from 'lodash';
 import { newGuid } from '../../utils/new-guid';
 import { FormDefinitionModel } from '../models/form-definition-model';
 import { FormElementDefinitionModel } from '../models/form-element-definition-model';
@@ -102,7 +102,7 @@ export class FormBuilderService {
     if (!definition) {
       throw new Error(`Cannot find definition`);
     }
-    definition = merge(definition, formElementDefinitionModel);
+    merge(definition, formElementDefinitionModel);
   }
 
   private _createMember(definitionKey: string, dataType: FormElementDataType) {

@@ -1,3 +1,4 @@
+import { merge } from 'lodash';
 import 'reflect-metadata';
 import { getMetadataIdentifier } from '../decorators/metadata-identifier';
 import { ClassMetadata } from './class-metadata';
@@ -109,7 +110,7 @@ export class MetadataModelExtensions {
         }
 
         // property metadata have priority over class metadata
-        const mergedPropertyMetadata = Object.assign(
+        const mergedPropertyMetadata = merge(
           {},
           propertyClassMetadata,
           propertyMetadata,
