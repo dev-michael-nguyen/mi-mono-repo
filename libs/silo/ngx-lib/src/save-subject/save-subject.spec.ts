@@ -105,7 +105,7 @@ class TestComponent implements OnDestroy {
     this.saveSubject$.setPreviousSubject(personDto);
     this.personFormGroup.valueChanges
       .pipe(takeUntil(this._destroy$))
-      .subscribe((value) => this.saveSubject$.save$.next(value));
+      .subscribe((value) => this.saveSubject$.next(value));
   }
 
   ngOnDestroy() {

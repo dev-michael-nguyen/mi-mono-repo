@@ -16,11 +16,6 @@ export class SaveSubject<
 
   private _previousSubject: RequestType;
 
-  private _save$: Subject<RequestType>;
-  get save$() {
-    return this._save$;
-  }
-
   readonly isSaving$ = new Subject<boolean>();
 
   // #region PRIVATE METHODS
@@ -124,12 +119,7 @@ export class SaveSubject<
     saveDebounceTime: number,
     destroy$?: Subject<boolean>,
   ) {
-    if (this._save$) {
-      throw new Error('Save subject is already configured.');
-    }
-
-    this._save$ = new Subject<RequestType>();
-    this._save$
+    this
       .pipe(
         takeUntil(destroy$ ?? this._destroy$),
         debounceTime(saveDebounceTime),
