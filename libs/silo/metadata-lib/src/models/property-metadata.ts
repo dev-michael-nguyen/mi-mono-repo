@@ -1,4 +1,4 @@
-export class PropertyMetadata {
+export interface PropertyMetadata {
   defaultValue?: unknown;
   description?: string;
   displayOrder?: number;

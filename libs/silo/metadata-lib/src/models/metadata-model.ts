@@ -66,7 +66,7 @@ export class MetadataModelExtensions {
         }
         return classMetadata;
       },
-      {} as ClassMetadata,
+      {},
     );
 
     return Object.keys(classMetadata).length ? classMetadata : undefined;

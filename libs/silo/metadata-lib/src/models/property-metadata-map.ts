@@ -1,5 +1,5 @@
 import { PropertyMetadata } from './property-metadata';
 
-export class PropertyMetadataMap {
+export interface PropertyMetadataMap {
   [key: string]: PropertyMetadata;
 }

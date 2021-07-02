@@ -1,5 +1,5 @@
 import { Metadata } from './metadata';
 
-export class MetadataMap {
+export interface MetadataMap {
   [key: string]: Metadata;
 }

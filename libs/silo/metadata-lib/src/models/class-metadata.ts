@@ -1,4 +1,4 @@
-export class ClassMetadata {
+export interface ClassMetadata {
   [key: string]: unknown;
   metadataIdentifier?: string;
   templateIdentifier?: string;
