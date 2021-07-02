@@ -5,17 +5,17 @@ import { FormElementDataType } from './form-definition-types';
  * The base definition model for a form element.
  */
 export class FormElementDefinitionModel<T = unknown> extends MetadataModel {
-  key: string;
+  key!: string;
 
   propertyKey?: string;
 
   metadataIdentifier?: string;
 
-  templateIdentifier: string;
+  templateIdentifier!: string;
 
-  templateDisplayName: string;
+  templateDisplayName!: string;
 
-  dataType: FormElementDataType;
+  dataType!: FormElementDataType;
 
   defaultValue?: T;
 

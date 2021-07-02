@@ -8,19 +8,19 @@ export type FormBuilderEvent =
   | UpdateFormElementDefinitionEvent;
 
 export class AddFormElementEvent {
-  templateIdentifier: FormElementTemplateIdentifier;
-  templateDisplayName: string;
-  parentMemberKey: string;
+  templateIdentifier!: FormElementTemplateIdentifier;
+  templateDisplayName = '';
+  parentMemberKey = '';
 }
 
 export class RemoveFormElementEvent {
-  memberKey: string;
+  memberKey = '';
 }
 
 export class ImportFormEvent {
-  formDefinitionJson: string;
+  formDefinitionJson = '';
 }
 
 export class UpdateFormElementDefinitionEvent {
-  formElementDefinitionModel: FormElementDefinitionModel;
+  formElementDefinitionModel!: FormElementDefinitionModel;
 }

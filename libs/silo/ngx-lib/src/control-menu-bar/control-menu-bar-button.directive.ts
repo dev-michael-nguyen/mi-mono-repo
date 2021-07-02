@@ -4,11 +4,11 @@ import { Directive, ElementRef, Input, OnInit } from '@angular/core';
   selector: '[siloControlMenuBarButton]',
 })
 export class ControlMenuBarButtonDirective implements OnInit {
-  private _originalHtml: string;
-  private _highlightHtml: string;
+  private _originalHtml = '';
+  private _highlightHtml = '';
 
   @Input('siloControlMenuBarButton')
-  eventKey: string;
+  eventKey = '';
 
   constructor(private _elementRef: ElementRef<HTMLElement>) {}
 

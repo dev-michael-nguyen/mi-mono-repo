@@ -11,26 +11,26 @@ import { MultiSelectValidatorFactory } from './multi-select-validator.factory';
   template: '',
 })
 export abstract class MultiSelectFieldComponent implements OnInit {
-  formGroup: FormGroup;
+  formGroup!: FormGroup;
 
-  lookupListFormControl: FormControl;
+  lookupListFormControl!: FormControl;
 
   hasValidators = false;
 
-  labelId: string;
+  labelId = newHtmlId();
 
-  describebyId: string;
+  describebyId = newHtmlId();
 
-  options: Array<LookupModel>;
-
-  @Input()
-  label: string;
+  options: Array<LookupModel> = [];
 
   @Input()
-  placeholder: string;
+  label = '';
 
   @Input()
-  hint: string;
+  placeholder = '';
+
+  @Input()
+  hint = '';
 
   @Input()
   isReadOnly = false;
@@ -39,7 +39,7 @@ export abstract class MultiSelectFieldComponent implements OnInit {
   isRequired = false;
 
   @Input()
-  defaultValue: Array<LookupModel>;
+  defaultValue: Array<LookupModel> = [];
 
   @Input()
   fieldSize: ClassExpression = 'col-2';
@@ -48,7 +48,9 @@ export abstract class MultiSelectFieldComponent implements OnInit {
   fieldOutlineSize: ClassExpression;
 
   @Input()
-  lookupConfig: LookupConfigModel;
+  set lookupConfig(lookupConfig: LookupConfigModel) {
+    this.options = lookupConfig.lookups;
+  }
 
   constructor(
     protected _elementRef: ElementRef<HTMLElement>,
@@ -56,16 +58,7 @@ export abstract class MultiSelectFieldComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.setDefinition();
     this.setForm(this.defaultValue);
-  }
-
-  setDefinition(): void {
-    this.labelId = newHtmlId();
-    this.describebyId = newHtmlId();
-    if (this.lookupConfig && this.lookupConfig.lookups) {
-      this.options = this.lookupConfig.lookups;
-    }
   }
 
   setForm(value: Array<LookupModel>): void {

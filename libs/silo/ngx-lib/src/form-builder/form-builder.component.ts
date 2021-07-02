@@ -31,9 +31,9 @@ import { FormBuilderRegistryService } from './services/form-builder-registry.ser
 export class FormBuilderComponent implements OnInit {
   nodeModelList: Array<FormElementNodeModel> = [];
 
-  lastActiveDefinitionKey$ = new BehaviorSubject<string>(null);
+  lastActiveDefinitionKey$ = new BehaviorSubject<string>('');
 
-  activeNodeModel: FormElementNodeModel;
+  activeNodeModel!: FormElementNodeModel;
 
   addMenuItemList: Array<FormAddMenuItemModel> = [];
 
@@ -41,7 +41,7 @@ export class FormBuilderComponent implements OnInit {
    * The form definition model.
    */
   @Input()
-  formDefinitionModel: FormDefinitionModel;
+  formDefinitionModel!: FormDefinitionModel;
 
   /**
    * The list of member key to render.
@@ -50,7 +50,7 @@ export class FormBuilderComponent implements OnInit {
   memberKeyList: Array<string> = [];
 
   @Input()
-  type: FormBuilderType;
+  type!: FormBuilderType;
 
   @Output()
   handleEvent = new EventEmitter<FormBuilderEvent>();
@@ -126,15 +126,20 @@ export class FormBuilderComponent implements OnInit {
     const fileInput = document.createElement('INPUT') as HTMLInputElement;
     fileInput.setAttribute('type', 'file');
     fileInput.oninput = () => {
+      if (!fileInput.files) {
+        return;
+      }
       const file = fileInput.files[0];
       if (file) {
         const reader = new FileReader();
         reader.readAsText(file, 'UTF-8');
         reader.onload = (fileReaderEvent) => {
-          const formDefinitionJson = fileReaderEvent.target.result as string;
+          const formDefinitionJson = fileReaderEvent.target?.result;
           const event = new ImportFormEvent();
-          event.formDefinitionJson = formDefinitionJson;
-          this.handleEvent.next(event);
+          if (formDefinitionJson && typeof formDefinitionJson === 'string') {
+            event.formDefinitionJson = formDefinitionJson;
+            this.handleEvent.next(event);
+          }
         };
       }
     };

@@ -29,7 +29,7 @@ export class AutoFocusDirective implements AfterViewInit {
   /**
    * Reference to last focus element.
    */
-  lastFocusElement: HTMLElement;
+  lastFocusElement: HTMLElement | null = null;
 
   /**
    * Indicate whether this directive is enable.
@@ -44,14 +44,14 @@ export class AutoFocusDirective implements AfterViewInit {
    * {@link https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelectorAll}
    */
   @Input()
-  focusChildSelectors: string;
+  focusChildSelectors = '';
 
   constructor(private _elementRef: ElementRef<HTMLElement>) {}
 
   static focusFirstFocusable(
     elementRef: ElementRef<HTMLElement> | HTMLElement,
     selectors: string = this.DEFAULT_SELECTORS,
-  ): HTMLElement {
+  ): HTMLElement | null {
     const element =
       elementRef instanceof ElementRef
         ? (elementRef as ElementRef<HTMLElement>).nativeElement
@@ -69,11 +69,14 @@ export class AutoFocusDirective implements AfterViewInit {
       return null;
     }
 
-    const firstFocusable = Array.from(focusable).find(
-      (x: HTMLButtonElement) => !x.disabled,
-    ) as HTMLElement;
-    firstFocusable.focus();
-    return firstFocusable;
+    const firstFocusable = Array.from(focusable).find((x: any) => {
+      if (x.disabled !== undefined) {
+        return !x.disabled;
+      }
+      return true;
+    });
+    (firstFocusable as HTMLElement)?.focus();
+    return <HTMLElement>firstFocusable;
   }
 
   ngAfterViewInit() {

@@ -1,5 +1,4 @@
 import { Component, Input } from '@angular/core';
-import { get } from 'lodash/fp';
 import { BehaviorSubject } from 'rxjs';
 import { AvatarNameModel } from './models/avatar-name-model';
 
@@ -10,12 +9,12 @@ import { AvatarNameModel } from './models/avatar-name-model';
 })
 export class AvatarComponent {
   @Input()
-  public initials: string;
+  public initials = '';
 
   @Input()
   public set name(name: AvatarNameModel) {
-    const firstInitial = get('firstName[0]')(name);
-    const lastInitial = get('lastName[0]')(name);
+    const firstInitial = name.firstName.slice(0, 1);
+    const lastInitial = name.lastName.slice(0, 1);
     this.initials = `${firstInitial}${lastInitial}`;
   }
 
@@ -26,7 +25,7 @@ export class AvatarComponent {
   public fontSize = '32px';
 
   @Input()
-  public base64ImageString$ = new BehaviorSubject<string>(undefined);
+  public base64ImageString$ = new BehaviorSubject<string>('');
 
   @Input()
   public allowUpload = false;

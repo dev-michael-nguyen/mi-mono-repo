@@ -9,24 +9,24 @@ import { RichTextValidatorFactory } from './rich-text-validator.factory';
   template: '',
 })
 export abstract class RichTextFieldComponent implements OnInit {
-  formGroup: FormGroup;
+  formGroup!: FormGroup;
 
-  richTextFormControl: FormControl;
+  richTextFormControl!: FormControl;
 
   hasValidators = false;
 
-  labelId: string;
+  labelId = newHtmlId();
 
-  describebyId: string;
-
-  @Input()
-  label: string;
+  describebyId = newHtmlId();
 
   @Input()
-  placeholder: string;
+  label = '';
 
   @Input()
-  hint: string;
+  placeholder = '';
+
+  @Input()
+  hint = '';
 
   @Input()
   isReadOnly = false;
@@ -35,13 +35,13 @@ export abstract class RichTextFieldComponent implements OnInit {
   isRequired = false;
 
   @Input()
-  minLength: number;
+  minLength?: number;
 
   @Input()
-  maxLength: number;
+  maxLength?: number;
 
   @Input()
-  defaultValue: string;
+  defaultValue = '';
 
   @Input()
   fieldSize: ClassExpression = 'col-6';

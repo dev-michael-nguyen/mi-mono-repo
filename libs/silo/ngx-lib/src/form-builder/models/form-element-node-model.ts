@@ -10,13 +10,13 @@ import { FormTextDefinitionModel } from './form-text-definition-model';
  * The node model for a form element.
  */
 export class FormElementNodeModel {
-  parentMemberKey: string;
+  parentMemberKey = '';
 
-  memberKey: string;
-  memberModel: FormElementMemberModel;
+  memberKey = '';
+  memberModel!: FormElementMemberModel;
 
-  definitionKey: string;
-  definitionModel:
+  definitionKey = '';
+  definitionModel!:
     | FormElementDefinitionModel
     | FormTextDefinitionModel
     | FormGroupDefinitionModel;
@@ -47,7 +47,7 @@ export class FormElementNodeModel {
     // container level component will construct form value instance object
     // with children property keys and their respective form value instances
     const rawValue = this.state.formGroup.value;
-    const formValueInstance = {};
+    const formValueInstance: { [key: string]: unknown } = {};
     Object.keys(rawValue).forEach((key) => {
       formValueInstance[key] = this.children.find(
         (c) => c.definitionModel.propertyKey === key,
@@ -74,22 +74,35 @@ export class FormElementNodeModelExtensions {
     parentMemberKey?: string,
   ): FormElementNodeModel {
     const nodeModel = new FormElementNodeModel();
-    nodeModel.parentMemberKey =
-      parentMemberKey ||
-      formDefinitionModel.memberList.find((x) =>
-        x.children.find((c) => c.key === memberKey),
-      )?.key;
+
+    // map keys
+    nodeModel.memberKey = memberKey;
+    nodeModel.parentMemberKey = parentMemberKey
+      ? parentMemberKey
+      : formDefinitionModel.memberList.find((x) =>
+          x.children.find((c) => c.key === memberKey),
+        )?.key ?? '';
+
+    // map member model
     const memberModel = formDefinitionModel.memberList.find(
       (x) => x.key === memberKey,
     );
-
-    nodeModel.memberKey = memberKey;
-    nodeModel.definitionKey = memberModel.definitionKey;
+    if (!memberModel) {
+      throw new Error('Cannot find member model.');
+    }
     nodeModel.memberModel = memberModel;
-    nodeModel.definitionModel = formDefinitionModel.definitionList.find(
+
+    // map definition model
+    nodeModel.definitionKey = memberModel.definitionKey;
+    const definitionModel = formDefinitionModel.definitionList.find(
       (x) => x.key === memberModel.definitionKey,
     );
+    if (!definitionModel) {
+      throw new Error('Cannot find definition model.');
+    }
+    nodeModel.definitionModel = definitionModel;
 
+    // map children
     nodeModel.children = flow(
       map<FormElementMemberModel, FormElementNodeModel>((x) =>
         FormElementNodeModelExtensions.mapFromFormDefinitionModel(

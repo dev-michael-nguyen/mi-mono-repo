@@ -19,24 +19,24 @@ import { TextValidatorFactory } from './text-validator.factory';
 })
 export abstract class TextFieldComponent
   implements OnInit, AfterViewInit, GetFormValue {
-  formGroup: FormGroup;
+  formGroup!: FormGroup;
 
-  textFormControl: FormControl;
+  textFormControl!: FormControl;
 
   hasValidators = false;
 
-  labelId: string;
+  labelId = newHtmlId();
 
-  describebyId: string;
-
-  @Input()
-  label: string;
+  describebyId = newHtmlId();
 
   @Input()
-  placeholder: string;
+  label = '';
 
   @Input()
-  hint: string;
+  placeholder = '';
+
+  @Input()
+  hint = '';
 
   @Input()
   isReadOnly = false;
@@ -45,13 +45,13 @@ export abstract class TextFieldComponent
   isRequired = false;
 
   @Input()
-  minLength: number;
+  minLength?: number;
 
   @Input()
   maxLength = 250;
 
   @Input()
-  defaultValue: string;
+  defaultValue = '';
 
   @Input()
   fieldSize: ClassExpression = 'col-2';
@@ -60,7 +60,7 @@ export abstract class TextFieldComponent
   fieldOutlineSize: ClassExpression;
 
   @ViewChild('textarea', { static: true })
-  textarea: ElementRef<HTMLTextAreaElement>;
+  textarea?: ElementRef<HTMLTextAreaElement>;
 
   constructor(
     protected _elementRef: ElementRef<HTMLElement>,
@@ -68,7 +68,6 @@ export abstract class TextFieldComponent
   ) {}
 
   ngOnInit(): void {
-    this.setDefinition();
     this.setForm(this.defaultValue);
   }
 
@@ -83,11 +82,6 @@ export abstract class TextFieldComponent
     if (changes.defaultValue && !changes.defaultValue.isFirstChange()) {
       this.textFormControl.setValue(this.defaultValue);
     }
-  }
-
-  setDefinition(): void {
-    this.labelId = newHtmlId();
-    this.describebyId = newHtmlId();
   }
 
   setForm(value: string): void {
@@ -117,7 +111,9 @@ export abstract class TextFieldComponent
     }
     // NOTE: On refresh, scroll height may not be accurate so do this next cycle
     setTimeout(() => {
-      this.textarea.nativeElement.style.height = `${this.textarea.nativeElement.scrollHeight}px`;
+      if (this.textarea) {
+        this.textarea.nativeElement.style.height = `${this.textarea.nativeElement.scrollHeight}px`;
+      }
     });
   }
 }

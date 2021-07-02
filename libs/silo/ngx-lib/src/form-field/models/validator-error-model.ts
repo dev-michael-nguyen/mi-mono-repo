@@ -1,3 +1,3 @@
 export class ValidatorErrorModel {
-  message: string;
+  message = '';
 }

@@ -9,10 +9,10 @@ import { HasNodeModel } from '../../../models/has-node-model';
   styleUrls: ['./boolean-checkbox-element.component.scss'],
 })
 export class BooleanCheckboxElementComponent implements OnInit, HasNodeModel {
-  booleanDefinitionModel: FormBooleanDefinitionModel;
+  booleanDefinitionModel!: FormBooleanDefinitionModel;
 
   @Input()
-  nodeModel: FormElementNodeModel;
+  nodeModel!: FormElementNodeModel;
 
   ngOnInit() {
     this.booleanDefinitionModel = this.nodeModel

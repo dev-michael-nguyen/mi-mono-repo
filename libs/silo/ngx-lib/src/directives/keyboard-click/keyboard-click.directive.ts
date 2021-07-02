@@ -5,7 +5,7 @@ import { Directive, ElementRef, Input, OnInit } from '@angular/core';
 })
 export class KeyboardClickDirective implements OnInit {
   @Input('siloKeyboardClick')
-  code: string;
+  code = '';
 
   constructor(private _elementRef: ElementRef<HTMLElement>) {}
 

@@ -10,18 +10,18 @@ import { BooleanValidatorFactory } from './boolean-validator.factory';
   template: '',
 })
 export abstract class BooleanFieldComponent implements OnInit, GetFormValue {
-  formGroup: FormGroup;
+  formGroup!: FormGroup;
 
-  booleanFormControl: FormControl;
+  booleanFormControl!: FormControl;
 
   hasValidators = false;
 
-  labelId: string;
+  labelId = newHtmlId();
 
-  describebyId: string;
+  describebyId = newHtmlId();
 
   @Input()
-  label: string;
+  label = '';
 
   @Input()
   isReadOnly = false;
@@ -30,24 +30,18 @@ export abstract class BooleanFieldComponent implements OnInit, GetFormValue {
   isRequired = false;
 
   @Input()
-  defaultValue: boolean;
+  defaultValue = false;
 
   @Input()
   fieldSize: ClassExpression = 'col-2';
 
   @Input()
-  fieldOutlineSize: ClassExpression;
+  fieldOutlineSize: ClassExpression = [];
 
   constructor(protected _formBuilder: FormBuilder) {}
 
   ngOnInit(): void {
-    this.setDefinition();
     this.setForm(this.defaultValue);
-  }
-
-  setDefinition(): void {
-    this.labelId = newHtmlId();
-    this.describebyId = newHtmlId();
   }
 
   setForm(value: boolean): void {

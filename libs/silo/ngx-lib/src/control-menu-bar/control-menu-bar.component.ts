@@ -34,21 +34,21 @@ export class ControlMenuBarComponent implements OnInit, OnDestroy {
   isSlim = false;
 
   @Input()
-  color: ThemePalette;
+  color: ThemePalette = undefined;
 
   @Input()
-  label: string;
+  label = '';
 
   @Input()
-  eventCode: string;
+  eventCode = '';
 
   @ContentChildren(ControlMenuBarButtonDirective)
-  controlMenuBarButtons: QueryList<ControlMenuBarButtonDirective>;
+  controlMenuBarButtons!: QueryList<ControlMenuBarButtonDirective>;
 
   constructor(private _elementRef: ElementRef<HTMLElement>) {}
 
   ngOnInit() {
-    fromEvent(document, 'keydown')
+    fromEvent<KeyboardEvent>(document, 'keydown')
       .pipe(takeUntil(this._destroy$))
       .subscribe((event: KeyboardEvent) => {
         // if shift + event code key is pressed anywhere, focus first focusable element
@@ -58,7 +58,7 @@ export class ControlMenuBarComponent implements OnInit, OnDestroy {
         }
       });
 
-    fromEvent(this._elementRef.nativeElement, 'keydown')
+    fromEvent<KeyboardEvent>(this._elementRef.nativeElement, 'keydown')
       .pipe(takeUntil(this._destroy$))
       .subscribe((event: KeyboardEvent) => {
         // if bound key is pressed when menu is focus, click button that match with bound key

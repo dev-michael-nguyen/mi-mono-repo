@@ -18,10 +18,22 @@
     "paths": {
       "@silo/ngx": ["libs/silo/ngx-lib/src/index.ts"],
       "@silo/metadata": ["libs/silo/metadata-lib/src/index.ts"]
-    }
+    },
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "strictPropertyInitialization": true,
+    "strictNullChecks": true,
+    "strictBindCallApply": true,
+    "strictFunctionTypes": true,
+    "noImplicitReturns": true,
+    "noImplicitAny": true,
+    "noImplicitThis": true,
+    "noFallthroughCasesInSwitch": true
   },
   "angularCompilerOptions": {
-    "strictTemplates": true
+    "strictTemplates": true,
+    "strictInjectionParameters": true,
+    "strictInputAccessModifiers": true
   },
   "exclude": ["node_modules", "tmp", "dist"]
 }

@@ -6,7 +6,7 @@ import { instanceOfGetFormValue } from './get-form-value';
  * The state model for a form element.
  */
 export class FormElementStateModel {
-  elementComponentRef: ComponentRef<unknown>;
+  elementComponentRef!: ComponentRef<unknown>;
 
   isActive = false;
 
@@ -16,7 +16,7 @@ export class FormElementStateModel {
     return instanceOfGetFormValue(this.elementComponentRef?.instance);
   }
 
-  get formValueInstance() {
+  get formValueInstance(): unknown | undefined {
     return instanceOfGetFormValue(this.elementComponentRef?.instance)
       ? this.elementComponentRef?.instance?.getFormValue()
       : undefined;

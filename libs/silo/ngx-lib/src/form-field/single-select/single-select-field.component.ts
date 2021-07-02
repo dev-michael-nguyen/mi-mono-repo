@@ -11,26 +11,26 @@ import { SingleSelectValidatorFactory } from './single-select-validator.factory'
   template: '',
 })
 export abstract class SingleSelectFieldComponent implements OnInit {
-  formGroup: FormGroup;
+  formGroup!: FormGroup;
 
-  lookupFormControl: FormControl;
+  lookupFormControl!: FormControl;
 
   hasValidators = false;
 
-  labelId: string;
+  labelId = newHtmlId();
 
-  describebyId: string;
+  describebyId = newHtmlId();
 
-  options: Array<LookupModel>;
-
-  @Input()
-  label: string;
+  options: Array<LookupModel> = [];
 
   @Input()
-  placeholder: string;
+  label = '';
 
   @Input()
-  hint: string;
+  placeholder = '';
+
+  @Input()
+  hint = '';
 
   @Input()
   isReadOnly = false;
@@ -39,7 +39,7 @@ export abstract class SingleSelectFieldComponent implements OnInit {
   isRequired = false;
 
   @Input()
-  defaultValue: LookupModel;
+  defaultValue?: LookupModel;
 
   @Input()
   fieldSize: ClassExpression = 'col-2';
@@ -48,24 +48,17 @@ export abstract class SingleSelectFieldComponent implements OnInit {
   fieldOutlineSize: ClassExpression;
 
   @Input()
-  lookupConfig: LookupConfigModel;
+  set lookupConfig(lookupConfig: LookupConfigModel) {
+    this.options = lookupConfig.lookups;
+  }
 
   constructor(protected _formBuilder: FormBuilder) {}
 
   ngOnInit() {
-    this.setDefinition();
     this.setForm(this.defaultValue);
   }
 
-  setDefinition() {
-    this.labelId = newHtmlId();
-    this.describebyId = newHtmlId();
-    if (this.lookupConfig && this.lookupConfig.lookups) {
-      this.options = this.lookupConfig.lookups;
-    }
-  }
-
-  setForm(value: LookupModel) {
+  setForm(value?: LookupModel) {
     const validators = SingleSelectValidatorFactory.createValidators(this);
     this.hasValidators = !!validators.length;
     this.lookupFormControl = this._formBuilder.control(value, validators);

@@ -11,26 +11,26 @@ import { NativeDate, NativeDateAdapter } from './native-date-adapter';
   template: '',
 })
 export abstract class DateFieldComponent implements OnInit {
-  formGroup: FormGroup;
+  formGroup!: FormGroup;
 
-  dateFormControl: FormControl;
+  dateFormControl!: FormControl;
 
   hasValidators = false;
 
-  labelId: string;
+  labelId = newHtmlId();
 
-  describebyId: string;
+  describebyId = newHtmlId();
 
-  options: Array<LookupModel>;
-
-  @Input()
-  label: string;
+  options: Array<LookupModel> = [];
 
   @Input()
-  placeholder: string;
+  label = '';
 
   @Input()
-  hint: string;
+  placeholder = '';
+
+  @Input()
+  hint = '';
 
   @Input()
   isReadOnly = false;
@@ -39,7 +39,7 @@ export abstract class DateFieldComponent implements OnInit {
   isRequired = false;
 
   @Input()
-  defaultValue: NativeDate;
+  defaultValue: NativeDate = null;
 
   @Input()
   fieldSize: ClassExpression = 'col-2';
@@ -50,13 +50,7 @@ export abstract class DateFieldComponent implements OnInit {
   constructor(protected _formBuilder: FormBuilder) {}
 
   ngOnInit(): void {
-    this.setDefinition();
     this.setForm(this.defaultValue);
-  }
-
-  setDefinition(): void {
-    this.labelId = newHtmlId();
-    this.describebyId = newHtmlId();
   }
 
   setForm(value: NativeDate): void {

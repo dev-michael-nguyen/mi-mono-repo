@@ -1,7 +1,7 @@
 import { LookupModel } from './lookup-model';
 
 export class LookupConfigModel {
-  url?: string;
-  hasPaging?: boolean;
-  lookups?: Array<LookupModel>;
+  url? = '';
+  hasPaging? = false;
+  lookups: Array<LookupModel> = [];
 }

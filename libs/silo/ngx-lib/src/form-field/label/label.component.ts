@@ -7,8 +7,8 @@ import { Component, Input } from '@angular/core';
 })
 export class LabelComponent {
   @Input()
-  labelId: string;
+  labelId = '';
 
   @Input()
-  label: string;
+  label = '';
 }

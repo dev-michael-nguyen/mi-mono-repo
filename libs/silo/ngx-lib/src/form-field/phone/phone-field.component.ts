@@ -9,24 +9,24 @@ import { PhoneValidatorFactory } from './phone-validator.factory';
   template: '',
 })
 export abstract class PhoneFieldComponent implements OnInit {
-  formGroup: FormGroup;
+  formGroup!: FormGroup;
 
-  phoneFormControl: FormControl;
+  phoneFormControl!: FormControl;
 
   hasValidators = false;
 
-  labelId: string;
+  labelId = newHtmlId();
 
-  describebyId: string;
-
-  @Input()
-  label: string;
+  describebyId = newHtmlId();
 
   @Input()
-  placeholder: string;
+  label = '';
 
   @Input()
-  hint: string;
+  placeholder = '';
+
+  @Input()
+  hint = '';
 
   @Input()
   isReadOnly = false;
@@ -35,7 +35,7 @@ export abstract class PhoneFieldComponent implements OnInit {
   isRequired = false;
 
   @Input()
-  defaultValue: string;
+  defaultValue = '';
 
   @Input()
   fieldSize: ClassExpression = 'col-2';
@@ -46,13 +46,7 @@ export abstract class PhoneFieldComponent implements OnInit {
   constructor(protected _formBuilder: FormBuilder) {}
 
   ngOnInit() {
-    this.setDefinition();
-    this.setForm(this.defaultValue || '');
-  }
-
-  setDefinition() {
-    this.labelId = newHtmlId();
-    this.describebyId = newHtmlId();
+    this.setForm(this.defaultValue);
   }
 
   setForm(value: string) {

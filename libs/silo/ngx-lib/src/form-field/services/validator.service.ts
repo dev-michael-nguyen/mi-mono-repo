@@ -1,31 +1,29 @@
 import { Injectable } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { AbstractControl, FormGroup } from '@angular/forms';
 import { ValidatorErrorModel } from '../models/validator-error-model';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ValidatorService {
-  static getFormGroupErrorMessage(formGroup: FormGroup) {
+  static getFormGroupErrorMessage(formGroup: FormGroup): string {
     const firstControlKeyWithError = Object.keys(formGroup.controls).find(
       (key) => !!formGroup.controls[key].errors,
     );
     if (!firstControlKeyWithError) {
-      return null;
+      return '';
     }
     const control = formGroup.get(firstControlKeyWithError);
-    const firstErrorKey = Object.keys(control.errors)[0];
-    const firstErrorValue = control.errors[
-      firstErrorKey
-    ] as ValidatorErrorModel;
-    return firstErrorValue.message;
+    return this.getFormControlErrorMessage(control);
   }
 
-  static getFormControlErrorMessage(formControl: FormControl) {
+  static getFormControlErrorMessage(formControl: AbstractControl | null) {
+    if (!formControl?.errors) {
+      return '';
+    }
     const firstErrorKey = Object.keys(formControl.errors)[0];
-    const firstErrorValue = formControl.errors[
-      firstErrorKey
-    ] as ValidatorErrorModel;
+    const firstErrorValue: ValidatorErrorModel =
+      formControl.errors[firstErrorKey];
     return firstErrorValue.message;
   }
 }

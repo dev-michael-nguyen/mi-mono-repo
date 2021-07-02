@@ -23,7 +23,7 @@ export class FormBooleanDefinitionModel extends FormElementDefinitionModel<unkno
   @FieldSize('col-12')
   @Label('Label')
   @IsRequired()
-  label: string = null;
+  label: string = '';
 
   @DisplayOrder(20)
   @Template('BooleanCheckbox', 'Checkbox')

@@ -42,9 +42,9 @@ export class DefinitionViewComponent implements OnInit {
 
   handleEvent($event: FormBuilderEvent) {
     if ($event instanceof ImportFormEvent) {
-      this.formDefinitionModel = JSON.parse(
-        $event.formDefinitionJson,
-      ) as FormDefinitionModel;
+      if ($event.formDefinitionJson) {
+        this.formDefinitionModel = JSON.parse($event.formDefinitionJson);
+      }
       this.memberKeyList = [this.formDefinitionModel.rootMemberKey];
       this.formBuilderComponent.render(
         this.formDefinitionModel,

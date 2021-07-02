@@ -20,11 +20,11 @@ class TestComponent {
   tabIndex = -1;
   enableAutoFocus = true;
   focusChildSelectors = '';
-  @ViewChild(AutoFocusDirective) directive: AutoFocusDirective;
-  @ViewChild('selfDiv') selfDiv: ElementRef<HTMLElement>;
-  @ViewChild('button') button: ElementRef<HTMLElement>;
-  @ViewChild('targetIdDiv') targetIdDiv: ElementRef<HTMLElement>;
-  @ViewChild('targetClassDiv') targetClassDiv: ElementRef<HTMLElement>;
+  @ViewChild(AutoFocusDirective) directive!: AutoFocusDirective;
+  @ViewChild('selfDiv') selfDiv!: ElementRef<HTMLElement>;
+  @ViewChild('button') button!: ElementRef<HTMLElement>;
+  @ViewChild('targetIdDiv') targetIdDiv!: ElementRef<HTMLElement>;
+  @ViewChild('targetClassDiv') targetClassDiv!: ElementRef<HTMLElement>;
 }
 
 describe('siloAutoFocus', () => {
