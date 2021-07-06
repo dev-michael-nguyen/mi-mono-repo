@@ -13,5 +13,4 @@ export interface PropertyMetadata {
   templateDisplayName?: string;
   templateIdentifier?: string;
   title?: string;
-  [key: string]: unknown;
 }

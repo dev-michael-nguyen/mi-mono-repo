@@ -7,7 +7,7 @@ export interface PropertyMetadataApplicator {
   ): void;
 }
 
-export function isPropertyMetadataApplicator(
+export function implementApplyPropertyMetadata(
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   arg: any,
 ): arg is PropertyMetadataApplicator {
