@@ -1,3 +1,5 @@
+import { MetadataModel } from './metadata-model';
+
 export interface PropertyMetadata {
   defaultValue?: unknown;
   description?: string;
@@ -7,6 +9,7 @@ export interface PropertyMetadata {
   hint?: string;
   isRequired?: boolean;
   isRequiredToSubmit?: boolean;
+  itemMetadataModel?: MetadataModel;
   label?: string;
   metadataIdentifier?: string;
   placeholder?: string;

@@ -6,6 +6,7 @@ export * from './field-size';
 export * from './hint';
 export * from './is-required';
 export * from './is-required-to-submit';
+export * from './item-metadata-model';
 export * from './label';
 export * from './length-range';
 export * from './max';

@@ -96,6 +96,8 @@ export class MetadataModelExtensions {
         const propertyValue = metadataModel[propertyKey];
 
         let propertyClassMetadata: ClassMetadata;
+
+        // when property is MetadataModel, append its own class metadata to this metadata map
         if (propertyValue instanceof MetadataModel) {
           propertyClassMetadata = MetadataModelExtensions.createClassMetadata(
             propertyValue,
@@ -103,6 +105,22 @@ export class MetadataModelExtensions {
           if (propertyClassMetadata?.metadataIdentifier) {
             MetadataModelExtensions.createMetadataMap(
               propertyValue,
+              metadataMap,
+            );
+          }
+        }
+
+        // when property is array, append item class metadata to this metadata map
+        if (Array.isArray(propertyValue)) {
+          if (!propertyMetadata.itemMetadataModel) {
+            throw new Error('itemMetadataModel is required');
+          }
+          propertyClassMetadata = MetadataModelExtensions.createClassMetadata(
+            propertyMetadata.itemMetadataModel,
+          );
+          if (propertyClassMetadata?.metadataIdentifier) {
+            MetadataModelExtensions.createMetadataMap(
+              propertyMetadata.itemMetadataModel,
               metadataMap,
             );
           }

@@ -1,19 +1,28 @@
+import { ItemMetadataModel } from '../decorators/item-metadata-model';
 import { Label } from '../decorators/label';
 import { MetadataIdentifier } from '../decorators/metadata-identifier';
 import { Template } from '../decorators/template';
 import { MetadataMap } from './metadata-map';
 import { MetadataModel, MetadataModelExtensions } from './metadata-model';
 
+@MetadataIdentifier('TestPhoneModel')
+@Template('FormGroup', 'Form')
+class TestPhoneModel extends MetadataModel {
+  @Template('TextBox', 'Text Box')
+  @Label('Phone Number')
+  number: string = '';
+}
+
 @MetadataIdentifier('TestPersonNameModel')
 @Template('CommonPersonName', 'Person Name')
 class TestPersonNameModel extends MetadataModel {
   @Template('TextBox', 'Text Box')
   @Label('First Name')
-  firstName: string = null;
+  firstName: string = '';
 
   @Template('TextBox', 'Text Box')
   @Label('Last Name')
-  lastName: string = null;
+  lastName: string = '';
 }
 
 @MetadataIdentifier('TestPersonModel')
@@ -21,14 +30,18 @@ class TestPersonNameModel extends MetadataModel {
 class TestPersonModel extends MetadataModel {
   @Template('Date', 'Date')
   @Label('DOB')
-  birthDate: string = null;
+  birthDate: string = '';
 
   @Template('CustomPersonName', 'Person Name')
   @Label('Name')
   name: TestPersonNameModel = new TestPersonNameModel();
 
   @Label('Age')
-  age: number;
+  age!: number;
+
+  @Template('FormList', 'List')
+  @ItemMetadataModel(new TestPhoneModel())
+  phones: Array<TestPhoneModel> = [];
 }
 
 describe('MetadataModel', () => {
@@ -44,7 +57,7 @@ describe('MetadataModel', () => {
     // assert
     expect(classMetadata).toBeTruthy();
     expect(classMetadata.metadataIdentifier).toBe('TestPersonModel');
-    expect(classMetadata.templateIdentifier).toBe('Form');
+    expect(classMetadata.templateIdentifier).toBe('FormGroup');
   });
 
   it('should create property metadata', () => {
@@ -156,5 +169,6 @@ describe('MetadataModel', () => {
     expect(testPersonModel.metadataMap).toBeTruthy();
     expect(testPersonModel.metadataMap.TestPersonModel).toBeTruthy();
     expect(testPersonModel.metadataMap.TestPersonNameModel).toBeTruthy();
+    expect(testPersonModel.metadataMap.TestPhoneModel).toBeTruthy();
   });
 });
